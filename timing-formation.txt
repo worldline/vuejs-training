@@ -1,0 +1,31 @@
+1er jour
+--------
+10h pres - install
+11h composants SFC
+11h15 directives, text/attrs, class/styles, forms
+12h - lunch
+
+13h30 - v-if, v-for, events
+14h30 - TP directives
+15h - components, methodes, computed/watcher
+15h20 lifecycle
+15h30 communication
+15h45 slots - ref- full API
+16h pause café
+16h30 TP Components jusqu'à ~17h30 selon avancement
+
+2ème jour
+----------
+10h: réactivité
+10h30 gestion d'état
+11h TP vuex
+11h30 vue-router
+12h - lunch
+
+13h30 TP router suite et fin
+14h - services & HTTP
+14h15 TP services
+15h réutilisabilité Vue
+15h30 - Q&A table ronde puis pause café
+16h30 - écosystème Vue
+17h conclusion // fin TP libres jusqu'à ~17h30 + training survey

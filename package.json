@@ -1,0 +1,36 @@
+{
+  "name": "vuejs-training",
+  "version": "1.0.0",
+  "description": "Formation vue.js",
+  "author": "Mohamed Benjelloun <mohamed.benjelloun@worldline.com>, Quentin Tomasicchio <quentin.tomasicchio@worldline.com>, Sylvain Pollet-Villard <sylvain.polletvillard@worldline.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "nuxt": "^2.4.5",
+    "vue-highlightjs": "^1.3.3",
+    "vuetify": "^1.3.3",
+    "vuetify-loader": "^1.0.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-imports": "^1.5.1",
+    "eslint": "^5.15.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  }
+}
