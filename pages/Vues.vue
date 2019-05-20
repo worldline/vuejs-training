@@ -17,22 +17,22 @@
           <v-card-title class="subheading primary--text">
             Aperçu d'un projet Vue
           </v-card-title>
-          <p>Le projet Vue fraîchement créé a normalement les dossiers et fichiers suivants:</p>
+          <p>Le projet Vue fraîchement créé a les dossiers et fichiers suivants :</p>
           <ul>
-            <li><code>src</code>: les sources de votre projet</li>
-            <li><code>public</code>: tout le contenu qui sera directement mis à la racine du serveur web, sans être passé par Webpack</li>
-            <li><code>package.json</code>: les informations de package NPM du projet (version, dépendances, scripts etc.)</li>
-            <li><code>vue.config.js</code>: un fichier de configuration pour Vue CLI pour ce projet</li>
+            <li><code>src</code> : les sources de votre projet</li>
+            <li><code>public</code> : tout le contenu qui sera directement mis à la racine du serveur web, sans être passé par Webpack</li>
+            <li><code>package.json</code> : les informations de package NPM du projet (version, dépendances, scripts etc.)</li>
+            <li><code>vue.config.js</code> : un fichier de configuration pour Vue CLI pour ce projet</li>
           </ul>
           <p>D'autres fichiers de configuration pour les outils de build peuvent également se trouver ici.</p>
           <p>Dans le dossier <code>src</code>, vous trouvez:</p>
           <ul>
-            <li><code>assets</code>: des ressources statiques (images, fichiers) qui seront importées par Webpack au sein de vos composants Vue</li>
-            <li><code>components</code>: vos composants Vue (répartis par dossier par "module" de votre application)</li>
-            <li><code>views</code>: les composants Vue qui seront rattachés à des routes (URL) par vue-router</li>
-            <li><code>App.vue</code>: votre composant Vue racine, qui contient toute l'application</li>
-            <li><code>main.js</code>: le point d'entrée du code JavaScript de toute l'application</li>
-            <li><code>router.js</code>: la configuration de vue-router et la liste des routes déclarées</li>
+            <li><code>assets</code> : des ressources statiques (images, fichiers) qui seront importées par Webpack au sein de vos composants Vue</li>
+            <li><code>components</code> : vos composants Vue (répartis par dossier par "module" de votre application)</li>
+            <li><code>views</code> : les composants Vue qui seront rattachés à des routes (URL) par vue-router</li>
+            <li><code>App.vue</code> : votre composant Vue racine, qui contient toute l'application</li>
+            <li><code>main.js</code> : le point d'entrée du code JavaScript de toute l'application</li>
+            <li><code>router.js</code> : la configuration de vue-router et la liste des routes déclarées</li>
           </ul>
 
           <p>Par la suite, vous pourrez être amenés à créer d'autres dossiers dans <code>src</code> selon vos besoins. On trouve par exemple couramment un dossier <code>services</code> qui contient des briques de logique métier avec des fonctions utilisées dans plusieurs composants. Ou encore un dossier <code>utils</code> pour venir stocker diverses fonctions utilitaires en JavaScript plutôt que de les répéter à plusieurs endroits.</p>
@@ -47,7 +47,7 @@
               Un fichier <code>.vue</code> se compose de trois éléments éléments optionnels :
               <ul>
                 <li>La balise <code>&lt;template&gt;</code> contient le code HTML du composant</li>
-                <li>La balise <code>&lt;script&gt;</code> (optionnelle) contient le code Javascript du composant</li>
+                <li>La balise <code>&lt;script&gt;</code> (optionnelle) contient le code JavaScript du composant</li>
                 <li>La balise <code>&lt;style&gt;</code> (optionnelle) contient le style CSS du composant</li>
               </ul>
             </li>
@@ -91,7 +91,7 @@
             Interpolation de texte dans les templates
           </v-card-title>
           <p>
-            Le moyen le plus simple d'insérer des données dynamiquement dans vos composants est par interpolation de texte, au moyen de la syntaxe <code v-pre>{{maVariable}}</code>. A l'intérieur des doubles accolades, vous pouvez indiquer n'importe quelle expression JavaScript valide:
+            Le moyen le plus simple d'insérer des données dynamiquement dans vos composants est par interpolation de texte, au moyen de la syntaxe <code v-pre>{{maVariable}}</code>. A l'intérieur des doubles accolades, vous pouvez indiquer n'importe quelle expression JavaScript valide :
             <code-copy
               class="mt-2"
               language="html"
@@ -193,7 +193,7 @@ export default {
 }
 <\/script>`,
       interpolationExample: `<template>
-  <p>Commande ref. {{referenceCommande}} - Total: {{ prix.toFixed(2)+'€' }}</p>
+  <p>Commande ref. {{ referenceCommande }} - Total: {{ prix.toFixed(2)+'€' }}</p>
 </template>
 
 <script>
