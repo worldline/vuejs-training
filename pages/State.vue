@@ -119,7 +119,7 @@ computed: {
             TP
           </h1>
           <ol>
-            <li>Installez Vuex et vue-persisted-state sur votre projet.</li>
+            <li>Installez <code>vuex</code> et <code>vuex-persistedstate</code> sur votre projet.</li>
             <li>Créez un store et mettez la variable <code>loggedIn</code> dedans.</li>
             <li>Dans <code>LoginForm.vue</code>, lors du submit, vérifier si l'utilisateur a entré l'adresse mail <code>test@test.com</code> et le mot de passe <code>test123</code>, si c'est le cas mettre à <code>true</code> la valeur de <code>loggedIn</code> dans le store (en utilisant un dispatch).</li>
             <li>Si l'utilisateur a entré de fausses informations, afficher un message d'erreur</li>

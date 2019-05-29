@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Film from './Film.vue'
+import Film from '@/components/Film.vue'
 
 export default {
   name: 'SearcFilm',
