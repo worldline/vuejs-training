@@ -1,5 +1,7 @@
 <template>
   <div id="search-film">
+    <button id="logout-btn" @click="logOut">Se déconnecter</button>
+
     <form @submit.prevent="populateFilms" >
       <label for="search">Rechercher :</label>
       <input id="search" type="text">
@@ -26,6 +28,10 @@ export default {
     }
   },
   methods: {
+    logOut() {
+      this.$store.dispatch('setLoggedIn', false)
+      this.$router.push('login')
+    },
     populateFilms() {
       this.films = [
         {

@@ -16,7 +16,7 @@
 import Film from './Film.vue'
 
 export default {
-  name: 'SearcFilm',
+  name: 'SearchFilm',
   components: {
     Film
   },
