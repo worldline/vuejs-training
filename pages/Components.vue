@@ -178,12 +178,12 @@
             TP
           </h1>
           <ol>
-            <li>Refactorez le code existant en créant un composant <code>FilmCard.vue</code> servant à afficher les détails d'un film. Ajoutez des <code>props</code> et des événéments pour passer les données d'un composant à un autre.</li>
-            <li>Créer un autre composant <code>SearchFilm.vue</code> contenant un champ de recherche (input de type text), un bouton pour lancer la recherche, et la liste des résultats dans des <code>FilmCard</code> en dessous.</li>
+            <li>Refactorez le code existant en créant un composant <code>Film.vue</code> servant à afficher les détails d'un film. Ajoutez des <code>props</code> et des événéments pour passer les données d'un composant à un autre.</li>
+            <li>Créer un autre composant <code>SearchFilm.vue</code> contenant un champ de recherche (input de type text), un bouton pour lancer la recherche, et la liste des résultats dans des <code>Film</code> en dessous.</li>
             <li>Afficher ce formulaire de recherche seulement si l'utilisateur est loggé.</li>
-            <li><i>Question:</i> quelles difficultés avez-vous rencontré pour utiliser la variable <code>loggedIn</code> dans plusieurs composants à la fois ?</li>
+            <li><i>Question :</i> quelles difficultés avez-vous rencontré pour utiliser la variable <code>loggedIn</code> dans plusieurs composants à la fois ?</li>
             <li>Assignez la variable <code>films</code> dans le formulaire de recherche à une liste vide <code>[]</code> initialement. Au submit du formulaire de recherche, lancez une méthode <code>searchFilms</code> qui complétera cette liste avec les données des films vus précédemment.</li>
-            <li><i>Question:</i> essayez dans la méthode <code>searchFilms</code> d'assigner les données de cette façon: <code>Object.assign(this.films, filmsData)</code>. Pourquoi la vue ne se met-elle plus à jour ?</li>
+            <li><i>Question :</i> essayez dans la méthode <code>searchFilms</code> d'assigner les données de cette façon : <code>Object.assign(this.films, filmsData)</code>. Pourquoi la vue ne se met-elle plus à jour ?</li>
           </ol>
         </v-card-text>
         <v-card-actions>
