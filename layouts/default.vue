@@ -72,7 +72,8 @@ export default {
         { icon: 'router', title: 'Routage', to: '/routing' },
         { icon: 'http', title: 'Requêtes', to: '/http' },
         { icon: 'loop', title: 'Réutilisabilité', to: '/reusability' },
-        { icon: 'extension', title: 'Ecosystème', to: '/ecosystem' }
+        { icon: 'extension', title: 'Ecosystème', to: '/ecosystem' },
+        { icon: 'done_all', title: 'Test', to: '/test' }
       ],
       miniVariant: false,
       title: 'Vue.js in depth'

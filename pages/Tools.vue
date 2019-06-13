@@ -173,10 +173,20 @@ Commands:
             <strong>search-films</strong> étant le nom du répertoire dans lequel nous allons initier notre projet.
           </p>
           <p>
-            Choisissez la configuration par défaut
-            <code>Default (babel, eslint)</code>.
+            Choisissez la configuration par suivante :
+            <pre>
+              <code>
+> Manually select features
+> Babel, Linter / Preformatter, Unit Testing
+> ESLint (your preference)
+> Lint on save
+> Jest
+> In dedicated config files
+              </code>
+            </pre>
             <i>Babel</i> est l'outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs, tandis que
             <i>eslint</i> est un linter, un outil d'analyse qualité qui va parcourir votre code et vous signaler des erreurs potentielles.
+            <i>Jest</i> est le test runner qui nous servira à lancer nos tests unitaires.
           </p>
           <p>A la fin de l'installation, un dossier a été créé pour votre projet. Naviguez vers le répertoire de votre projet</p>
           <code-copy code="cd search-films" />

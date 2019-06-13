@@ -123,7 +123,7 @@ computed: {
             <li>Créez un store et mettez la variable <code>loggedIn</code> dedans.</li>
             <li>Dans <code>LoginForm.vue</code>, lors du submit, vérifier si l'utilisateur a entré l'adresse mail <code>test@test.com</code> et le mot de passe <code>test123</code>, si c'est le cas mettre à <code>true</code> la valeur de <code>loggedIn</code> dans le store (en utilisant un dispatch).</li>
             <li>Si l'utilisateur a entré de fausses informations, afficher un message d'erreur</li>
-            <li>Se connecter avec les identifiants cités ci-haut, puis rafraîchir la page. <i>Question: pourquoi le formulaire de login ne s'affiche plus ?</i></li>
+            <li>Se connecter avec les identifiants cités ci-haut, puis rafraîchir la page. <i>Question : pourquoi le formulaire de login ne s'affiche plus ?</i></li>
             <li>Ajouter un bouton de déconnexion <code>&lt;button id="logout-btn"&gt;</code> qui modifie la valeur de <code>loggedIn</code> du store</li>
           </ol>
         </v-card-text>
