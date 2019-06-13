@@ -4,9 +4,5 @@ node_modules
 # logs
 npm-debug.log
 
-# Nuxt build
-.nuxt
-
-# Nuxt generate
-public
+# Build
 dist

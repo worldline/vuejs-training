@@ -1,0 +1,30 @@
+figcaption {
+    text-align: center;
+    font-size: 80%;
+    font-style: italic;
+}
+
+.cols {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    padding: 0 0.5em;
+
+    .fit {
+        flex-grow: 0 0 min-content;
+    }
+
+    .fill {
+        flex-grow: 1 1 auto;
+    }
+}
+
+.center {
+    text-align: center
+
+    & > * {
+        margin: auto
+    }
+}

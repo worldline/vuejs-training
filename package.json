@@ -1,36 +1,18 @@
 {
-  "name": "vuejs-training",
-  "version": "1.0.0",
+  "name": "formation-vue-node",
+  "version": "2.0.0",
   "description": "Formation vue.js",
-  "author": "Mohamed Benjelloun <mohamed.benjelloun@worldline.com>, Quentin Tomasicchio <quentin.tomasicchio@worldline.com>, Sylvain Pollet-Villard <sylvain.polletvillard@worldline.com>",
+  "authors": [
+    "MOHAMED BENJELLOUN <mohamed.benjelloun@atos.net>",
+    "QUENTIN TOMASICCHIO <quentin.tomasicchio@worldline.com>",
+    "SYLVAIN POLLET-VILLARD <sylvain.polletvillard@worldline.com>"
+  ],
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "dependencies": {
-    "nuxt": "^2.7.1",
-    "vue-highlightjs": "^1.3.3",
-    "vuetify": "^1.5.14",
-    "vuetify-loader": "^1.2.2"
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "babel-plugin-transform-imports": "^1.5.1",
-    "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-loader": "^2.1.2",
-    "eslint-plugin-html": "^5.0.5",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^5.2.2",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "vuepress": "^1.0.0"
   }
 }
