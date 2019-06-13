@@ -125,19 +125,19 @@ export default {
   },
   data () {
     return {
-      service_api: `import store from "@/store.js"
+      service_api: `import store from '@/store.js'
 
 export const BASE_URL = 'https://vue-js-backend.herokuapp.com'
 
 export async function api (url, params = {}) {
     params = Object.assign({
-        mode: "cors",
-        cache: "no-cache",
+        mode: 'cors',
+        cache: 'no-cache',
     }, params)
 
     params.headers = Object.assign({
         Authorization: \`Bearer $\{store.state.token}\`,
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
     }, params.headers)
 
     let response = await fetch(BASE_URL + url, params)
@@ -176,8 +176,8 @@ export default {
         const response = await UserService.register({
           email: this.email,
           password: this.password,
-          firstname: "John",
-          lastname: "Smith"
+          firstname: 'John',
+          lastname: 'Smith'
         })
         this.$store.dispatch('setUser', response.user)
         this.$store.dispatch('setToken', response.token)
