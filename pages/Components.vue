@@ -81,7 +81,7 @@
           </p>
 
           <code-copy
-            language="javascript"
+            language="html"
             :code="example_props2"
           />
 
@@ -97,7 +97,7 @@
           <p>Pour <strong>écouter</strong> un événement émis par un composant enfant, on utilise la même directive <code>v-on</code> que pour les événements du DOM. La valeur transmise avec l'événement peut être récupérée via la variable <code>$event</code>.</p>
 
           <code-copy
-            language="javascript"
+            language="html"
             :code="example_events"
           />
 
@@ -227,8 +227,10 @@ export default {
 </template>
 <script>
 export default {
-  data(){
-    return  { name: 'Mark' }
+  data() {
+    return  {
+      name: 'Mark'
+    }
   },
   methods: {
     greet: function (event) {
@@ -245,18 +247,18 @@ export default {
 <\/script>`,
       exampleComputedWatchers: `var vm = new Vue({
   el: "#app",
-  data: {
+  data: () => ({
     count1: 0,
     count2: 0,
     lastUpdate: null
-  },
+  }),
   computed: {
-    total(){
+    total () {
       return count1 + count2
     }
   },
   watch: {
-    total(){
+    total () {
       this.lastUpdate = new Date()
     }
   }
@@ -267,14 +269,18 @@ export default {
     this.$el.parentNode.classList.remove("loading")
   }
 }`,
-      example_props: `<script>
-Vue.component('blog-post', {
-  props: ['title','content'],
-  template: \`<article>
+      example_props: `<template>
+  <article>
     <h3>{{ title }}</h3>
     <p>{{ content }}</p>
-  </article>\`
-})
+  </article>
+</template>
+
+<script>
+export default {
+  name: 'blog-post',
+  props: ['title','content']
+}
 <\/script>
 
 <!-- dans un template parent -->
@@ -284,7 +290,9 @@ Vue.component('blog-post', {
 <!-- raccourci équivalent -->
 <blog-post v-bind="article" />
       `,
-      example_props2: `Vue.component('my-component', {
+      example_props2: `<script>
+export default {
+  name: 'my-account',
   props: {
     propA: Number, // null matches any type
     propB: [String, Number], // multiple valid types
@@ -297,24 +305,32 @@ Vue.component('blog-post', {
       validator: value => value.startsWith("_")
     }
   }
-})`,
-      example_events: `Vue.component('blog-post', {
-  template: \`<article>
-  <h3>My article</h3>
-  <p>Lorem ipsum...</p>
+}
+<\/script>`,
+      example_events: `<template>
+  <article>
+    <h3>My article</h3>
+    <p>Lorem ipsum...</p>
 
-  <textarea v-model="comment" />
-  <button @click="sendComment">Comment</button>
-</article>\`,
-  data(){
-    return { comment: "" }
+    <textarea v-model="comment" />
+    <button @click="sendComment">Comment</button>
+  </article>
+</template>
+
+<script>
+export default {
+  name: 'blog-post',
+  data () {
+    return {
+      comment: ''
+    }
   },
   methods: {
-    sendComment(){
+    sendComment () {
       this.$emit('comment', this.comment)
     }
   }
-})
+}
 <\/script>
 
 <!-- dans un template parent -->
