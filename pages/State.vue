@@ -90,7 +90,6 @@
           </h2>
           <p>- Créer un fichier <code>src/store.js</code>, et y placer le contenu suivant</p>
           <code-copy
-            :copyable="true"
             :code="vuex_store"
           />
           <p>Le mode strict permet de lancer une erreur si le store Vuex est modifié en dehors des mutateurs. <span style="color: red; font-weight: bold;">Attention !</span> Ce mode doit être désactivé en production !</p>

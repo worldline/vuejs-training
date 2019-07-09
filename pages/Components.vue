@@ -228,7 +228,7 @@ export default {
 <script>
 export default {
   data(){
-    return  { name: "Mark" }
+    return  { name: 'Mark' }
   },
   methods: {
     greet: function (event) {
@@ -238,7 +238,7 @@ export default {
     say(message){
       // si une méthode est indépendante de l'instance (pas de référence à 'this')
       // il est pertinent de l'externaliser dans un module à part
-      alert(message + "!")
+      alert(message + '!')
     }
   }
 }
