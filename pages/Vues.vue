@@ -25,7 +25,7 @@
             <li><code>vue.config.js</code> : un fichier de configuration pour Vue CLI pour ce projet</li>
           </ul>
           <p>D'autres fichiers de configuration pour les outils de build peuvent également se trouver ici.</p>
-          <p>Dans le dossier <code>src</code>, vous trouvez:</p>
+          <p>Dans le dossier <code>src</code>, vous trouvez :</p>
           <ul>
             <li><code>assets</code> : des ressources statiques (images, fichiers) qui seront importées par Webpack au sein de vos composants Vue</li>
             <li><code>components</code> : vos composants Vue (répartis par dossier par "module" de votre application)</li>

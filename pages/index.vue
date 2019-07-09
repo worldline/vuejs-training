@@ -52,7 +52,7 @@
               <a
                 href="https://github.com/worldline/vuejs-training"
                 target="_blank"
-              >Repo Gitlab pour ce support de formation</a>
+              >Repo Github de ce support de formation</a>
             </li>
             <li>
               <a
@@ -134,6 +134,7 @@
               </ul>
             </li>
             <li>Ecosystème logiciel de Vue.js</li>
+            <li>Tester son application</li>
           </ol>
         </v-card-text>
         <v-card-actions>

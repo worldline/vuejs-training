@@ -34,7 +34,6 @@
           <p>- Créer un service générique permettant d'appeler le backend, pour cela, créer un fichier <code>services/api.js</code> :</p>
           <code-copy
             :code="service_api"
-            :copyable="true"
             language="javascript"
           />
           <p>Le header <code>Authorization</code> est utilisé pour envoyer le token d'authentification au backend. Les autres options servent à configurer le cache HTTP et les autorisations cross-origin à appliquer.</p>
@@ -42,7 +41,6 @@
           <p><code>services/UserService.js</code> :</p>
           <code-copy
             :code="service_user"
-            :copyable="true"
             language="javascript"
           />
 
@@ -57,7 +55,6 @@
           />
           <p>Notez que l'on stocke les informations de l'utilisateur dans le store, afin qu'elles soient accessibles depuis n'importe quel composant. Il vous faut donc déclarer les actions et mutations associées dans le store:</p>
           <code-copy
-            :copyable="true"
             :code="store_user"
             language="javascript"
           />
@@ -103,9 +100,9 @@
             color="primary"
             flat
             nuxt
-            to="/reusability"
+            to="/test"
           >
-            Réutilisabilité
+            Test
             <v-icon right>
               navigate_next
             </v-icon>

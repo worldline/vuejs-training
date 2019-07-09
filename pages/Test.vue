@@ -128,21 +128,21 @@
             color="primary"
             flat
             nuxt
-            to="/tools"
+            to="/http"
           >
             <v-icon left>
               navigate_before
             </v-icon>
-            Outillage
+            Requêtes HTTP
           </v-btn>
           <v-spacer />
           <v-btn
             color="primary"
             flat
             nuxt
-            to="/directives"
+            to="/reusability"
           >
-            Directives
+            Réutilisabilité
             <v-icon right>
               navigate_next
             </v-icon>

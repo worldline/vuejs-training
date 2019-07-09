@@ -80,12 +80,12 @@
             color="primary"
             flat
             nuxt
-            to="/http"
+            to="/test"
           >
             <v-icon left>
               navigate_before
             </v-icon>
-            Requêtes HTTP
+            Test
           </v-btn>
           <v-spacer />
           <v-btn
