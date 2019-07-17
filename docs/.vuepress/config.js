@@ -31,7 +31,9 @@ module.exports = {
         sidebar: [
           "/fr/",
           "/fr/presentation/",
-          "/fr/outillage/"
+          "/fr/outillage/",
+          "/fr/vues/",
+          "/fr/directives/"
         ]
       }
     }

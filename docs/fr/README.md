@@ -30,33 +30,33 @@ Bienvenue dans cette formation dédiée à Vue.js et son écosystème :smiley:
     - [Setup et installation des outils requis](outillage/#outils-a-installer)
     - [Utilisation de Vue.js sans vue-cli](outillage/#utilisation-de-vue-js-sans-etape-de-build-runtime-only)
     - [Création d'un projet Vue](outillage/#creation-de-votre-premier-projet)
-3. Vues
-    - Fichiers monocomposants *.vue
-    - Aperçu de l'architecture d'un projet Vue
-    - Arborescence de composants
-    - Interpolation dans les templates
-4. Directives
-    - Lier des attributs, styles et classes
-    - Formulaires et champs de saisie
-    - Conditions
-    - Boucles
-    - Evénéments
-5. Composants
-    - Méthodes
-    - Propriétés calculées et observées
-    - Cycle de vie du composant
-    - Communication entre composants
-    - Slots
-    - Références
-6. Réactivité dans Vue
-7. Gestion d'état
-    - Etat partagé
-    - Pattern de store
-    - VueX
-8. Routage avec vue-router
-9. Requêtes HTTP et services
-10. Réutilisabilité et composition
-    - Mixins
-    - Directives personnalisées
-    - Plugins
-11. Ecosystème logiciel de Vue.js
+3. [Vues](vues)
+    - [Aperçu de l'architecture d'un projet Vue](vues/#apercu-d-un-projet-vue)
+    - [Fichiers monocomposants *.vue](vues/#fichiers-monocomposants-vue)
+    - [Arborescence de composants](vues/#travailler-en-composants)
+    - [Interpolation dans les templates](vues/#interpolation-de-texte-dans-les-templates)
+4. [Directives](directives)
+    - [Lier des attributs, styles et classes](directives/)
+    - [Formulaires et champs de saisie](directives/)
+    - [Conditions](directives/)
+    - [Boucles](directives/)
+    - [Evénéments](directives/)
+5. [Composants](composants)
+    - [Méthodes](composants/)
+    - [Propriétés calculées et observées](composants/)
+    - [Cycle de vie du composant](composants/)
+    - [Communication entre composants](composants/)
+    - [Slots](composants/)
+    - [Références](composants/)
+6. [Réactivité dans Vue](reactivite)
+7. [Gestion d'état](etat)
+    - [Etat partagé](etat/)
+    - [Pattern de store](etat/)
+    - [VueX](etat/)
+8. [Routage avec vue-router](routeur)
+9. [Requêtes HTTP et services](http)
+10. [Réutilisabilité et composition](reutilisabilite)
+    - [Mixins](reutilisabilite/)
+    - [Directives personnalisées](reutilisabilite/)
+    - [Plugins](reutilisabilite/)
+11. [Ecosystème logiciel de Vue.js](ecosysteme)
