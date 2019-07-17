@@ -37,5 +37,8 @@ module.exports = {
         ]
       }
     }
-  }
+  },
+  plugins: [
+    ['@dovyp/vuepress-plugin-clipboard-copy', true]
+  ]
 }

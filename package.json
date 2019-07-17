@@ -13,6 +13,7 @@
     "build": "vuepress build docs"
   },
   "dependencies": {
+    "@dovyp/vuepress-plugin-clipboard-copy": "^1.0.0-alpha.7",
     "vuepress": "^1.0.0"
   }
 }
