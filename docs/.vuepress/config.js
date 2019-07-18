@@ -33,7 +33,8 @@ module.exports = {
           "/fr/presentation/",
           "/fr/outillage/",
           "/fr/vues/",
-          "/fr/directives/"
+          "/fr/directives/",
+          "/fr/composants/"
         ]
       }
     }
