@@ -34,12 +34,14 @@ module.exports = {
           "/fr/outillage/",
           "/fr/vues/",
           "/fr/directives/",
-          "/fr/composants/"
+          "/fr/composants/",
+          "/fr/reactivite/",
+          "/fr/etat/"
         ]
       }
     }
   },
   plugins: [
-    ['@dovyp/vuepress-plugin-clipboard-copy', true]
+    require('./plugins/copy-code/')
   ]
 }
