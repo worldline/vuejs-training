@@ -84,7 +84,9 @@ export default {
 
 Typiquement, on utilise `created` comme l'équivalent d'une fonction constructeur, pour initialiser certaines données ou lancer des requêtes HTTP. On utilise `mounted` lorsque certaines étapes à l'initialisation nécessitent d'interagir avec le DOM. Enfin, on utilise `destroyed` pour faire le ménage lorsque le composant n'est plus utilisé, par exemple supprimer des event listeners globaux pour éviter des fuites mémoire. Les autres callbacks sont réservés à des cas d'usage plus spécifiques.
 
-## Communication entre composants: communication descendante avec les **props**
+## Communication entre composants
+
+### Communication descendante avec les **props**
 
 Comme tout autre élément HTML, les composants Vue peuvent recevoir des arguments, que l'on appelle les **props** ou propriétés. On se sert des props pour transmettre de l'information d'un composant parent à un composant enfant.
 
@@ -139,7 +141,7 @@ export default {
 </script>
 ```
 
-## Communication entre composants: communication ascendante avec les **events**
+### Communication ascendante avec les **events**
 
 Bien qu'un composant enfant puisse techniquement accéder à son composant parent, il s'agit d'une mauvaise pratique car cela induit une liaison forte entre les composants: le composant perd en généricité, il est plus difficilement réutilisable et le risque de boucle infinie est accentué.
 
@@ -182,8 +184,10 @@ export default {
 <blog-post @comment="onNewComment($event)" />
 ```
 
-## Distribution de contenu avec les slots
+## Slots et distribution de contenu
+
 Comme les composants Vue sont déclarés sous forme de balises, on peut leur passer des attributs, les props, mais également placer d'autres éléments ou contenu à l'intérieur de ces balises:
+
 ```vue
 <navigation-link url="/profile">Mon profil<navigation-link>
 ```
@@ -217,7 +221,7 @@ Les slots peuvent contenir n'importe quel contenu HTML, y compris d'autres compo
 
 En plus du slot par défaut, vous pouvez **nommer** certains slots pour distribuer du contenu à plusieurs emplacements différents, au moyen de la directive `slot` dans le contenu à placer et de l'attribut `name` de l'élément `<slot>` pour identifier le contenant correspondant.
 
-## Référencer un élément dans un template
+## Références d'éléments
 
 Pour récupérer une référence vers un élément ou un composant enfant dans un template, utilisez la directive `ref`. Une fois le composant monté sur le DOM, l'élément sera accessible via `vm.$refs[votreReference]`.
 
@@ -259,7 +263,7 @@ export default {
 }
 ```
 
-## Propriétés d'instance de vue
+### Propriétés d'instance de vue
 
 - `vm.$data`
 - `vm.$props`
@@ -272,7 +276,7 @@ export default {
 - `vm.$root`: composant racine
 - `vm.$children`: composants enfant
 
-## Méthodes d'instance de vue
+### Méthodes d'instance de vue
 
 - `vm.$watch`: déclare programmatiquement un watcher
 - `vm.$set`: assigne une donnée en forçant la réactivité
@@ -286,12 +290,29 @@ export default {
 - `vm.$forceUpdate`: force la mise à jour complète du composant (à éviter)
 - `vm.$nextTick`: reporte l'exécution d'une fonction au prochain tick (boucle d'événements)
 
-## TP
+## TP: Décomposer son application
 
 1. Refactorez le code existant en créant un composant `Film.vue` servant à afficher les détails d'un film. Ajoutez des `props` pour passer les données de chaque film au composant.
-2. Créer un autre composant `SearchFilm.vue` contenant un formulaire `<form>` avec un champ de recherche `<input type="search">` et un bouton `<button>` pour lancer la recherche. 
-3. Insérez ce composant de recherche au dessus de la liste de `Film` avec nos 3 films d'exemple.
-4. Afficher ce formulaire de recherche seulement si l'utilisateur est loggé.
+2. Créer un autre composant `SearchFilm.vue` contenant un formulaire de recherche ainsi que la liste de `Film` en résultats dessous:
+
+```vue
+<template>
+  <div id="search-film">
+    <form>
+      <label for="search">Rechercher :</label>
+      <input id="search" type="text">
+    </form>
+
+    <ul class="films">
+      <!-- la liste de <Film> -->
+    </ul>
+  </div>
+</template>
+``` 
+
+3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options associées dans les sous-composants pour alléger au maximum le code de `App`.
+
+4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé.
 
 **Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 

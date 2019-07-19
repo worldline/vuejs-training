@@ -36,7 +36,9 @@ module.exports = {
           "/fr/directives/",
           "/fr/composants/",
           "/fr/reactivite/",
-          "/fr/etat/"
+          "/fr/etat/",
+          "/fr/routage/",
+          "/fr/http/"
         ]
       }
     }

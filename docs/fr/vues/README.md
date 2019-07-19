@@ -119,11 +119,11 @@ Le moyen le plus simple d'insérer des données dynamiquement dans vos composant
 
 L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne pouvez pas l'utiliser pour changer la valeur d'attributs HTML ou pour insérer du code HTML par exemple. Pour cela, vous devrez recourir aux *directives*, que l'on verra dans la section suivante.
 
-## TP
+## TP: Premier composant
 
 1. Ajouter la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici: [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css) ; la placer dans le dossier src et l'inclure dans le projet avec `import "./stylesheet.css"` dans la partie script de `App.vue`.
 
-2. Créer un nouveau composant LoginForm.vue contenant un formulaire d'authentification:
+2. Créer un nouveau composant `LoginForm.vue` contenant un formulaire d'authentification:
 
 ```html
 <div id="login-form">
@@ -143,6 +143,6 @@ L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne
 </div>
 ```
 
-3. Supprimez le contenu existant du template du composant App.vue, et affichez le composant LoginForm.vue à la place avec `<login-form />`. Vous devrez également déclarer `LoginForm` dans l'option `components` du composant `App`.
+3. Supprimez le contenu existant du template du composant `App.vue`, et affichez le composant `LoginForm.vue` à la place avec `<login-form />`. Vous devrez également déclarer `LoginForm` dans l'option `components` du composant `App`.
 
-4. Complétez le fichier `LoginForm.vue` pour déclarer le nom du composant, ainsi qu'une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire ("Authentification") en utilisant cette variable `title`.
+4. Complétez le fichier `LoginForm.vue` pour déclarer le nom du composant, ainsi qu'une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire *"Authentification"* en utilisant cette variable `title`.

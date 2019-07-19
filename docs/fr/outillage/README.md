@@ -102,7 +102,7 @@ Il est tout à fait possible d'utiliser Vue.js sans tout cet outillage sur le po
 
 Toutefois, ce mode d'utilisation trouve rapidement ses limites, et l'outillage développeur qui accompagne les projets Vue s'avère très précieux avec le temps. Mais cela peut être utile si vous voulez intégrer des composants Vue dans un projet fait avec un autre framework, ou si vous voulez faire un prototype rapide sans devoir installer d'outillage.
 
-## Création de votre premier projet
+## TP: Création de votre premier projet
 
 Placez-vous dans votre répertoire de travail et créez un projet appelé `search-films` en lançant la commande :
 

@@ -117,11 +117,11 @@ Vuex fonctionne selon les principes suivants:
 
 ![Vuex et les composants](../../assets/vuex.png)
 
-## TP
+## TP: Implémenter un store Vuex
 
 1. Installer les dépendances `vuex` et `vuex-persistedstate` qu'on utilisera pour persister l'état du store.
 
-```shell
+```bash
 npm install vuex vuex-persistedstate
 ```
 
@@ -150,7 +150,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    login ({commit}, user) {
+    login ({ commit }, { user }) {
       commit('setLoggedIn', true)
       commit('setUser', user)
     }
@@ -195,7 +195,7 @@ export default {
 :::tip
 Invoquer une action depuis un composant se fait comme ceci:
 ```js
-this.$store.dispatch('login', 'John Smith')
+this.$store.dispatch('login', { user: 'John Smith' })
 ```
 :::
 
@@ -205,4 +205,4 @@ this.$store.dispatch('login', 'John Smith')
 
 7. Si l'utilisateur a entré de mauvaises informations, afficher un message d'erreur. Pour cela, vous pouvez vous aider d'une `data` supplémentaire comme une String `loginError` par exemple.
 
-8. **Bonus**: Coder une action `logout` et ajouter un bouton de déconnexion `<button id="logout-btn">` qui invoque cette action.
+8. **Bonus**: Coder une action `logout` et ajouter un bouton de déconnexion `<button id="logout-btn">` qui invoque cette action. Afficher le nom de l'utilisateur à côté de ce bouton.

@@ -155,7 +155,7 @@ Les modificateurs sont des suffixes permettant de modifier légèrement le compo
 <input @keypress.enter="submit" />
 ```
 
-## TP
+## TP: Fiche d'un film
 
 1. Sur le formulaire d'authentification, ajoutez deux variables `email` et `password` dans l'option `data` du composant et utilisez la directive `v-model` sur les champs email et password pour les lier.
 2. Ajoutez une autre variable `loggedIn` initialement à `false`, puis utilisez la directive `v-on` pour l'assigner à `true` à la soumission du formulaire.
