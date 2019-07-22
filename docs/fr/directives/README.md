@@ -137,7 +137,7 @@ Vous pouvez utiliser la variable `$event` comme référence à l'événement cap
 
 [Exercice: utilisez les événements pour ajouter un singe au clic sur bouton, et leur faire ouvrir les yeux au passage de la souris](https://codepen.io/sylvainpv/pen/NBEKQw?editors=1010)
 
-## Modificateurs
+### Modificateurs
 
 Les modificateurs sont des suffixes permettant de modifier légèrement le comportement de certaines directives ; par exemple, stopper la propagation d'un événement capturé avec `v-on`. Pour en savoir plus, se référer à la [documentation officielle](https://fr.vuejs.org/v2/guide/events.html#Event-Modifiers).
 

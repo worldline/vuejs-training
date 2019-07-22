@@ -5,7 +5,7 @@ module.exports = {
       title: "Vue.js in depth",
       description: "Vue.js training"
     },
-
+ 
     "/fr/": {
       lang: "fr-FR",
       title: "Vue.js en profondeur",
@@ -44,7 +44,9 @@ module.exports = {
       }
     }
   },
+
   plugins: [
-    require('./plugins/copy-code/')
+    'vuepress-plugin-global-toc',
+    require('./plugins/copy-code/'),    
   ]
 }

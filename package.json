@@ -13,6 +13,7 @@
     "build": "vuepress build docs"
   },
   "dependencies": {
-    "vuepress": "^1.0.0"
+    "vuepress": "^1.0.0",
+    "vuepress-plugin-global-toc": "^1.0.1"
   }
 }

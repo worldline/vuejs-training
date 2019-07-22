@@ -13,8 +13,9 @@
 - valider vuepress
 - valider changements section Tests
 - revoir vite fait les corrections pour des changements mineurs dans le TP (naming, organisation des composants)
-- entamer la trad EN
+- commencer la trad en anglais
 - réfléchir à adapter les slides en HTML, ou les supprimer complètement ?
+- anticiper le boulot sur Vue 3 (ajout Functional API en section Réusabilité, dépréciation des mixins ?)
 
 # SECURITY
 - voir comment on bosse ensemble avec nourredine sur le sujet
