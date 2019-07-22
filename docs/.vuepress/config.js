@@ -39,14 +39,17 @@ module.exports = {
           "/fr/etat/",
           "/fr/routage/",
           "/fr/http/",
-          "/fr/tests/"          
+          "/fr/tests/",
+          "/fr/reusabilite/",
+          "/fr/ecosysteme/"
         ]
       }
     }
   },
 
-  plugins: [
+  plugins: [    
+    require('./plugins/copy-code/'),
     'vuepress-plugin-global-toc',
-    require('./plugins/copy-code/'),    
+    //require('./plugins/global-toc/'),
   ]
 }
