@@ -21,7 +21,17 @@ module.exports = {
         sidebar: [
           "/",
           "/presentation/",
-          "/tooling"
+          "/tooling/",
+          "/views/",
+          "/directives/",
+          "/components/",
+          "/reactivity/",
+          "/state/",
+          "/routing/",
+          "/http/",
+          "/tests/",
+          "/reusability/",
+          "/ecosystem/"
         ]
       },
 

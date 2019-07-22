@@ -10,7 +10,7 @@
 - modifier /search qui retourne un film au lieu d'une liste de films
 
 # DOCS:
-- valider vuepress
+- valider vuepress (et choisir style header)
 - valider changements section Tests
 - revoir vite fait les corrections pour des changements mineurs dans le TP (naming, organisation des composants)
 - commencer la trad en anglais
