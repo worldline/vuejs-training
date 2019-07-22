@@ -38,7 +38,8 @@ module.exports = {
           "/fr/reactivite/",
           "/fr/etat/",
           "/fr/routage/",
-          "/fr/http/"
+          "/fr/http/",
+          "/fr/tests/"          
         ]
       }
     }
