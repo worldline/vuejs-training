@@ -16,6 +16,7 @@
 - commencer la trad en anglais
 - réfléchir à adapter les slides en HTML, ou les supprimer complètement ?
 - anticiper le boulot sur Vue 3 (ajout Functional API en section Réusabilité, dépréciation des mixins ?)
+- la table of contents autogénérée ne l'est pas sur github ; à rendre manuel à nouveau ?
 
 # SECURITY
 - voir comment on bosse ensemble avec nourredine sur le sujet
