@@ -10,10 +10,14 @@
   "private": true,
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "deploy": "node ./docs/deploy.js"
   },
   "dependencies": {
     "vuepress": "^1.0.0",
     "vuepress-plugin-global-toc": "^1.0.1"
+  },
+  "devDependencies": {
+    "shelljs": "^0.8.3"
   }
 }

@@ -26,6 +26,7 @@
 14h - services & HTTP
 14h15 TP services
 15h réutilisabilité Vue
-15h30 - Q&A table ronde puis pause café
+15h30 - tests unitaires (sauter les TP si pas le temps)
+16h pause café
 16h30 - écosystème Vue
 17h conclusion // fin TP libres jusqu'à ~17h30 + training survey

@@ -1,4 +1,5 @@
 module.exports = {
+  base: "/Vue-training/",
   locales: {
     "/": {
       lang: "en-US",// this will be set as the lang attribute on <html>
