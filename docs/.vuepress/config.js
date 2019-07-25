@@ -1,12 +1,12 @@
 module.exports = {
-  base: "/Vue-training/",
+  base: "/vuejs-training/",
   locales: {
     "/": {
       lang: "en-US",// this will be set as the lang attribute on <html>
       title: "Vue.js in depth",
       description: "Vue.js training"
     },
- 
+
     "/fr/": {
       lang: "fr-FR",
       title: "Vue.js en profondeur",
@@ -58,7 +58,7 @@ module.exports = {
     }
   },
 
-  plugins: [    
+  plugins: [
     require('./plugins/copy-code/'),
     'vuepress-plugin-global-toc',
     //require('./plugins/global-toc/'),
