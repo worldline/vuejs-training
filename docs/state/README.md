@@ -190,7 +190,7 @@ export default {
 ```
 :::
 
-5. Dans LoginForm.vue, lors du submit, vérifier si l'utilisateur a entré l'adresse mail `test@test.com` et le mot de passe `test123`. Si c'est le cas, déclencher l'action `login` pour le user `test`.
+5. Dans LoginForm.vue, lors du submit, vérifier si l'utilisateur a entré l'adresse mail `test@test.com` et le mot de passe `test1234`. Si c'est le cas, déclencher l'action `login` pour le user `test`.
 
 :::tip
 Invoquer une action depuis un composant se fait comme ceci:
