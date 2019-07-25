@@ -2,6 +2,10 @@
 
 Les directives sont les éléments de syntaxe propres à Vue utilisables dans les templates des composants.
 
+::: tip
+Pour les exercices ci-dessous, il est nécessaire d'utiliser le navigateur Chromium (ou Chrome) !
+:::
+
 ## v-bind: Liaison de propriétés
 
 Permet de lier (*bind*) à une variable la valeur d'une propriété d'un élément HTML ou d'un composant. Comme c'est la directive la plus couramment utilisée, on utilise généralement toujours la syntaxe raccourcie `:propriété="valeur"`.
@@ -75,7 +79,7 @@ Les directives `v-else-if` et `v-else` fonctionnent de la même façon que leur 
 
 ## v-for: Boucles
 
-Permet de générer des listes d'éléments en répétant un template par itération sur une valeur itérable, typiquement un `Array`, la liste des propriétés d'un objet, ou encore un nombre fixe d'itérations. 
+Permet de générer des listes d'éléments en répétant un template par itération sur une valeur itérable, typiquement un `Array`, la liste des propriétés d'un objet, ou encore un nombre fixe d'itérations.
 
 La directive déclare des variables locales représentant chaque élément itéré et leur index, qui peuvent être utilisées à l'intérieur de l'élément.
 
@@ -89,13 +93,13 @@ La directive déclare des variables locales représentant chaque élément itér
 <v-for-example-1 />
 
 ::: warning
-En complément de la directive `v-for`, liez une propriété `key` à une valeur qui identifie de façon unique chaque élément de la liste (un identifiant, une référence...). 
+En complément de la directive `v-for`, liez une propriété `key` à une valeur qui identifie de façon unique chaque élément de la liste (un identifiant, une référence...).
 
 Ce n'est pas obligatoire mais aide Vue à mieux comprendre les changements qui surviennent sur une liste (ajouts, suppressions, tris...) et optimiser les transitions entre deux états de la liste.
 :::
 
 ```vue{5}
-<!-- todos: [ { label: 'Apprendre Vue', done: false }, 
+<!-- todos: [ { label: 'Apprendre Vue', done: false },
               { label: 'Utiliser v-for', done: true }, ... ] -->
 <ul>
 <!-- la liste est ordonnée en mettant les tâches terminées à la fin -->
@@ -214,5 +218,5 @@ films: [
 ]
 ```
 7. A l'aide de la directive `v-for`, répétez l'élément `.film.card` pour afficher autant de films que contient la liste `films`
-8. Complétez les données des cartes par celle de chaque film en utilisant les directives et l'interpolation 
+8. Complétez les données des cartes par celle de chaque film en utilisant les directives et l'interpolation
 9. **Bonus:** trouvez comment utiliser la propriété `metascore` pour afficher un certain nombre d'étoiles à côté de chaque titre de film.

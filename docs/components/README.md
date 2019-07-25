@@ -51,7 +51,7 @@ var vm = new Vue({
   },
   computed: {
     total () {
-      return count1 + count2
+      return this.count1 + this.count2
     }
   },
   watch: {
@@ -75,7 +75,7 @@ Chaque étape du cycle de vie d'un composant appelle deux fonctions callback, l'
 ```js{2}
 export default {
   mounted () {
-    console.log(`Le composant a été inséré dans le DOM, 
+    console.log(`Le composant a été inséré dans le DOM,
         this.$el pointe vers l'élément correspondant.`)
     this.$el.querySelector('input').focus()
   }
@@ -117,7 +117,7 @@ export default {
 <blog-post :title="article.title" :content="article.content" />
 <!-- raccourci équivalent -->
 <blog-post v-bind="article" />
-```      
+```
 
 Facultativement, vous pouvez indiquer le type des props ou fournir des options de validation. Vue rejettera les valeurs non valides avec des messages d'erreur explicites, ce qui s'avère utile lorsque l'on utilise des composants d'origine tierce. Pour plus d'informations sur les options acceptées, [se référer à la documentation](https://vuejs.org/v2/guide/components-props.html).
 
@@ -308,16 +308,16 @@ export default {
     </ul>
   </div>
 </template>
-``` 
+```
 
 3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options associées dans les sous-composants pour alléger au maximum le code de `App`.
 
-4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé.
+4. Afficher le composant `SearchFilm` seulement si l'utilisateur est logué.
 
-**Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
+**Question** : *à votre avis, quelles difficultés pourriez-vous rencontrer pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 
 5. Assignez la variable `films` à une liste vide `[]` initialement. A la soumission du formulaire de recherche, lancez une méthode  `searchFilms` qui mettra les 3 films d'exemple dans cette liste.
-6. **Bonus**: Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon: 
+6. **Bonus**: Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon:
 ```js
 this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }
 this.films[1] = { title: 'Blade Runner', ... }
