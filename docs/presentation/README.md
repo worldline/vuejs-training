@@ -23,7 +23,7 @@ The development of Vue and its ecosystem is guided by an international team of a
 
 Unlike React or Angular which are respectively supported by Facebook and Google, Vue.js is utterly independent and completely driven by the community. It is therefore the interests of the community that take precedence for steering the project and the technology roadmap to follow.
 
-However, this raises the issue of funding. Many contributors are volunteers but to respond to the popularity of the framework, many have left their job or have gone part-time to get involved with Vue. To compensate, they rely on sponsorship and individual donations via sites such as Patreon. Thanks to the success of the framework, Evan and his team now have enough financial support to work full time on Vue, but also to organize conferences around the world. And the sources of the donations are varied enough to preserve the independence of the framework.
+However, this raises the issue of funding. Many contributors are volunteers, but as a response to the growing popularity of the framework, many have left their job or have gone part-time to work on Vue. To compensate, they rely on sponsorship and individual donations through services such as Patreon. Thanks to the success of the framework, Evan and his team now have enough financial support to work full time on Vue, but also to organize conferences around the world. And the sources of the donations are varied enough to preserve the independence of the framework.
 
 ![Financing of Vue.js team](../assets/financement.jpg)
 
