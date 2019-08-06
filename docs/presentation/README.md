@@ -6,7 +6,7 @@ Vue *(pronounced /vjuː/, like view)* is a progressive framework for building us
 
 ## History
 
-Vue.js was created originally by a single person, Evan You, an old Google engineer who used to work on Angular.js and later on the Meteor framework. After experimenting with a mechanism of reactivity that he considered better than the one used in Angular.js, he decided to publish his first results in July 2013. Five years later, Vue.js is the third project on Github in number of stars and Evan holds one conference after the other around the world.
+Vue.js was created originally by a single person, Evan You, a former Google engineer who used to work on Angular.js and later on the Meteor framework. After experimenting with a reactivity system that he thought was better than the one used in Angular.js, he decided to publish his first results in July 2013. Five years later, Vue.js is the third project on Github in number of stars and Evan holds one conference after the other around the world.
 
 ![Evan You at VueConf](../assets/evanyou.jpg)
 
