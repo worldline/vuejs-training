@@ -13,7 +13,7 @@ Vue.js was created originally by a single person, Evan You, a former Google engi
 
 ## Development team
 
-The development of Vue and its ecosystem is guided by an international team around thirty voluntary members. The team is spread all over the world, allowing a quick diffusion of the framework in different location. Thus it is easy to have support no matter the timezone.
+The development of Vue and its ecosystem is guided by an international team of about thirty voluntary members. The team is spread all over the world, which helped to make the framework popular worldwide. Thus it is easy to have support no matter your timezone.
 
 ![Core team](../assets/team.jpg)
 
