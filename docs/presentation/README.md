@@ -19,7 +19,7 @@ The development of Vue and its ecosystem is guided by an international team of a
 
 [https://vuejs.org/v2/guide/team.html](https://vuejs.org/v2/guide/team.html)
 
-## Business model et financing
+## Business model and funding
 
 Unlike React or Angular which are respectively supported by Facebook and Google, Vue.js is utterly independent and completely driven by the community. It is therefore the interests of the community that take precedence for steering the project and the technology roadmap to follow.
 
