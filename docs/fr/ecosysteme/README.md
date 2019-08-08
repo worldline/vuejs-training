@@ -1,4 +1,4 @@
-# Ecosystème de Vue
+# Écosystème de Vue
 
 Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins et d'outillage. Une (longue) liste est disponible ici: [awesome-vue](https://github.com/vuejs/awesome-vue).
 

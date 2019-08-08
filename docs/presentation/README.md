@@ -1,97 +1,101 @@
 # Presentation of Vue.js
 
-## Qu'est-ce que Vue.js ?
+## What is Vue.js?
 
-Vue *(prononcé /vjuː/, comme le terme anglais view)* est un framework évolutif pour construire des interfaces utilisateurs. À la différence des autres frameworks monolithiques, Vue a été conçu et pensé pour pouvoir être adopté de manière incrémentale. Le cœur de la bibliothèque est concentré uniquement sur la partie vue, et il est vraiment simple de l’intégrer avec d’autres bibliothèques ou projets existants. D’un autre côté, Vue est tout à fait capable de faire tourner des applications web monopages quand il est couplé avec des outils modernes et des bibliothèques complémentaires.
+Vue *(pronounced /vjuː/, like view)* is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.
 
-## Historique
-Vue.js a été créé à l'origine par une seule personne, Evan You, ancien ingénieur de Google ayant notamment travaillé avec Angular.js puis sur le framework Meteor. Après avoir expérimenté une mécanique de réactivité qu'il jugeait plus intéressante que celle d'Angular, il décide de publier ses premiers résultats en juillet 2013. Cinq ans plus tard, Vue.js est le 3ème projet sur Github en nombre de stars et Evan enchaîne les conférences à travers le monde.
+## History
+
+Vue.js was created originally by a single person, Evan You, a former Google engineer who used to work on Angular.js and later on the Meteor framework. After experimenting with a reactivity system that he thought was better than the one used in Angular.js, he decided to publish his first results in July 2013. Five years later, Vue.js is the third project on Github in number of stars and Evan holds one conference after the other around the world.
 
 ![Evan You at VueConf](../assets/evanyou.jpg)
 
 
-## L'équipe de développement
-Vue dispose aujourd'hui d'une équipe internationale d'une trentaine de personnes, constituée de contributeurs bénévoles qui se sont formés avec les années. La décentralisation complète de l'équipe est à la fois une contrainte et une force qui lui a permis de diffuser le framework beaucoup plus rapidement à plusieurs endroits à la fois. On peut ainsi trouver facilement un contributeur Vue.js pas loin de chez soi, par exemple Guillaume Chau alias [Akryum](https://twitter.com/akryum) à Lyon. Cela permet aussi d'avoir du support rapidement peu importe le fuseau horaire.
+## Development team
 
-![L'équipe centrale](../assets/team.jpg)
+The development of Vue and its ecosystem is guided by an international team of about thirty voluntary members. The team is spread all over the world, which helped to make the framework popular worldwide. Thus it is easy to have support no matter your timezone.
+
+![Core team](../assets/team.jpg)
 
 [https://vuejs.org/v2/guide/team.html](https://vuejs.org/v2/guide/team.html)
 
-## Business model et financement
+## Business model and funding
 
-Contrairement à React et Angular qui sont portés respectivement par les entreprises Facebook et Google, Vue.js est totalement indépendant et entièrement piloté par la communauté. Ce sont donc les intérêts de la communauté qui priment pour le pilotage du projet et la roadmap à suivre.
+Unlike React or Angular which are respectively supported by Facebook and Google, Vue.js is utterly independent and completely driven by the community. It is therefore the interests of the community that take precedence for steering the project and the technology roadmap to follow.
 
-Toutefois, cela soulève la question du financement. Beaucoup de contributeurs sont bénévoles mais pour répondre au gain de popularité du framework, plusieurs ont quitté leur emploi ou sont passés à mi-temps pour s'impliquer sur Vue. Pour se rémunérer, ils comptent ainsi sur du sponsoring et sur des donations individuelles via des sites tels que Patreon. Grâce au succès du framework, Evan et son équipe ont aujourd'hui un soutien financier suffisant pour travailler à plein temps sur Vue, mais également pour organiser des conférences à travers le monde. Et les sources des donations sont suffisamment variées pour préserver l'indépendance du framework.
+However, this raises the issue of funding. Many contributors are volunteers, but as a response to the growing popularity of the framework, many have left their job or have gone part-time to work on Vue. To compensate, they rely on sponsorship and individual donations through services such as Patreon. Thanks to the success of the framework, Evan and his team now have enough financial support to work full time on Vue, but also to organize conferences around the world. And the sources of the donations are varied enough to preserve the independence of the framework.
 
-![Différentes sources de financement pour l'équipe de Vue](../assets/financement.jpg)
+![Financing of Vue.js team](../assets/financement.jpg)
 
-## Popularité
-Vue.js a battu des records en termes de hausse de popularité depuis 2015. Il s'agit aujourd'hui du 2ème projet en nombre de stars sur Github. Malgré l'absence de financement, de nombreux meetups et conférences se sont auto-organisés dans différents pays. Il s'agit de l'un des succès les plus retentissants dans le monde open-source depuis ces cinq dernières années.
+## Popularity
 
-Le secret de son succès ? Rien de révolutionnaire : un focus sur la simplicité, une courbe d'apprentissage très faible, une excellente documentation et une communauté à l'écoute.
+Vue.js has broken records in terms of popularity since 2015. It is now the second project in number of stars on Github. Despite the lack of funding, many meetups and conferences have been self-organized in different countries. This is one of the most resounding successes in the open-source world in the last five years.
 
-![Evolution des stars Github entre React, Vue et Angular](../assets/popularite.jpg)
+The secret of his success? A focus on simplicity, a very low learning curve, an excellent documentation and a listening community.
 
-## Comparaison avec les autres frameworks
-Tâchons de comparer Vue avec les deux autres frameworks JS les plus populaires, React et Angular.
+![Github stars development between React, Vue and Angular](../assets/popularite.jpg)
 
-![React, Vue et Angular](../assets/react-vue-angular.jpg)
+## Comparison between the frameworks
 
-### Points communs entre ces 3 frameworks:
-- Très populaires, utilisé par de grosses entreprises
-- Matures, stables, support à long terme financé
-- Codebase orientée composants
-- Adapté aux stacks modernes (ES6+ / TypeScript)
-- Large écosystème de composants et d’outillage
+Let's try to compare Vue with the other two most popular JS frameworks, React and Angular.
 
-### Positionnement / autodescription
+![React, Vue and Angular](../assets/react-vue-angular.jpg)
 
-![Positionnement de React, Vue et Angular](../assets/autodescription.jpg)
+### Similarity between these 3 frameworks:
 
-React, Vue et Angular se positionnent dans des catégories différentes et cela s'observe dès les premières lignes d'introduction. React se définit comme une **bibliothèque** indépendante du reste de la stack technique. Angular se définit comme **le framework** unique répondant à tous les besoins, desktop comme mobile. Tandis que Vue se positionne entre deux comme un **framework progressif**, polyvalent et que l'on peut adopter par étapes. Un juste milieu entre une bibliothèque et un framework tout équipé.
+- Very popular, used by top companies
+- Mature, stable, funded long-term support
+- Component oriented codebase
+- Suitable for modern technological stacks (ES6+ / TypeScript)
+- Large ecosystem of components and tools
+
+### Product positioning / self-description
+
+![Product positioning of React, Vue and Angular](../assets/autodescription.jpg)
+
+
+React, Vue and Angular position themselves in different categories, this can be observed from the first lines of their introduction. React is defined as a **library**, independent of the technical stack. Angular is defined as the one **framework** for all needs, desktop and mobile. While Vue is caught in the middle, defined as a **progressive framework**, versatile and **incrementally adoptable**. A perfect middle ground between a library and a fully equipped framework.
 
 ### Langages, style et stack technique
+
 |               | React	      | Vue.js	         | Angular       |
 |---------------|-------------|------------------|---------------|
-Langage         |	JSX*    | JSX et TypeScript en option	| TypeScript* |
-Paradigme       | Favorise la prog fonctionnelle | Favorise la prog déclarative	| Mélange prog déclarative orientée classes et prog fonctionnelle (RxJS) |
-Gestion d'état	| State centralisé non mutable (Flux) |	State centralisé en option (Vuex), sinon interne et mutable	| State interne et mutable, pas de state centralisé officiel |
-Gestion de la réactivité | Manuelle (`setState` + VDOM diffing) | Automatique (observers/Proxies) | Automatique (Zones/dirty-checking) |
-Stack |	Ne se suffit pas à lui-même, à intégrer dans une stack web avec d’autres outils en externe. Ecosystème riche. |	Quelques outils officiels maintenus par la team Vue, d’autres à chercher en externe. Promeut des solutions tierces si elles sont appopriées.	| Framework full stack et auto-suffisant, avec options de sécurité incluses nativement. Complet mais plus fermé. |
+Language         |	JSX*    | Optional support of JSX and TypeScript	| TypeScript* |
+Paradigm       | Encourage functional programming | Encourage  declarative programming	| Mix between classes oriented declarative programming and functional programming (RxJs) |
+State management	| Immutable centralized state (Flux) | Optional centralized	state (Vuex) or internal mutable state	| Internal mutable state , no official centralized state |
+Reactivity | Manual (`setState` + VDOM diffing) | Automatic (observers/Proxies) | Automatic (Zones/dirty-checking) |
+Stack |	Not self-sufficient, to combine with complete web stack. Rich ecosystem. | Some official tools maintained by the core team. Third-party solutions are promoted if appropriate.	| Full-stack framework sef-sufficient with built-in security features. Complete but less open. |
 
-*\* non obligatoire mais fortement recommandé*
+*\* optional but highly recommended*
 
-*State = objet de données représentant l’état de l’application ; interne = propre à chaque composant*
+### Comparison in metaphor
 
-### Comparaison en métaphore
-
-
-![React, Vue et Angular](../assets/react-vue-angular.jpg)
-![React, Vue et Angular en métaphore](../assets/react-vue-angular-metaphore.jpg)
+![React, Vue and Angular](../assets/react-vue-angular.jpg)
+![Metaphorical react, Vue and Angular](../assets/react-vue-angular-metaphore.jpg)
 
 <div class="cols">
 <div class="col">
 
-- Fait une seule chose mais le fait très bien
-- A ne pas mettre entre toutes les mains
-- Innovant et disruptif
-- Prévoir des pièces de rechange
+- Does one thing but does it very well
+- Not for everyone
+- Innovative and disruptive
+- Make sure you have spare parts
 
 </div>
 <div class="col">
 
-- Accessible et simple à prendre en main
-- Familiarité à l’utilisation
-- Efficace rapidement, peut peiner sur la longueur
-- Assez conventionnel, mais gros potentiel de tuning
+- Accessible and easy to handle
+- Familiarity with use
+- Efficient quickly, can be less sustainable over time
+- Fairly conventional, big tuning potential
 
 </div>
 <div class="col">
 
-- Tout équipé toutes options
-- Catégorie poids lourd
-- Plus lent au démarrage, mais tient bien la longueur
-- Pièces de rechange hors-constructeur plus dures à trouver sur le marché
+- Fully equipped with all options
+- Heavyweight category
+- Slower at startup, sustainable over time
+- Out-of-the-box spare parts harder to find on the market
 
 </div>
 </div>
