@@ -1,40 +1,41 @@
 # Tooling
 
-## Outils à installer
+## Tools to install
 
 ::: tip
 
-Il est recommandé de travailler sous une VM Linux, par exemple [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), ou [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm)
+It is recommended to work under a Linux VM, for example [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), or [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm)
 :::
 
 ### Node.js
 
-Installez [Node.js](https://nodejs.org/) (version 8.x minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utilisez [nvm](https://github.com/creationix/nvm).
+Install [Node.js](https://nodejs.org/) (minimum version 8.x). You can use [nvm](https://github.com/creationix/nvm) to manage different versions of Node.js on your local machine.
 
-### Visual Studio Code et Vetur
-Vous aurez besoin d'un bon éditeur de code pour JavaScript lors de cette formation.
+### Visual Studio Code and Vetur
 
-Nous vous conseillons [Visual Studio Code](https://code.visualstudio.com/), un éditeur gratuit assez léger qui est aujourd'hui très populaire dans la communauté JavaScript.
+During the training you will need a solid JavaScript code editor.
 
-VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Installez l'extension [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) qui aidera l'éditeur à mieux gérer la syntaxe des fichiers composants `*.vue`.
+We recommend [Visual Studio Code] (https://code.visualstudio.com/), a fairly lightweight free editor that is now very popular in the JavaScript community.
+
+VS Code has many extensions to enrich the experience. Install the [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extension that will help the editor manage the syntax of the `* .vue` component files.
 
 ### Vue Devtools
 
-Téléchargez l'extension [vue-devtools](https://github.com/vuejs/vue-devtools) disponible sur Chrome, Firefox ou en application standalone. Cela vous aidera pour le débogage lors des TP.
+Download the extension [vue-devtools](https://github.com/vuejs/vue-devtools) available on Chrome, Firefox or as a standalone application. This will help you debug your code during the practical work.
 
 ### Vue CLI
 
-Maintenant, installons les outils nécessaires au développement de projets Vue.js sur votre machine :
+Now, let's install the tools needed to develop Vue.js projects on your machine:
 
-Nous aurons besoin d'installer l'utilitaire en ligne appelé [Vue CLI](https://cli.vuejs.org/). Cet utilitaire permet de créer et configurer des projets Vue beaucoup plus facilement.
+We will need to install the command line utility called [Vue CLI](https://cli.vuejs.org/). This utility makes it much easier to create and configure Vue projects.
 
-Depuis votre Terminal, lancez la commande suivante pour installer `@vue/cli` en dépendance globale
+From your Terminal, run the following command to install `@vue/cli` in global dependency:
 
 ```bash
 npm install -g @vue/cli
 ```
 
-Vous avez désormais accès à la commande `vue` depuis un terminal. Essayez-la pour vérifier la bonne installation et pour avoir plus d'informations sur les commandes disponibles:
+You now have access to the `vue` command from a terminal. Try it to check the installation and to have more information about the available commands:
 
 ```
 $ vue
@@ -60,25 +61,25 @@ Commands:
   Run vue <command> --help for detailed usage of given command.
 ```
 
-La commande `vue ui` est très utile pour les débutants: elle fournit une **interface graphique** sur navigateur dédiée à la gestion des projets Vue et aux tâches courantes d'un projet Vue. L'UI peut remplacer la ligne de commande pour de nombreuses tâches, comme par exemple:
+The `vue ui` command is very useful for beginners: it provides a browser-based **graphical user interface** for managing a Vue project. The UI can replace the command line for many tasks, such as:
 
-- créer ou importer un projet Vue
-- ajouter des plug-ins pour plus de fonctionnalités
-- configurer l'outillage du projet
-- lancer son application
-- lancer les tests unitaires
+- create or import a Vue project
+- add plugins to your project
+- configure your project tools
+- launch the application
+- run unit tests
 - etc.
 
 <figure>
 
-![Démonstration de Vue UI](../assets/vue-cli-3-serve.gif)
+![Vue UI demonstration](../assets/vue-cli-3-serve.gif)
 
-<figcaption>Vue UI: lancement du projet en mode développeur, avec les statistiques en temps réel du bundler (Webpack)</figcaption>
+<figcaption>Vue UI: launch a project in development mode, with real time stats from the bundler (Webpack)</figcaption>
 </figure>
 
-## Utilisation de Vue.js sans étape de build (runtime only)
+## Vue.js without build step (runtime only)
 
-Il est tout à fait possible d'utiliser Vue.js sans tout cet outillage sur le poste de développeur. Vue est à la base une bibliothèque JavaScript qui peut être importée et utilisée directement sur les navigateurs des clients.
+It is possible to use Vue.js without all this tooling on the developer's workstation. Vue is basically a JavaScript library that can be imported and used directly on clients' browsers.
 
 ```html
 <!DOCTYPE html>
@@ -100,57 +101,71 @@ Il est tout à fait possible d'utiliser Vue.js sans tout cet outillage sur le po
 </html>
 ```
 
-Toutefois, ce mode d'utilisation trouve rapidement ses limites, et l'outillage développeur qui accompagne les projets Vue s'avère très précieux avec le temps. Mais cela peut être utile si vous voulez intégrer des composants Vue dans un projet fait avec un autre framework, ou si vous voulez faire un prototype rapide sans devoir installer d'outillage.
+However, this usage quickly finds its limits, and the development tools that come with Vue projects prove to be very valuable over time. But this can be useful if you want to integrate Vue components into a project made with another framework, or if you want to make a quick prototype.
 
-## TP: Création de votre premier projet
+## Practical Work: Create your first project
 
-Placez-vous dans votre répertoire de travail et créez un projet appelé `search-films` en lançant la commande :
+Get into your workspace and create a project called `search-films` by running the following command:
 
 ```bash
 vue create search-films
 ```
 
-**search-films** étant le nom du répertoire dans lequel nous allons initier notre projet.
+**search-films** being the name of the directory in which our project will be created.
 
-Choisissez la configuration par défaut `Default (babel, eslint)`. **Babel** est un *transpilateur*, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs, tandis que **eslint** est un *linter*, un outil d'analyse qualité qui va parcourir votre code et vous signaler des erreurs potentielles.
+Choose the following configuration:
 
-A la fin de l'installation, un dossier a été créé pour votre projet. Naviguez vers le répertoire de votre projet:
+```bash
+Vue CLI v3.11.0
+? Please pick a preset: Manually select features
+? Check the features needed for your project: Babel, Linter, Unit
+? Pick a linter / formatter config: Basic
+? Pick additional lint features: Lint on save
+? Pick a unit testing solution: Jest
+? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? In dedicated config files
+```
+
+- **Babel** is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in order to support as many browser as possible.
+- **ESLint** is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
+- **Jest** is a JavaScript testing framework with a focus on simplicity.
+
+At the end of the installation, a folder has been created for your project. Navigate to the directory of your project:
 
 ```bash
 cd search-films
 ```
 
-### Travailler en mode développeur
+### Work in developer mode
 
-Pour travailler sur l'application et la tester en direct, lancez la commande suivante:
+To work on the application and test it live, run the following command:
 
 ```bash
 npm run serve
 ```
 
-Votre application sera alors accessible sur [localhost:8080](http://localhost:8080/) (port par défaut si disponible).
+Your application is accessible on [localhost:8080](http://localhost:8080/) (default port if available).
 
-Dans **Visual Studio Code**, ouvrez le dossier de votre projet puis naviguez dans les différents fichiers pour vous approprier l'arborescence du projet.
+In **Visual Studio Code**, open the project folder and browse through the different files to visualize of the project tree.
 
-### Build pour la production
+### Build for production
 
-Vous pouvez à tout moment packager votre projet pour la production avec la commande :
+You can at any time package your project for production by running:
 
 ```bash
 npm run build
 ```
 
-Cette commande compilera votre projet en utilisant **Webpack** en mode production. Webpack est un *bundler*, un outil qui va transformer vos sources en un petit nombre de *bundles*, des fichiers JS et CSS optimisés et compressés, et les mettre dans le dossier `/dist` de votre projet. Il ne reste alors plus qu'à déployer ce dossier sur un serveur de fichiers tel que Apache ou Nginx.
+This command will compile your project using **Webpack** in production mode. Webpack is a *bundler*, a tool that will transform your sources into a small number of *bundles*, optimized and compressed JS and CSS files, and put them in the `/ dist` folder of your project. You can then deploy this folder on a file server such as Apache or nginx.
 
 ::: tip
 
-Les commandes de base de Vue CLI sont listées dans le README.md généré à la racine du projet
+Basic Vue CLI commands are listed in the README.md generated at the root of the project
 
 :::
 
-### Configuration du projet
+### Project configuration
 
-Vous pouvez configurer votre projet Vue de multiples façons, par exemple en changeant le port utilisé par le serveur de développement. À la racine du projet, créez un fichier `vue.config.js`, puis placez-y le contenu suivant:
+You can configure your Vue project in multiple ways, for example by changing the port used by the development server. At the root of the project, create a `vue.config.js` file, and put the following content in it:
 
 ```js
 module.exports = {
@@ -160,4 +175,4 @@ module.exports = {
 }
 ```
 
-Votre projet sera maintenant accessible sur le port 3000 en mode développeur. Consultez la [documentation de configuration](https://cli.vuejs.org/config/) pour en savoir plus sur les options disponibles.
+Your project will now be accessible on port 3000 in developer mode. See the [configuration documentation](https://cli.vuejs.org/config/) for more information about the available options.
