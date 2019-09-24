@@ -34,7 +34,7 @@ Depuis votre Terminal, lancez la commande suivante pour installer `@vue/cli` en 
 npm install -g @vue/cli
 ```
 
-Vous avez désormais accès à la commande `vue` depuis un terminal. Essayez-la pour vérifier la bonne installation et pour avoir plus d'informations sur les commandes disponibles:
+Vous avez désormais accès à la commande `vue` depuis un terminal. Essayez-la pour vérifier la bonne installation et pour avoir plus d'informations sur les commandes disponibles :
 
 ```
 $ vue
@@ -60,7 +60,7 @@ Commands:
   Run vue <command> --help for detailed usage of given command.
 ```
 
-La commande `vue ui` est très utile pour les débutants: elle fournit une **interface graphique** sur navigateur dédiée à la gestion des projets Vue et aux tâches courantes d'un projet Vue. L'UI peut remplacer la ligne de commande pour de nombreuses tâches, comme par exemple:
+La commande `vue ui` est très utile pour les débutants: elle fournit une **interface graphique** sur navigateur dédiée à la gestion des projets Vue et aux tâches courantes d'un projet Vue. L'UI peut remplacer la ligne de commande pour de nombreuses tâches, comme par exemple :
 
 - créer ou importer un projet Vue
 - ajouter des plug-ins pour plus de fonctionnalités
@@ -73,7 +73,7 @@ La commande `vue ui` est très utile pour les débutants: elle fournit une **int
 
 ![Démonstration de Vue UI](../../assets/vue-cli-3-serve.gif)
 
-<figcaption>Vue UI: lancement du projet en mode développeur, avec les statistiques en temps réel du bundler (Webpack)</figcaption>
+<figcaption>Vue UI : lancement du projet en mode développeur, avec les statistiques en temps réel du bundler (Webpack)</figcaption>
 </figure>
 
 ## Utilisation de Vue.js sans étape de build (runtime only)
@@ -102,7 +102,7 @@ Il est tout à fait possible d'utiliser Vue.js sans tout cet outillage sur le po
 
 Toutefois, ce mode d'utilisation trouve rapidement ses limites, et l'outillage développeur qui accompagne les projets Vue s'avère très précieux avec le temps. Mais cela peut être utile si vous voulez intégrer des composants Vue dans un projet fait avec un autre framework, ou si vous voulez faire un prototype rapide sans devoir installer d'outillage.
 
-## TP: Création de votre premier projet
+## TP : Création de votre premier projet
 
 Placez-vous dans votre répertoire de travail et créez un projet appelé `search-films` en lançant la commande :
 
@@ -112,9 +112,23 @@ vue create search-films
 
 **search-films** étant le nom du répertoire dans lequel nous allons initier notre projet.
 
-Choisissez la configuration par défaut `Default (babel, eslint)`. **Babel** est un *transpilateur*, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs, tandis que **eslint** est un *linter*, un outil d'analyse qualité qui va parcourir votre code et vous signaler des erreurs potentielles.
+Choisissez la configuration suivante :
 
-A la fin de l'installation, un dossier a été créé pour votre projet. Naviguez vers le répertoire de votre projet:
+```bash
+Vue CLI v3.11.0
+? Please pick a preset: Manually select features
+? Check the features needed for your project: Babel, Linter, Unit
+? Pick a linter / formatter config: Basic
+? Pick additional lint features: Lint on save
+? Pick a unit testing solution: Jest
+? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? In dedicated config files
+```
+
+- **Babel** est un *transpilateur*, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs.
+- **ESLint** est un *linter*, un outil d'analyse qualité qui va parcourir votre code et vous signaler des erreurs potentielles.
+- **Jest** est un *framework* de test axé sur la simplicité d'utilisation.
+
+A la fin de l'installation, un dossier a été créé pour votre projet. Naviguez vers le répertoire de votre projet :
 
 ```bash
 cd search-films
@@ -122,7 +136,7 @@ cd search-films
 
 ### Travailler en mode développeur
 
-Pour travailler sur l'application et la tester en direct, lancez la commande suivante:
+Pour travailler sur l'application et la tester en direct, lancez la commande suivante :
 
 ```bash
 npm run serve
@@ -150,7 +164,7 @@ Les commandes de base de Vue CLI sont listées dans le README.md généré à la
 
 ### Configuration du projet
 
-Vous pouvez configurer votre projet Vue de multiples façons, par exemple en changeant le port utilisé par le serveur de développement. À la racine du projet, créez un fichier `vue.config.js`, puis placez-y le contenu suivant:
+Vous pouvez configurer votre projet Vue de multiples façons, par exemple en changeant le port utilisé par le serveur de développement. À la racine du projet, créez un fichier `vue.config.js`, puis placez-y le contenu suivant :
 
 ```js
 module.exports = {
