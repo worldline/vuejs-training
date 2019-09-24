@@ -11,7 +11,7 @@ export default {
     name: "v-for-example-1",
     data(){
         return {
-            items: ["pomme","kiwi","mangue"]
+            items: ["apple","kiwi","mango"]
         }
     }
 }

@@ -1,9 +1,9 @@
 <template>
 <div class="demo">
-    <button v-on:click="counter += 1"> Cliquez ici ! </button>
-    Ce bouton a été cliqué {{ counter }} fois.
+    <button v-on:click="counter += 1"> Click here! </button>
+    This button has been clicked {{ counter }} times.
 
-    <button @click="resetCounter($event)"> Remettre à zéro </button>
+    <button @click="resetCounter($event)"> Reset </button>
 </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     methods: {
         resetCounter(event){
             event.stopPropagation();
-            this.counter = 0;            
+            this.counter = 0;
         }
     }
 }

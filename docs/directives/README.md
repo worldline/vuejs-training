@@ -1,22 +1,22 @@
 # Directives
 
-Les directives sont les éléments de syntaxe propres à Vue utilisables dans les templates des composants.
+The directives are the Vue-specific syntax elements that can be used in component templates.
 
 ## v-bind: Liaison de propriétés
 
-Permet de lier (*bind*) à une variable la valeur d'une propriété d'un élément HTML ou d'un composant. Comme c'est la directive la plus couramment utilisée, on utilise généralement toujours la syntaxe raccourcie `:propriété="valeur"`.
+Allows you to *bind* an expression to the value of a property of an HTML element or component. Since this is the most commonly used directive, we usually use the shortened syntax `:property="value"`.
 
 ```vue
-<a v-bind:href="url">Lien</a>
+<a v-bind:href="url">Link</a>
 
-<a :href="url">Lien</a>  <!-- syntaxe raccourcie -->
+<a :href="url">Link</a>  <!-- shortened syntax -->
 ```
 
-[Exercice: essayez de lier les attributs `src` et `width` de l'image](https://codepen.io/sylvainpv/pen/LBgqbq?editors=1010)
+[Exercise: try to link the `src` and `width` attributes of the image](https://codepen.io/sylvainpv/pen/LBgqbq?editors=1010)
 
-## Lier des classes et des styles
+## Bind classes and styles
 
-Plusieurs syntaxes sont proposées pour assigner des classes ou des styles CSS:
+Several syntaxes are available to assign classes or CSS styles:
 
 ```vue
 <p :class="classAsString"></p>        <!-- "foo bar" -->
@@ -30,11 +30,11 @@ Plusieurs syntaxes sont proposées pour assigner des classes ou des styles CSS:
 <p :style="{ fontSize: size }"></p>
 ```
 
-[Exercice: assignez une classe et une couleur à chaque fantôme](https://codepen.io/sylvainpv/pen/qyJgLe?editors=1010)
+[Exercise: assign a class and a color to each ghost](https://codepen.io/sylvainpv/pen/qyJgLe?editors=1010)
 
-## v-model: Formulaires et inputs
+## v-model: Forms and inputs
 
-Permet de lier la valeur d'un champ de formulaire à une donnée du composant. C'est une liaison à double-sens, c'est-à-dire que la variable se met à jour quand le contenu du champ change (typiquement par l'utilisateur) et réciproquement.
+Allows you to bind the value of a form field to a component data item. It is a two-way binding: the variable is updated when the contents of the field change (typically by the user) and vice versa.
 
 ```vue{3}
 <label>
@@ -46,13 +46,14 @@ Permet de lier la valeur d'un champ de formulaire à une donnée du composant. C
 ```
 <v-model-example />
 
-[Exercice: utilisez v-model sur les input, select, radio et checkbox](https://codepen.io/sylvainpv/pen/rrqEMg?editors=1010)
+[Exercise: use v-model on input, select, radio and checkbox](https://codepen.io/sylvainpv/pen/rrqEMg?editors=1010)
 
 ## v-if: Conditions
 
-Permet d'insérer ou non un élément selon une condition. Si vous souhaitez que l'élément ne soit pas retiré du DOM mais juste caché visuellement en CSS, utilisez `v-show` à la place.
 
-Les directives `v-else-if` et `v-else` fonctionnent de la même façon que leur équivalent JavaScript et dépendent de la condition `v-if` de l'élément qui les précède directement.
+Allows you to insert or not an element according to a condition. If you want the element not to be removed from the DOM but just visually hidden in CSS, use `v-show` instead.
+
+The `v-else-if` and` v-else` directives work in the same way as their JavaScript equivalent and depend on the `v-if` condition of the element directly preceding them.
 
 ```vue{1,4,7,11}
 <div v-if="type === 'A'">
@@ -62,47 +63,48 @@ Les directives `v-else-if` et `v-else` fonctionnent de la même façon que leur 
   B
 </div>
 <div v-else>
-  Ni A ni B
+  Not A nor B
 </div>
 
 <template v-if="loaded">
-  <h1>Utiliser un template</h1>
-  <p>pour mettre une condition sur un groupe d'elements</p>
+  <h1>Use a template</h1>
+  <p>to put a condition on a group of elements</p>
 </template>
 ```
 
-[Exercice: utilisez v-if et v-else pour alterner les visages selon la condition](https://codepen.io/sylvainpv/pen/bjmXXV?editors=1010)
+[Exercise: use v-if and v-else to alternate faces according to the condition](https://codepen.io/sylvainpv/pen/bjmXXV?editors=1010)
 
-## v-for: Boucles
+## v-for: Loops
 
-Permet de générer des listes d'éléments en répétant un template par itération sur une valeur itérable, typiquement un `Array`, la liste des propriétés d'un objet, ou encore un nombre fixe d'itérations.
 
-La directive déclare des variables locales représentant chaque élément itéré et leur index, qui peuvent être utilisées à l'intérieur de l'élément.
+Generates lists of elements by repeating a template by iteration on an iterable value: typically an `Array`, the list of properties of an object, or a fixed number of iterations.
+
+The directive declares local variables representing each iterated element and their index, which can be used in the template within the element.
 
 ```vue
 <span v-for="n in 10">{{ n }} ; </span>
 
-<!-- items: ["pomme","kiwi","mangue"] -->
+<!-- items: ["apple","kiwi","mango"] -->
 <ul> <li v-for="item in items">{{ item }}</li> </ul>
 ```
 
 <v-for-example-1 />
 
 ::: warning
-En complément de la directive `v-for`, liez une propriété `key` à une valeur qui identifie de façon unique chaque élément de la liste (un identifiant, une référence...).
+In addition to the `v-for` directive, you should bind a `key` property to a value that uniquely identifies each element of the list (an identifier, a reference, etc.).
 
-Ce n'est pas obligatoire mais aide Vue à mieux comprendre les changements qui surviennent sur une liste (ajouts, suppressions, tris...) et optimiser les transitions entre deux états de la liste.
+This is not mandatory but helps Vue to better understand the changes that occur on a list (additions, deletions, sorts, etc.) and optimize the transitions between two states of the list.
 :::
 
 ```vue{5}
-<!-- todos: [ { label: 'Apprendre Vue', done: false },
-              { label: 'Utiliser v-for', done: true }, ... ] -->
+<!-- todos: [ { label: 'Learn Vue', done: false },
+              { label: 'Use v-for', done: true }, ... ] -->
 <ul>
-<!-- la liste est ordonnée en mettant les tâches terminées à la fin -->
+<!-- the list is ordered by putting completed tasks at the end -->
   <li v-for="(todo, index) in todos_after_sort" :key="todo.label">
     <label>
       <input type="checkbox" v-model="todo.done">
-      Task {{ index }} : {{todo.label}}
+      Task {{ index }}: {{todo.label}}
     </label>
     - <i>{{todo.done ? "DONE !": "in progress..."}}</i>
   </li>
@@ -112,55 +114,54 @@ Ce n'est pas obligatoire mais aide Vue à mieux comprendre les changements qui s
 <v-for-example-2 />
 
 ::: tip
-Pour répéter un groupe d'éléments, utiliser `v-for` sur une balise `<template>`
+To repeat a group of elements, use `v-for` on a `<template> `tag
 :::
 
-[Exercice: utilisez deux boucles v-for pour afficher tout le contenu du panier](https://codepen.io/sylvainpv/pen/RBqbBW?editors=1010)
+[Exercise: use two v-for loops to display all the contents of the basket](https://codepen.io/sylvainpv/pen/RBqbBW?editors=1010)
 
-## v-on: Événements
+## v-on: Events
 
-Permet de définir une action à effectuer lorsqu'un évènement survient. Il peut s'agir d'un événement du DOM (`click`, `mouseover`, `focus`...) ou d'un événement personnalisé émis par un composant enfant.
+Define an action to take when an event occurs. It can be a DOM event (`click`, `mouseover`, `focus`, etc.) or a custom event emitted by a child component.
 
 ```vue{1,5}
-<button v-on:click="counter += 1"> Cliquez ici ! </button>
-Ce bouton a été cliqué {{ counter }} fois.
+<button v-on:click="counter += 1"> Click here! </button>
+This button has been clicked {{ counter }} times.
 
-<!-- syntaxe raccourcie: @event -->
-<button @click="resetCounter($event)"> Remettre à zéro </button>
+<!-- shortened syntax: @event -->
+<button @click="resetCounter($event)"> Reset </button>
 ```
 
 <v-on-example />
 
 ::: tip
-Vous pouvez utiliser la variable `$event` comme référence à l'événement capturé
+You can use the `$event` variable as a reference to the captured event
 :::
 
-[Exercice: utilisez les événements pour ajouter un singe au clic sur bouton, et leur faire ouvrir les yeux au passage de la souris](https://codepen.io/sylvainpv/pen/NBEKQw?editors=1010)
+[Exercise: use events to add a monkey when clicking the button, and make them open their eyes on mouse hover](https://codepen.io/sylvainpv/pen/NBEKQw?editors=1010)
 
-### Modificateurs
+### Modifiers
 
-Les modificateurs sont des suffixes permettant de modifier légèrement le comportement de certaines directives ; par exemple, stopper la propagation d'un événement capturé avec `v-on`. Pour en savoir plus, se référer à la [documentation officielle](https://fr.vuejs.org/v2/guide/events.html#Event-Modifiers).
+Modifiers are suffixes used to slightly change the behavior of some directives: for example stop the propagation of a captured event with `v-on`. For more information, please refer to [official documentation](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
 
 ```vue
-<!-- la propagation de l'événement clic sera stoppée -->
+<!-- the propagation of the click event will be stopped -->
 <a @click.stop="onThis">...</a>
 
-<!-- la soumission du formulaire ne rechargera plus la page -->
+<!-- submitting the form will not reload the page -->
 <form @submit.prevent="onSubmit">...</form>
 
-<!-- les modificateurs peuvent être cumulés -->
+<!-- modifiers can be chained -->
 <a @click.stop.once="doSomethingOnce">...</a>
 
-<!-- également disponible: .tab, .delete, .esc, .space... -->
+<!-- also available: .tab, .delete, .esc, .space... -->
 <input @keypress.enter="submit" />
 ```
 
-## TP: Fiche d'un film
-
-1. Sur le formulaire d'authentification, ajoutez deux variables `email` et `password` dans l'option `data` du composant et utilisez la directive `v-model` sur les champs email et password pour les lier.
-2. Ajoutez une autre variable `loggedIn` initialement à `false`, puis utilisez la directive `v-on` pour l'assigner à `true` à la soumission du formulaire.
-3. Modifier le comportement par défaut de l'évènement `submit` du formulaire d'authentification afin d'éviter le rechargement de la page.
-4. Sous le formulaire d'authentification, ajoutez le HTML suivant:
+## Practical work: Movie card
+1. In the authentication form, add two variables `email` and` password` in the `data` attribute of the component and use the `v-model` directive on the email and password fields to bind them.
+2. Add another `loggedIn` variable initially set to `false`, then use the `v-on` directive to set it to `true` when the form is submitted.
+3. Change the default behavior of the `submit` event of the authentication form to avoid reloading the page.
+4. Under the authentication form, add the following HTML:
 ```html
 <ul class="films">
   <li class="film card">
@@ -180,8 +181,8 @@ Les modificateurs sont des suffixes permettant de modifier légèrement le compo
   </li>
 </ul>
 ```
-5. Utilisez les directives `v-if` et `v-else` pour afficher le formulaire d'authentification et cacher la liste des films quand `loggedIn === false`, et réciproquement.
-6. Ajoutez la variable suivante dans l'option `data` du composant:
+5. Use the `v-if` and `v-else` directives to display the authentication form and hide the movie list when `loggedIn === false`, and vice versa.
+6. Add the following variable in the `data` attribute of the component:
 ```js
 films: [
   {
@@ -213,6 +214,6 @@ films: [
   }
 ]
 ```
-7. A l'aide de la directive `v-for`, répétez l'élément `.film.card` pour afficher autant de films que contient la liste `films`
-8. Complétez les données des cartes par celle de chaque film en utilisant les directives et l'interpolation
-9. **Bonus:** trouvez comment utiliser la propriété `metascore` pour afficher un certain nombre d'étoiles à côté de chaque titre de film.
+7. Using the `v-for` directive, repeat the `.film.card` element to display as many movies as the `movies` list.
+8. Complete the card data from each movie using the directives and interpolation.
+9. **Bonus:** Use the `metascore` property to display a number of stars next to each movie title.
