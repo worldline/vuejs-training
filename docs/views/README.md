@@ -1,35 +1,35 @@
 # Vue files
 
-## Aperçu d'un projet Vue
+## Preview of a Vue project
 
-Le projet Vue fraîchement créé a les dossiers et fichiers suivants :
+The newly created Vue project has the following folders and files:
 
-- `src` : les sources de votre projet
-- `public` : tout le contenu qui sera directement mis à la racine du serveur web, sans être passé par Webpack
-- `package.json` : les informations de package NPM du projet (version, dépendances, scripts etc.)
-- `vue.config.js` : un fichier de configuration pour Vue CLI pour ce projet
+- `src`: the sources of your project
+- `public`: all the content that will be directly put at the root of the web server, without going through Webpack
+- `package.json`: the NPM package information of the project (version, dependencies, scripts etc.)
+- `vue.config.js`: a configuration file for Vue CLI for this project
 
-D'autres fichiers de configuration pour les outils de build peuvent également se trouver ici.
+Other configuration files for the build tools can also be found here.
 
-Dans le dossier `src`, vous trouvez :
+In the `src` folder, you have:
 
-- `assets` : des ressources statiques (images, fichiers) qui seront importées par Webpack au sein de vos composants Vue
-- `components` : vos composants Vue (répartis par dossier par "module" de votre application)
-- `views` : les composants Vue qui seront rattachés à des routes (URL) par vue-router
-- `App.vue` : votre composant Vue racine, qui contient toute l'application
-- `main.js` : le point d'entrée du code JavaScript de toute l'application
-- `router.js` : la configuration de vue-router et la liste des routes déclarées
+- `assets`: static resources (images, files) that will be imported by Webpack within your Vue components
+- `components`: your Vue components (distributed by folder by "module" of your application)
+- `views`: Vue components that will be attached to routes (URL) by vue-router
+- `App.View`: Your root Vue component, which contains the entire application
+- `main.js`: the entry point of the entire application's JavaScript code
+- `router.js`: vue-router configuration and the list of declared routes
 
-Par la suite, vous pourrez être amenés à créer d'autres dossiers dans `src` selon vos besoins. On trouve par exemple couramment un dossier `services` qui contient des briques de logique métier avec des fonctions utilisées dans plusieurs composants. Ou encore un dossier `utils` pour venir stocker diverses fonctions utilitaires en JavaScript plutôt que de les répéter à plusieurs endroits.
+Later, you may need to create additional folders in `src` as needed. For example, a `services` folder is commonly found which contains business logic bricks with functions used in several components. Or a `utils` folder to store various utility functions in JavaScript instead of repeating them in multiple places.
 
-## Fichiers monocomposants *.vue
+## Single File Components *.vue
 
-- Une application dans Vue.js est divisée en plusieurs composants
-- Un composant correspond à un fichier `.vue`
-- Un fichier `.vue` se compose de trois éléments éléments optionnels :
-    - la balise `<template>` contient le code HTML du composant
-    - la balise `<script>` (optionnelle) contient le code JavaScript du composant
-    - la balise `<style>` (optionnelle) contient le style CSS du composant
+- A Vue.js application is divided into several components
+- A component is a `.vue` file
+- A `.vue` file consists of three optional elements:
+    - the `<template>` tag contains the HTML code of the component
+    - the `<script>` tag (optional) contains the JavaScript code of the component
+    - the `<style>` tag (optional) contains the CSS style of the component
 
 ```vue
 <template>
@@ -56,93 +56,95 @@ span {
 </style>
 ```
 
-La partie script du composant doit exporter par défaut un objet avec les propriétés du composant. On retrouve ici la propriété name, utile pour identifier le composant pendant le débogage ; et la propriété data qui fixe les données initiales du composant. Les autres propriétés seront abordées dans la section Composants.
+The script part of the component must export an object with the properties of the component by default. Here we find the property `name`, useful for identifying the component during debugging; and the data property that sets the initial data of the component. The other properties will be discussed in the Components section.
 
 ::: tip
-D'après vous, pourquoi la propriété `data` d'un composant doit être une fonction ?
+Why do you think the `data` property of a component must be a function?
 :::
 
-## Travailler en composants
+## Work with components
 
-Les composants Vue décrits précédemment constituent les briques avec lesquelles vous allez concevoir vos interfaces web. Une application web est composée de petits composants réutilisables, imbriqués dans des composants de plus haut niveau pour former le layout, l'agencement de vos éléments sur la page. Cette structure peut être décrite comme un **arbre de composants**.
+The Vue components described above are the building blocks in which you will design your web interfaces. A web application is made of small reusable components, embedded in higher level components to form the layout, the arrangement of your elements on the page. This structure can be described as a **component tree**.
 
 ![Component tree](../assets/component-tree.png)
 
-Pour relier les composants entre eux, on déclare les composants enfants dans le template du composant parent, en utilisant leur nom comme balise. Un composant peut être réutilisé autant de fois que nécessaire, en l'incluant de la façon suivante :
+To link the components together, the child components are declared in the parent component template, using their name as a tag. A component can be reused as many times as necessary by including it as follows:
 
 ```vue
 <template>
   <div>
-    <mon-composant></mon-composant>
+    <my-component></my-component>
   </div>
 </template>
 
 <script>
-import MonComposant from '~/components/MonComposant.vue'
+import MyComponent from '~/components/MyComponent.vue'
 
 export default {
-  name: 'ComposantParent',
+  name: 'ParentComponent',
   components: {
-    MonComposant
+    MyComponent
   }
 }
 </script>
 ```
 
-Notez l'option `components` dans la partie script du composant. Les composants enfants utilisés dans le template doivent être déclarés ainsi, mais il est également possible de déclarer des composants globalement sur votre application Vue, afin de pouvoir les utiliser partout sans avoir à les déclarer manuellement.
+::: tip
+The `components` attribute in the script part of the component. The child components used in the template must be declared as shown, but you can also declare components globally on your Vue application, so you can use them everywhere without having to declare them manually.
+:::
 
-Dans votre projet Vue, observez comment le composant `HelloWorld` a été intégré au composant racine `App`.
+In your Vue project, see how the `HelloWorld` component has been integrated into the` App` root component.
 
-## Interpolation de texte dans les templates
+## Text interpolation in templates
 
 ::: v-pre
-Le moyen le plus simple d'insérer des données dynamiquement dans vos composants est par interpolation de texte, au moyen de la syntaxe `{{maVariable}}`. A l'intérieur des doubles accolades, vous pouvez indiquer n'importe quelle expression JavaScript valide :
+The simplest way to insert data dynamically into your components is through text interpolation, using the `{{myVariable}}` syntax. Inside double curly braces, you can specify any valid JavaScript expression:
 :::
 
 ```vue
 <template>
-  <p>Commande ref. {{ referenceCommande }} - Total: {{ prix.toFixed(2)+'€' }}</p>
+  <p>Order ref. {{ orderReference }} - Total: {{ price.toFixed(2)+'€' }}</p>
 </template>
 
 <script>
   export default {
-    name: 'InfoCommande',
+    name: 'OrderInfo',
     data(){
       return {
-        referenceCommande: 'ABCXYZ',
-        prix: 17.3
+        orderReference: 'ABCXYZ',
+        price: 17.3
       }
     }
   }
 </script>
 ```
 
-L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne pouvez pas l'utiliser pour changer la valeur d'attributs HTML ou pour insérer du code HTML par exemple. Pour cela, vous devrez recourir aux *directives*, que l'on verra dans la section suivante.
+Interpolation only works on textual content of elements. You can not use it to change the value of HTML attributes or to insert HTML code. For this, you will need to resort to *directives*, which will see in the following section.
 
-## TP: Premier composant
+## Practical Work: Your first component
 
-1. Ajouter la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici: [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css) ; la placer dans le dossier src et l'inclure dans le projet avec `import "./stylesheet.css"` dans la partie script de `App.vue`.
+1. Add the CSS stylesheet that will serve as basis for all the practical work, downloadable here: [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css); put it in the `src` folder and include it in the project with `import './stylesheet.css'` in the script part of `App.vue`.
 
-2. Créer un nouveau composant `LoginForm.vue` contenant un formulaire d'authentification:
+2. Create a new component `LoginForm.vue` containing the following authentication form:
 
 ```html
 <div id="login-form">
 <form>
-  <h1>Authentification</h1>
-  <p>Remplissez ce formulaire pour vous connecter.</p>
+  <h1>Authentication</h1>
+  <p>Fill out this form to login.</p>
   <hr>
 
   <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Entrez votre courriel" id="email" name="email" required>
+  <input type="text" placeholder="Enter your email" id="email" name="email" required>
 
-  <label for="psw"><b>Mot de passe</b></label>
-  <input type="password" placeholder="Entrez votre mot de passe" id="psw" name="psw" required>
+  <label for="psw"><b>Password</b></label>
+  <input type="password" placeholder="Enter your password" id="psw" name="psw" required>
 
-  <p><button type="submit">Se connecter</button></p>
+  <p><button type="submit">Login</button></p>
 </form>
 </div>
 ```
 
-3. Supprimez le contenu existant du template du composant `App.vue`, et affichez le composant `LoginForm.vue` à la place avec `<login-form />`. Vous devrez également déclarer `LoginForm` dans l'option `components` du composant `App`.
+3. Delete the existing contents of the `App.vue` component template, and display the `LoginForm.vue` component instead with `<login-form />`. You will also need to declare `LoginForm` in the `components` attribute of the `App` component.
 
-4. Complétez le fichier `LoginForm.vue` pour déclarer le nom du composant, ainsi qu'une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire *"Authentification"* en utilisant cette variable `title`.
+4. Complete the `LoginForm.vue` file to declare the name of the component, and a` data` containing a `title` property. Then use the text interpolation in the template to pass the title of the form *"Authentication"* using the variable `title`.

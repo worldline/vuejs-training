@@ -26,7 +26,7 @@ Par la suite, vous pourrez être amenés à créer d'autres dossiers dans `src` 
 
 - Une application dans Vue.js est divisée en plusieurs composants
 - Un composant correspond à un fichier `.vue`
-- Un fichier `.vue` se compose de trois éléments éléments optionnels :
+- Un fichier `.vue` se compose de trois éléments optionnels :
     - la balise `<template>` contient le code HTML du composant
     - la balise `<script>` (optionnelle) contient le code JavaScript du composant
     - la balise `<style>` (optionnelle) contient le style CSS du composant
@@ -56,7 +56,7 @@ span {
 </style>
 ```
 
-La partie script du composant doit exporter par défaut un objet avec les propriétés du composant. On retrouve ici la propriété name, utile pour identifier le composant pendant le débogage ; et la propriété data qui fixe les données initiales du composant. Les autres propriétés seront abordées dans la section Composants.
+La partie script du composant doit exporter par défaut un objet avec les propriétés du composant. On retrouve ici la propriété `name`, utile pour identifier le composant pendant le débogage ; et la propriété data qui fixe les données initiales du composant. Les autres propriétés seront abordées dans la section Composants.
 
 ::: tip
 D'après vous, pourquoi la propriété `data` d'un composant doit être une fonction ?
@@ -89,7 +89,9 @@ export default {
 </script>
 ```
 
-Notez l'option `components` dans la partie script du composant. Les composants enfants utilisés dans le template doivent être déclarés ainsi, mais il est également possible de déclarer des composants globalement sur votre application Vue, afin de pouvoir les utiliser partout sans avoir à les déclarer manuellement.
+::: tip
+L'option `components` dans la partie script du composant. Les composants enfants utilisés dans le template doivent être déclarés ainsi, mais il est également possible de déclarer des composants globalement sur votre application Vue, afin de pouvoir les utiliser partout sans avoir à les déclarer manuellement.
+:::
 
 Dans votre projet Vue, observez comment le composant `HelloWorld` a été intégré au composant racine `App`.
 
@@ -101,7 +103,7 @@ Le moyen le plus simple d'insérer des données dynamiquement dans vos composant
 
 ```vue
 <template>
-  <p>Commande ref. {{ referenceCommande }} - Total: {{ prix.toFixed(2)+'€' }}</p>
+  <p>Commande ref. {{ referenceCommande }} - Total : {{ prix.toFixed(2)+'€' }}</p>
 </template>
 
 <script>
@@ -119,11 +121,11 @@ Le moyen le plus simple d'insérer des données dynamiquement dans vos composant
 
 L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne pouvez pas l'utiliser pour changer la valeur d'attributs HTML ou pour insérer du code HTML par exemple. Pour cela, vous devrez recourir aux *directives*, que l'on verra dans la section suivante.
 
-## TP: Premier composant
+## TP : Premier composant
 
-1. Ajouter la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici: [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css) ; la placer dans le dossier src et l'inclure dans le projet avec `import "./stylesheet.css"` dans la partie script de `App.vue`.
+1. Ajouter la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici : [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css) ; la placer dans le dossier src et l'inclure dans le projet avec `import "./stylesheet.css"` dans la partie script de `App.vue`.
 
-2. Créer un nouveau composant `LoginForm.vue` contenant un formulaire d'authentification:
+2. Créer un nouveau composant `LoginForm.vue` contenant un formulaire d'authentification :
 
 ```html
 <div id="login-form">
