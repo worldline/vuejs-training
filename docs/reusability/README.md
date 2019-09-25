@@ -2,59 +2,61 @@
 
 ## Mixins
 
-Les [mixins](https://fr.vuejs.org/v2/guide/mixins.html) permettent de créer des ensembles de fonctionnalités réutilisables pour les composants de Vue. En les déclarant via l'option `mixins`, toutes les options du mixin seront fusionnées (merge) avec les options du composant.
+[Mixins](https://vuejs.org/v2/guide/mixins.html) allow you to create reusable feature sets for your Vue components. By declaring them via the `mixins` option, all the options of the mixin will be merged (merge) within the component options.
 
 ```js
-// définir un objet mixin
+// declare a mixin object
 const helloMixin = {
-  created: function () {
-    this.hello()
+  created: function() {
+    this.hello();
   },
   methods: {
-    hello: function () {
-      console.log('hello from mixin!')
+    hello: function() {
+      console.log("hello from mixin!");
     }
   }
-}
+};
 
-// définition d'un composant qui utilise ce mixin
+// declare a component that uses this mixin
 const Component = Vue.extend({
   mixins: [helloMixin],
-  created(){
-    console.log('another created callback')
+  created() {
+    console.log("another created callback");
   }
-})
+});
 
-let component = new Component()
+let component = new Component();
 ```
 
 ::: tip
-En cas de conflit de noms entre une option du mixin et celle du composant, la stratégie de fusion appliquée est la suivante:
-- `data`, `methods`, `components` & `directives`: les options du composants ont la priorité
-- hooks du cycle de vie (par ex. `mounted`) : déclenchés successivement, les callbacks du mixin en premier
-:::
+If there is a name conflict between a mixin option and the component option, the merge strategy applied is as follows:
 
-## Directives personnalisées
+- `data`, `methods`, `components` & `directives`: component options take precedence
+- lifecycle hooks (eg `mounted`): triggered successively, mixin callbacks first
+  :::
 
-Vue permet de déclarer ses propres [directives personnalisées](https://fr.vuejs.org/v2/guide/custom-directive.html) - les éléments de syntaxe qui sont utilisés dans les templates de composant. Cette fonction est souvent utilisée par des bibliothèques tierces. Les directives personnalisées permettent de réutiliser de la logique applicative sur plusieurs éléments sans passer par un composant dédié. Veillez toutefois à ne pas en abuser car il est difficile de les tracer et elles peuvent rentrer en conflit avec des évolutions futures de Vue.
+## Custom directives
+
+Vue allows you to declare your own [custom directives](https://vuejs.org/v2/guide/custom-directive.html) - the syntax parts specific to Vue that are used in component templates. This feature is often used by third-party libraries. Custom directives allow you to reuse business logic on multiple elements without using a dedicated component. However, be careful not to abuse them because it is difficult to keep track of all custom directives in a project, and they may conflict with future developments in Vue.
 
 ```js
 // Register a global custom directive called 'v-focus'
-Vue.directive('focus', {
+Vue.directive("focus", {
   // When the bound element is inserted into the DOM...
-  inserted: function (el) {
+  inserted: function(el) {
     // Focus the element
-    el.focus()
+    el.focus();
   }
-})
+});
 ```
 
 ## Plugins
 
-Enfin, Vue propose un système de [plugins](https://fr.vuejs.org/v2/guide/plugins.html) servant à ajouter des fonctionnalités au niveau global de l'application. Là encore, il s'agit d'une fonctionnalité principalement utilisée par les bibliothèques tierces et il convient de ne pas en abuser. Les plugins peuvent entre autres:
-- ajouter des mixins globales ou de nouveaux composants déclarés globalement
-- ajouter des méthodes ou propriétés globalement à tous les composants
-- ajouter des directives/filtres/transitions
+Finally, Vue offers a [plugin system](https://vuejs.org/v2/guide/plugins.html) to add functionalities at a global level of the application. Again, this is a feature primarily used by third-party libraries and it should not be abused. Plugins can:
+
+- add global mixins or new globally declared components
+- add methods or properties globally to all components
+- add custom directives / filters / transitions
 
 ```js
 const NotificationPlugin = {
@@ -67,4 +69,4 @@ const NotificationPlugin = {
 Vue.use(NotificationPlugin)
 ```
 
-La plupart des bibliothèques tierces de Vue utilisent ce format de plugin pour sa praticité. C'est le cas de `vue-router` par exemple. Les plugins sont reconnus comme tels et placés dans leur propre catégorie sur l'interface Vue UI.
+Most third-party Vue libraries use this plugin format for its convenience. This is the case of `vue-router` for example. Plugins are recognized as such and placed in their own category on the Vue UI interface.
