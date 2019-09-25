@@ -5,26 +5,30 @@ Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins e
 En voici une sélection de quelques-uns:
 
 - [vue-devtools](https://github.com/vuejs/vue-devtools)
-Une extension navigateur très utile pour déboguer des applications Vue. Disponible sur Chrome, Firefox ou en application standalone.
+  Une extension navigateur très utile pour déboguer des applications Vue. Disponible sur Chrome, Firefox ou en application standalone.
 
 - [Vue Styleguide](https://vuejs.org/v2/style-guide/)
-Un guide de style maintenu par l'équipe officielle pour lister les conventions et bonnes pratiques autour de projets Vue.
+  Un guide de style maintenu par l'équipe officielle pour lister les conventions et bonnes pratiques autour de projets Vue.
 
 - [vue-axe](https://github.com/vue-a11y/vue-axe)
-Un outil d'audit pour l'accessibilité de vos applications Vue. Il indique en console développeur la liste des défauts d'accessibilité repérés dans le code.
+  Un outil d'audit pour l'accessibilité de vos applications Vue. Il indique en console développeur la liste des défauts d'accessibilité repérés dans le code.
 
 - [vuepress](https://vuepress.vuejs.org/)
-Un générateur de site de documentation utilisant Vue (utilisé pour ce support de formation)
+  Un générateur de site de documentation utilisant Vue (utilisé pour ce support de formation)
 
 ## Frameworks UI
 
-Il existe de nombreux frameworks UI avec un grand nombre de composants prédéfinis et déjà stylisés, censés répondre à tous vos besoins en termes d'interface. *Note: ne remplace pas le travail d'un designer, ergonome ou développeur CSS.*
+Il existe de nombreux frameworks UI avec un grand nombre de composants prédéfinis et déjà stylisés, censés répondre à tous vos besoins en termes d'interface.
 
 - [Vuetify](https://github.com/vuetifyjs/vuetify)
 - [Quasar](https://github.com/quasarframework/quasar)
 - [Vue-material](https://github.com/vuematerial/vue-material)
 - [buefy](https://github.com/rafaelpimpa/buefy)
 - [vue-sax](https://lusaxweb.github.io/vuesax/)
+
+::: warning
+Note: ne remplace pas le travail d'un designer, ergonome ou développeur CSS.
+:::
 
 ## Server-side rendering
 
