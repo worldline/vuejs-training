@@ -2,10 +2,6 @@
 
 Les directives sont les éléments de syntaxe propres à Vue utilisables dans les templates des composants.
 
-::: tip
-Pour les exercices ci-dessous, il est nécessaire d'utiliser le navigateur Chromium (ou Chrome) !
-:::
-
 ## v-bind: Liaison de propriétés
 
 Permet de lier (*bind*) à une variable la valeur d'une propriété d'un élément HTML ou d'un composant. Comme c'est la directive la plus couramment utilisée, on utilise généralement toujours la syntaxe raccourcie `:propriété="valeur"`.
