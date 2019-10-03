@@ -1,24 +1,24 @@
 # Vue Ecosystem
 
-Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins et d'outillage. Une (longue) liste est disponible ici: [awesome-vue](https://github.com/vuejs/awesome-vue).
+Thanks to its popularity, Vue has been enriched by a vast ecosystem of plugins and tools. A (long) list is available here: [awesome-vue](https://github.com/vuejs/awesome-vue).
 
-En voici une sélection de quelques-uns:
+Here is a selection:
 
 - [vue-devtools](https://github.com/vuejs/vue-devtools)
-Une extension navigateur très utile pour déboguer des applications Vue. Disponible sur Chrome, Firefox ou en application standalone.
+  A browser extension very useful for debugging Vue applications. Available on Chrome, Firefox or standalone application.
 
 - [Vue Styleguide](https://vuejs.org/v2/style-guide/)
-Un guide de style maintenu par l'équipe officielle pour lister les conventions et bonnes pratiques autour de projets Vue.
+  A style guide maintained by the official team to list conventions and best practices around Vue projects.
 
 - [vue-axe](https://github.com/vue-a11y/vue-axe)
-Un outil d'audit pour l'accessibilité de vos applications Vue. Il indique en console développeur la liste des défauts d'accessibilité repérés dans le code.
+  An audit tool for checking the accessibility of your Vue applications. It indicates in the developer console the list of accessibility issues identified in your application.
 
 - [vuepress](https://vuepress.vuejs.org/)
-Un générateur de site de documentation utilisant Vue (utilisé pour ce support de formation)
+  A documentation site builder using Vue (used for this website)
 
-## Frameworks UI
+## UI Frameworks
 
-Il existe de nombreux frameworks UI avec un grand nombre de composants prédéfinis et déjà stylisés, censés répondre à tous vos besoins en termes d'interface. *Note: ne remplace pas le travail d'un designer, ergonome ou développeur CSS.*
+There are many UI frameworks out there with a large number of predefined and already styled components, supposed to meet all your interface needs.
 
 - [Vuetify](https://github.com/vuetifyjs/vuetify)
 - [Quasar](https://github.com/quasarframework/quasar)
@@ -26,13 +26,17 @@ Il existe de nombreux frameworks UI avec un grand nombre de composants prédéfi
 - [buefy](https://github.com/rafaelpimpa/buefy)
 - [vue-sax](https://lusaxweb.github.io/vuesax/)
 
+::: warning
+A UI Framework does not replace the work of a designer, ergonomist or CSS developer.
+:::
+
 ## Server-side rendering
 
-Le rendu côté serveur (SSR) consiste à remplacer les serveurs frontaux classiques (Apache/nginx) par des interpréteurs JS (le plus souvent Node.js) qui vont exécuter Vue et générer les pages côté serveur. Cela permet de supporter les clients ayant JavaScript désactivé, améliore l'indexation sur les moteurs de recherche et améliore les performances au rendu initial.
+Server-side rendering (SSR) consists of replacing traditional front-end servers (Apache / nginx) with JS interpreters (most often Node.js) that will run Vue on the back-end and generate pages on the server side. This helps support clients that have JavaScript disabled, improves search engine indexing, and can improve initial rendering performance.
 
-[Nuxt](http://nuxtjs.org/) est le framework SSR de référence pour Vue.js. Il propose un routage basé sur l'arborescence des sources, et assure une bascule transparente entre le rendu serveur et la prise en main côté client.
+[Nuxt](http://nuxtjs.org/) is the SSR framework of reference for Vue.js. It provides routing based on the source files and directories, and provides a seamless switch between server-side rendering and client-side taking control after initial render.
 
-## Fin de TP - exercices libres
+## End of exercises - do what you want
 
-- Testez les outils qui vous intéressent
-- A l'aide du framework UI de votre choix, enjolivez votre application web :)
+- Test some tools that interest you
+- Using the UI framework of your choice, beautify your web application :)
