@@ -2,7 +2,7 @@
 
 Les directives sont les éléments de syntaxe propres à Vue utilisables dans les templates des composants.
 
-## v-bind: Liaison de propriétés
+## v-bind : Liaison de propriétés
 
 Permet de lier (*bind*) à une variable la valeur d'une propriété d'un élément HTML ou d'un composant. Comme c'est la directive la plus couramment utilisée, on utilise généralement toujours la syntaxe raccourcie `:propriété="valeur"`.
 
@@ -12,11 +12,11 @@ Permet de lier (*bind*) à une variable la valeur d'une propriété d'un éléme
 <a :href="url">Lien</a>  <!-- syntaxe raccourcie -->
 ```
 
-[Exercice: essayez de lier les attributs `src` et `width` de l'image](https://codepen.io/sylvainpv/pen/LBgqbq?editors=1010)
+[Exercice : essayez de lier les attributs `src` et `width` de l'image](https://codepen.io/sylvainpv/pen/LBgqbq?editors=1010)
 
 ## Lier des classes et des styles
 
-Plusieurs syntaxes sont proposées pour assigner des classes ou des styles CSS:
+Plusieurs syntaxes sont proposées pour assigner des classes ou des styles CSS :
 
 ```vue
 <p :class="classAsString"></p>        <!-- "foo bar" -->
@@ -30,9 +30,9 @@ Plusieurs syntaxes sont proposées pour assigner des classes ou des styles CSS:
 <p :style="{ fontSize: size }"></p>
 ```
 
-[Exercice: assignez une classe et une couleur à chaque fantôme](https://codepen.io/sylvainpv/pen/qyJgLe?editors=1010)
+[Exercice : assignez une classe et une couleur à chaque fantôme](https://codepen.io/sylvainpv/pen/qyJgLe?editors=1010)
 
-## v-model: Formulaires et inputs
+## v-model : Formulaires et inputs
 
 Permet de lier la valeur d'un champ de formulaire à une donnée du composant. C'est une liaison à double-sens, c'est-à-dire que la variable se met à jour quand le contenu du champ change (typiquement par l'utilisateur) et réciproquement.
 
@@ -46,9 +46,9 @@ Permet de lier la valeur d'un champ de formulaire à une donnée du composant. C
 ```
 <v-model-example />
 
-[Exercice: utilisez v-model sur les input, select, radio et checkbox](https://codepen.io/sylvainpv/pen/rrqEMg?editors=1010)
+[Exercice : utilisez v-model sur les input, select, radio et checkbox](https://codepen.io/sylvainpv/pen/rrqEMg?editors=1010)
 
-## v-if: Conditions
+## v-if : Conditions
 
 Permet d'insérer ou non un élément selon une condition. Si vous souhaitez que l'élément ne soit pas retiré du DOM mais juste caché visuellement en CSS, utilisez `v-show` à la place.
 
@@ -71,38 +71,38 @@ Les directives `v-else-if` et `v-else` fonctionnent de la même façon que leur 
 </template>
 ```
 
-[Exercice: utilisez v-if et v-else pour alterner les visages selon la condition](https://codepen.io/sylvainpv/pen/bjmXXV?editors=1010)
+[Exercice : utilisez v-if et v-else pour alterner les visages selon la condition](https://codepen.io/sylvainpv/pen/bjmXXV?editors=1010)
 
-## v-for: Boucles
+## v-for : Boucles
 
-Permet de générer des listes d'éléments en répétant un template par itération sur une valeur itérable, typiquement un `Array`, la liste des propriétés d'un objet, ou encore un nombre fixe d'itérations. 
+Permet de générer des listes d'éléments en répétant un template par itération sur une valeur itérable, typiquement un `Array`, la liste des propriétés d'un objet, ou encore un nombre fixe d'itérations.
 
-La directive déclare des variables locales représentant chaque élément itéré et leur index, qui peuvent être utilisées à l'intérieur de l'élément.
+La directive déclare des variables locales représentant chaque élément itéré et leur index, qui peuvent être utilisées dans le template à l'intérieur de l'élément.
 
 ```vue
 <span v-for="n in 10">{{ n }} ; </span>
 
-<!-- items: ["pomme","kiwi","mangue"] -->
+<!-- items: ["apple","kiwi","mango"] -->
 <ul> <li v-for="item in items">{{ item }}</li> </ul>
 ```
 
 <v-for-example-1 />
 
 ::: warning
-En complément de la directive `v-for`, liez une propriété `key` à une valeur qui identifie de façon unique chaque élément de la liste (un identifiant, une référence...). 
+En complément de la directive `v-for`, liez une propriété `key` à une valeur qui identifie de façon unique chaque élément de la liste (un identifiant, une référence...).
 
 Ce n'est pas obligatoire mais aide Vue à mieux comprendre les changements qui surviennent sur une liste (ajouts, suppressions, tris...) et optimiser les transitions entre deux états de la liste.
 :::
 
 ```vue{5}
-<!-- todos: [ { label: 'Apprendre Vue', done: false }, 
-              { label: 'Utiliser v-for', done: true }, ... ] -->
+<!-- todos: [ { label: 'Learn Vue', done: false },
+              { label: 'Use v-for', done: true }, ... ] -->
 <ul>
 <!-- la liste est ordonnée en mettant les tâches terminées à la fin -->
   <li v-for="(todo, index) in todos_after_sort" :key="todo.label">
     <label>
       <input type="checkbox" v-model="todo.done">
-      Task {{ index }} : {{todo.label}}
+      Task {{ index }}: {{todo.label}}
     </label>
     - <i>{{todo.done ? "DONE !": "in progress..."}}</i>
   </li>
@@ -115,18 +115,18 @@ Ce n'est pas obligatoire mais aide Vue à mieux comprendre les changements qui s
 Pour répéter un groupe d'éléments, utiliser `v-for` sur une balise `<template>`
 :::
 
-[Exercice: utilisez deux boucles v-for pour afficher tout le contenu du panier](https://codepen.io/sylvainpv/pen/RBqbBW?editors=1010)
+[Exercice : utilisez deux boucles v-for pour afficher tout le contenu du panier](https://codepen.io/sylvainpv/pen/RBqbBW?editors=1010)
 
-## v-on: Événements
+## v-on : Événements
 
 Permet de définir une action à effectuer lorsqu'un évènement survient. Il peut s'agir d'un événement du DOM (`click`, `mouseover`, `focus`...) ou d'un événement personnalisé émis par un composant enfant.
 
 ```vue{1,5}
-<button v-on:click="counter += 1"> Cliquez ici ! </button>
-Ce bouton a été cliqué {{ counter }} fois.
+<button v-on:click="counter += 1"> Click here! </button>
+This button has been clicked {{ counter }} times.
 
 <!-- syntaxe raccourcie: @event -->
-<button @click="resetCounter($event)"> Remettre à zéro </button>
+<button @click="resetCounter($event)"> reset </button>
 ```
 
 <v-on-example />
@@ -135,14 +135,14 @@ Ce bouton a été cliqué {{ counter }} fois.
 Vous pouvez utiliser la variable `$event` comme référence à l'événement capturé
 :::
 
-[Exercice: utilisez les événements pour ajouter un singe au clic sur bouton, et leur faire ouvrir les yeux au passage de la souris](https://codepen.io/sylvainpv/pen/NBEKQw?editors=1010)
+[Exercice : utilisez les événements pour ajouter un singe au clic sur bouton, et leur faire ouvrir les yeux au passage de la souris](https://codepen.io/sylvainpv/pen/NBEKQw?editors=1010)
 
 ### Modificateurs
 
 Les modificateurs sont des suffixes permettant de modifier légèrement le comportement de certaines directives ; par exemple, stopper la propagation d'un événement capturé avec `v-on`. Pour en savoir plus, se référer à la [documentation officielle](https://fr.vuejs.org/v2/guide/events.html#Event-Modifiers).
 
 ```vue
-<!-- la propagation de l'événement clic sera stoppée -->
+<!-- la propagation de l'événement click sera stoppée -->
 <a @click.stop="onThis">...</a>
 
 <!-- la soumission du formulaire ne rechargera plus la page -->
@@ -151,16 +151,16 @@ Les modificateurs sont des suffixes permettant de modifier légèrement le compo
 <!-- les modificateurs peuvent être cumulés -->
 <a @click.stop.once="doSomethingOnce">...</a>
 
-<!-- également disponible: .tab, .delete, .esc, .space... -->
+<!-- également disponible : .tab, .delete, .esc, .space... -->
 <input @keypress.enter="submit" />
 ```
 
-## TP: Fiche d'un film
+## TP : Fiche d'un film
 
 1. Sur le formulaire d'authentification, ajoutez deux variables `email` et `password` dans l'option `data` du composant et utilisez la directive `v-model` sur les champs email et password pour les lier.
 2. Ajoutez une autre variable `loggedIn` initialement à `false`, puis utilisez la directive `v-on` pour l'assigner à `true` à la soumission du formulaire.
 3. Modifier le comportement par défaut de l'évènement `submit` du formulaire d'authentification afin d'éviter le rechargement de la page.
-4. Sous le formulaire d'authentification, ajoutez le HTML suivant:
+4. Sous le formulaire d'authentification, ajoutez le HTML suivant :
 ```html
 <ul class="films">
   <li class="film card">
@@ -181,7 +181,7 @@ Les modificateurs sont des suffixes permettant de modifier légèrement le compo
 </ul>
 ```
 5. Utilisez les directives `v-if` et `v-else` pour afficher le formulaire d'authentification et cacher la liste des films quand `loggedIn === false`, et réciproquement.
-6. Ajoutez la variable suivante dans l'option `data` du composant:
+6. Ajoutez la variable suivante dans l'option `data` du composant :
 ```js
 films: [
   {
@@ -214,5 +214,5 @@ films: [
 ]
 ```
 7. A l'aide de la directive `v-for`, répétez l'élément `.film.card` pour afficher autant de films que contient la liste `films`
-8. Complétez les données des cartes par celle de chaque film en utilisant les directives et l'interpolation 
-9. **Bonus:** trouvez comment utiliser la propriété `metascore` pour afficher un certain nombre d'étoiles à côté de chaque titre de film.
+8. Complétez les données des cartes par celle de chaque film en utilisant les directives et l'interpolation
+9. **Bonus :** trouvez comment utiliser la propriété `metascore` pour afficher un certain nombre d'étoiles à côté de chaque titre de film.

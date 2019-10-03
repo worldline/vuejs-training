@@ -17,10 +17,10 @@ export default {
     name: "v-for-example-2",
     data(){
         return {
-            todos: [ 
-              { label: 'Voir les transitions de liste', done: false },
-              { label: 'Apprendre Vue', done: false }, 
-              { label: 'Utiliser v-for', done: true }      
+            todos: [
+              { label: 'See list transitions', done: false },
+              { label: 'Learn Vue', done: false },
+              { label: 'Use v-for', done: true }
             ]
         }
     },
