@@ -36,7 +36,7 @@ Server-side rendering (SSR) consists of replacing traditional front-end servers 
 
 [Nuxt](http://nuxtjs.org/) is the SSR framework of reference for Vue.js. It provides routing based on the source files and directories, and provides a seamless switch between server-side rendering and client-side taking control after initial render.
 
-## End of exercices - do what you want
+## End of exercises - do what you want
 
 - Test some tools that interest you
 - Using the UI framework of your choice, beautify your web application :)
