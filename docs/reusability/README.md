@@ -37,7 +37,7 @@ If there is a name conflict between a mixin option and the component option, the
 
 ## Custom directives
 
-Vue allows you to declare your own [custom directives](https://vuejs.org/v2/guide/custom-directive.html) - the syntax parts specific to Vue that are used in component templates. This feature is often used by third-party libraries. Custom directives allow you to reuse business logic on multiple elements without using a dedicated component. However, be careful not to abuse them because it is difficult to keep track of all custom directives in a project, and they may conflict with future developments in Vue.
+Vue allows you to declare your own [custom directives](https://vuejs.org/v2/guide/custom-directive.html) - the Vue-specific syntax that is used in component templates. This feature is often used by third-party libraries. Custom directives allow you to reuse business logic on multiple elements without using a dedicated component. However, be careful not to abuse them because it is difficult to keep track of all custom directives in a project, and they may conflict with future developments in Vue.
 
 ```js
 // Register a global custom directive called 'v-focus'
