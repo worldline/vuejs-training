@@ -36,7 +36,7 @@ Par défaut, Jest va lancer tous les tests présents dans un dossier `tests/unit
     |-- LoginForm.spec.js
 ```
 
-Quelques exemples pour illuster les méthodes globales proposées par Jest :
+Quelques exemples pour illustrer les méthodes globales proposées par Jest :
 
 ```js
 // Exécuter un code une seule fois avant tous les tests - beforeAll(fn, timeout)
@@ -52,9 +52,9 @@ beforeEach(() => { initState() }, 500)
 afterEach(async () => { await resetState() }, 500)
 
 // Un test unitaire - 'test' peut-être utilisé à la place de 'it'
-// Les mots clés .skip, only et .each sont utilsables
-test('should do something...', () => { 
-    expect(add(1, 2).toBe(3)
+// Les mots clés .skip, .only et .each sont utilisables
+test('should do something...', () => {
+  expect(add(1, 2).toBe(3)
 })
 
 // Tester rapidement plusieurs cas avec le mot clé .each
@@ -68,8 +68,8 @@ test.each`
 })
 
 // Grouper les tests par pan fonctionnel - describe(name, fn)
-// Les mots clés .skip, only et .each sont utilsables
-describe('Film Card', () => { 
+// Les mots clés .skip, only et .each sont utilisables
+describe('Film Card', () => {
     test(...)
     test(...)
     ...
@@ -80,7 +80,7 @@ describe('Film Card', () => {
 
 Le **mocking** consiste à isoler le sujet de test en remplaçant par des simulacres toutes les briques extérieures avec lesquelles il interagit. Ainsi, en cas d'échec du test, on s'assure que le problème vient bien de la fonction testée et non d'un composant externe (réseau, bases de données, lib tierce etc.)
 
-Ci-dessous quelques exemples pour illuster les capacité de mocking de Jest :
+Ci-dessous quelques exemples pour illustrer les capacité de mocking de Jest :
 
 ```js
 // Exemple de mocking d'une fonction locale
@@ -159,8 +159,8 @@ describe('Counter', () => {
   })
 })
 ```
-      
-Cette blibliothèque propose une API pour tester les composants Vue, voici certaines des méthodes les plus utilisées :
+
+Cette bibliothèque propose une API pour tester les composants Vue, voici certaines des méthodes les plus utilisées :
 
 - `mount` : permet de monter le composant sur un DOM pour pouvoir le tester ;
 - `shallowMount` : comme mount mais sans monter les éventuels composants enfants ;
@@ -171,7 +171,7 @@ La classe `Wrapper` représentant votre composant monté propose de nombreuses m
 - `.html()`, `.text()`: récupère le contenu HTML ou texte
 - `.find()`, `.findAll()` : rechercher des éléments HTML dans le composant
 - `.setData()`, `.setMethods()`, `.setProps()`: modifier les options de votre composant
-- `.trigger()`: progager des évènements 
+- `.trigger()`: propager des évènements
 
 ::: tip
 Les méthodes décrites ci-dessus permettent de tester la plupart des cas simples. Pour plus d'informations se référer à la [documentation officielle](https://vue-test-utils.vuejs.org/).
@@ -231,6 +231,6 @@ describe('Actions.vue', () => {
 
 1. Créer un fichier de spec de tests unitaires pour tester votre composant `Film.vue`.
 2. Dans votre test, monter le composant, ajouter une assertion basique et lancer les tests.
-3. Simuler les valeurs d'un film et vérifier le rendu HTML
+3. Simuler les valeurs d'un film et vérifier le rendu HTML.
 4. Ajouter le calcul de la couverture de code. Que constatez-vous ?
-5. **Bonus**: Tester le composant `LoginForm.vue`, en mockant les appels externes HTTPS ainsi que les appels au store et au routeur. Tester le cas nominal et d'erreur du login.
+5. **Bonus**: Tester le composant `LoginForm.vue`, en simulant les appels externes HTTPS ainsi que les appels au store et au routeur. Tester le cas nominal et d'erreur du login.

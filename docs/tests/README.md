@@ -1,31 +1,32 @@
 # Unit tests
 
-## Pourquoi des tests unitaires ?
+## Why should I test?
 
-Les tests unitaires sont une étape essentielle du développement de logiciel. Ces tests permettent d’exécuter chaque unité de code isolée du reste du logiciel. Ils apportent de nombreux bénéfices :
-- documenter la façon dont un composant doit se comporter
-- détecter et corriger les bugs plus tôt et plus efficacement
-- gagner du temps passé à tester manuellement
-- favoriser le refactoring en toute quiétude
+Unit testing is an essential step in software development. These tests are used to execute each code unit isolated from the rest of the software. They bring many benefits:
 
-## Choix du test runner
+- document how a component should behave
+- detect and fix bugs sooner and more effectively
+- save time spent manually testing
+- encourage refactoring with complete peace of mind
 
-Pour faire des tests unitaires, vous avez besoin d'une **bibliothèque d'assertions** qui fournit l'API nécessaire pour écrire vos tests, et un **test runner** qui s'occupe de lancer les tests et recueillir les résultats. [Vue CLI](https://cli.vuejs.org/) possède des options intégrées pour mettre en place dès le départ des tests unitaires sur votre projet Vue avec le choix entre plusieurs runners. Nous vous proposons ici d'utiliser [Jest](https://jestjs.io/), un test runner complet, populaire, avec peu de configuration nécessaire, et qui fournit une bibliothèque d'assertions basique mais suffisante pour la plupart des usages.
+## Choose your test runner
 
-[Jest](https://jestjs.io/) propose "out of the box" :
-- le lancement des tests en parallèles ;
-- la génération d'un rapport de couverture de test ;
-- un *mocking* facile des dépendances ;
-- des assertions simples et des tests lisibles ;
-- une interface en ligne de commande très complète.
+In order to test your application, you will need a test runner which will launch your test and collect the results. [Vue CLI](https://cli.vuejs.org/) has built-in options to set up unit tests on your Vue project with a choice between several runners. During this training, we suggest to use [Jest](https://jestjs.io/), a complete test runner, popular, with little configuration necessary, and which provides a basic but sufficient assertion library for most uses.
+
+[Jest](https://jestjs.io/) offers out of the box:
+- launching tests in parallel;
+- generating a test coverage report;
+- easy *mocking*;
+- simple assertions and readable tests;
+- a complete command line interface.
 
 ::: tip
-Comme alternative à Jest, l'équipe de Vue propose aussi [mocha-webpack](https://github.com/zinserjan/mocha-webpack), un wrapper entre Mocha et Webpack. Cette solution requiert toutefois un peu plus de configuration initiale.
+As an alternative to Jest, the Vue team also offers [mocha-webpack](https://github.com/zinserjan/mocha-webpack), a wrapper between Mocha and Webpack. This solution, however, may require a little more initial configuration.
 :::
 
-## Ecriture de tests avec Jest
+## Write your first test with Jest
 
-Par défaut, Jest va lancer tous les tests présents dans un dossier `tests/unit` ou `__tests__`. Par exemple, les tests dans `Film.spec.js` et `LoginForm.spec.js` seront repérés et exécutés par Jest ici:
+By default, Jest will run all tests in a `tests / unit` or` __tests__` folder. For example, the tests in `Movie.spec.js` and` LoginForm.spec.js` will be spotted and run by Jest here:
 
 ```
 -- components
@@ -36,28 +37,28 @@ Par défaut, Jest va lancer tous les tests présents dans un dossier `tests/unit
     |-- LoginForm.spec.js
 ```
 
-Quelques exemples pour illuster les méthodes globales proposées par Jest :
+Some examples to illustrate the global methods proposed by Jest:
 
 ```js
-// Exécuter un code une seule fois avant tous les tests - beforeAll(fn, timeout)
+// Run this once before all the tests - beforeAll(fn, timeout)
 beforeAll(async () => { await createDatabase() }, 500)
 
-// Exécuter un code une seule fois après tous les tests - afterAll(fn, timeout)
+// Run this once after all the tests - afterAll(fn, timeout)
 afterAll(async () => { await deleteDatabase() }, 500)
 
-// Exécuter un code avant chaque test - beforeEach(fn, timeout)
+// Run this once before each test - beforeEach(fn, timeout)
 beforeEach(() => { initState() }, 500)
 
-// Exécuté après chaque tests - beforeEach - afterEach(fn, timeout)
+// Run this once after each test - beforeEach - afterEach(fn, timeout)
 afterEach(async () => { await resetState() }, 500)
 
-// Un test unitaire - 'test' peut-être utilisé à la place de 'it'
-// Les mots clés .skip, only et .each sont utilsables
-test('should do something...', () => { 
-    expect(add(1, 2).toBe(3)
+// A unit test - 'test' keyword can be use instead of 'it'
+// Keywords .skip, .only et .each are available
+test('should do something...', () => {
+  expect(add(1, 2).toBe(3)
 })
 
-// Tester rapidement plusieurs cas avec le mot clé .each
+// Easily test multiple cases with the keyword .each
 test.each`
   a | b | expected
   1 | 1 | 2
@@ -67,9 +68,9 @@ test.each`
   expect(add(a, b)).toBe(expected)
 })
 
-// Grouper les tests par pan fonctionnel - describe(name, fn)
-// Les mots clés .skip, only et .each sont utilsables
-describe('Film Card', () => { 
+// Group tests - describe(name, fn)
+// Keywords .skip, .only et .each are available
+describe('Film Card', () => {
     test(...)
     test(...)
     ...
@@ -78,17 +79,17 @@ describe('Film Card', () => {
 
 ## Mocking
 
-Le **mocking** consiste à isoler le sujet de test en remplaçant par des simulacres toutes les briques extérieures avec lesquelles il interagit. Ainsi, en cas d'échec du test, on s'assure que le problème vient bien de la fonction testée et non d'un composant externe (réseau, bases de données, lib tierce etc.)
+The **mocking** consists of isolating the test subject by replacing with a simulator all the external bricks with which he interacts. Thus, in case of failure of the test, it is ensured that the problem comes from the tested function and not from an external component (network, databases, third party, etc.).
 
-Ci-dessous quelques exemples pour illuster les capacité de mocking de Jest :
+Below are some examples to illustrate Jest's mocking ability:
 
 ```js
-// Exemple de mocking d'une fonction locale
+// Mocking a local function
 import ApiService from '@/services/api.js'
 import FilmService from '@/services/film.js'
 
-test("la recherche de films ne retourne aucun résultat", done => {
-    // mock de l'api pour retourner une liste vide
+test('Movie search returns no results', done => {
+    // mock the API to return a empty list
     ApiService.api = jest.fn(() => Promise.resolve([]))
 
     FilmService.search("zzzz").then(results => {
@@ -99,10 +100,10 @@ test("la recherche de films ne retourne aucun résultat", done => {
 ```
 
 ```js
-// Exemple de mocking d'une librairie externe comme axios
+// Mocking of an external library like axios
 jest.mock('axios');
 
-test('login utilisateur', () => {
+test('user login', () => {
   axios.get.mockResolvedValue({ token: "123456" });
 
   return UserService.login({ name: "Bob", password: "p4ssw0rd" })
@@ -112,9 +113,9 @@ test('login utilisateur', () => {
 
 ## Vue Test Utils
 
-Pour faciliter l'écriture de tests pour des composants Vue, l'équipe fournit également [Vue Test Utils](https://vue-test-utils.vuejs.org/), la bibliothèque officielle d'utilitaires de tests unitaires pour Vue.js. Elle est accompagnée d'un [guide détaillé](https://vue-test-utils.vuejs.org/) pour vous aider à mettre en place vos tests dans des configurations personnalisées.
+To make it easier to write tests for Vue components, the team also provides [Vue Test Utils](https://vue-test-utils.vuejs.org/), the official library of unit test utilities for Vue.js. It comes with a [detailed guide](https://vue-test-utils.vuejs.org/) to help you set up your tests with custom configurations.
 
-Par exemple sur le composant suivant :
+For example on the following component:
 ```vue
 <template>
   <div>
@@ -139,49 +140,49 @@ export default {
 </script>
 ```
 
-Nous pouvons créer un test qui vérifie le contenu du composant :
+Let's create a test that checks the content of the component:
 
 ```js
 import { mount } from '@vue/test-utils'
 import Counter from './counter'
 
 describe('Counter', () => {
-  // Le "wrapper" contient le composant monté ainsi que des méthodes pour le tester
+  // This "wrapper" contains the mounted component as well as methods to test it
   const wrapper = mount(Counter)
 
   test('renders the correct markup', () => {
     expect(wrapper.html()).toContain('<span class="count">0</span>')
   })
 
-  // Vérification simple de présence d'éléments
+  // Simple check of presence of elements
   test('has a button', () => {
     expect(wrapper.contains('button')).toBe(true)
   })
 })
 ```
-      
-Cette blibliothèque propose une API pour tester les composants Vue, voici certaines des méthodes les plus utilisées :
 
-- `mount` : permet de monter le composant sur un DOM pour pouvoir le tester ;
-- `shallowMount` : comme mount mais sans monter les éventuels composants enfants ;
-- `createLocalVue` : crée une instance de Vue dans laquelle ajouter des composants, mixins et/ou plugins.
+This library offers an API to test the Vue components, here are some of the most used methods:
 
-La classe `Wrapper` représentant votre composant monté propose de nombreuses méthodes comme :
+- `mount`: creates a `Wrapper` that contains the mounted and rendered Vue component;
+- `shallowMount`: like `mount`, it creates a `Wrapper` that contains the mounted and rendered Vue component, but with stubbed child components;
+- `createLocalVue`: returns a Vue class for you to add components, mixins and install plugins without polluting the global Vue class.
 
-- `.html()`, `.text()`: récupère le contenu HTML ou texte
-- `.find()`, `.findAll()` : rechercher des éléments HTML dans le composant
-- `.setData()`, `.setMethods()`, `.setProps()`: modifier les options de votre composant
-- `.trigger()`: progager des évènements 
+The class `Wrapper` representing your mounted component offers method such as:
+
+- `.html()`, `.text()`: get the HTML or text content
+- `.find()`, `.findAll()`: search for HTML in the component
+- `.setData()`, `.setMethods()`, `.setProps()`: override options in your component
+- `.trigger()`: trigger events
 
 ::: tip
-Les méthodes décrites ci-dessus permettent de tester la plupart des cas simples. Pour plus d'informations se référer à la [documentation officielle](https://vue-test-utils.vuejs.org/).
+The methods described above make it possible to test most simple cases. For more information refer to the [official documentation](https://vue-test-utils.vuejs.org/).
 :::
 
 ## Jest + Vue Test Utils = 🚀
 
-La combinaison de Jest avec Vue Test Utils permet de tester des fonctionnements complexes comme le store, le routeur ou des appels externes.
+The combination of Jest with Vue Test Utils makes it possible to test complex operations such as the store, the router or external calls.
 
-L'exemple ci-dessous montre comment simuler des appels au store ainsi que des événements utilisateur comme des clics ou de la saisie :
+The following example shows how to simulate store calls as well as user events such as clicks or input:
 
 ```js
 import { shallowMount, createLocalVue } from '@vue/test-utils'
@@ -227,10 +228,10 @@ describe('Actions.vue', () => {
 })
 ```
 
-## TP: Tester le composant Film
+## Practical: Test the Film component
 
-1. Créer un fichier de spec de tests unitaires pour tester votre composant `Film.vue`.
-2. Dans votre test, monter le composant, ajouter une assertion basique et lancer les tests.
-3. Simuler les valeurs d'un film et vérifier le rendu HTML
-4. Ajouter le calcul de la couverture de code. Que constatez-vous ?
-5. **Bonus**: Tester le composant `LoginForm.vue`, en mockant les appels externes HTTPS ainsi que les appels au store et au routeur. Tester le cas nominal et d'erreur du login.
+1. Create a unit test spec file for your `Movie.vue` component.
+2. In your test, mount the component, add a basic assertion, and run the tests.
+3. Simulate the values ​​of a movie and check the HTML rendering.
+4. Add the calculation of the code coverage. What do you notice?
+5. **Bonus**: Test the `LoginForm.vue` component, simulating HTTPS external calls as well as calls to the store and the router. Test the nominal and login error case.
