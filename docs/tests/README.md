@@ -79,7 +79,7 @@ describe('Film Card', () => {
 
 ## Mocking
 
-The **mocking** consists of isolating the test subject by replacing with a simulator all the external bricks with which he interacts. Thus, in case of failure of the test, it is ensured that the problem comes from the tested function and not from an external component (network, databases, third party, etc.).
+The **mocking** consists of isolating the test subject by replacing it with a mockup that simulate all the external bricks it interacts with. Thus, in case of failure of the test, it is ensured that the problem comes from the tested function and not from an external component (network, databases, third party, etc.).
 
 Below are some examples to illustrate Jest's mocking ability:
 
