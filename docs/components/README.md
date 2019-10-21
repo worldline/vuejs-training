@@ -1,9 +1,10 @@
 # Components
 
-Jusqu'ici, vous avez vu les options `name` et `data` pour un composant. Nous allons aborder dans cette section toutes les autres.
+So far, you've seen the `name` and`data` options for a component. We will discuss in this section all the others.
 
-## Méthodes
-Les méthodes du composant sont déclarées dans la propriété `methods`. Elles peuvent alors être appelées depuis une expression dans le template ou depuis une autre méthode du composant avec `this.maMethode()`.
+## Methods
+
+The methods of the component are declared in the `methods` property. They can then be called from an expression in the template or from another method of the component with `this.myMethod()`
 
 ```vue{2,11,14}
 <template>
@@ -12,89 +13,89 @@ Les méthodes du composant sont déclarées dans la propriété `methods`. Elles
 <script>
 export default {
   data() {
-    return  {
-      name: 'Mark'
-    }
+    return {
+      name: "Mark"
+    };
   },
   methods: {
-    greet: function (event) {
-      // 'this' pointe vers l'instance de vue
-      this.say('Hi '+ this.name)
+    greet: function(event) {
+      // 'this' refers to the view instance
+      this.say("Hi " + this.name);
     },
-    say(message){
-      // si une méthode est indépendante de l'instance (pas de référence à 'this')
-      // il est pertinent de l'externaliser dans un module à part
-      alert(message + '!')
+    say(message) {
+      // if a method is independent of the instance (no reference to 'this')
+      // it is relevant to outsource it in a separate module
+      alert(message + "!");
     }
   }
-}
+};
 </script>
 ```
 
-## Computed et watchers
+## Computed and watchers
 
-Il est courant de vouloir placer au sein de vos templates des données qui peuvent être directement déduites à partir d'autres, ou formattées d'une certaine manière. S'il est possible de mettre n'importe quelle expression JavaScript dans une directive, une bonne pratique est de limiter la complexité des templates et la duplication de code en déclarant des **propriétés calculées** dans l'option `computed` du composant.
+It is common to want to place within your templates some data that can be directly deduced from other data, or formatted in a certain way. While it is possible to put any JavaScript expression in a directive, a good practice is to limit template complexity and code duplication by declaring **computed properties** in the component's `computed` option .
 
-Une propriété calculée est une donnée pouvant être calculée directement et de façon synchrone à partir d'autres données disponibles (props, data ou autres computed). Cela peut s'apparenter à un *getter*, mais il est aussi possible de spécifier un *setter* pour une propriété calculée. Vue identifiera les variables dont dépend une propriété calculée pour garantir la réactivité quand l'une des dépendances est mutée.
+A computed property is a property that can be computed directly and synchronously from other available properties (either `props`, `data` or other `computed` properties). This is similar to a _getter_, but it is also possible to specify a _setter_ for a computed property. Vue will identify the variables on which a computed property depends to set up the reactivity and update its value when one of its dependencies is mutated.
 
-Vue permet également de déclarer des observateurs pour exécuter une certaine fonction lorsqu'une propriété (prop, data ou computed) est mutée. On parle alors de **propriété observée** par un *watcher*. Les propriétés à observer sont à déclarer dans l'option `watch` du composant.
+Vue also lets you declare observers that run some specific code when a property (prop, data, or computed) is mutated. We call this an **observed property** by a _watcher_. The observed properties are declared in the `watch` option of the component.
 
 ```js{10,15}
 var vm = new Vue({
   el: "#app",
-  data(){
+  data() {
     return {
       count1: 0,
       count2: 0,
       lastUpdate: null
-    }
+    };
   },
   computed: {
-    total () {
-      return this.count1 + this.count2
+    total() {
+      return this.count1 + this.count2;
     }
   },
   watch: {
-    total () {
-      this.lastUpdate = new Date()
+    total() {
+      this.lastUpdate = new Date();
     }
   }
-})
+});
 ```
 
-Pour distinguer les cas d'usage computed vs watcher, on privilégiera le plus souvent les propriétés calculées lorsque c'est possible. Un watcher est plus approprié quand ce qui vous intéresse lors d'une mutation n'est pas tant la nouvelle valeur, mais **le moment où elle survient** ; pour effectuer des requêtes serveur ou des actions externes à Vue par exemple.
+To distinguish the use cases of computed vs watcher, we will privilege most often the computed properties whenever possible. A watcher is more appropriate when what interests you in a mutation is not so much the new value, but **the moment it occurs**; to perform server requests or external actions for example.
 
-## Cycle de vie d'un composant
+## Component Lifecycle
 
-Vue travaille avec les composants suivant un schéma bien précis, de leur création jusqu'à leur destruction en passant par les mises à jour de données et leur insertion dans le DOM. Voici le schéma complet:
+Vue follows a pattern when working with components, from their creation to their destruction through data updates and DOM insertion. Here is the complete diagram :
 
 ![Vue Lifecycle](../assets/lifecycle.png)
 
-Chaque étape du cycle de vie d'un composant appelle deux fonctions callback, l'une juste avant que le framework intervienne, et l'autre juste après. On peut via ces callbacks définir un comportement spécifique pour le composant à ces moments précis:
+Each stage of the life cycle of a component calls two callback functions, one just before the framework does its internal work, and the other just after. These callbacks can be used to define a specific behavior for the component at these precise moments:
 
 ```js{2}
 export default {
-  mounted () {
-    console.log(`Le composant a été inséré dans le DOM,
-        this.$el pointe vers l'élément correspondant.`)
-    this.$el.querySelector('input').focus()
+  mounted() {
+    console.log(`This component has been mounted on the DOM,
+        this.$el refers to the corresponding DOM element.`);
+    this.$el.querySelector("input").focus();
   }
-}
+};
 ```
 
-Typiquement, on utilise `created` comme l'équivalent d'une fonction constructeur, pour initialiser certaines données ou lancer des requêtes HTTP. On utilise `mounted` lorsque certaines étapes à l'initialisation nécessitent d'interagir avec le DOM. Enfin, on utilise `destroyed` pour faire le ménage lorsque le composant n'est plus utilisé, par exemple supprimer des event listeners globaux pour éviter des fuites mémoire. Les autres callbacks sont réservés à des cas d'usage plus spécifiques.
+Typically, we use `created` as the equivalent of a constructor function, to initialize certain data or to make some HTTP requests. We use `mounted` when some initialization steps need to interact with the DOM. Finally, we use `destroyed` to clean up when the component is no longer used, for example delete global event listeners to avoid memory leaks. Other callbacks are reserved for more specific use cases.
 
-## Communication entre composants
+## Communication between components
 
-### Communication descendante avec les **props**
+### Parent to Child communication with **props**
 
-Comme tout autre élément HTML, les composants Vue peuvent recevoir des arguments, que l'on appelle les **props** ou propriétés. On se sert des props pour transmettre de l'information d'un composant parent à un composant enfant.
+Like any other HTML element, Vue components can receive arguments, called **props** or properties. Props are used to convey information from a parent component to a child component.
 
 ```vue
-<ma-popin title="Confirmer l'opération" :actions="confirmActions"></ma-popin>
+<my-popin title="Confirm action" :actions="confirmActions"></my-popin>
 ```
 
-Vous devez déclarer dans l'option `props` du composant la liste des propriétés acceptées. Les props reçues peuvent être utilisées dans les templates ou les méthodes de la même manière que les `data`. La différence est que l'on évitera de réassigner ou muter des props: puisque ces valeurs proviennent du composant parent, il faut plutôt communiquer avec ce parent (*communication ascendante*) pour qu'il effectue lui-même le changement. La valeur changée sera alors automatiquement reportée sur les composants enfant.
+You must declare the list of accepted properties in the `props` option of the component. Received props can be used in templates or methods just like properties declared in `data`. The difference is that we will avoid reassigning or mutating props: since these values come from the parent component, we must rather communicate with this parent (_ascending communication_) for it to make the change itself. The changed value will then be automatically reported to the child components.
 
 ```vue{11}
 <template>
@@ -106,25 +107,25 @@ Vous devez déclarer dans l'option `props` du composant la liste des propriété
 
 <script>
 export default {
-  name: 'blog-post',
-  props: ['title','content']
-}
+  name: "blog-post",
+  props: ["title", "content"]
+};
 </script>
 ```
 
 ```vue{2,4}
-<!-- dans un template parent -->
+<!-- in parent component template -->
 <blog-post :title="article.title" :content="article.content" />
-<!-- raccourci équivalent -->
+<!-- equivalent shorthand syntax -->
 <blog-post v-bind="article" />
 ```
 
-Facultativement, vous pouvez indiquer le type des props ou fournir des options de validation. Vue rejettera les valeurs non valides avec des messages d'erreur explicites, ce qui s'avère utile lorsque l'on utilise des composants d'origine tierce. Pour plus d'informations sur les options acceptées, [se référer à la documentation](https://vuejs.org/v2/guide/components-props.html).
+Optionally, you can specify the type of props or provide validation options. Vue will reject invalid values for props with explicit error messages, which is useful when using third-party components. For more information on the accepted options, [refer to the documentation](https://vuejs.org/v2/guide/components-props.html).
 
 ```vue
 <script>
 export default {
-  name: 'my-account',
+  name: "my-account",
   props: {
     propA: Number, // null matches any type
     propB: [String, Number], // multiple valid types
@@ -137,19 +138,19 @@ export default {
       validator: value => value.startsWith("_")
     }
   }
-}
+};
 </script>
 ```
 
-### Communication ascendante avec les **events**
+### Child to Parent Communication with **events**
 
-Bien qu'un composant enfant puisse techniquement accéder à son composant parent, il s'agit d'une mauvaise pratique car cela induit une liaison forte entre les composants: le composant perd en généricité, il est plus difficilement réutilisable et le risque de boucle infinie est accentué.
+Although a child component can technically access its parent component, it is a bad practice because it induces a tight coupling between the components: the component loses in genericity, it is more difficult to reuse and the risk of infinite loop is higher.
 
-Les composants enfant communiquent donc avec leurs parents au moyen d'**événements**: ils émettent des évènements qui se propagent de parent en parent, de la même manière que les événements du DOM comme un clic de souris. **Un bon composant est agnostique de son environnement**, il ne connaît pas ses parents et ne sait pas si les événements qu'il emet vont être interceptés (ou "écoutés").
+Child components communicate with their parents by using **events**: they emit events that propagate from parent to parent, in the same way as DOM events like a mouse click. **A good component is agnostic of his environment**, it does not know his parents and does not know if the events it emets will ever be intercepted (or "listened to").
 
-Pour **émettre** un événement, on utilise la méthode `$emit` disponible dans tous les composants Vue. Celle-ci prend en paramètre le nom de l'événement, et optionnellement une valeur à transmettre. Si vous avez besoin de transmettre plusieurs valeurs, encapsulez-les dans un objet.
+To **emit** an event, use the `$emit` method available in all Vue components. It takes as parameter the name of the event, and optionally a value (_payload_) to transmit. If you need to pass multiple values, encapsulate them in an object.
 
-Pour **écouter** un événement émis par un composant enfant, on utilise la même directive `v-on` que pour les événements du DOM. La valeur transmise avec l'événement peut être récupérée via `$event`.
+To **listen** to an event emitted by a child component, we use the same `v-on` directive as for DOM events, or `@yourEvent` shorthand. The value passed with the event can be retrieved via the `$event` variable in the directive value.
 
 ```vue{21}
 <template>
@@ -164,91 +165,91 @@ Pour **écouter** un événement émis par un composant enfant, on utilise la m�
 
 <script>
 export default {
-  name: 'blog-post',
-  data () {
+  name: "blog-post",
+  data() {
     return {
-      comment: ''
-    }
+      comment: ""
+    };
   },
   methods: {
-    sendComment () {
-      this.$emit('comment', this.comment)
+    sendComment() {
+      this.$emit("comment", this.comment);
     }
   }
-}
+};
 </script>
 ```
 
 ```vue{2}
-<!-- dans un template parent -->
+<!-- in a parent component template -->
 <blog-post @comment="onNewComment($event)" />
 ```
 
-## Slots et distribution de contenu
+## Slots and Content Distribution
 
-Comme les composants Vue sont déclarés sous forme de balises, on peut leur passer des attributs, les props, mais également placer d'autres éléments ou contenu à l'intérieur de ces balises:
+Since Vue components are declared as tags, we can pass them attributes, props, but also place other elements or content inside these tags:
 
 ```vue
-<navigation-link url="/profile">Mon profil<navigation-link>
+<navigation-link url="/profile">My profile<navigation-link>
 ```
 
-Le contenu enfant est alors placé dans un conteneur qu'on appelle le **slot par défaut**. On peut alors le réinjecter depuis le template du composant avec `<slot></slot>`. Dans l'exemple ci-dessus, l'élément slot sera remplacé au rendu par le texte "Mon profil".
+The tag content is then placed in a container called the **default slot**. We can then reinject it in the child component template with `<slot> </slot>`. In the above example, the slot element will be replaced when rendered by the text "My Profile".
 
-Les slots peuvent contenir n'importe quel contenu HTML, y compris d'autres composants Vue. Ils sont très utiles pour déclarer des composants ayant une fonction de *contenant* plutôt que de *contenu*, comme par exemple des boîtes de dialogue ou des éléments de mise en page.
+Slots can contain any HTML content, including other Vue components. They are very useful for declaring components that serve as a _container_ rather than _content_, such as dialog windows or layout elements.
 
 ```vue{5,9}
 <!-- MyPopin.vue -->
 <template>
-<div class="popin">
-  <div class="popin-header">
-    <slot name="header" />
-  </div>
+  <div class="popin">
+    <div class="popin-header">
+      <slot name="header" />
+    </div>
 
-  <main class="popin-content">
-    <slot />
-  </main>
-</div>
+    <main class="popin-content">
+      <slot />
+    </main>
+  </div>
 </template>
 ```
 
 ```vue{3,4}
-<!-- dans un template parent -->
+<!-- in a parent component template -->
 <my-popin>
   <h1 slot="header">Popin title</h1>
   <p>Popin content</p>
 </my-popin>
 ```
 
-En plus du slot par défaut, vous pouvez **nommer** certains slots pour distribuer du contenu à plusieurs emplacements différents, au moyen de la directive `slot` dans le contenu à placer et de l'attribut `name` de l'élément `<slot>` pour identifier le contenant correspondant.
+In addition to the default slot, you can **name** certain slots to distribute content to multiple locations, by using the `v-slot` directive in the content to be placed and the `name` attribute of the `<slot>` element to identify the corresponding container.
 
-## Références d'éléments
+## Elements References
 
-Pour récupérer une référence vers un élément ou un composant enfant dans un template, utilisez la directive `ref`. Une fois le composant monté sur le DOM, l'élément sera accessible via `vm.$refs[votreReference]`.
+To retrieve a reference to an element or child component in a template, use the `ref` directive. Once the component is mounted on the DOM, the element will be accessible via `vm.$refs[yourReference]`.
 
 ```vue
-<p ref="label">Mon paragraphe</p>
-<composant-enfant ref="enfant"></composant-enfant>
+<p ref="label">My paragraph</p>
+<my-child-component ref="child"></my-child-component>
 ```
 
 ```js
-vm.$refs.label // reference à l'élément paragraphe
-vm.$refs.enfant // reference à l'instance de ComposantEnfant
+vm.$refs.label; // reference to paragraph element
+vm.$refs.child; // reference to MyChildComponent instance
 ```
 
-## API complète d'un composant Vue
+## Complete API of Vue Components
 
 ```js
 export default {
-  name: 'MonComposant', // pour aider lors du débogage
-  components: {}, // composants enfant déclarés
-  mixins: [], // partager des fonctionnalités communes entre composants
-  extends: {}, // créer des composants sur la base d'autres composants
-  props: {}, // propriétés du composant
-  data() {}, // variables d'état du composant
-  computed: {}, // propriétés calculées
-  watch: {}, // propriétés observées
-  methods: {}, // méthodes
-  // hooks de cycle de vie du composant
+  name: "MyComponent", // useful for debugging purposes
+  components: {}, // declared child components
+  mixins: [], // share common features between components
+  extends: {}, // create components based on other ones
+  props: {}, // properties passed from parent
+  data() {}, // component internal state variables
+  computed: {}, // computed properties
+  watch: {}, // observed properties
+  methods: {}, // component own methods
+  // component lifecycle hooks
   beforeCreate() {},
   created() {},
   beforeMount() {},
@@ -259,68 +260,73 @@ export default {
   deactivated() {},
   beforeDestroy() {},
   destroyed() {},
-  errorCaptured() {},
-}
+  errorCaptured() {}
+};
 ```
 
-### Propriétés d'instance de vue
+### Vue instance properties
+
+::: tip
+`vm` is often used as a convention to refer to a Vue component instance
+:::
 
 - `vm.$data`
 - `vm.$props`
 - `vm.$slots`
 - `vm.$refs`
 - `vm.$listeners`
-- `vm.$options`: les options passées au composant
-- `vm.$el`: référence à l'élément HTML racine sur lequel le composant est monté
-- `vm.$parent`: composant parent
-- `vm.$root`: composant racine
-- `vm.$children`: composants enfant
+- `vm.$options`: all the component options
+- `vm.$el`: reference to the root HTML element on which the component is mounted
+- `vm.$parent`: reference to parent component
+- `vm.$root`: reference to root component
+- `vm.$children`: array of child components
 
-### Méthodes d'instance de vue
+### Vue instance methods
 
-- `vm.$watch`: déclare programmatiquement un watcher
-- `vm.$set`: assigne une donnée en forçant la réactivité
-- `vm.$delete`: supprime une donnée en forçant la réactivité
-- `vm.$on`: déclare programmatiquement un listener
-- `vm.$once`: déclare un listener avec le modificateur once
-- `vm.$off`: supprime un listener
-- `vm.$emit`: émet un événement
-- `vm.$mount`: attache le composant à un élément du DOM
-- `vm.$destroy`: supprime l'instance de composant
-- `vm.$forceUpdate`: force la mise à jour complète du composant (à éviter)
-- `vm.$nextTick`: reporte l'exécution d'une fonction au prochain tick (boucle d'événements)
+- `vm.$watch`: declare programmatically a watcher
+- `vm.$set`: assign a property while ensuring reactivity
+- `vm.$delete`: unassign a property while ensuring reactivity
+- `vm.$on`: declare programmatically an event listener
+- `vm.$once`: declare a listener with modifier `once`
+- `vm.$off`: removes an event listener
+- `vm.$emit`: emets an event
+- `vm.$mount`: bind the component to a DOM element
+- `vm.$destroy`: destroys the component instance
+- `vm.$forceUpdate`: force complete update of the component (_not recommended_)
+- `vm.$nextTick`: report a function call to next tick in the event loop
 
-## TP: Décomposer son application
+## Practical exercise: Decompose our application
 
-1. Refactorez le code existant en créant un composant `Film.vue` servant à afficher les détails d'un film. Ajoutez des `props` pour passer les données de chaque film au composant.
-2. Créer un autre composant `SearchFilm.vue` contenant un formulaire de recherche ainsi que la liste de `Film` en résultats dessous:
+1. Refactor the existing code by creating a `Film.vue` component used to display the details of a movie. Add `props` to pass the data from each movie to the component.
+2. Create another `SearchFilm.vue` component containing a search form and the `Film` list below:
 
 ```vue
 <template>
   <div id="search-film">
     <form>
-      <label for="search">Rechercher :</label>
-      <input id="search" type="text">
+      <label for="search">Search :</label>
+      <input id="search" type="text" />
     </form>
 
     <ul class="films">
-      <!-- la liste de <Film> -->
+      <!-- list of <Film> -->
     </ul>
   </div>
 </template>
 ```
 
-3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options associées dans les sous-composants pour alléger au maximum le code de `App`.
+3. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the data and other associated options in the child components to reduce the size of `App` code.
+4. Display the `SearchFilm` component only if the user is logged in.
 
-4. Afficher le composant `SearchFilm` seulement si l'utilisateur est logué.
+**Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
 
-**Question** : *à votre avis, quelles difficultés pourriez-vous rencontrer pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
+5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample movies in this list.
+6. **Bonus**: In the `searchFilms` method, instead of putting all the movies at once in`this.films`, try to assign them one by one in this way:
 
-5. Assignez la variable `films` à une liste vide `[]` initialement. A la soumission du formulaire de recherche, lancez une méthode  `searchFilms` qui mettra les 3 films d'exemple dans cette liste.
-6. **Bonus**: Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon:
 ```js
 this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }
 this.films[1] = { title: 'Blade Runner', ... }
 this.films[2] = ...
 ```
-**Question**: *Pourquoi la vue ne se met-elle plus à jour alors que la liste semble être remplie correctement ?*
+
+**Question**: _Why does the view no longer update while the list appears to be filled correctly ?_

@@ -265,6 +265,10 @@ export default {
 
 ### Propriétés d'instance de vue
 
+::: tip
+`vm` est souvent utilisé par convention comme référence à une instance de composant Vue.
+:::
+
 - `vm.$data`
 - `vm.$props`
 - `vm.$slots`
