@@ -14,7 +14,7 @@
     "deploy": "node ./docs/deploy.js"
   },
   "dependencies": {
-    "vuepress": "^1.0.0",
+    "vuepress": "^1.2.0",
     "vuepress-plugin-global-toc": "^1.0.1"
   },
   "devDependencies": {
