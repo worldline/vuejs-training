@@ -4,7 +4,7 @@ Nous avons vu dans la section précédente comment communiquaient les composants
 
 ## Pourquoi une solution de gestion d'état ?
 
-![Problème multiple vues avec props partagés](../../assets/intro-state-management.png)
+![Problème multiple vues avec props partagés](../../assets/intro-state-management_fr.png)
 
 - parce que propager une variable en `props` d'un composant parent aux composants petits-enfants et arrière-petits-enfants devient vite fastidieux
 - pour pouvoir partager de l'information entre différents arbres de composants

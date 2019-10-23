@@ -1,8 +1,8 @@
 # Reactivity
 
-La réactivité est le mécanisme qui permet au framework de détecter lorsque des données utilisées sur la page sont modifiées (*mutées*), et de mettre à jour la page de façon optimale. C'est donc une mécanique cruciale pour tout framework web, et il convient d'en analyser le fonctionnement pour comprendre ses forces et ses limites.
+Reactivity is the mechanism that allows the framework to detect when data used on the page is changed (_mutated_), and to update the page optimally to reflect these changes. It is therefore a crucial mechanism for any web framework, so we are going to analyze it to understand its strengths and limitations.
 
-Vue fournit une réactivité automatique, c'est-à-dire qu'il n'est pas nécessaire au développeur de déclencher manuellement la mise à jour de la vue après avoir muté des données. Cette réactivité est basée sur 2 fonctionnalités de JavaScript: les **getters/setters** et les **Proxies**.
+Vue provides automatic reactivity. That means it is not necessary for the developer to manually trigger the view updates after mutating data. This reactivity is based on 2 features of JavaScript: **getters / setters** and **Proxies**.
 
 ## Getters / setters (ECMAScript 5)
 
@@ -10,43 +10,42 @@ Vue fournit une réactivité automatique, c'est-à-dire qu'il n'est pas nécessa
 let name = "joe";
 const user = {
   get name() {
-    console.log("accès en lecture à la propriété")
-    return name
+    console.log("read access to property");
+    return name;
   },
   set name(value) {
-    console.log("accès en écriture à la propriété")
-    name = value
+    console.log("write access to property");
+    name = value;
   }
-}
+};
 ```
 
-En JavaScript, les propriétés d'un objet peuvent être déclarées avec un getter et un setter, qui sont des fonctions exécutées à l'accès en lecture et écriture à cette propriété. Vue.js les utilise en redefinissant des getters/setters pour toutes les data et props des composants, de façon à identifier les consommateurs de ces données ainsi que le moment où celles-ci sont mises à jour.
+In JavaScript, the properties of an object can be declared with a getter and a setter, which are functions executed at read and write access to this property. Vue.js uses them by redefining getters / setters for all data and props of the components, in order to identify the consumers of these data as well as the moment when they are updated.
 
-La principale limitation des getters/setters est qu'il faut connaître au préalable le nom des variables pour leur assigner un getter/setter. C'est la raison pour laquelle **il est impératif de déclarer en data ou en props toutes les variables utilisées par un composant si on veut qu'elles soient réactives**.
+The main limitation of getters / setters is that you must initially know the name of all the variables to be able to assign them a getter / setter. This is why **it is imperative to declare in data or props all the variables used by a component if you want them to be reactive**.
 
-Dans les cas particuliers où il n'est pas possible de déclarer une variable au préalable, comme par exemple un `Array` extensible de longueur indéfinie ou une `Map`, Vue propose la méthodes `Vue.set` ou `vm.$set` pour assigner une valeur à une propriété en forçant la réactivité.
+In special cases where it is not possible to declare a variable in advance, for example an `Array` of indefinite length or a `Map`, Vue provides the`Vue.set` or `vm.$set` methods to assign a value to a property while ensuring reactivity.
 
-
-![Principe de réactivité basé sur les getters/setters](../assets/getters-setters.jpg)
+![Reactivity principle based on getters/setters](../assets/getters-setters.jpg)
 
 ## Proxies (ECMAScript 6)
 
 ```js
-const original_user = { name: "joe" }
+const original_user = { name: "joe" };
 const user = new Proxy(original_user, {
   get(obj, key) {
-    console.log(`accès en lecture à la propriété ${key}`)
-    return Reflect.get(obj, key)
+    console.log(`read access to property ${key}`);
+    return Reflect.get(obj, key);
   },
-  set (obj, key, value) {
-    console.log(`accès en écriture à la propriété ${key} avec la valeur ${value}`)
-    return Reflect.set(obj, key, value)
+  set(obj, key, value) {
+    console.log(`write access to property ${key} with value ${value}`);
+    return Reflect.set(obj, key, value);
   }
-})
+});
 ```
 
-Les Proxies sont une fonctionnalité récente de JavaScript apparue avec la spécification ES2015. Ils permettent de s'abstraire de toutes les limitations des getters/setters, en donnant un contrôle complet sur toutes les opérations permettant de manipuler un objet. Puisqu'ils ne sont pas supportés par les anciens navigateurs comme Internet Explorer, ils ne seront introduits totalement que dans Vue 3.0, dont la sortie est prévue fin 2019. Cela devrait résoudre la plupart des limitations actuelles de la réactivité dans Vue 2.
+Proxies are a recent feature of JavaScript that appeared with the ES2015 specification. They allow you to get away from all the limitations of getters / setters, giving complete control over all operations used to manipulate an object. Since they are not supported by older browsers like Internet Explorer, they will only be fully introduced in Vue 3.0, which is scheduled for release in 2020. This should resolve most of the current limitations of reactivity in Vue 2.
 
-## Détail du système de réactivité de Vue
+## Details of Vue reactivity system
 
-![Schéma du système de réactivité de Vue](../assets/vue-reactivity.jpg)
+![Vue reactivity system diagram](../assets/vue-reactivity.jpg)
