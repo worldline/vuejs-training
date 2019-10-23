@@ -2,25 +2,25 @@
 
 ## Architecture
 
-Dans une *Single Page Application (SPA)*, la communication avec le serveur se fait via des requêtes HTTP asynchrones (*AJAX*) ou des protocoles plus spécialisés comme les WebSocket. Nous allons voir comment faire ces requêtes réseau depuis une application Vue.
+In a *Single Page Application (SPA)*, communication with the server is done via asynchronous HTTP requests (*AJAX*) or more specialized protocols such as WebSocket. We will see how to make these network requests from a Vue application.
 
-Vue.js est un framework qui se focalise sur l'interface utilisateur et ne propose rien de particulier en ce qui concerne les échanges avec le serveur, préférant laisser ce choix d'implémentation au développeur. Le moyen le plus simple de lancer une requête HTTP asynchrone en JavaScript est d'utiliser [la méthode `fetch`](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch). Elle n'est pas supportée sur Internet Explorer mais il existe des polyfills pour compléter le support. Comme alternative, vous pouvez passer par d'autres bibliothèques tierces plus complètes telles que [Axios](https://github.com/axios/axios), qui est recommandée par l'équipe de Vue.
-
-::: tip
-On évitera de faire les appels réseau directement depuis le code d'un composant. Cela empêche de réutiliser le code facilement si un autre composant doit faire le même appel. Optez plutôt pour systématiquement séparer la logique applicative de la logique de vos vues.
-
-Par convention, on code la logique applicative dans des fichiers JS appelés *services*, répartis selon les grands pans fonctionnels de votre application et placés dans un dossier `src/services`
-:::
-
-## TP: Echanger avec un back-end
-
-Nous allons nous servir d'une API fournie par un serveur (le *back-end*) pour authentifier les utilisateurs et rechercher des films. Ce back-end a déjà été développé et déployé sur Heroku.
+Vue.js is a framework that focuses on the user interface and offers nothing special to exchanges with a server. This choice of implementation is left to the developer. The easiest way to make an asynchronous HTTP request in JavaScript is to use [the `fetch` method](https://developer.mozilla.org/en/docs/Web/API/Fetch_API/Using_Fetch). It is not supported on Internet Explorer but there are polyfills to complete the support. As an alternative, you can use other more complete third-party libraries such as [Axios](https://github.com/axios/axios), which is recommended by the Vue team.
 
 ::: tip
-Le contrat d'interface du back-end est disponible ici: [api-docs](https://vue-js-backend.herokuapp.com/api-docs)
+Network calls should not be done directly from the code of a component. This prevents reuse of the code easily if another component has to make the same call. Instead, opt to systematically separate the application logic from the logic of your views.
+
+By convention, we code the application logic in JS files called *services*, distributed according to the large functional parts of your application and placed in a folder `src/services`
 :::
 
-1. Créer un service générique `services/api.js` permettant d'appeler le backend, avec ce contenu:
+## Practical Work: Communicate with a back-end
+
+We will use a server-provided API (the *back-end*) to authenticate users and search for movies. This back-end has already been developed and deployed on Heroku.
+
+::: tip
+The back-end interface contract is available here: [api-docs](https://vue-js-backend.herokuapp.com/api-docs)
+:::
+
+1. Create a generic service (`services/api.js`) to call the backend, with this content:
 
 ```js
 import store from '@/store.js'
@@ -41,16 +41,16 @@ export async function api (url, params = {}) {
     let response = await fetch(BASE_URL + url, params)
     let json = await response.json() || {}
     if (!response.ok){
-        let errorMessage = json.error ? json.error.error || json.error : response.status;        
-        throw new Error(errorMessage);
+        let errorMessage = json.error ? json.error.error || json.error : response.status
+        throw new Error(errorMessage)
     }
     return json
 }
 ```
 
-Il n'y a pas de code spécifique à Vue ici, il s'agit d'une fonction utilitaire autour de la méthode `fetch` branchée sur notre back-end. Le header `Authorization` est utilisé pour envoyer le token d'authentification au back-end. Les autres options servent à configurer le cache HTTP et les autorisations cross-origin à appliquer.
+There is no code specific to Vue here, it is a utility function around the `fetch` method to communicate with our backend. The `Authorization` header is used to send the authentication token to the backend. Other options are used to configure HTTP caching and the cross-origin permissions to apply.
 
-2. Créer un service `services/UserService.js` qui exploitera les endpoints de l'API concernant l'inscription et le login des utilisateurs:
+2. Create a `services/UserService.js` service that will use API endpoints for user registration and login:
 
 ```js
 import { api } from '@/services/api.js'
@@ -108,21 +108,21 @@ export default {
 }
 ```
 
-4. Notez qu'en cas d'erreur, on stocke le message d'erreur retourné dans une variable `error`. Déclarez cette variable dans les `data` du composant et utilisez-là dans le template pour afficher le message d'erreur en cas d'échec d'authentification.
+4. Note that in the event of an error, the error message is stored in an `error` variable. Declare this variable in the `data` of the component and use it in the template to display the error message in case of authentication failure.
 
-4. Notez également que la réponse du back-end au login contient un token permettant d'authentifier l'utilisateur, qui est transmis au store dans les paramètres de l'action `login`. Modifiez `store.js` pour stocker ce token dans le store, en ajoutant une mutation `setToken` appelée par l'action `login`.
+5. Note also that the response of the back-end after login contains a token to authenticate the user, which is passed to the store in the parameters of the `login` action. Modify `store.js` to store this token, adding a` setToken` mutation called by the `login` action.
 
-5. Le service `api` est déjà configuré pour ajouter ce token en header `Authorization` des requêtes. Vérifiez que le token est bien envoyé en header HTTP via les outils développeur de votre navigateur.
+6. The `api` service is already configured to add this token to the request authorization header. Check that the token is sent as a HTTP header via the developer tools of your browser.
 
-6. **Bonus**: Modifier l'action `logout` du store pour supprimer le token et les infos utilisateur du store à la déconnexion, et rediriger vers le formulaire de login.
+7. **Bonus**: Modify the store's logout action to remove the token and user info from the store upon logout, and redirect to the login form.
 
-7. Créez un service `FilmService` avec une méthode pour rechercher les films, en suivant la documentation de l'API (`GET /movies/search`).
+8. Create a `MovieService` service with a method to search for movies, following the API documentation (` GET /movies/search`).
 
-8. Modifier la page de recherche de films pour appeler le back-end et permettre à l'utilisateur d'entrer le nom d'un film, et d'avoir tout le détail de ce film en sortie.
+9. Change the movie search page to call the back-end and allow the user to enter the name of a movie, and get all the details for this movie.
 
 ::: tip
 
-Si vous avez découvert qu'il existait un film appelé *Undefined*, c'est que vous vous êtes trompés quelque-part :)
+If you discovered that there was a movie called *Undefined*, then you were wrong somewhere :)
 
 ![Undefined, the movie](../assets/undefined.jpg)
 :::
