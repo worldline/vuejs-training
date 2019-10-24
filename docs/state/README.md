@@ -1,28 +1,28 @@
 # State management
 
-Nous avons vu dans la section précédente comment communiquaient les composants parents et enfants. Toutefois, à mesure que les applications grandissent et se complexifient, des composants très éloignés dans l'arborescence peuvent être amenées à manipuler les mêmes données. Il devient alors très fastidieux de les faire communiquer entre eux pour travailler sur les mêmes références de données. C'est pourquoi il existe des solutions plus ou moins complexes de gestion d'état, ou *state management*.
+We saw in the previous section how parent and child components communicate. However, as applications grow and become more complex, components that are far away from each other in the component tree may have to manipulate the same data. It then becomes very tedious to make them share common data references. That's why there are more or less complex _state management_ solutions.
 
-## Pourquoi une solution de gestion d'état ?
+## Why a state management solution ?
 
-![Problème multiple vues avec props partagés](../assets/intro-state-management.png)
+![Problem with shared props on multiple views](../assets/intro-state-management.png)
 
-- parce que propager une variable en `props` d'un composant parent aux composants petits-enfants et arrière-petits-enfants devient vite fastidieux
-- pour pouvoir partager de l'information entre différents arbres de composants
-- pour déléguer la gestion de données à un service accessible depuis tous les composants
-- pour pouvoir persister automatiquement les données (en `localStorage` par ex.)
-- pour historiser les états de l'application, faire des rollbacks ou une fonctionnalité *Annuler*
-- pour aider au débogage, aux logs, au monitoring ou encore à la transmission de rapports d'erreur
+- because propagating some data ad `props` of a parent component to the grandchildren and great-grandchildren components quickly becomes tedious
+- to be able to share information between different component trees
+- to delegate data management to a service reachable from all components
+- to be able to persist the data automatically (in `localStorage` for example)
+- to log application states, or rollback to a previous state with a _Cancel_ feature
+- to help debug, log, monitor or send error reports
 
-## Données partagées par référence
+## Data shared by reference
 
-La solution la plus simple au problème de gestion d'état est de stocker les données au sein d'un ou plusieurs objets déclarés dans leur propre module. Tous les composants voulant manipuler ces données peuvent alors importer l'objet et modifier son contenu en travaillant sur la même référence.
+The simplest solution to the state management problem is to store the data within one or more objects declared in their own module. All components that want to manipulate this data can then import the object and modify its content while working on the same reference.
 
 ```js
 /** services/state.js **/
 export const state = {
-    user: null,
-    loggedIn: false
-}
+  user: null,
+  loggedIn: false
+};
 ```
 
 ```js
@@ -41,9 +41,9 @@ export default {
 ```
 
 ::: tip
-Notez qu'on a intentionnellement déclaré `data` comme un objet et non une fonction, afin que les instances du composant utilisent la même référence de données partagées.
+Note that we have intentionally declared `data` as an object and not a function, so that instances of the component use the same shared data reference.
 
-Cependant, on peut aussi tout à fait mélanger donnés locales et données partagées:
+However, we can also mix local data and shared data:
 
 ```js
 data(){
@@ -53,156 +53,161 @@ data(){
   }
 }
 ```
+
 :::
 
-Cette solution peut faire l'affaire dans de nombreux cas, mais montre rapidement ses limites au débogage lorsqu'un grand nombre de composants différents interagissent avec les données. En effet, les mutations des objets d'état ne sont tracées nulle part, il est donc difficile de trouver la source d'un bug.
+This solution can do the job in many cases, but quickly shows its limitations when debugging with many different components interacting with the same data at the same time. Indeed, mutations of state objects are not logged anywhere, so it is difficult to find the origin of a bug.
 
-## Store et mutations contrôlées
+## Store and controled mutations
 
-Un pattern un peu plus avancé est de déclarer un objet magasin (*store*) qui encapsule l'objet d'état et sert d'interface de contrôle. L'objet d'état n'est pas directement accessible de l'extérieur par référence, mais le store fournit des méthodes pour interagir avec: typiquement un getter/setter. On pourra ensuite ajouter dans ces méthodes des instructions de débogage, monitoring, mesure de performance etc.
+A slightly more advanced pattern is to declare a _store_ object that encapsulates the state object and serves as a control interface. The state object is not directly reachable from the outside by reference, but the store provides methods to interact with: typically a getter / setter. We can then add in these methods other features for debugging, monitoring, performance measurement etc.
 
 ```js
 /** services/store.js **/
-const state = { message: "bonjour" } // pas d'export pour l'état
+const state = { message: "hello" }; // no export for state
 
 export const store = {
-  get(prop){
-    if(DEBUG_MODE) console.log("[store] get", prop)
-    return state[prop]
+  get(prop) {
+    if (DEBUG_MODE) console.log("[store] get", prop);
+    return state[prop];
   },
-  set(prop, value){
-    if(DEBUG_MODE) console.log("[store] set", prop)
-    state[prop] = value
+  set(prop, value) {
+    if (DEBUG_MODE) console.log("[store] set", prop);
+    state[prop] = value;
   }
-}
+};
 ```
 
 ```vue
 <!-- MyComponent.vue -->
 <script>
-import store from "@/services/store.js"
+import store from "@/services/store.js";
 
 export default {
-  data(){
+  data() {
     return {
       privateState: {},
       store
-    }
+    };
   },
   computed: {
-    message(){
-      return this.store.get("message")
+    message() {
+      return this.store.get("message");
     }
   },
   methods: {
-    exit(){
-      this.store.set("message", "bye!")
+    exit() {
+      this.store.set("message", "bye!");
     }
   }
-}
+};
 </script>
 ```
 
 ## Vuex
 
-Une fois que l'on dispose d'un store, on est tenté de l'enrichir de nombreuses fonctionnalités en profitant de la centralisation des mutations d'état. Cela a été un terrain de recherche pour de nombreuses équipes de développement, notamment en dehors de l'écosystème Vue avec par exemple les travaux sur l'architecture *Flux* par l'équipe de React.
+Once you have a store pattern, it is tempting to enrich it with many features and take advantage of the centralization of state mutations. This has been a field of research for many development teams, especially outside Vue ecosystem, for example the work on the _Flux_ architecture done by the React team.
 
-[Vuex](https://vuex.vuejs.org/) est l'aboutissement de ce pattern de store centralisé. C'est solution officielle de gestion d'état fournie par l'équipe de Vue. Vuex ne trouvera pas forcément sa place dans tous les projets Vue, mais c'est un très bon atout dans de grosses applications manipulant beaucoup de données.
+[Vuex](https://vuex.vuejs.org/) is the culmination of this centralized store pattern. It is official state management solution provided by the Vue team. Vuex will not necessarily find its place in all Vue projects, but it is a very efficient tool in large applications that handle a lot of data.
 
-Vuex fonctionne selon les principes suivants:
-- Une **mutation** est une fonction qui modifie l'état du store. Elle est obligatoirement **synchrone**.
-- Une **action** est une fonction qui déclenche une ou plusieurs mutations. Elle peut être **asynchrone**.
-- Les composants modifient l'état applicatif en invoquant des actions
-- L'état muté à la suite de mutations met à jour de façon réactive toutes les vues associées, peu importe leur niveau dans l'arborescence
+Vuex works with the following principles:
 
-![Vuex et les composants](../assets/vuex.png)
+- A **mutation** is a function that mutates the state of the store. It must be **synchronous**.
+- An **action** is a function that triggers one or more mutations. It can be **asynchronous**.
+- Components modify the application state by invoking actions
+- The mutated state updates reactively all the views that use it, regardless of their depth in the component tree
 
-## TP: Implémenter un store Vuex
+![Vuex and components](../assets/vuex.png)
 
-1. Installer les dépendances `vuex` et `vuex-persistedstate` qu'on utilisera pour persister l'état du store.
+## Practical work: Implement a Vuex store
+
+1. Install `vuex` and `vuex-persistedstate` dependencies that will be used to persist store state.
 
 ```bash
 npm install vuex vuex-persistedstate
 ```
 
-2. Créer un store Vuex en créant un fichier `src/store.js` avec le contenu suivant:
+2. Create a Vuex store by creating a `src/store.js` file with following content:
 
 ```js{8}
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
+import Vue from "vue";
+import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   strict: true,
-  plugins: [ createPersistedState() ],
+  plugins: [createPersistedState()],
   state: {
     user: null,
     loggedIn: false
   },
   mutations: {
-    setLoggedIn (state, loggedIn) {
-      state.loggedIn = loggedIn
+    setLoggedIn(state, loggedIn) {
+      state.loggedIn = loggedIn;
     },
-    setUser (state, user) {
-      state.user = user
+    setUser(state, user) {
+      state.user = user;
     }
   },
   actions: {
-    login ({ commit }, { user }) {
-      commit('setLoggedIn', true)
-      commit('setUser', user)
+    login({ commit }, { user }) {
+      commit("setLoggedIn", true);
+      commit("setUser", user);
     }
   }
-})
+});
 ```
 
 ::: warning
-Le mode `strict` permet de lancer une erreur si le store Vuex est modifié en dehors des mutateurs. Attention, ce mode est coûteux en performance et doit être désactivé en production !
+The `strict` mode is used to throw an error if the Vuex store state is changed without using declared `mutations`. Warning, this mode is expensive in performance and must be deactivated in production!
 :::
 
-3. Déclarez le store dans votre application en complétant le fichier `main.js` comme ceci:
+3. Declare the store in your application by completing the `main.js` file like this:
 
 ```js{1,5}
-import store from '@/store'
+import store from "@/store";
 
 new Vue({
   render: h => h(App),
   store
-}).$mount('#app')
+}).$mount("#app");
 ```
 
-4. Dans le code de l'application, supprimez les passages de prop `loggedIn` de composant à composant et récupérez la donnée depuis le store à la place (`this.$store.state.loggedIn`)
+4. In the application code, delete the prop `loggedIn` passed from component to component and retrieve this property from the store instead (`this.$store.state.loggedIn`)
 
 ::: tip
-La fonction utilitaire `mapState` fournie avec Vuex permet d'abréger le code en reliant facilement une donnée du store à une propriété calculée d'un composant
+The `mapState` utility provided with Vuex can be used to shorten the code by easily linking store data to a computed component property
 
 ```js
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 
-export default {    
+export default {
   computed: {
-    // relie this.loggedIn à this.$store.state.loggedIn
-    ...mapState([ 'loggedIn' ])
+    // bind this.loggedIn to this.$store.state.loggedIn
+    ...mapState(["loggedIn"])
   }
-}
+};
 ```
+
 :::
 
-5. Dans LoginForm.vue, lors du submit, vérifier si l'utilisateur a entré l'adresse mail `test@test.com` et le mot de passe `test1234`. Si c'est le cas, déclencher l'action `login` pour le user `test`.
+5. In `LoginForm.vue`, on form submit, check if the user has entered the email address `test@test.com` and the password `test1234`. If so, trigger the `login` action for the user `test`.
 
 :::tip
-Invoquer une action depuis un composant se fait comme ceci:
+Invoking an action from a component is done like this:
+
 ```js
-this.$store.dispatch('login', { user: 'John Smith' })
+this.$store.dispatch("login", { user: "John Smith" });
 ```
+
 :::
 
-6. Se connecter avec les identifiants cités ci-haut, vérifier que l'on bascule bien sur le formulaire de recherche de films, puis actualiser la page. 
+6. Login with the identifiers mentioned above, check that the navigation to the search form is working properly, then refresh the page.
 
-**Question** : pourquoi on ne retourne plus sur le formulaire de login après actualisation ?
+**Question**: Why do not we return to the login form after refreshing the page ?
 
-7. Si l'utilisateur a entré de mauvaises informations, afficher un message d'erreur. Pour cela, vous pouvez vous aider d'une `data` supplémentaire comme une String `loginError` par exemple.
+7. If the user has entered wrong credentials in the login form, display an error message. To help you, you can declare additional `data` such as a `loginError` string for example.
 
-8. **Bonus**: Coder une action `logout` et ajouter un bouton de déconnexion `<button id="logout-btn">` qui invoque cette action. Afficher le nom de l'utilisateur à côté de ce bouton.
+8. **Bonus**: Code a `logout` action and add a logout button `<button id = "logout-btn">` that invokes this action. Display the user's name next to this button.
