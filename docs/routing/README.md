@@ -1,103 +1,105 @@
 # Routing
 
-Les applications Vue sont la plupart du temps des Single Page Applications (SPA), c'est-à-dire que le serveur dessert toujours une seule et même page, et la navigation entre les pages est gérée côté client en JavaScript. Cette approche permet des transitions plus fluides entre pages, et de réduire le nombre d'appels nécessaires au serveur pour naviguer entre les pages. Cela s'avère essentiel pour les Progressive Web Apps ou les applications web souhaitant disposer de fonctionnalités offline.
+Vue applications are mostly Single Page Applications (SPA). The server always serves a single HTML page, and navigation between the application pages/sections is managed on the client side in JavaScript. This approach allows smoother transitions between pages, and reduces the number of server calls needed to navigate between pages. This is essential for Progressive Web Apps or web applications that want to have offline features.
 
-Le routage d'une SPA est donc géré côté client, et l'équipe de Vue fournit une bibliothèque à cet effet: `vue-router`. Ce routeur permet d'associer des routes (URL) à des composants Vue, et propose de nombreuses fonctionnalités:
+The routing of a SPA is therefore managed on the client side, and the Vue team provides a library for this purpose: `vue-router`. This router allows you to associate routes (URLs) with Vue components, and offers many features:
 
-- Arborescence de routes
-- Configuration modulaire basée sur les composants
-- Gestion de paramètres dynamiques: path, query, wildcards...
-- Intégration avec le système de transitions de Vue
-- Deux modes de fonctionnement:
-    - par `hash` (monsite.com/**#**/page1)
-    - ou par `history` (manipulation de l'historique en JS) avec auto-fallback pour IE
+- Routes tree configuration
+- Modular configuration based on components
+- Dynamic parameters handling: path, query, wildcards...
+- Integration with Vue transitions system
+- Two modes:
+  - by `hash` (mywebsite.com/**#**/page1)
+  - by `history` (handle browser history in JS) with auto-fallback for IE
 
 ## Installation
 
-Si vous ne l'avez pas installé pendant la configuration initiale du projet avec vue-cli, vous pouvez ajouter vue-router a posteriori avec la commande `vue add router`. 
+If you did not install it during initial project configuration with Vue-CLI, you can add vue-router now with the `vue add router` command.
 
-Le fichier `main.js` sera modifié pour déclarer ce nouveau routeur dans l'application:
+The `main.js` file will be modified to declare this new router in the application:
 
 ```js{6}
-import router from './router'
+import router from "./router";
 
 new Vue({
   render: h => h(App),
   store,
   router
-}).$mount('#app')
+}).$mount("#app");
 ```
 
-## Configuration du routeur
+## Router Configuration
 
-Le routeur est créé en prenant en paramètres un ensemble de routes. Chaque route associe un pattern d'URL à un certain composant. Au chargement de la page, ou à chaque changement d'URL, le routeur va résoudre quelle route est associée à cette nouvelle URL.
+The router is created by taking a list of routes as parameters. Each route associates a URL pattern with a certain component. When the page loads, or when the URL changes, the router will resolve which route is associated with this new URL.
 
 ```js
 /** src/router.js **/
-import Router from 'vue-router'
-import Vue from 'vue'
+import Router from "vue-router";
+import Vue from "vue";
 
-import HelloWorld from '@/components/HelloWorld'
+import HelloWorld from "@/components/HelloWorld";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/hello/:name',
-      name: 'hello',
+      path: "/hello/:name",
+      name: "hello",
       component: HelloWorld
     }
   ]
-})
+});
 ```
 
-Une fois la résolution de la route terminée, un composant a été associé à l'URL en cours. Ce composant est alors injecté à la place de l'élément `<router-view />`. Cet élément est généralement placé dans le composant racine `App.vue`. Les éléments autour de `<router-view />` forment le layout structurant votre application: un header, une barre de navigation, un footer etc.
+Once the route resolution is complete, a component has been associated with the current URL. This component is then injected in place of the `<router-view />` element. This element is usually placed in the root component `App.vue`. The elements around `<router-view />` form the layout structuring your application: a header, a navigation bar, a footer etc.
 
 ```vue
 <template>
   <div class="app">
-    <header>Mon site web</header>
+    <header><h1>My website</h1></header>
     <router-view />
     <footer>Made with Vue</footer>
   </div>
 </template>
 ```
 
-## Navigation et router-link
+## Navigation and router-link
 
-Vue-router inclut un composant `<router-link>`déclaré globalement, qui peut se substituer aux balises `<a>` pour tout ce qui est navigation interne via ce routeur.
+Vue-router includes a globally declared `<router-link>` component, which can substitute `<a>` tags for any internal navigation done via this router.
 
-L'avantage de ce composant par rapport aux balises classiques `<a>` est que les liens s'adaptent à votre configuration (hash ou history) et peuvent être statiques ou dynamiquement générés par des noms de route et des listes de paramètres:
+The advantage of this component over traditional `<a>` tags is that the links will always match your configuration (hash or history) and can be static or dynamically generated by route names and parameter lists:
 
 ```vue
-<router-link to="/home">Page d'accueil</router-link>
-<router-link :to="{ name: 'hello', params: { name: 'John' } }">Lien dynamique</router-link>
+<router-link to="/home">Homepage</router-link>
+<router-link :to="{ name: 'hello', params: { name: 'John' } }">
+  Dynamic link
+</router-link>
 ```
 
-Vue-router apporte également des méthodes à tous les composants pour naviguer programmatiquement entre les pages:
+Vue-router also brings methods to all components to programmatically navigate between pages:
 
 ```js
-this.$router.go(-1) // aller à page précédente
+this.$router.go(-1); // go to previous page
 
-let nextId = this.$route.params.id + 1; // récupérer les paramètres d'URL
-this.$router.push(`/article/${nextId}`) // naviguer vers une nouvelle page par URL
+let nextId = this.$route.params.id + 1; // get URL path param
+this.$router.push(`/article/${nextId}`); // navigate to a new page by URL
 ```
 
-## TP: Implémentation du routeur
+## Practical Work: Implementing the router
 
-1. Si ce n'est pas déjà fait, installez vue-router sur votre projet avec la commande `vue add router`. Ouvrez ensuite le fichier `src/router.js` pour voir comment sont déclarées les routes.
+1. If not already done, install vue-router on your project with the `vue add router` command. Then open the `src/router.js` file to see how the routes are declared.
 
 ::: danger
-Attention, le contenu de App.vue va être partiellement écrasé avec cette commande, pensez à sauvegarder le contenu du fichier avant de la lancer !
+Warning , the content of `App.vue` will be partially overwritten with this command, you should save its contents before running the command!
 :::
 
-2. Ajouter une route `/login` reliée à la view `LoginForm` et une route `/search` reliée à `SearchFilm`.
+2. Add a `/login` route linked to the`LoginForm` view and a `/search` route linked to `SearchFilm`.
 
 ::: tip
-Par convention, on appelle les composants rattachés à des routes des *views*, et on les place généralement dans le dossier `src/views` plutôt que `src/components`.
+By convention, we call the components linked to routes _views_, and we usually place them in the folder `src/views` rather than`src/components`.
 :::
 
-3. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre.
+3. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another.
 
-4. **Bonus**: en utilisant les [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirigez l'utilisateur voulant accéder à la page de recherche de films vers `/login` si l'utilisateur n'est pas authentifié.
+4. **Bonus**: Using vue-router [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirect the user who wants to access the movie search page to `/login` if he is not authenticated.
