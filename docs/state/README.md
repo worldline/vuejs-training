@@ -210,4 +210,4 @@ this.$store.dispatch("login", { user: "John Smith" });
 
 7. If the user has entered wrong credentials in the login form, display an error message. To help you, you can declare additional `data` such as a `loginError` string for example.
 
-8. **Bonus**: Code a `logout` action and add a logout button `<button id = "logout-btn">` that invokes this action. Display the user's name next to this button.
+8. **Bonus**: Code a `logout` action and add a logout button `<button id="logout-btn">` that invokes this action. Display the user's name next to this button.

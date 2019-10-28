@@ -9,7 +9,7 @@ Vue.js is a framework that focuses on the user interface and offers nothing spec
 ::: tip
 Network calls should not be done directly from the code of a component. This prevents reuse of the code easily if another component has to make the same call. Instead, opt to systematically separate the application logic from the logic of your views.
 
-By convention, we code the application logic in JS files called _services_, distributed according to the large functional parts of your application and placed in a folder `src/services`
+By convention, we code the application logic in JS files called _services_, distributed according to the large functional parts of your application and placed in a folder `src/services`.
 :::
 
 ## Practical Work: Communicate with a back-end

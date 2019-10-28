@@ -1,6 +1,6 @@
 # Vue files
 
-## Preview of a Vue project
+## Overview of a Vue project
 
 The newly created Vue project has the following folders and files:
 
@@ -22,31 +22,31 @@ In the `src` folder, you have:
 
 Later, you may need to create additional folders in `src` as needed. For example, a `services` folder is commonly found which contains business logic bricks with functions used in several components. Or a `utils` folder to store various utility functions in JavaScript instead of repeating them in multiple places.
 
-## Single File Components *.vue
+## Single File Components \*.vue
 
 - A Vue.js application is divided into several components
 - A component is a `.vue` file
 - A `.vue` file consists of three optional elements:
-    - the `<template>` tag contains the HTML code of the component
-    - the `<script>` tag (optional) contains the JavaScript code of the component
-    - the `<style>` tag (optional) contains the CSS style of the component
+  - the `<template>` tag contains the HTML code of the component
+  - the `<script>` tag (optional) contains the JavaScript code of the component
+  - the `<style>` tag (optional) contains the CSS style of the component
 
 ```vue
 <template>
   <div>
-    <span>Hello {{who}}</span>
+    <span>Hello {{ who }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      who: 'World'
-    }
+      who: "World"
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -78,14 +78,14 @@ To link the components together, the child components are declared in the parent
 </template>
 
 <script>
-import MyComponent from '~/components/MyComponent.vue'
+import MyComponent from "~/components/MyComponent.vue";
 
 export default {
-  name: 'ParentComponent',
+  name: "ParentComponent",
   components: {
     MyComponent
   }
-}
+};
 </script>
 ```
 
@@ -93,7 +93,7 @@ export default {
 The `components` attribute in the script part of the component. The child components used in the template must be declared as shown, but you can also declare components globally on your Vue application, so you can use them everywhere without having to declare them manually.
 :::
 
-In your Vue project, see how the `HelloWorld` component has been integrated into the` App` root component.
+In your Vue project, see how the `HelloWorld` component has been integrated into the`App` root component.
 
 ## Text interpolation in templates
 
@@ -103,23 +103,23 @@ The simplest way to insert data dynamically into your components is through text
 
 ```vue
 <template>
-  <p>Order ref. {{ orderReference }} - Total: {{ price.toFixed(2)+'€' }}</p>
+  <p>Order ref. {{ orderReference }} - Total: {{ price.toFixed(2) + "€" }}</p>
 </template>
 
 <script>
-  export default {
-    name: 'OrderInfo',
-    data(){
-      return {
-        orderReference: 'ABCXYZ',
-        price: 17.3
-      }
-    }
+export default {
+  name: "OrderInfo",
+  data() {
+    return {
+      orderReference: "ABCXYZ",
+      price: 17.3
+    };
   }
+};
 </script>
 ```
 
-Interpolation only works on textual content of elements. You can not use it to change the value of HTML attributes or to insert HTML code. For this, you will need to resort to *directives*, which will see in the following section.
+Interpolation only works on textual content of elements. You can not use it to change the value of HTML attributes or to insert HTML code. For this, you will need to resort to _directives_, which will see in the following section.
 
 ## Practical Work: Your first component
 
@@ -129,22 +129,34 @@ Interpolation only works on textual content of elements. You can not use it to c
 
 ```html
 <div id="login-form">
-<form>
-  <h1>Authentication</h1>
-  <p>Fill out this form to login.</p>
-  <hr>
+  <form>
+    <h1>Authentication</h1>
+    <p>Fill out this form to login.</p>
+    <hr />
 
-  <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Enter your email" id="email" name="email" required>
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      placeholder="Enter your email"
+      id="email"
+      name="email"
+      required
+    />
 
-  <label for="psw"><b>Password</b></label>
-  <input type="password" placeholder="Enter your password" id="psw" name="psw" required>
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter your password"
+      id="psw"
+      name="psw"
+      required
+    />
 
-  <p><button type="submit">Login</button></p>
-</form>
+    <p><button type="submit">Login</button></p>
+  </form>
 </div>
 ```
 
 3. Delete the existing contents of the `App.vue` component template, and display the `LoginForm.vue` component instead with `<login-form />`. You will also need to declare `LoginForm` in the `components` attribute of the `App` component.
 
-4. Complete the `LoginForm.vue` file to declare the name of the component, and a` data` containing a `title` property. Then use the text interpolation in the template to pass the title of the form *"Authentication"* using the variable `title`.
+4. Complete the `LoginForm.vue` file to declare the name of the component, and a`data` containing a `title` property. Then use the text interpolation in the template to pass the title of the form _"Authentication"_ using the variable `title`.

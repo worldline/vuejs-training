@@ -25,8 +25,8 @@
 13h30 TP router suite et fin
 14h - services & HTTP
 14h15 TP services
-15h réutilisabilité Vue
-15h30 - tests unitaires (sauter les TP si pas le temps)
-16h pause café
-16h30 - écosystème Vue
+15h00 - tests unitaires (sauter les TP si pas le temps)
+16h00 pause café
+16h30 - réutilisabilité Vue
+16h45 - écosystème Vue
 17h conclusion // fin TP libres jusqu'à ~17h30 + training survey
