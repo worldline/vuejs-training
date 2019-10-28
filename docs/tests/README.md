@@ -238,3 +238,8 @@ describe("Actions.vue", () => {
 3. Simulate the values ​​of a film and check the HTML rendering.
 4. Add the calculation of the code coverage. What do you notice?
 5. **Bonus**: Test the `LoginForm.vue` component, simulating HTTPS external calls as well as calls to the store and the router. Test the nominal and login error case.
+
+::: tip
+
+Unit tests are only the first chapter of the application testing story. **Integration tests** and **end-to-end testing** can also improve the reliability of your web apps. They are not mentioned here because they work at a level where the choice of front-end framework often does not matter.
+:::

@@ -3,6 +3,7 @@
 ## Pourquoi des tests unitaires ?
 
 Les tests unitaires sont une étape essentielle du développement de logiciel. Ces tests permettent d’exécuter chaque unité de code isolée du reste du logiciel. Ils apportent de nombreux bénéfices :
+
 - documenter la façon dont un composant doit se comporter
 - détecter et corriger les bugs plus tôt et plus efficacement
 - gagner du temps passé à tester manuellement
@@ -13,9 +14,10 @@ Les tests unitaires sont une étape essentielle du développement de logiciel. C
 Pour faire des tests unitaires, vous avez besoin d'une **bibliothèque d'assertions** qui fournit l'API nécessaire pour écrire vos tests, et un **test runner** qui s'occupe de lancer les tests et recueillir les résultats. [Vue CLI](https://cli.vuejs.org/) possède des options intégrées pour mettre en place dès le départ des tests unitaires sur votre projet Vue avec le choix entre plusieurs runners. Nous vous proposons ici d'utiliser [Jest](https://jestjs.io/), un test runner complet, populaire, avec peu de configuration nécessaire, et qui fournit une bibliothèque d'assertions basique mais suffisante pour la plupart des usages.
 
 [Jest](https://jestjs.io/) propose "out of the box" :
+
 - le lancement des tests en parallèles ;
 - la génération d'un rapport de couverture de test ;
-- un *mocking* facile des dépendances ;
+- un _mocking_ facile des dépendances ;
 - des assertions simples et des tests lisibles ;
 - une interface en ligne de commande très complète.
 
@@ -100,13 +102,14 @@ test("la recherche de films ne retourne aucun résultat", done => {
 
 ```js
 // Exemple de mocking d'une librairie externe comme axios
-jest.mock('axios');
+jest.mock("axios");
 
-test('login utilisateur', () => {
+test("login utilisateur", () => {
   axios.get.mockResolvedValue({ token: "123456" });
 
-  return UserService.login({ name: "Bob", password: "p4ssw0rd" })
-    .then(response => expect(response.token).toEqual("123456"));
+  return UserService.login({ name: "Bob", password: "p4ssw0rd" }).then(
+    response => expect(response.token).toEqual("123456")
+  );
 });
 ```
 
@@ -115,6 +118,7 @@ test('login utilisateur', () => {
 Pour faciliter l'écriture de tests pour des composants Vue, l'équipe fournit également [Vue Test Utils](https://vue-test-utils.vuejs.org/), la bibliothèque officielle d'utilitaires de tests unitaires pour Vue.js. Elle est accompagnée d'un [guide détaillé](https://vue-test-utils.vuejs.org/) pour vous aider à mettre en place vos tests dans des configurations personnalisées.
 
 Par exemple sur le composant suivant :
+
 ```vue
 <template>
   <div>
@@ -125,39 +129,39 @@ Par exemple sur le composant suivant :
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       count: 0
-    }
+    };
   },
   method: {
     increment() {
-      this.count++
+      this.count++;
     }
   }
-}
+};
 </script>
 ```
 
 Nous pouvons créer un test qui vérifie le contenu du composant :
 
 ```js
-import { mount } from '@vue/test-utils'
-import Counter from './counter'
+import { mount } from "@vue/test-utils";
+import Counter from "./counter";
 
-describe('Counter', () => {
+describe("Counter", () => {
   // Le "wrapper" contient le composant monté ainsi que des méthodes pour le tester
-  const wrapper = mount(Counter)
+  const wrapper = mount(Counter);
 
-  test('renders the correct markup', () => {
-    expect(wrapper.html()).toContain('<span class="count">0</span>')
-  })
+  test("renders the correct markup", () => {
+    expect(wrapper.html()).toContain('<span class="count">0</span>');
+  });
 
   // Vérification simple de présence d'éléments
-  test('has a button', () => {
-    expect(wrapper.contains('button')).toBe(true)
-  })
-})
+  test("has a button", () => {
+    expect(wrapper.contains("button")).toBe(true);
+  });
+});
 ```
 
 Cette bibliothèque propose une API pour tester les composants Vue, voici certaines des méthodes les plus utilisées :
@@ -184,47 +188,47 @@ La combinaison de Jest avec Vue Test Utils permet de tester des fonctionnements 
 L'exemple ci-dessous montre comment simuler des appels au store ainsi que des événements utilisateur comme des clics ou de la saisie :
 
 ```js
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
-import Actions from '../../../src/components/Actions'
+import { shallowMount, createLocalVue } from "@vue/test-utils";
+import Vuex from "vuex";
+import Actions from "../../../src/components/Actions";
 
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 
-localVue.use(Vuex)
+localVue.use(Vuex);
 
-describe('Actions.vue', () => {
+describe("Actions.vue", () => {
   let actions, store;
 
   beforeEach(() => {
     actions = {
       actionClick: jest.fn(),
       actionInput: jest.fn()
-    }
-    store = new Vuex.Store({ actions })
-  })
+    };
+    store = new Vuex.Store({ actions });
+  });
 
   test('dispatches "actionInput" when input event value is "input"', () => {
-    const wrapper = shallowMount(Actions, { store, localVue })
-    const input = wrapper.find('input')
-    input.element.value = 'input'
-    input.trigger('input')
-    expect(actions.actionInput).toHaveBeenCalled()
-  })
+    const wrapper = shallowMount(Actions, { store, localVue });
+    const input = wrapper.find("input");
+    input.element.value = "input";
+    input.trigger("input");
+    expect(actions.actionInput).toHaveBeenCalled();
+  });
 
   test('does not dispatch "actionInput" when event value is not "input"', () => {
-    const wrapper = shallowMount(Actions, { store, localVue })
-    const input = wrapper.find('input')
-    input.element.value = 'not input'
-    input.trigger('input')
-    expect(actions.actionInput).not.toHaveBeenCalled()
-  })
+    const wrapper = shallowMount(Actions, { store, localVue });
+    const input = wrapper.find("input");
+    input.element.value = "not input";
+    input.trigger("input");
+    expect(actions.actionInput).not.toHaveBeenCalled();
+  });
 
   test('calls store action "actionClick" when button is clicked', () => {
-    const wrapper = shallowMount(Actions, { store, localVue })
-    wrapper.find('button').trigger('click')
-    expect(actions.actionClick).toHaveBeenCalled()
-  })
-})
+    const wrapper = shallowMount(Actions, { store, localVue });
+    wrapper.find("button").trigger("click");
+    expect(actions.actionClick).toHaveBeenCalled();
+  });
+});
 ```
 
 ## TP: Tester le composant Film
@@ -234,3 +238,8 @@ describe('Actions.vue', () => {
 3. Simuler les valeurs d'un film et vérifier le rendu HTML.
 4. Ajouter le calcul de la couverture de code. Que constatez-vous ?
 5. **Bonus**: Tester le composant `LoginForm.vue`, en simulant les appels externes HTTPS ainsi que les appels au store et au routeur. Tester le cas nominal et d'erreur du login.
+
+::: tip
+
+Les tests unitaires ne sont que le premier chapitre dans l'histoire du test d'applications. Les **tests d'intégration** et **tests end-to-end** peuvent aussi améliorer la fiabilité de vos applications web. Ils ne sont pas mentionnés ici car ils travaillent à un niveau où le choix de framework front-end n'a souvent pas d'importance.
+:::
