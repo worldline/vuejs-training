@@ -297,7 +297,7 @@ export default {
 
 ## Practical exercise: Decompose our application
 
-1. Refactor the existing code by creating a `Film.vue` component used to display the details of a movie. Add `props` to pass the data from each movie to the component.
+1. Refactor the existing code by creating a `Film.vue` component used to display the details of a film. Add `props` to pass the data from each film to the component.
 2. Create another `SearchFilm.vue` component containing a search form and the `Film` list below:
 
 ```vue
@@ -320,8 +320,8 @@ export default {
 
 **Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
 
-5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample movies in this list.
-6. **Bonus**: In the `searchFilms` method, instead of putting all the movies at once in`this.films`, try to assign them one by one in this way:
+5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample films in this list.
+6. **Bonus**: In the `searchFilms` method, instead of putting all the films at once in`this.films`, try to assign them one by one in this way:
 
 ```js
 this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }

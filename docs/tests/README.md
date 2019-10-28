@@ -14,9 +14,10 @@ Unit testing is an essential step in software development. These tests are used 
 In order to test your application, you will need a test runner which will launch your test and collect the results. [Vue CLI](https://cli.vuejs.org/) has built-in options to set up unit tests on your Vue project with a choice between several runners. During this training, we suggest to use [Jest](https://jestjs.io/), a complete test runner, popular, with little configuration necessary, and which provides a basic but sufficient assertion library for most uses.
 
 [Jest](https://jestjs.io/) offers out of the box:
+
 - launching tests in parallel;
 - generating a test coverage report;
-- easy *mocking*;
+- easy _mocking_;
 - simple assertions and readable tests;
 - a complete command line interface.
 
@@ -26,7 +27,7 @@ As an alternative to Jest, the Vue team also offers [mocha-webpack](https://gith
 
 ## Write your first test with Jest
 
-By default, Jest will run all tests in a `tests / unit` or` __tests__` folder. For example, the tests in `Movie.spec.js` and` LoginForm.spec.js` will be spotted and run by Jest here:
+By default, Jest will run all tests in a `tests / unit` or`__tests__` folder. For example, the tests in `Film.spec.js` and`LoginForm.spec.js` will be spotted and run by Jest here:
 
 ```
 -- components
@@ -88,7 +89,7 @@ Below are some examples to illustrate Jest's mocking ability:
 import ApiService from '@/services/api.js'
 import FilmService from '@/services/film.js'
 
-test('Movie search returns no results', done => {
+test('Film search returns no results', done => {
     // mock the API to return a empty list
     ApiService.api = jest.fn(() => Promise.resolve([]))
 
@@ -101,13 +102,14 @@ test('Movie search returns no results', done => {
 
 ```js
 // Mocking of an external library like axios
-jest.mock('axios');
+jest.mock("axios");
 
-test('user login', () => {
+test("user login", () => {
   axios.get.mockResolvedValue({ token: "123456" });
 
-  return UserService.login({ name: "Bob", password: "p4ssw0rd" })
-    .then(response => expect(response.token).toEqual("123456"));
+  return UserService.login({ name: "Bob", password: "p4ssw0rd" }).then(
+    response => expect(response.token).toEqual("123456")
+  );
 });
 ```
 
@@ -116,6 +118,7 @@ test('user login', () => {
 To make it easier to write tests for Vue components, the team also provides [Vue Test Utils](https://vue-test-utils.vuejs.org/), the official library of unit test utilities for Vue.js. It comes with a [detailed guide](https://vue-test-utils.vuejs.org/) to help you set up your tests with custom configurations.
 
 For example on the following component:
+
 ```vue
 <template>
   <div>
@@ -126,39 +129,39 @@ For example on the following component:
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       count: 0
-    }
+    };
   },
   method: {
     increment() {
-      this.count++
+      this.count++;
     }
   }
-}
+};
 </script>
 ```
 
 Let's create a test that checks the content of the component:
 
 ```js
-import { mount } from '@vue/test-utils'
-import Counter from './counter'
+import { mount } from "@vue/test-utils";
+import Counter from "./counter";
 
-describe('Counter', () => {
+describe("Counter", () => {
   // This "wrapper" contains the mounted component as well as methods to test it
-  const wrapper = mount(Counter)
+  const wrapper = mount(Counter);
 
-  test('renders the correct markup', () => {
-    expect(wrapper.html()).toContain('<span class="count">0</span>')
-  })
+  test("renders the correct markup", () => {
+    expect(wrapper.html()).toContain('<span class="count">0</span>');
+  });
 
   // Simple check of presence of elements
-  test('has a button', () => {
-    expect(wrapper.contains('button')).toBe(true)
-  })
-})
+  test("has a button", () => {
+    expect(wrapper.contains("button")).toBe(true);
+  });
+});
 ```
 
 This library offers an API to test the Vue components, here are some of the most used methods:
@@ -185,53 +188,53 @@ The combination of Jest with Vue Test Utils makes it possible to test complex op
 The following example shows how to simulate store calls as well as user events such as clicks or input:
 
 ```js
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
-import Actions from '../../../src/components/Actions'
+import { shallowMount, createLocalVue } from "@vue/test-utils";
+import Vuex from "vuex";
+import Actions from "../../../src/components/Actions";
 
-const localVue = createLocalVue()
+const localVue = createLocalVue();
 
-localVue.use(Vuex)
+localVue.use(Vuex);
 
-describe('Actions.vue', () => {
+describe("Actions.vue", () => {
   let actions, store;
 
   beforeEach(() => {
     actions = {
       actionClick: jest.fn(),
       actionInput: jest.fn()
-    }
-    store = new Vuex.Store({ actions })
-  })
+    };
+    store = new Vuex.Store({ actions });
+  });
 
   test('dispatches "actionInput" when input event value is "input"', () => {
-    const wrapper = shallowMount(Actions, { store, localVue })
-    const input = wrapper.find('input')
-    input.element.value = 'input'
-    input.trigger('input')
-    expect(actions.actionInput).toHaveBeenCalled()
-  })
+    const wrapper = shallowMount(Actions, { store, localVue });
+    const input = wrapper.find("input");
+    input.element.value = "input";
+    input.trigger("input");
+    expect(actions.actionInput).toHaveBeenCalled();
+  });
 
   test('does not dispatch "actionInput" when event value is not "input"', () => {
-    const wrapper = shallowMount(Actions, { store, localVue })
-    const input = wrapper.find('input')
-    input.element.value = 'not input'
-    input.trigger('input')
-    expect(actions.actionInput).not.toHaveBeenCalled()
-  })
+    const wrapper = shallowMount(Actions, { store, localVue });
+    const input = wrapper.find("input");
+    input.element.value = "not input";
+    input.trigger("input");
+    expect(actions.actionInput).not.toHaveBeenCalled();
+  });
 
   test('calls store action "actionClick" when button is clicked', () => {
-    const wrapper = shallowMount(Actions, { store, localVue })
-    wrapper.find('button').trigger('click')
-    expect(actions.actionClick).toHaveBeenCalled()
-  })
-})
+    const wrapper = shallowMount(Actions, { store, localVue });
+    wrapper.find("button").trigger("click");
+    expect(actions.actionClick).toHaveBeenCalled();
+  });
+});
 ```
 
 ## Practical: Test the Film component
 
-1. Create a unit test spec file for your `Movie.vue` component.
+1. Create a unit test spec file for your `Film.vue` component.
 2. In your test, mount the component, add a basic assertion, and run the tests.
-3. Simulate the values ​​of a movie and check the HTML rendering.
+3. Simulate the values ​​of a film and check the HTML rendering.
 4. Add the calculation of the code coverage. What do you notice?
 5. **Bonus**: Test the `LoginForm.vue` component, simulating HTTPS external calls as well as calls to the store and the router. Test the nominal and login error case.

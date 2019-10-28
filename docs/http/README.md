@@ -14,7 +14,7 @@ By convention, we code the application logic in JS files called _services_, dist
 
 ## Practical Work: Communicate with a back-end
 
-We will use a server-provided API (the _back-end_) to authenticate users and search for movies. This back-end has already been developed and deployed on Heroku.
+We will use a server-provided API (the _back-end_) to authenticate users and search for films. This back-end has already been developed and deployed on Heroku.
 
 ::: tip
 The back-end interface contract is available here: [api-docs](https://vue-js-backend.herokuapp.com/api-docs)
@@ -133,13 +133,13 @@ export default {
 
 7. **Bonus**: Modify the store's logout action to remove the token and user info from the store upon logout, and redirect to the login form.
 
-8. Create a `MovieService` service with a method to search for movies, following the API documentation (`GET /movies/search`).
+8. Create a `FilmService` service with a method to search for films, following the API documentation (`GET /movies/search`).
 
-9. Change the movie search page to call the back-end and allow the user to enter the name of a movie, and get all the details for this movie.
+9. Change the film search page to call the back-end and allow the user to enter the name of a film, and get all the details for this film.
 
 ::: tip
 
-If you discovered that there was a movie called _Undefined_, then you were wrong somewhere :)
+If you discovered that there was a film called _Undefined_, then you were wrong somewhere :)
 
 ![Undefined, the movie](../assets/undefined.jpg)
 :::

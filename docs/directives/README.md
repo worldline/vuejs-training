@@ -161,7 +161,7 @@ Modifiers are suffixes used to slightly change the behavior of some directives: 
 <input @keypress.enter="submit" />
 ```
 
-## Practical work: Movie card
+## Practical work: Film card
 
 1. In the authentication form, add two variables `email` and`password` in the `data` attribute of the component and use the `v-model` directive on the email and password fields to bind them.
 2. Add another `loggedIn` variable initially set to `false`, then use the `v-on` directive to set it to `true` when the form is submitted.
@@ -203,7 +203,7 @@ Modifiers are suffixes used to slightly change the behavior of some directives: 
 </ul>
 ```
 
-5. Use the `v-if` and `v-else` directives to display the authentication form and hide the movie list when `loggedIn === false`, and vice versa.
+5. Use the `v-if` and `v-else` directives to display the authentication form and hide the films list when `loggedIn === false`, and vice versa.
 6. Add the following variable in the `data` attribute of the component:
 
 ```js
@@ -244,6 +244,6 @@ films: [
 ];
 ```
 
-7. Using the `v-for` directive, repeat the `.film.card` element to display as many movies as the `movies` list.
-8. Complete the card data from each movie using the directives and interpolation.
-9. **Bonus:** Use the `metascore` property to display a number of stars next to each movie title.
+7. Using the `v-for` directive, repeat the `.film.card` element to display as many films as the `films` list.
+8. Complete the card with data from each film using the directives and interpolation.
+9. **Bonus:** Use the `metascore` property to display a number of stars next to each film title.

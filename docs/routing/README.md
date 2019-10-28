@@ -102,4 +102,4 @@ By convention, we call the components linked to routes _views_, and we usually p
 
 3. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another.
 
-4. **Bonus**: Using vue-router [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirect the user who wants to access the movie search page to `/login` if he is not authenticated.
+4. **Bonus**: Using vue-router [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirect the user who wants to access the film search page to `/login` if he is not authenticated.
