@@ -2,14 +2,15 @@
 
 The directives are the Vue-specific syntax elements that can be used in component templates.
 
-## v-bind: Liaison de propriétés
+## v-bind: Bind properties
 
-Allows you to *bind* an expression to the value of a property of an HTML element or component. Since this is the most commonly used directive, we usually use the shortened syntax `:property="value"`.
+Allows you to _bind_ an expression to the value of a property of an HTML element or component. Since this is the most commonly used directive, we usually use the shortened syntax `:property="value"`.
 
 ```vue
 <a v-bind:href="url">Link</a>
 
-<a :href="url">Link</a>  <!-- shortened syntax -->
+<a :href="url">Link</a>
+<!-- shortened syntax -->
 ```
 
 [Exercise: try to link the `src` and `width` attributes of the image](https://codepen.io/sylvainpv/pen/LBgqbq?editors=1010)
@@ -19,13 +20,17 @@ Allows you to *bind* an expression to the value of a property of an HTML element
 Several syntaxes are available to assign classes or CSS styles:
 
 ```vue
-<p :class="classAsString"></p>        <!-- "foo bar" -->
-<p :class="classAsObject"></p>        <!-- { foo: true, bar: isBar } -->
+<p :class="classAsString"></p>
+<!-- "foo bar" -->
+<p :class="classAsObject"></p>
+<!-- { foo: true, bar: isBar } -->
 <p :class="['foo', myOtherBarClass]"></p>
-<p :class="{ 'foo': true, 'bar': isBar }"></p>
+<p :class="{ foo: true, bar: isBar }"></p>
 
-<p :style="styleAsString"></p>        <!-- "font-size: 48px" -->
-<p :style="styleAsObject"></p>        <!-- { fontSize: "48px" } -->
+<p :style="styleAsString"></p>
+<!-- "font-size: 48px" -->
+<p :style="styleAsObject"></p>
+<!-- { fontSize: "48px" } -->
 <p :style="[baseStyles, overridingStyles]"></p>
 <p :style="{ fontSize: size }"></p>
 ```
@@ -44,16 +49,16 @@ Allows you to bind the value of a form field to a component data item. It is a t
 
 <p>Hello {{ name }} !</p>
 ```
+
 <v-model-example />
 
 [Exercise: use v-model on input, select, radio and checkbox](https://codepen.io/sylvainpv/pen/rrqEMg?editors=1010)
 
 ## v-if: Conditions
 
-
 Allows you to insert or not an element according to a condition. If you want the element not to be removed from the DOM but just visually hidden in CSS, use `v-show` instead.
 
-The `v-else-if` and` v-else` directives work in the same way as their JavaScript equivalent and depend on the `v-if` condition of the element directly preceding them.
+The `v-else-if` and`v-else` directives work in the same way as their JavaScript equivalent and depend on the `v-if` condition of the element directly preceding them.
 
 ```vue{1,4,7,11}
 <div v-if="type === 'A'">
@@ -75,7 +80,6 @@ The `v-else-if` and` v-else` directives work in the same way as their JavaScript
 [Exercise: use v-if and v-else to alternate faces according to the condition](https://codepen.io/sylvainpv/pen/bjmXXV?editors=1010)
 
 ## v-for: Loops
-
 
 Generates lists of elements by repeating a template by iteration on an iterable value: typically an `Array`, the list of properties of an object, or a fixed number of iterations.
 
@@ -114,7 +118,7 @@ This is not mandatory but helps Vue to better understand the changes that occur 
 <v-for-example-2 />
 
 ::: tip
-To repeat a group of elements, use `v-for` on a `<template> `tag
+To repeat a group of elements, use `v-for` on a `<template>`tag
 :::
 
 [Exercise: use two v-for loops to display all the contents of the basket](https://codepen.io/sylvainpv/pen/RBqbBW?editors=1010)
@@ -124,8 +128,8 @@ To repeat a group of elements, use `v-for` on a `<template> `tag
 Define an action to take when an event occurs. It can be a DOM event (`click`, `mouseover`, `focus`, etc.) or a custom event emitted by a child component.
 
 ```vue{1,5}
-<button v-on:click="counter += 1"> Click here! </button>
-This button has been clicked {{ counter }} times.
+<button v-on:click="counter += 1"> Click here! </button> This button has been
+clicked {{ counter }} times.
 
 <!-- shortened syntax: @event -->
 <button @click="resetCounter($event)"> Reset </button>
@@ -158,62 +162,88 @@ Modifiers are suffixes used to slightly change the behavior of some directives: 
 ```
 
 ## Practical work: Movie card
-1. In the authentication form, add two variables `email` and` password` in the `data` attribute of the component and use the `v-model` directive on the email and password fields to bind them.
+
+1. In the authentication form, add two variables `email` and`password` in the `data` attribute of the component and use the `v-model` directive on the email and password fields to bind them.
 2. Add another `loggedIn` variable initially set to `false`, then use the `v-on` directive to set it to `true` when the form is submitted.
 3. Change the default behavior of the `submit` event of the authentication form to avoid reloading the page.
 4. Under the authentication form, add the following HTML:
+
 ```html
 <ul class="films">
   <li class="film card">
-    <img class="poster" src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg" />
+    <img
+      class="poster"
+      src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg"
+    />
     <p class="title">
       Titanic
       <span class="rating">★★★★</span>
     </p>
     <dl>
-      <dt>Release date</dt><dd>07/01/1998</dd>
-      <dt>Director</dt><dd>James Cameron</dd>
-      <dt>Actors</dt><dd>Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates</dd>
+      <dt>Release date</dt>
+      <dd>07/01/1998</dd>
+      <dt>Director</dt>
+      <dd>James Cameron</dd>
+      <dt>Actors</dt>
+      <dd>Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates</dd>
     </dl>
     <p class="plot">
-    84 years later, a 100 year-old woman named Rose DeWitt Bukater tells the story to her granddaughter Lizzy Calvert, Brock Lovett, Lewis Bodine, Bobby Buell and Anatoly Mikailavich on the Keldysh about her life set in April 10th 1912, on a ship called Titanic when young Rose boards the departing ship with the upper-class passengers and her mother, Ruth DeWitt Bukater, and her fiancé, Caledon Hockley. Meanwhile, a drifter and artist named Jack Dawson and his best friend Fabrizio De Rossi win third-class tickets to the ship in a game. And she explains the whole story from departure until the death of Titanic on its first and last voyage April 15th, 1912 at 2:20 in the morning.
+      84 years later, a 100 year-old woman named Rose DeWitt Bukater tells the
+      story to her granddaughter Lizzy Calvert, Brock Lovett, Lewis Bodine,
+      Bobby Buell and Anatoly Mikailavich on the Keldysh about her life set in
+      April 10th 1912, on a ship called Titanic when young Rose boards the
+      departing ship with the upper-class passengers and her mother, Ruth DeWitt
+      Bukater, and her fiancé, Caledon Hockley. Meanwhile, a drifter and artist
+      named Jack Dawson and his best friend Fabrizio De Rossi win third-class
+      tickets to the ship in a game. And she explains the whole story from
+      departure until the death of Titanic on its first and last voyage April
+      15th, 1912 at 2:20 in the morning.
     </p>
   </li>
 </ul>
 ```
+
 5. Use the `v-if` and `v-else` directives to display the authentication form and hide the movie list when `loggedIn === false`, and vice versa.
 6. Add the following variable in the `data` attribute of the component:
+
 ```js
 films: [
   {
-    title: 'Titanic',
-    released: '19 Dec 1997',
-    director: 'James Cameron',
-    actors: 'Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates',
-    poster: 'https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg',
-    plot: '84 years later, a 100 year-old woman named Rose DeWitt Bukater tells the story to her granddaughter Lizzy Calvert, Brock Lovett, Lewis Bodine, Bobby Buell and Anatoly Mikailavich on the Keldysh about her life set in April 10th 1912, on a ship called Titanic when young Rose boards the departing ship with the upper-class passengers and her mother, Ruth DeWitt Bukater, and her fiancé, Caledon Hockley. Meanwhile, a drifter and artist named Jack Dawson and his best friend Fabrizio De Rossi win third-class tickets to the ship in a game. And she explains the whole story from departure until the death of Titanic on its first and last voyage April 15th, 1912 at 2:20 in the morning.',
-    metascore: '75'
+    title: "Titanic",
+    released: "19 Dec 1997",
+    director: "James Cameron",
+    actors: "Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg",
+    plot:
+      "84 years later, a 100 year-old woman named Rose DeWitt Bukater tells the story to her granddaughter Lizzy Calvert, Brock Lovett, Lewis Bodine, Bobby Buell and Anatoly Mikailavich on the Keldysh about her life set in April 10th 1912, on a ship called Titanic when young Rose boards the departing ship with the upper-class passengers and her mother, Ruth DeWitt Bukater, and her fiancé, Caledon Hockley. Meanwhile, a drifter and artist named Jack Dawson and his best friend Fabrizio De Rossi win third-class tickets to the ship in a game. And she explains the whole story from departure until the death of Titanic on its first and last voyage April 15th, 1912 at 2:20 in the morning.",
+    metascore: "75"
   },
   {
-    title: 'Blade Runner',
-    released: '25 Jun 1982',
-    director: 'Ridley Scott',
-    actors: 'Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos',
-    poster: 'https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg',
-    plot: 'A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.',
-    metascore: '89'
+    title: "Blade Runner",
+    released: "25 Jun 1982",
+    director: "Ridley Scott",
+    actors: "Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+    plot:
+      "A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.",
+    metascore: "89"
   },
   {
-    title: 'The Shining',
-    released: '13 Jun 1980',
-    director: 'Stanley Kubrick',
-    actors: 'Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers',
-    poster: 'https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
-    plot: 'A family heads to an isolated hotel for the winter where an evil spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.',
-    metascore: '63'
+    title: "The Shining",
+    released: "13 Jun 1980",
+    director: "Stanley Kubrick",
+    actors: "Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers",
+    poster:
+      "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    plot:
+      "A family heads to an isolated hotel for the winter where an evil spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+    metascore: "63"
   }
-]
+];
 ```
+
 7. Using the `v-for` directive, repeat the `.film.card` element to display as many movies as the `movies` list.
 8. Complete the card data from each movie using the directives and interpolation.
 9. **Bonus:** Use the `metascore` property to display a number of stars next to each movie title.
