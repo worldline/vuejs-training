@@ -4,7 +4,7 @@
 
 ::: tip
 
-Il est recommandé de travailler sous une VM Linux, par exemple [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), ou [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm)
+Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), ou [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm), pour avoir une meilleur expérience de développment. Toutefois ce n'est pas obligatoire pour cette formation.
 :::
 
 ### Node.js
@@ -12,6 +12,7 @@ Il est recommandé de travailler sous une VM Linux, par exemple [JHipster Devbox
 Installez [Node.js](https://nodejs.org/) (version 8.x minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utilisez [nvm](https://github.com/creationix/nvm).
 
 ### Visual Studio Code et Vetur
+
 Vous aurez besoin d'un bon éditeur de code pour JavaScript lors de cette formation.
 
 Nous vous conseillons [Visual Studio Code](https://code.visualstudio.com/), un éditeur gratuit assez léger qui est aujourd'hui très populaire dans la communauté JavaScript.
@@ -83,20 +84,20 @@ Il est tout à fait possible d'utiliser Vue.js sans tout cet outillage sur le po
 ```html
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8">
-  <title>Hello Vue</title>
-  <script src="https://unpkg.com/vue"></script>
- </head>
- <body>
-  <div id="app">
-   <h1>Hello {{name}} !</h1>
-  </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Hello {{name}} !</h1>
+    </div>
 
-  <script>
-  const vm = new Vue({ el: '#app', data: { name: 'Vue' } });
-  </script>
- </body>
+    <script>
+      const vm = new Vue({ el: "#app", data: { name: "Vue" } });
+    </script>
+  </body>
 </html>
 ```
 
@@ -124,9 +125,9 @@ Vue CLI v3.11.0
 ? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? In dedicated config files
 ```
 
-- **Babel** est un *transpilateur*, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs.
-- **ESLint** est un *linter*, un outil d'analyse qualité qui va parcourir votre code et vous signaler des erreurs potentielles.
-- **Jest** est un *framework* de test axé sur la simplicité d'utilisation.
+- **Babel** est un _transpilateur_, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs.
+- **ESLint** est un _linter_, un outil d'analyse qualité qui va parcourir votre code et vous signaler des erreurs potentielles.
+- **Jest** est un _framework_ de test axé sur la simplicité d'utilisation.
 
 A la fin de l'installation, un dossier a été créé pour votre projet. Naviguez vers le répertoire de votre projet :
 
@@ -154,7 +155,7 @@ Vous pouvez à tout moment packager votre projet pour la production avec la comm
 npm run build
 ```
 
-Cette commande compilera votre projet en utilisant **Webpack** en mode production. Webpack est un *bundler*, un outil qui va transformer vos sources en un petit nombre de *bundles*, des fichiers JS et CSS optimisés et compressés, et les mettre dans le dossier `/dist` de votre projet. Il ne reste alors plus qu'à déployer ce dossier sur un serveur de fichiers tel que Apache ou Nginx.
+Cette commande compilera votre projet en utilisant **Webpack** en mode production. Webpack est un _bundler_, un outil qui va transformer vos sources en un petit nombre de _bundles_, des fichiers JS et CSS optimisés et compressés, et les mettre dans le dossier `/dist` de votre projet. Il ne reste alors plus qu'à déployer ce dossier sur un serveur de fichiers tel que Apache ou Nginx.
 
 ::: tip
 
@@ -171,7 +172,7 @@ module.exports = {
   devServer: {
     port: 3000
   }
-}
+};
 ```
 
 Votre projet sera maintenant accessible sur le port 3000 en mode développeur. Consultez la [documentation de configuration](https://cli.vuejs.org/config/) pour en savoir plus sur les options disponibles.

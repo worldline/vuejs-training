@@ -4,18 +4,18 @@
 
 ::: tip
 
-It is recommended to work under a Linux VM, for example [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), or [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm)
+If it is allowed by your local security policy, it is recommended to work under a Linux VM, for example [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), or [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm), to get a better development experience. This is not mandatory for this training though.
 :::
 
 ### Node.js
 
-Install [Node.js](https://nodejs.org/) (minimum version 8.x). You can use [nvm](https://github.com/creationix/nvm) to manage different versions of Node.js on your local machine.
+Install [Node.js](https://nodejs.org/) (preferably latest version, minimum version 8.x). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
 
 ### Visual Studio Code and Vetur
 
 During the training you will need a solid JavaScript code editor.
 
-We recommend [Visual Studio Code] (https://code.visualstudio.com/), a fairly lightweight free editor that is now very popular in the JavaScript community.
+We recommend [Visual Studio Code](https://code.visualstudio.com/), a fairly lightweight free editor that is now very popular in the JavaScript community.
 
 VS Code has many extensions to enrich the experience. Install the [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extension that will help the editor manage the syntax of the `* .vue` component files.
 
@@ -84,20 +84,20 @@ It is possible to use Vue.js without all this tooling on the developer's worksta
 ```html
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8">
-  <title>Hello Vue</title>
-  <script src="https://unpkg.com/vue"></script>
- </head>
- <body>
-  <div id="app">
-   <h1>Hello {{name}} !</h1>
-  </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Hello {{name}} !</h1>
+    </div>
 
-  <script>
-  const vm = new Vue({ el: '#app', data: { name: 'Vue' } });
-  </script>
- </body>
+    <script>
+      const vm = new Vue({ el: "#app", data: { name: "Vue" } });
+    </script>
+  </body>
 </html>
 ```
 
@@ -155,7 +155,7 @@ You can at any time package your project for production by running:
 npm run build
 ```
 
-This command will compile your project using **Webpack** in production mode. Webpack is a *bundler*, a tool that will transform your sources into a small number of *bundles*, optimized and compressed JS and CSS files, and put them in the `/ dist` folder of your project. You can then deploy this folder on a file server such as Apache or nginx.
+This command will compile your project using **Webpack** in production mode. Webpack is a _bundler_, a tool that will transform your sources into a small number of _bundles_, optimized and compressed JS and CSS files, and put them in the `/ dist` folder of your project. You can then deploy this folder on a file server such as Apache or nginx.
 
 ::: tip
 
@@ -172,7 +172,7 @@ module.exports = {
   devServer: {
     port: 3000
   }
-}
+};
 ```
 
 Your project will now be accessible on port 3000 in developer mode. See the [configuration documentation](https://cli.vuejs.org/config/) for more information about the available options.
