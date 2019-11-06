@@ -51,7 +51,7 @@ var vm = new Vue({
   },
   computed: {
     total () {
-      return count1 + count2
+      return this.count1 + this.count2
     }
   },
   watch: {
