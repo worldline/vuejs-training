@@ -1,9 +1,9 @@
 <template>
   <div id="search-film">
-    <button id="logout-btn" @click="logOut">Se déconnecter</button>
+    <button id="logout-btn" @click="logOut">Logout</button>
 
     <form @submit.prevent="populateFilms" >
-      <label for="search">Rechercher :</label>
+      <label for="search">Search:</label>
       <input id="search" type="text">
     </form>
 

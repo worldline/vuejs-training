@@ -6,17 +6,17 @@
         {{ error }}
       </div>
       <h1>{{ title }}</h1>
-      <p>Remplissez ce formulaire pour vous connecter.</p>
+      <p>Fill this form to login.</p>
       <hr>
       <span></span>
 
       <label for="email"><b>Email</b></label>
-      <input v-model="email" type="text" placeholder="Entrez votre courriel" id="email" name="email" required>
+      <input v-model="email" type="text" placeholder="Enter your email" id="email" name="email" required>
 
-      <label for="psw"><b>Mot de passe</b></label>
-      <input v-model="psw" type="password" placeholder="Entrez votre mot de passe" id="psw" name="psw" required>
+      <label for="psw"><b>Password</b></label>
+      <input v-model="psw" type="password" placeholder="Enter your password" id="psw" name="psw" required>
 
-      <p><button type="submit">Se connecter</button></p>
+      <p><button type="submit">Login</button></p>
     </form>
   </div>
 </template>
@@ -41,7 +41,7 @@ export default {
 
       }
       this.psw = ''
-      this.error = 'Email ou mot de passe incorrect'
+      this.error = 'Wrong email or password'
     }
   }
 }

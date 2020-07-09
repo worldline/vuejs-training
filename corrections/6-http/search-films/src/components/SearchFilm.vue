@@ -1,13 +1,13 @@
 <template>
   <div id="search-film">
-    <button id="logout-btn" @click="logOut">Se déconnecter</button>
+    <button id="logout-btn" @click="logOut">Logout</button>
 
     <form @submit.prevent="searchFilm" >
       <div class="alert" v-if="error">
         <span class="closebtn" @click="error = null">&times;</span>
         {{ error }}
       </div>
-      <label for="search">Rechercher :</label>
+      <label for="search">Search:</label>
       <input id="search" type="text" v-model="title">
     </form>
 

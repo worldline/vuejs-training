@@ -1,7 +1,7 @@
 <template>
   <div id="search-film">
     <form @submit.prevent="populateFilms" >
-      <label for="search">Rechercher :</label>
+      <label for="search">Search:</label>
       <input id="search" type="text">
     </form>
 
