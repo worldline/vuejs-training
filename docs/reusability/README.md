@@ -1,5 +1,7 @@
 # Reusability and composition
 
+We are going to review the different tools provided by Vue when it comes to scaling up the application and reusing parts of logic and views accross the application.
+
 ## Mixins
 
 [Mixins](https://vuejs.org/v2/guide/mixins.html) allow you to create reusable feature sets for your Vue components. By declaring them via the `mixins` option, all the options of the mixin will be merged (merge) within the component options.
@@ -13,8 +15,8 @@ const helloMixin = {
   methods: {
     hello: function() {
       console.log("hello from mixin!");
-    }
-  }
+    },
+  },
 };
 
 // declare a component that uses this mixin
@@ -22,7 +24,7 @@ const Component = Vue.extend({
   mixins: [helloMixin],
   created() {
     console.log("another created callback");
-  }
+  },
 });
 
 let component = new Component();
@@ -46,7 +48,7 @@ Vue.directive("focus", {
   inserted: function(el) {
     // Focus the element
     el.focus();
-  }
+  },
 });
 ```
 
