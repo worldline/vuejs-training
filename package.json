@@ -14,10 +14,10 @@
     "deploy": "node ./docs/deploy.js"
   },
   "dependencies": {
-    "vuepress": "^1.2.0",
+    "vuepress": "^1.5.4",
     "vuepress-plugin-global-toc": "^1.0.1"
   },
   "devDependencies": {
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.4"
   }
 }
