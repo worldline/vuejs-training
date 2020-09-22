@@ -2,7 +2,7 @@
 
 La réactivité est le mécanisme qui permet au framework de détecter lorsque des données utilisées sur la page sont modifiées (_mutées_), et de mettre à jour la page de façon optimale. C'est donc une mécanique cruciale pour tout framework web, et il convient d'en analyser le fonctionnement pour comprendre ses forces et ses limites.
 
-Vue fournit une réactivité automatique, c'est-à-dire qu'il n'est pas nécessaire au développeur de déclencher manuellement la mise à jour de la vue après avoir muté des données. Cette réactivité est basée sur 2 fonctionnalités de JavaScript: les **getters/setters** et les **Proxies**.
+Vue fournit une réactivité automatique, c'est-à-dire qu'il n'est pas nécessaire au développeur de déclencher manuellement la mise à jour de la vue après avoir muté des données. Cette réactivité est basée sur 2 fonctionnalités de JavaScript: les **getters/setters** pour Vue 2 et les **Proxies** pour Vue 3
 
 ## Getters / setters (ECMAScript 5)
 
@@ -16,7 +16,7 @@ const user = {
   set name(value) {
     console.log("accès en écriture à la propriété");
     name = value;
-  }
+  },
 };
 ```
 
@@ -28,7 +28,7 @@ Dans les cas particuliers où il n'est pas possible de déclarer une variable au
 
 ![Principe de réactivité basé sur les getters/setters](../../assets/getters-setters_fr.jpg)
 
-## Proxies (ECMAScript 6)
+## Proxies (ECMAScript 6 alias ES2015)
 
 ```js
 const original_user = { name: "joe" };
@@ -42,11 +42,11 @@ const user = new Proxy(original_user, {
       `accès en écriture à la propriété ${key} avec la valeur ${value}`
     );
     return Reflect.set(obj, key, value);
-  }
+  },
 });
 ```
 
-Les Proxies sont une fonctionnalité récente de JavaScript apparue avec la spécification ES2015. Ils permettent de s'abstraire de toutes les limitations des getters/setters, en donnant un contrôle complet sur toutes les opérations permettant de manipuler un objet. Puisqu'ils ne sont pas supportés par les anciens navigateurs comme Internet Explorer, ils ne seront introduits totalement que dans Vue 3.0, dont la sortie est prévue en 2020. Cela devrait résoudre la plupart des limitations actuelles de la réactivité dans Vue 2.
+Les Proxies sont une fonctionnalité récente de JavaScript apparue avec la spécification ES2015. Ils permettent de s'abstraire de toutes les limitations des getters/setters, en donnant un contrôle complet sur toutes les opérations permettant de manipuler un objet. Puisqu'ils ne sont pas supportés par les anciens navigateurs comme Internet Explorer, ils ne sont introduits totalement que dans Vue 3.0. Cela résout la plupart des limitations actuelles de la réactivité dans Vue 2, au prix de l'abandon du support d'Internet Explorer.
 
 ## Détail du système de réactivité de Vue
 

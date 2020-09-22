@@ -2,7 +2,7 @@
 
 Reactivity is the mechanism that allows the framework to detect when data used on the page is changed (_mutated_), and to update the page optimally to reflect these changes. It is therefore a crucial mechanism for any web framework, so we are going to analyze it to understand its strengths and limitations.
 
-Vue provides automatic reactivity. That means it is not necessary for the developer to manually trigger the view updates after mutating data. This reactivity is based on 2 features of JavaScript: **getters / setters** and **Proxies**.
+Vue provides automatic reactivity. That means it is not necessary for the developer to manually trigger the view updates after mutating data. This reactivity is based on 2 features of JavaScript: **getters / setters** for Vue 2 and **Proxies** for Vue 3.
 
 ## Getters / setters (ECMAScript 5)
 
@@ -16,7 +16,7 @@ const user = {
   set name(value) {
     console.log("write access to property");
     name = value;
-  }
+  },
 };
 ```
 
@@ -28,7 +28,7 @@ In special cases where it is not possible to declare a variable in advance, for 
 
 ![Reactivity principle based on getters/setters](../assets/getters-setters.jpg)
 
-## Proxies (ECMAScript 6)
+## Proxies (ECMAScript 6 aka ES2015)
 
 ```js
 const original_user = { name: "joe" };
@@ -40,11 +40,11 @@ const user = new Proxy(original_user, {
   set(obj, key, value) {
     console.log(`write access to property ${key} with value ${value}`);
     return Reflect.set(obj, key, value);
-  }
+  },
 });
 ```
 
-Proxies are a recent feature of JavaScript that appeared with the ES2015 specification. They allow you to get away from all the limitations of getters / setters, giving complete control over all operations used to manipulate an object. Since they are not supported by older browsers like Internet Explorer, they will only be fully introduced in Vue 3.0, which is scheduled for release in 2020. This should resolve most of the current limitations of reactivity in Vue 2.
+Proxies are a recent feature of JavaScript that appeared with the ES2015 specification. They allow you to get away from all the limitations of getters / setters, giving complete control over all operations used to manipulate an object. Since they are not supported by older browsers like Internet Explorer, they are only fully introduced in Vue 3.0. This resolves most of the current limitations of reactivity in Vue 2, at the cost of dropping support for Internet Explorer.
 
 ## Details of Vue reactivity system
 
