@@ -4,7 +4,7 @@
 
 ::: tip
 
-If it is allowed by your local security policy, it is recommended to work under a Linux VM, for example [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), or [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm), to get a better development experience. This is not mandatory for this training though.
+If it is allowed by your local security policy, it is recommended to work under a Linux VM, for example [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.atosworldline.com/dev-box/), to get a better development experience. This is not mandatory for this training though.
 :::
 
 ### Node.js

@@ -4,12 +4,12 @@
 
 ::: tip
 
-Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), ou [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm), pour avoir une meilleur expérience de développment. Toutefois ce n'est pas obligatoire pour cette formation.
+Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.atosworldline.com/dev-box/), pour avoir une meilleure expérience de développement. Toutefois ce n'est pas obligatoire pour cette formation.
 :::
 
 ### Node.js
 
-Installez [Node.js](https://nodejs.org/) (version 8.x minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utilisez [nvm](https://github.com/creationix/nvm).
+Installez [Node.js](https://nodejs.org/) (version 8.x minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utiliser [nvm](https://github.com/creationix/nvm).
 
 ### Visual Studio Code et Vetur
 
