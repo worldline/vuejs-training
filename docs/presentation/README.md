@@ -27,6 +27,8 @@ However, this raises the issue of funding. Many contributors are volunteers, but
 
 ![Financing of Vue.js team](../assets/financement.jpg)
 
+[https://vuejs.org/support-vuejs/](https://vuejs.org/support-vuejs/)
+
 ## Popularity
 
 Vue.js has broken records in terms of popularity since 2015. It is now the second project in number of stars on Github. Despite the lack of funding, many meetups and conferences have been self-organized in different countries. This is one of the most resounding successes in the open-source world in the last five years.

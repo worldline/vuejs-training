@@ -116,13 +116,15 @@ vue create search-films
 Choose the following configuration:
 
 ```bash
-Vue CLI v3.11.0
+@vue/cli 4.5.6
 ? Please pick a preset: Manually select features
 ? Check the features needed for your project: Babel, Linter, Unit
-? Pick a linter / formatter config: Basic
+? Choose a version of Vue.js that you want to start the project with (Use arrow keys): 2.x
+? Pick a linter / formatter config: ESLint with error prevention only
 ? Pick additional lint features: Lint on save
 ? Pick a unit testing solution: Jest
-? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? In dedicated config files
+? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.: In dedicated config files
+? Pick the package manager to use when installing dependencies: Use NPM
 ```
 
 - **Babel** is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in order to support as many browser as possible.
@@ -155,7 +157,7 @@ You can at any time package your project for production by running:
 npm run build
 ```
 
-This command will compile your project using **Webpack** in production mode. Webpack is a _bundler_, a tool that will transform your sources into a small number of _bundles_, optimized and compressed JS and CSS files, and put them in the `/ dist` folder of your project. You can then deploy this folder on a file server such as Apache or nginx.
+This command will compile your project using **Webpack** in production mode. Webpack is a _bundler_, a tool that will transform your sources into a small number of _bundles_, optimized and compressed JS and CSS files, and put them in the `/dist` folder of your project. You can then deploy this folder on a file server such as Apache or nginx.
 
 ::: tip
 

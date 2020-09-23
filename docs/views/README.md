@@ -15,10 +15,8 @@ In the `src` folder, you have:
 
 - `assets`: static resources (images, files) that will be imported by Webpack within your Vue components
 - `components`: your Vue components (distributed by folder by "module" of your application)
-- `views`: Vue components that will be attached to routes (URL) by vue-router
 - `App.View`: Your root Vue component, which contains the entire application
 - `main.js`: the entry point of the entire application's JavaScript code
-- `router.js`: vue-router configuration and the list of declared routes
 
 Later, you may need to create additional folders in `src` as needed. For example, a `services` folder is commonly found which contains business logic bricks with functions used in several components. Or a `utils` folder to store various utility functions in JavaScript instead of repeating them in multiple places.
 

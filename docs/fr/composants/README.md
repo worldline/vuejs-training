@@ -33,7 +33,7 @@ export default {
 
 ## Computed et watchers
 
-Il est courant de vouloir placer au sein de vos templates des données qui peuvent être directement déduites à partir d'autres, ou formattées d'une certaine manière. S'il est possible de mettre n'importe quelle expression JavaScript dans une directive, une bonne pratique est de limiter la complexité des templates et la duplication de code en déclarant des **propriétés calculées** dans l'option `computed` du composant.
+Il est courant de vouloir placer au sein de vos templates des données qui peuvent être directement déduites à partir d'autres, ou formatées d'une certaine manière. S'il est possible de mettre n'importe quelle expression JavaScript dans une directive, une bonne pratique est de limiter la complexité des templates et la duplication de code en déclarant des **propriétés calculées** dans l'option `computed` du composant.
 
 Une propriété calculée est une donnée pouvant être calculée directement et de façon synchrone à partir d'autres données disponibles (props, data ou autres computed). Cela peut s'apparenter à un *getter*, mais il est aussi possible de spécifier un *setter* pour une propriété calculée. Vue identifiera les variables dont dépend une propriété calculée pour garantir la réactivité quand l'une des dépendances est mutée.
 
@@ -66,11 +66,11 @@ Pour distinguer les cas d'usage computed vs watcher, on privilégiera le plus so
 
 ## Cycle de vie d'un composant
 
-Vue travaille avec les composants suivant un schéma bien précis, de leur création jusqu'à leur destruction en passant par les mises à jour de données et leur insertion dans le DOM. Voici le schéma complet:
+Vue travaille avec les composants suivant un schéma bien précis, de leur création jusqu'à leur destruction en passant par les mises à jour de données et leur insertion dans le DOM. Voici le schéma complet :
 
 ![Vue Lifecycle](../../assets/lifecycle.png)
 
-Chaque étape du cycle de vie d'un composant appelle deux fonctions callback, l'une juste avant que le framework intervienne, et l'autre juste après. On peut via ces callbacks définir un comportement spécifique pour le composant à ces moments précis:
+Chaque étape du cycle de vie d'un composant appelle deux fonctions callback, l'une juste avant que le framework intervienne, et l'autre juste après. On peut via ces callbacks définir un comportement spécifique pour le composant à ces moments précis :
 
 ```js{2}
 export default {
@@ -94,7 +94,7 @@ Comme tout autre élément HTML, les composants Vue peuvent recevoir des argumen
 <ma-popin title="Confirmer l'opération" :actions="confirmActions"></ma-popin>
 ```
 
-Vous devez déclarer dans l'option `props` du composant la liste des propriétés acceptées. Les props reçues peuvent être utilisées dans les templates ou les méthodes de la même manière que les `data`. La différence est que l'on évitera de réassigner ou muter des props: puisque ces valeurs proviennent du composant parent, il faut plutôt communiquer avec ce parent (*communication ascendante*) pour qu'il effectue lui-même le changement. La valeur changée sera alors automatiquement reportée sur les composants enfant.
+Vous devez déclarer dans l'option `props` du composant la liste des propriétés acceptées. Les props reçues peuvent être utilisées dans les templates ou les méthodes de la même manière que les `data`. La différence est que l'on évitera de réassigner ou muter des props : puisque ces valeurs proviennent du composant parent, il faut plutôt communiquer avec ce parent (*communication ascendante*) pour qu'il effectue lui-même le changement. La valeur changée sera alors automatiquement reportée sur les composants enfant.
 
 ```vue{11}
 <template>
@@ -143,9 +143,9 @@ export default {
 
 ### Communication ascendante avec les **events**
 
-Bien qu'un composant enfant puisse techniquement accéder à son composant parent, il s'agit d'une mauvaise pratique car cela induit une liaison forte entre les composants: le composant perd en généricité, il est plus difficilement réutilisable et le risque de boucle infinie est accentué.
+Bien qu'un composant enfant puisse techniquement accéder à son composant parent, il s'agit d'une mauvaise pratique car cela induit une liaison forte entre les composants : le composant perd en généricité, il est plus difficilement réutilisable et le risque de boucle infinie est accentué.
 
-Les composants enfant communiquent donc avec leurs parents au moyen d'**événements**: ils émettent des évènements qui se propagent de parent en parent, de la même manière que les événements du DOM comme un clic de souris. **Un bon composant est agnostique de son environnement**, il ne connaît pas ses parents et ne sait pas si les événements qu'il emet vont être interceptés (ou "écoutés").
+Les composants enfant communiquent donc avec leurs parents au moyen d'**événements** : ils émettent des évènements qui se propagent de parent en parent, de la même manière que les événements du DOM comme un clic de souris. **Un bon composant est agnostique de son environnement**, il ne connaît pas ses parents et ne sait pas si les événements qu'il émet vont être interceptés (ou "écoutés").
 
 Pour **émettre** un événement, on utilise la méthode `$emit` disponible dans tous les composants Vue. Celle-ci prend en paramètre le nom de l'événement, et optionnellement une valeur à transmettre. Si vous avez besoin de transmettre plusieurs valeurs, encapsulez-les dans un objet.
 
@@ -186,7 +186,7 @@ export default {
 
 ## Slots et distribution de contenu
 
-Comme les composants Vue sont déclarés sous forme de balises, on peut leur passer des attributs, les props, mais également placer d'autres éléments ou contenu à l'intérieur de ces balises:
+Comme les composants Vue sont déclarés sous forme de balises, on peut leur passer des attributs, les props, mais également placer d'autres éléments ou contenu à l'intérieur de ces balises :
 
 ```vue
 <navigation-link url="/profile">Mon profil<navigation-link>
@@ -274,30 +274,30 @@ export default {
 - `vm.$slots`
 - `vm.$refs`
 - `vm.$listeners`
-- `vm.$options`: les options passées au composant
-- `vm.$el`: référence à l'élément HTML racine sur lequel le composant est monté
-- `vm.$parent`: composant parent
-- `vm.$root`: composant racine
-- `vm.$children`: composants enfant
+- `vm.$options` : les options passées au composant
+- `vm.$el` : référence à l'élément HTML racine sur lequel le composant est monté
+- `vm.$parent` : composant parent
+- `vm.$root` : composant racine
+- `vm.$children` : composants enfant
 
 ### Méthodes d'instance de vue
 
-- `vm.$watch`: déclare programmatiquement un watcher
-- `vm.$set`: assigne une donnée en forçant la réactivité
-- `vm.$delete`: supprime une donnée en forçant la réactivité
-- `vm.$on`: déclare programmatiquement un listener
-- `vm.$once`: déclare un listener avec le modificateur once
-- `vm.$off`: supprime un listener
-- `vm.$emit`: émet un événement
-- `vm.$mount`: attache le composant à un élément du DOM
-- `vm.$destroy`: supprime l'instance de composant
-- `vm.$forceUpdate`: force la mise à jour complète du composant (à éviter)
-- `vm.$nextTick`: reporte l'exécution d'une fonction au prochain tick (boucle d'événements)
+- `vm.$watch` : déclare programmatiquement un watcher
+- `vm.$set` : assigne une donnée en forçant la réactivité
+- `vm.$delete` : supprime une donnée en forçant la réactivité
+- `vm.$on` : déclare programmatiquement un listener
+- `vm.$once` : déclare un listener avec le modificateur once
+- `vm.$off` : supprime un listener
+- `vm.$emit` : émet un événement
+- `vm.$mount` : attache le composant à un élément du DOM
+- `vm.$destroy` : supprime l'instance de composant
+- `vm.$forceUpdate` : force la mise à jour complète du composant (à éviter)
+- `vm.$nextTick` : reporte l'exécution d'une fonction au prochain tick (boucle d'événements)
 
 ## TP: Décomposer son application
 
 1. Refactorez le code existant en créant un composant `Film.vue` servant à afficher les détails d'un film. Ajoutez des `props` pour passer les données de chaque film au composant.
-2. Créer un autre composant `SearchFilm.vue` contenant un formulaire de recherche ainsi que la liste de `Film` en résultats dessous:
+2. Créer un autre composant `SearchFilm.vue` contenant un formulaire de recherche ainsi que la liste de `Film` en résultats dessous :
 
 ```vue
 <template>
@@ -321,10 +321,10 @@ export default {
 **Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 
 5. Assignez la variable `films` à une liste vide `[]` initialement. A la soumission du formulaire de recherche, lancez une méthode  `searchFilms` qui mettra les 3 films d'exemple dans cette liste.
-6. **Bonus**: Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon: 
+6. **Bonus** : Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon : 
 ```js
 this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }
 this.films[1] = { title: 'Blade Runner', ... }
 this.films[2] = ...
 ```
-**Question**: *Pourquoi la vue ne se met-elle plus à jour alors que la liste semble être remplie correctement ?*
+**Question** : *Pourquoi la vue ne se met-elle plus à jour alors que la liste semble être remplie correctement ?*

@@ -31,9 +31,9 @@ let component = new Component();
 ```
 
 ::: tip
-En cas de conflit de noms entre une option du mixin et celle du composant, la stratégie de fusion appliquée est la suivante:
+En cas de conflit de noms entre une option du mixin et celle du composant, la stratégie de fusion appliquée est la suivante :
 
-- `data`, `methods`, `components` & `directives`: les options du composants ont la priorité
+- `data`, `methods`, `components` & `directives` : les options du composants ont la priorité
 - hooks du cycle de vie (par ex. `mounted`) : déclenchés successivement, les callbacks du mixin en premier
   :::
 
@@ -54,7 +54,7 @@ Vue.directive("focus", {
 
 ## Plugins
 
-Enfin, Vue propose un système de [plugins](https://fr.vuejs.org/v2/guide/plugins.html) servant à ajouter des fonctionnalités au niveau global de l'application. Là encore, il s'agit d'une fonctionnalité principalement utilisée par les bibliothèques tierces et il convient de ne pas en abuser. Les plugins peuvent entre autres:
+Enfin, Vue propose un système de [plugins](https://fr.vuejs.org/v2/guide/plugins.html) servant à ajouter des fonctionnalités au niveau global de l'application. Là encore, il s'agit d'une fonctionnalité principalement utilisée par les bibliothèques tierces et il convient de ne pas en abuser. Les plugins peuvent entre autres :
 
 - ajouter des mixins globales ou de nouveaux composants déclarés globalement
 - ajouter des méthodes ou propriétés globalement à tous les composants

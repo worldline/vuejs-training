@@ -27,6 +27,7 @@ export default {
   },
   methods: {
     populateFilms() {
+      // For more information about reactivity and array, see: https://vuejs.org/v2/guide/reactivity.html#For-Arrays
       this.films = [
         {
           title: 'Titanic',

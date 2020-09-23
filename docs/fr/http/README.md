@@ -12,15 +12,15 @@ On évitera de faire les appels réseau directement depuis le code d'un composan
 Par convention, on code la logique applicative dans des fichiers JS appelés *services*, répartis selon les grands pans fonctionnels de votre application et placés dans un dossier `src/services`
 :::
 
-## TP: Échanger avec un back-end
+## TP : Échanger avec un back-end
 
 Nous allons nous servir d'une API fournie par un serveur (le *back-end*) pour authentifier les utilisateurs et rechercher des films. Ce back-end a déjà été développé et déployé sur Heroku.
 
 ::: tip
-Le contrat d'interface du back-end est disponible ici: [api-docs](https://vue-js-backend.herokuapp.com/api-docs)
+Le contrat d'interface du back-end est disponible ici : [api-docs](https://vue-js-backend.herokuapp.com/api-docs)
 :::
 
-1. Créer un service générique `services/api.js` permettant d'appeler le backend, avec ce contenu:
+1. Créer un service générique `services/api.js` permettant d'appeler le backend, avec ce contenu :
 
 ```js
 import store from '@/store.js'
@@ -114,7 +114,7 @@ export default {
 
 6. Le service `api` est déjà configuré pour ajouter ce token en header `Authorization` des requêtes. Vérifiez que le token est bien envoyé en header HTTP via les outils développeur de votre navigateur.
 
-7. **Bonus**: Modifier l'action `logout` du store pour supprimer le token et les infos utilisateur du store à la déconnexion, et rediriger vers le formulaire de login.
+7. **Bonus** : Modifier l'action `logout` du store pour supprimer le token et les infos utilisateur du store à la déconnexion, et rediriger vers le formulaire de login.
 
 8. Créez un service `FilmService` avec une méthode pour rechercher les films, en suivant la documentation de l'API (`GET /movies/search`).
 

@@ -1,8 +1,8 @@
 # Écosystème de Vue
 
-Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins et d'outillage. Une (longue) liste est disponible ici: [awesome-vue](https://github.com/vuejs/awesome-vue).
+Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins et d'outillage. Une (longue) liste est disponible ici : [awesome-vue](https://github.com/vuejs/awesome-vue).
 
-En voici une sélection de quelques-uns:
+En voici une sélection de quelques-uns :
 
 - [vue-devtools](https://github.com/vuejs/vue-devtools)
   Une extension navigateur très utile pour déboguer des applications Vue. Disponible sur Chrome, Firefox ou en application standalone.
@@ -14,7 +14,7 @@ En voici une sélection de quelques-uns:
   Un outil d'audit pour l'accessibilité de vos applications Vue. Il indique en console développeur la liste des défauts d'accessibilité repérés dans le code.
 
 - [vuepress](https://vuepress.vuejs.org/)
-  Un générateur de site de documentation utilisant Vue (utilisé pour ce support de formation)
+  Un générateur de site de documentation utilisant Vue (utilisé pour ce support de formation).
 
 ## Frameworks UI
 
@@ -27,7 +27,7 @@ Il existe de nombreux frameworks UI avec un grand nombre de composants prédéfi
 - [vue-sax](https://lusaxweb.github.io/vuesax/)
 
 ::: warning
-Note: ne remplace pas le travail d'un designer, ergonome ou développeur CSS.
+Note : ne remplace pas le travail d'un designer, ergonome ou développeur CSS.
 :::
 
 ## Server-side rendering

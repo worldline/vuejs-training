@@ -116,13 +116,15 @@ vue create search-films
 Choisissez la configuration suivante :
 
 ```bash
-Vue CLI v3.11.0
+@vue/cli 4.5.6
 ? Please pick a preset: Manually select features
 ? Check the features needed for your project: Babel, Linter, Unit
-? Pick a linter / formatter config: Basic
+? Choose a version of Vue.js that you want to start the project with (Use arrow keys): 2.x
+? Pick a linter / formatter config: ESLint with error prevention only
 ? Pick additional lint features: Lint on save
 ? Pick a unit testing solution: Jest
-? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? In dedicated config files
+? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.: In dedicated config files
+? Pick the package manager to use when installing dependencies: Use NPM
 ```
 
 - **Babel** est un _transpilateur_, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs.

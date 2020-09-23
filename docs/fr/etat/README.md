@@ -43,7 +43,7 @@ export default {
 ::: tip
 Notez qu'on a intentionnellement déclaré `data` comme un objet et non une fonction, afin que les instances du composant utilisent la même référence de données partagées.
 
-Cependant, on peut aussi tout à fait mélanger donnés locales et données partagées:
+Cependant, on peut aussi tout à fait mélanger donnés locales et données partagées :
 
 ```js
 data(){
@@ -59,7 +59,7 @@ Cette solution peut faire l'affaire dans de nombreux cas, mais montre rapidement
 
 ## Store et mutations contrôlées
 
-Un pattern un peu plus avancé est de déclarer un objet magasin (*store*) qui encapsule l'objet d'état et sert d'interface de contrôle. L'objet d'état n'est pas directement accessible de l'extérieur par référence, mais le store fournit des méthodes pour interagir avec: typiquement un getter/setter. On pourra ensuite ajouter dans ces méthodes des instructions de débogage, monitoring, mesure de performance etc.
+Un pattern un peu plus avancé est de déclarer un objet magasin (*store*) qui encapsule l'objet d'état et sert d'interface de contrôle. L'objet d'état n'est pas directement accessible de l'extérieur par référence, mais le store fournit des méthodes pour interagir avec : typiquement un getter/setter. On pourra ensuite ajouter dans ces méthodes des instructions de débogage, monitoring, mesure de performance etc.
 
 ```js
 /** services/store.js **/
@@ -109,7 +109,7 @@ Une fois que l'on dispose d'un store, on est tenté de l'enrichir de nombreuses 
 
 [Vuex](https://vuex.vuejs.org/) est l'aboutissement de ce pattern de store centralisé. C'est solution officielle de gestion d'état fournie par l'équipe de Vue. Vuex ne trouvera pas forcément sa place dans tous les projets Vue, mais c'est un très bon atout dans de grosses applications manipulant beaucoup de données.
 
-Vuex fonctionne selon les principes suivants:
+Vuex fonctionne selon les principes suivants :
 - Une **mutation** est une fonction qui modifie l'état du store. Elle est obligatoirement **synchrone**.
 - Une **action** est une fonction qui déclenche une ou plusieurs mutations. Elle peut être **asynchrone**.
 - Les composants modifient l'état applicatif en invoquant des actions
@@ -117,7 +117,7 @@ Vuex fonctionne selon les principes suivants:
 
 ![Vuex et les composants](../../assets/vuex.png)
 
-## TP: Implémenter un store Vuex
+## TP : Implémenter un store Vuex
 
 1. Installer les dépendances `vuex` et `vuex-persistedstate` qu'on utilisera pour persister l'état du store.
 
@@ -125,7 +125,7 @@ Vuex fonctionne selon les principes suivants:
 npm install vuex vuex-persistedstate
 ```
 
-2. Créer un store Vuex en créant un fichier `src/store.js` avec le contenu suivant:
+2. Créer un store Vuex en créant un fichier `src/store.js` avec le contenu suivant :
 
 ```js{8}
 import Vue from 'vue'
@@ -162,7 +162,7 @@ export default new Vuex.Store({
 Le mode `strict` permet de lancer une erreur si le store Vuex est modifié en dehors des mutateurs. Attention, ce mode est coûteux en performance et doit être désactivé en production !
 :::
 
-3. Déclarez le store dans votre application en complétant le fichier `main.js` comme ceci:
+3. Déclarez le store dans votre application en complétant le fichier `main.js` comme ceci :
 
 ```js{1,5}
 import store from '@/store'
@@ -205,4 +205,4 @@ this.$store.dispatch('login', { user: 'John Smith' })
 
 7. Si l'utilisateur a entré de mauvaises informations, afficher un message d'erreur. Pour cela, vous pouvez vous aider d'une `data` supplémentaire comme une String `loginError` par exemple.
 
-8. **Bonus**: Coder une action `logout` et ajouter un bouton de déconnexion `<button id="logout-btn">` qui invoque cette action. Afficher le nom de l'utilisateur à côté de ce bouton.
+8. **Bonus** : Coder une action `logout` et ajouter un bouton de déconnexion `<button id="logout-btn">` qui invoque cette action. Afficher le nom de l'utilisateur à côté de ce bouton.
