@@ -6,19 +6,19 @@
     </form>
 
     <ul class="films">
-      <film v-for="film in films" :key="film.title" :film="film"></film>
+      <FilmCard v-for="film in films" :key="film.title" v-bind="film" />
     </ul>
 
   </div>
 </template>
 
 <script>
-import Film from './Film.vue'
+import FilmCard from './FilmCard.vue'
 
 export default {
   name: 'SearchFilm',
   components: {
-    Film
+    FilmCard
   },
   data() {
     return {
