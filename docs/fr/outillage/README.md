@@ -4,12 +4,12 @@
 
 ::: tip
 
-Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [JHipster Devbox](https://github.com/jhipster/jhipster-devbox), ou [Erable Dev VM (Chips Devbox)](https://gitlab.kazan.priv.atos.fr/mts-erable-otvp/mts-erable-dev-vm), pour avoir une meilleur expérience de développment. Toutefois ce n'est pas obligatoire pour cette formation.
+Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.atosworldline.com/dev-box/), pour avoir une meilleure expérience de développement. Toutefois ce n'est pas obligatoire pour cette formation.
 :::
 
 ### Node.js
 
-Installez [Node.js](https://nodejs.org/) (version 8.x minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utilisez [nvm](https://github.com/creationix/nvm).
+Installez [Node.js](https://nodejs.org/) (version 8.x minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utiliser [nvm](https://github.com/creationix/nvm).
 
 ### Visual Studio Code et Vetur
 
@@ -116,13 +116,15 @@ vue create search-films
 Choisissez la configuration suivante :
 
 ```bash
-Vue CLI v3.11.0
+@vue/cli 4.5.6
 ? Please pick a preset: Manually select features
 ? Check the features needed for your project: Babel, Linter, Unit
-? Pick a linter / formatter config: Basic
+? Choose a version of Vue.js that you want to start the project with (Use arrow keys): 2.x
+? Pick a linter / formatter config: ESLint with error prevention only
 ? Pick additional lint features: Lint on save
 ? Pick a unit testing solution: Jest
-? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.? In dedicated config files
+? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.: In dedicated config files
+? Pick the package manager to use when installing dependencies: Use NPM
 ```
 
 - **Babel** est un _transpilateur_, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs.

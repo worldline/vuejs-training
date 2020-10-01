@@ -2,7 +2,7 @@
 
 La réactivité est le mécanisme qui permet au framework de détecter lorsque des données utilisées sur la page sont modifiées (_mutées_), et de mettre à jour la page de façon optimale. C'est donc une mécanique cruciale pour tout framework web, et il convient d'en analyser le fonctionnement pour comprendre ses forces et ses limites.
 
-Vue fournit une réactivité automatique, c'est-à-dire qu'il n'est pas nécessaire au développeur de déclencher manuellement la mise à jour de la vue après avoir muté des données. Cette réactivité est basée sur 2 fonctionnalités de JavaScript: les **getters/setters** pour Vue 2 et les **Proxies** pour Vue 3
+Vue fournit une réactivité automatique, c'est-à-dire qu'il n'est pas nécessaire au développeur de déclencher manuellement la mise à jour de la vue après avoir muté des données. Cette réactivité est basée sur 2 fonctionnalités de JavaScript : les **getters/setters** pour Vue 2 et les **Proxies** pour Vue 3
 
 ## Getters / setters (ECMAScript 5)
 
@@ -20,11 +20,11 @@ const user = {
 };
 ```
 
-En JavaScript, les propriétés d'un objet peuvent être déclarées avec un getter et un setter, qui sont des fonctions exécutées à l'accès en lecture et écriture à cette propriété. Vue.js les utilise en redefinissant des getters/setters pour toutes les data et props des composants, de façon à identifier les consommateurs de ces données ainsi que le moment où celles-ci sont mises à jour.
+En JavaScript, les propriétés d'un objet peuvent être déclarées avec un getter et un setter, qui sont des fonctions exécutées à l'accès en lecture et écriture à cette propriété. Vue.js les utilise en redéfinissant des getters/setters pour toutes les data et props des composants, de façon à identifier les consommateurs de ces données ainsi que le moment où celles-ci sont mises à jour.
 
 La principale limitation des getters/setters est qu'il faut connaître au préalable le nom des variables pour leur assigner un getter/setter. C'est la raison pour laquelle **il est impératif de déclarer en data ou en props toutes les variables utilisées par un composant si on veut qu'elles soient réactives**.
 
-Dans les cas particuliers où il n'est pas possible de déclarer une variable au préalable, comme par exemple un `Array` extensible de longueur indéfinie ou une `Map`, Vue propose la méthodes `Vue.set` ou `vm.$set` pour assigner une valeur à une propriété en forçant la réactivité.
+Dans les cas particuliers où il n'est pas possible de déclarer une variable au préalable, comme par exemple un `Array` extensible de longueur indéfinie ou une `Map`, Vue propose la méthode `Vue.set` ou `vm.$set` pour assigner une valeur à une propriété en forçant la réactivité.
 
 ![Principe de réactivité basé sur les getters/setters](../../assets/getters-setters_fr.jpg)
 

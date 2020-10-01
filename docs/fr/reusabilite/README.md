@@ -31,9 +31,9 @@ let component = new Component();
 ```
 
 ::: tip
-En cas de conflit de noms entre une option du mixin et celle du composant, la stratégie de fusion appliquée est la suivante:
+En cas de conflit de noms entre une option du mixin et celle du composant, la stratégie de fusion appliquée est la suivante :
 
-- `data`, `methods`, `components` & `directives`: les options du composants ont la priorité
+- `data`, `methods`, `components` & `directives` : les options du composants ont la priorité
 - hooks du cycle de vie (par ex. `mounted`) : déclenchés successivement, les callbacks du mixin en premier
 :::
 

@@ -125,7 +125,7 @@ Permet de définir une action à effectuer lorsqu'un évènement survient. Il pe
 <button v-on:click="counter += 1"> Click here! </button>
 This button has been clicked {{ counter }} times.
 
-<!-- syntaxe raccourcie: @event -->
+<!-- syntaxe raccourcie : @event -->
 <button @click="resetCounter($event)"> reset </button>
 ```
 

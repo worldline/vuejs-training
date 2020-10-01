@@ -25,6 +25,8 @@ Toutefois, cela soulève la question du financement. Beaucoup de contributeurs s
 
 ![Différentes sources de financement pour l'équipe de Vue](../../assets/financement.jpg)
 
+[https://vuejs.org/support-vuejs/](https://vuejs.org/support-vuejs/)
+
 ## Popularité
 Vue.js a battu des records en termes de hausse de popularité depuis 2015. Il s'agit aujourd'hui du 2ème projet en nombre de stars sur Github. Malgré l'absence de financement, de nombreux meetups et conférences se sont auto-organisés dans différents pays. Il s'agit de l'un des succès les plus retentissants dans le monde open-source depuis ces cinq dernières années.
 

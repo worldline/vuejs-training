@@ -27,7 +27,7 @@ Comme alternative à Jest, l'équipe de Vue propose aussi [mocha-webpack](https:
 
 ## Ecriture de tests avec Jest
 
-Par défaut, Jest va lancer tous les tests présents dans un dossier `tests/unit` ou `__tests__`. Par exemple, les tests dans `Film.spec.js` et `LoginForm.spec.js` seront repérés et exécutés par Jest ici:
+Par défaut, Jest va lancer tous les tests présents dans un dossier `tests/unit` ou `__tests__`. Par exemple, les tests dans `Film.spec.js` et `LoginForm.spec.js` seront repérés et exécutés par Jest ici :
 
 ```
 -- components
@@ -53,7 +53,7 @@ beforeEach(() => { initState() }, 500)
 // Exécuté après chaque tests - beforeEach - afterEach(fn, timeout)
 afterEach(async () => { await resetState() }, 500)
 
-// Un test unitaire - 'test' peut-être utilisé à la place de 'it'
+// Un test unitaire - 'test' peut être utilisé à la place de 'it'
 // Les mots clés .skip, .only et .each sont utilisables
 test('should do something...', () => {
   expect(add(1, 2).toBe(3)
@@ -82,7 +82,7 @@ describe('Film Card', () => {
 
 Le **mocking** consiste à isoler le sujet de test en remplaçant par des simulacres toutes les briques extérieures avec lesquelles il interagit. Ainsi, en cas d'échec du test, on s'assure que le problème vient bien de la fonction testée et non d'un composant externe (réseau, bases de données, lib tierce etc.)
 
-Ci-dessous quelques exemples pour illustrer les capacité de mocking de Jest :
+Ci-dessous quelques exemples pour illustrer les capacités de mocking de Jest :
 
 ```js
 // Exemple de mocking d'une fonction locale
@@ -172,10 +172,10 @@ Cette bibliothèque propose une API pour tester les composants Vue, voici certai
 
 La classe `Wrapper` représentant votre composant monté propose de nombreuses méthodes comme :
 
-- `.html()`, `.text()`: récupère le contenu HTML ou texte
+- `.html()`, `.text()` : récupère le contenu HTML ou texte
 - `.find()`, `.findAll()` : rechercher des éléments HTML dans le composant
-- `.setData()`, `.setMethods()`, `.setProps()`: modifier les options de votre composant
-- `.trigger()`: propager des évènements
+- `.setData()`, `.setMethods()`, `.setProps()` : modifier les options de votre composant
+- `.trigger()` : propager des évènements
 
 ::: tip
 Les méthodes décrites ci-dessus permettent de tester la plupart des cas simples. Pour plus d'informations se référer à la [documentation officielle](https://vue-test-utils.vuejs.org/).
@@ -231,13 +231,13 @@ describe("Actions.vue", () => {
 });
 ```
 
-## TP: Tester le composant Film
+## TP : Tester le composant Film
 
 1. Créer un fichier de spec de tests unitaires pour tester votre composant `Film.vue`.
 2. Dans votre test, monter le composant, ajouter une assertion basique et lancer les tests.
 3. Simuler les valeurs d'un film et vérifier le rendu HTML.
 4. Ajouter le calcul de la couverture de code. Que constatez-vous ?
-5. **Bonus**: Tester le composant `LoginForm.vue`, en simulant les appels externes HTTPS ainsi que les appels au store et au routeur. Tester le cas nominal et d'erreur du login.
+5. **Bonus** : Tester le composant `LoginForm.vue`, en simulant les appels externes HTTPS ainsi que les appels au store et au routeur. Tester le cas nominal et d'erreur du login.
 
 ::: tip
 

@@ -20,7 +20,7 @@ This training is also available in [French](/fr/) / Cette formation est aussi di
 ## Useful links
 
 - [Official Vue.js documentation](https://vuejs.org/v2/guide/)
-- [Gitlab repository for this training](https://github.com/worldline/vuejs-training)
+- [Github repository for this training](https://github.com/worldline/vuejs-training)
 - [Slides: Introduction to Vue.js - COTRECS octobre 2018](http://slides.com/sylvainpv/introduction-vuejs-10#/)
 
 ## Table of contents

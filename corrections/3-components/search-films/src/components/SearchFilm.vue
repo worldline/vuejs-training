@@ -6,19 +6,19 @@
     </form>
 
     <ul class="films">
-      <film v-for="film in films" :key="film.title" :film="film"></film>
+      <FilmCard v-for="film in films" :key="film.title" v-bind="film" />
     </ul>
 
   </div>
 </template>
 
 <script>
-import Film from './Film.vue'
+import FilmCard from './FilmCard.vue'
 
 export default {
   name: 'SearchFilm',
   components: {
-    Film
+    FilmCard
   },
   data() {
     return {
@@ -27,6 +27,7 @@ export default {
   },
   methods: {
     populateFilms() {
+      // For more information about reactivity and array, see: https://vuejs.org/v2/guide/reactivity.html#For-Arrays
       this.films = [
         {
           title: 'Titanic',

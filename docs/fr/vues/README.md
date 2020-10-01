@@ -15,10 +15,8 @@ Dans le dossier `src`, vous trouvez :
 
 - `assets` : des ressources statiques (images, fichiers) qui seront importées par Webpack au sein de vos composants Vue
 - `components` : vos composants Vue (répartis par dossier par "module" de votre application)
-- `views` : les composants Vue qui seront rattachés à des routes (URL) par vue-router
 - `App.vue` : votre composant Vue racine, qui contient toute l'application
 - `main.js` : le point d'entrée du code JavaScript de toute l'application
-- `router.js` : la configuration de vue-router et la liste des routes déclarées
 
 Par la suite, vous pourrez être amenés à créer d'autres dossiers dans `src` selon vos besoins. On trouve par exemple couramment un dossier `services` qui contient des briques de logique métier avec des fonctions utilisées dans plusieurs composants. Ou encore un dossier `utils` pour venir stocker diverses fonctions utilitaires en JavaScript plutôt que de les répéter à plusieurs endroits.
 
