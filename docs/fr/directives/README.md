@@ -12,7 +12,28 @@ Permet de lier (*bind*) à une variable la valeur d'une propriété d'un éléme
 <a :href="url">Lien</a>  <!-- syntaxe raccourcie -->
 ```
 
-[Exercice : essayez de lier les attributs `src` et `width` de l'image](https://codepen.io/sylvainpv/pen/LBgqbq?editors=1010)
+**Exercice : essayez de lier les attributs `src` et `width` de l'image**
+
+```vue live
+<template>
+<h1>
+    I {{likesVue ? "love" : "hate"}}
+    <img src="" />
+</h1>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+      likesVue: true,
+      logo: 'https://vuejs.org/images/logo.png',
+      logoWidth: 50
+    }
+  }
+}
+</script>
+```
 
 ## Lier des classes et des styles
 
@@ -30,7 +51,49 @@ Plusieurs syntaxes sont proposées pour assigner des classes ou des styles CSS :
 <p :style="{ fontSize: size }"></p>
 ```
 
-[Exercice : assignez une classe et une couleur à chaque fantôme](https://codepen.io/sylvainpv/pen/qyJgLe?editors=1010)
+**Exercice : assignez une classe et une couleur à chaque fantôme**
+
+```vue live
+<template>
+<ol>
+  <li>
+    <span class="ghost">👻︎</span>
+    I'm joyful and red
+  </li>
+  <li>
+    <span class="ghost">👻︎</span>
+    I'm jelly and green
+  </li>
+  <li>
+    <span class="ghost">👻︎</span>
+    I'm wobbly and blue
+  </li>
+</ol>
+</template>
+
+<script>
+import "./ghosts.css";
+
+export default {
+  data(){
+    return {
+      ghost1: {
+        anim: "joyful",
+        style: "color: red"
+      },
+      ghost2: {
+        anim: { jelly: true },
+        style: { color: "green" }
+      },
+      ghost3: {
+        isWobbly: true,
+        isBlue: true
+      }
+    }
+  }
+}
+</script>
+```
 
 ## v-model : Formulaires et inputs
 
@@ -46,7 +109,52 @@ Permet de lier la valeur d'un champ de formulaire à une donnée du composant. C
 ```
 <v-model-example />
 
-[Exercice : utilisez v-model sur les input, select, radio et checkbox](https://codepen.io/sylvainpv/pen/rrqEMg?editors=1010)
+**Exercice : utilisez v-model sur les input, select, radio et checkbox**
+
+```vue live
+<template>
+<div id="icecream-store">
+  <h1>Icecream store</h1>
+
+  <label>Quantity: <input type="number"></label>
+
+  <label>Size:
+    <select>
+      <option value="100">Small</option>
+      <option value="150">Medium</option>
+      <option value="200">Giant</option>
+    </select>
+  </label>
+
+  <label>Flavour:</label>
+  <label><input type="radio" name="flavour" value="#F3E5AB">Vanilla</label>
+  <label><input type="radio" name="flavour" value="#5B2F00" />Chocolate</label>
+  <label><input type="radio" name="flavour" value="#DE0934" />Strawberry</label>
+
+  <label><input type="checkbox"> Napkin</label>
+
+  <IceCreams :quantity="quantity" :flavour="flavour" :size="size" :napkin="napkin" />
+</div>
+</template>
+
+<style>label { display: block }</style>
+
+<script>
+import IceCreams from "./IceCreams.vue";
+
+export default {
+  components: { IceCreams },
+  data(){
+    return {
+      quantity: 1,
+      flavour: "#5B2F00",
+      size: 150,
+      napkin: true
+    }
+  }
+}
+</script>
+```
 
 ## v-if : Conditions
 
@@ -71,7 +179,27 @@ Les directives `v-else-if` et `v-else` fonctionnent de la même façon que leur 
 </template>
 ```
 
-[Exercice : utilisez v-if et v-else pour alterner les visages selon la condition](https://codepen.io/sylvainpv/pen/bjmXXV?editors=1010)
+**Exercice : utilisez v-if et v-else pour alterner les visages selon la température**
+
+```vue live
+<template>
+<div>
+  <input type="range" min="0" max="40" v-model="temperature" />
+  {{ temperature }} °C
+  <span>🥵</span>
+  <span>🥶</span>
+  <span>😀</span>
+</div>
+</template>
+
+<script>
+export default {
+  data(){
+    return { temperature: 20 }
+  }
+}
+</script>
+```
 
 ## v-for : Boucles
 
@@ -112,10 +240,44 @@ Ce n'est pas obligatoire mais aide Vue à mieux comprendre les changements qui s
 <v-for-example-2 />
 
 ::: tip
-Pour répéter un groupe d'éléments, utiliser `v-for` sur une balise `<template>`
+Pour répéter un groupe d'éléments, utiliser `v-for` sur une balise `<template>` contenant ces éléments.
 :::
 
-[Exercice : utilisez deux boucles v-for pour afficher tout le contenu du panier](https://codepen.io/sylvainpv/pen/RBqbBW?editors=1010)
+**Exercice : utilisez deux boucles v-for pour afficher tout le contenu du panier**
+
+```vue live
+<template>
+<div id="basket">
+  <h1>In my basket:</h1>
+  <ul>
+    <li>
+      <span>🍌</span>
+      <span>🍌</span>
+    </li>
+  </ul>
+</div>
+</template>
+
+<style>
+li { list-style: none; font-size: 2rem; }
+</style>
+
+<script>
+export default {
+  name: "Basket",
+  data() {
+    return {
+       basket: [
+        { type: '🍌', quantity: 2 },
+        { type: '🍎', quantity: 4 },
+        { type: '🍒', quantity: 6 },
+        { type: '🍉', quantity: 1 },
+      ]
+    }
+  }
+}
+</script>
+```
 
 ## v-on : Événements
 
@@ -132,10 +294,41 @@ This button has been clicked {{ counter }} times.
 <v-on-example />
 
 ::: tip
-Vous pouvez utiliser la variable `$event` comme référence à l'événement capturé
+Vous pouvez utiliser la variable `$event` comme référence à l'événement capturé (type [Event](https://developer.mozilla.org/fr/docs/Web/API/Event))
 :::
 
-[Exercice : utilisez les événements pour ajouter un singe au clic sur bouton, et leur faire ouvrir les yeux au passage de la souris](https://codepen.io/sylvainpv/pen/NBEKQw?editors=1010)
+**Exercice : utilisez les événements pour ajouter un singe au clic sur bouton, et leur faire ouvrir les yeux au passage de la souris**
+
+```vue live
+<template>
+<div>
+  <span v-for="monkey in monkeys">
+    {{ monkey.hasEyesOpen ? '🙉' : '🙈' }}
+  </span>
+  <br/>
+  <button>Add monkey</button>
+</div>
+</template>
+
+<style>span { font-size: 2rem; }</style>
+
+<script>
+export default {
+  data(){
+    return {
+      monkeys: [
+        { hasEyesOpen: false }
+      ]
+    }
+  },
+  methods: {
+    addMonkey(){
+      this.monkeys.push({ hasEyesOpen: false })
+    }
+  }
+}
+</script>
+```
 
 ### Modificateurs
 

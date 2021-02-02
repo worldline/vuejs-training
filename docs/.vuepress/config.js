@@ -61,6 +61,6 @@ module.exports = {
 	plugins: [
 		require("./plugins/copy-code/"),
 		"vuepress-plugin-global-toc",
-		"vuepress-plugin-live",
+		["live"],
 	],
 }
