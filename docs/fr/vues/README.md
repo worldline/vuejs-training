@@ -58,6 +58,8 @@ La partie script du composant doit exporter par défaut un objet avec les propri
 
 ::: tip
 D'après vous, pourquoi la propriété `data` d'un composant doit être une fonction ?
+
+[Réponse](https://fr.vuejs.org/v2/guide/components.html#data-doit-etre-une-fonction)
 :::
 
 ## Travailler en composants

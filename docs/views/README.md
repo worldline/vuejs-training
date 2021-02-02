@@ -58,6 +58,8 @@ The script part of the component must export an object with the properties of th
 
 ::: tip
 Why do you think the `data` property of a component must be a function?
+
+[Answer](https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function)
 :::
 
 ## Work with components
