@@ -23,7 +23,7 @@ export default {
     },
     say(message){
       // si une méthode est indépendante de l'instance (pas de référence à 'this')
-      // il est pertinent de l'externaliser dans un module à part
+      // alors il peut être pertinent de l'externaliser dans un module à part
       alert(message + '!')
     }
   }
@@ -68,21 +68,21 @@ Pour distinguer les cas d'usage computed vs watcher, on privilégiera le plus so
 
 Vue travaille avec les composants suivant un schéma bien précis, de leur création jusqu'à leur destruction en passant par les mises à jour de données et leur insertion dans le DOM. Voici le schéma complet :
 
-![Vue Lifecycle](../../assets/lifecycle.png)
+<VueLifeCycle lang="fr" />
 
 Chaque étape du cycle de vie d'un composant appelle deux fonctions callback, l'une juste avant que le framework intervienne, et l'autre juste après. On peut via ces callbacks définir un comportement spécifique pour le composant à ces moments précis :
 
 ```js{2}
 export default {
   mounted () {
-    console.log(`Le composant a été inséré dans le DOM, 
+    console.log(`Le composant a été inséré dans le DOM,
         this.$el pointe vers l'élément correspondant.`)
     this.$el.querySelector('input').focus()
   }
 }
 ```
 
-Typiquement, on utilise `created` comme l'équivalent d'une fonction constructeur, pour initialiser certaines données ou lancer des requêtes HTTP. On utilise `mounted` lorsque certaines étapes à l'initialisation nécessitent d'interagir avec le DOM. Enfin, on utilise `destroyed` pour faire le ménage lorsque le composant n'est plus utilisé, par exemple supprimer des event listeners globaux pour éviter des fuites mémoire. Les autres callbacks sont réservés à des cas d'usage plus spécifiques.
+Typiquement, on utilise `created` comme l'équivalent d'une fonction constructeur, pour initialiser certaines données ou lancer des requêtes HTTP. On utilise `mounted` lorsque certaines étapes à l'initialisation nécessitent d'interagir avec le DOM. Enfin, on utilise `destroyed` (`unmount` avec Vue 3) pour faire le ménage lorsque le composant n'est plus utilisé, par exemple supprimer des event listeners globaux pour éviter des fuites mémoire. Les autres callbacks sont réservés à des cas d'usage plus spécifiques.
 
 ## Communication entre composants
 
@@ -117,7 +117,7 @@ export default {
 <blog-post :title="article.title" :content="article.content" />
 <!-- raccourci équivalent -->
 <blog-post v-bind="article" />
-```      
+```
 
 Facultativement, vous pouvez indiquer le type des props ou fournir des options de validation. Vue rejettera les valeurs non valides avec des messages d'erreur explicites, ce qui s'avère utile lorsque l'on utilise des composants d'origine tierce. Pour plus d'informations sur les options acceptées, [se référer à la documentation](https://vuejs.org/v2/guide/components-props.html).
 
@@ -257,8 +257,8 @@ export default {
   updated() {},
   activated() {},
   deactivated() {},
-  beforeDestroy() {},
-  destroyed() {},
+  beforeDestroy() {}, // beforeUnmount avec Vue 3
+  destroyed() {}, // unmounted avec Vue 3
   errorCaptured() {},
 }
 ```
@@ -312,7 +312,7 @@ export default {
     </ul>
   </div>
 </template>
-``` 
+```
 
 3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options associées dans les sous-composants pour alléger au maximum le code de `App`.
 
@@ -321,7 +321,7 @@ export default {
 **Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 
 5. Assignez la variable `films` à une liste vide `[]` initialement. A la soumission du formulaire de recherche, lancez une méthode  `searchFilms` qui mettra les 3 films d'exemple dans cette liste.
-6. **Bonus** : Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon : 
+6. **Bonus** : Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon :
 ```js
 this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }
 this.films[1] = { title: 'Blade Runner', ... }

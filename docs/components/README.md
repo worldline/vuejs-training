@@ -24,7 +24,7 @@ export default {
     },
     say(message) {
       // if a method is independent of the instance (no reference to 'this')
-      // it is relevant to outsource it in a separate module
+      // then it could be relevant to move it to a separate module
       alert(message + "!");
     }
   }
@@ -69,7 +69,7 @@ To distinguish the use cases of computed vs watcher, we will privilege most ofte
 
 Vue follows a pattern when working with components, from their creation to their destruction through data updates and DOM insertion. Here is the complete diagram :
 
-![Vue Lifecycle](../assets/lifecycle.png)
+<VueLifeCycle lang="en" />
 
 Each stage of the life cycle of a component calls two callback functions, one just before the framework does its internal work, and the other just after. These callbacks can be used to define a specific behavior for the component at these precise moments:
 
@@ -83,7 +83,7 @@ export default {
 };
 ```
 
-Typically, we use `created` as the equivalent of a constructor function, to initialize certain data or to make some HTTP requests. We use `mounted` when some initialization steps need to interact with the DOM. Finally, we use `destroyed` to clean up when the component is no longer used, for example delete global event listeners to avoid memory leaks. Other callbacks are reserved for more specific use cases.
+Typically, we use `created` as the equivalent of a constructor function, to initialize certain data or to make some HTTP requests. We use `mounted` when some initialization steps need to interact with the DOM. Finally, we use `destroyed` (or `unmount` with Vue 3) to clean up when the component is no longer used, for example delete global event listeners to avoid memory leaks. Other callbacks are reserved for more specific use cases.
 
 ## Communication between components
 
@@ -258,8 +258,8 @@ export default {
   updated() {},
   activated() {},
   deactivated() {},
-  beforeDestroy() {},
-  destroyed() {},
+  beforeDestroy() {}, // beforeUnmount with Vue 3
+  destroyed() {}, // unmounted with Vue 3
   errorCaptured() {}
 };
 ```
