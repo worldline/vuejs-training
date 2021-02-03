@@ -147,11 +147,11 @@ Bien qu'un composant enfant puisse techniquement accéder à son composant paren
 
 Les composants enfant communiquent donc avec leurs parents au moyen d'**événements** : ils émettent des évènements qui se propagent de parent en parent, de la même manière que les événements du DOM comme un clic de souris. **Un bon composant est agnostique de son environnement**, il ne connaît pas ses parents et ne sait pas si les événements qu'il émet vont être interceptés (ou "écoutés").
 
-Pour **émettre** un événement, on utilise la méthode `$emit` disponible dans tous les composants Vue. Celle-ci prend en paramètre le nom de l'événement, et optionnellement une valeur à transmettre. Si vous avez besoin de transmettre plusieurs valeurs, encapsulez-les dans un objet.
+Pour **émettre** un événement, on utilise la méthode `$emit` disponible dans tous les composants Vue. Celle-ci prend en paramètre le nom de l'événement, et optionnellement une valeur à transmettre. Si vous avez besoin de transmettre plusieurs valeurs, encapsulez-les dans un objet. La liste des événements émis par un composant est décrite via l'option `emits` du composant, non obligatoire mais recommandée pour documenter le fonctionnement du composant.
 
 Pour **écouter** un événement émis par un composant enfant, on utilise la même directive `v-on` que pour les événements du DOM. La valeur transmise avec l'événement peut être récupérée via `$event`.
 
-```vue{21}
+```vue{19,22}
 <template>
   <article>
     <h3>My article</h3>
@@ -170,6 +170,7 @@ export default {
       comment: ''
     }
   },
+  emits: ['comment'],
   methods: {
     sendComment () {
       this.$emit('comment', this.comment)
@@ -314,9 +315,9 @@ export default {
 </template>
 ```
 
-3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options associées dans les sous-composants pour alléger au maximum le code de `App`.
+3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options correspondantes dans ce nouveau composant.
 
-4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé.
+4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé. Vous devrez pour cela déplacer la data `loggedIn` et faire communiquer les composants entre eux.
 
 **Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 

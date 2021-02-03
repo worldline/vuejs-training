@@ -60,6 +60,8 @@ The script part of the component must export an object with the properties of th
 Why do you think the `data` property of a component must be a function?
 
 [Answer](https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function)
+
+Since Vue 3, `data` component option no longer accepts a plain JavaScript object.
 :::
 
 ## Work with components

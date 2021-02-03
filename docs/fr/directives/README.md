@@ -353,7 +353,7 @@ Les modificateurs sont des suffixes permettant de modifier légèrement le compo
 1. Sur le formulaire d'authentification, ajoutez deux variables `email` et `password` dans l'option `data` du composant et utilisez la directive `v-model` sur les champs email et password pour les lier.
 2. Ajoutez une autre variable `loggedIn` initialement à `false`, puis utilisez la directive `v-on` pour l'assigner à `true` à la soumission du formulaire.
 3. Modifier le comportement par défaut de l'évènement `submit` du formulaire d'authentification afin d'éviter le rechargement de la page.
-4. Sous le formulaire d'authentification, ajoutez le HTML suivant :
+4. Dans `LoginForm.vue`, ajoutez le HTML suivant sous le formulaire d'authentification :
 ```html
 <ul class="films">
   <li class="film card">

@@ -359,7 +359,7 @@ Modifiers are suffixes used to slightly change the behavior of some directives: 
 1. In the authentication form, add two variables `email` and`password` in the `data` attribute of the component and use the `v-model` directive on the email and password fields to bind them.
 2. Add another `loggedIn` variable initially set to `false`, then use the `v-on` directive to set it to `true` when the form is submitted.
 3. Change the default behavior of the `submit` event of the authentication form to avoid reloading the page.
-4. Under the authentication form, add the following HTML:
+4. In `LoginForm.vue`, add the following HTML under the authentication form :
 
 ```html
 <ul class="films">

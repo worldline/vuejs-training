@@ -148,11 +148,11 @@ Although a child component can technically access its parent component, it is a 
 
 Child components communicate with their parents by using **events**: they emit events that propagate from parent to parent, in the same way as DOM events like a mouse click. **A good component is agnostic of his environment**, it does not know his parents and does not know if the events it emets will ever be intercepted (or "listened to").
 
-To **emit** an event, use the `$emit` method available in all Vue components. It takes as parameter the name of the event, and optionally a value (_payload_) to transmit. If you need to pass multiple values, encapsulate them in an object.
+To **emit** an event, use the `$emit` method available in all Vue components. It takes as parameter the name of the event, and optionally a value (_payload_) to transmit. If you need to pass multiple values, encapsulate them in an object. The list of the events sent by a component should be described in the `emits` component option, not mandatory but useful for documentation purposes.
 
 To **listen** to an event emitted by a child component, we use the same `v-on` directive as for DOM events, or `@yourEvent` shorthand. The value passed with the event can be retrieved via the `$event` variable in the directive value.
 
-```vue{21}
+```vue{19,22}
 <template>
   <article>
     <h3>My article</h3>
@@ -171,6 +171,7 @@ export default {
       comment: ""
     };
   },
+  emits: ['comment'],
   methods: {
     sendComment() {
       this.$emit("comment", this.comment);
@@ -315,8 +316,8 @@ export default {
 </template>
 ```
 
-3. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the data and other associated options in the child components to reduce the size of `App` code.
-4. Display the `SearchFilm` component only if the user is logged in.
+3. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the corresponding data and options in this new component.
+4. Display the `SearchFilm` component only if the user is logged in. You will have to move the `loggedIn` variable and communicate between components.
 
 **Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
 
