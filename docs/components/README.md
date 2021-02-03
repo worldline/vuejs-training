@@ -83,7 +83,7 @@ export default {
 };
 ```
 
-Typically, we use `created` as the equivalent of a constructor function, to initialize certain data or to make some HTTP requests. We use `mounted` when some initialization steps need to interact with the DOM. Finally, we use `destroyed` (or `unmount` with Vue 3) to clean up when the component is no longer used, for example delete global event listeners to avoid memory leaks. Other callbacks are reserved for more specific use cases.
+Typically, we use `created` as the equivalent of a constructor function, to initialize certain data or to make some HTTP requests. We use `mounted` when some initialization steps need to interact with the DOM. Finally, we use `destroyed` (or `unmounted` with Vue 3) to clean up when the component is no longer used, for example delete global event listeners to avoid memory leaks. Other callbacks are reserved for more specific use cases.
 
 ## Communication between components
 
