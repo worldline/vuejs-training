@@ -69,7 +69,16 @@ To distinguish the use cases of computed vs watcher, we will privilege most ofte
 
 Vue follows a pattern when working with components, from their creation to their destruction through data updates and DOM insertion. Here is the complete diagram :
 
-<VueLifeCycle lang="en" />
+<VueVersionSwitch slotKey="lifecycle" />
+
+::: slot lifecycle-vue2
+![Vue Lifecycle](../assets/vue2_lifecycle.png)
+:::
+
+::: slot lifecycle-vue3
+![Vue Lifecycle](../assets/vue3_lifecycle.svg)
+:::
+
 
 Each stage of the life cycle of a component calls two callback functions, one just before the framework does its internal work, and the other just after. These callbacks can be used to define a specific behavior for the component at these precise moments:
 
@@ -322,12 +331,7 @@ export default {
 **Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
 
 5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample films in this list.
-6. **Bonus**: In the `searchFilms` method, instead of putting all the films at once in`this.films`, try to assign them one by one in this way:
-
-```js
-this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }
-this.films[1] = { title: 'Blade Runner', ... }
-this.films[2] = ...
+6. **Bonus**: Try to remove the initial empty array declaration for `films` in `data`.
 ```
 
 **Question**: _Why does the view no longer update while the list appears to be filled correctly ?_

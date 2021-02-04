@@ -68,7 +68,15 @@ Pour distinguer les cas d'usage computed vs watcher, on privilégiera le plus so
 
 Vue travaille avec les composants suivant un schéma bien précis, de leur création jusqu'à leur destruction en passant par les mises à jour de données et leur insertion dans le DOM. Voici le schéma complet :
 
-<VueLifeCycle lang="fr" />
+<VueVersionSwitch slotKey="lifecycle" />
+
+::: slot lifecycle-vue2
+![Vue Lifecycle](../../assets/vue2_lifecycle_fr.png)
+:::
+
+::: slot lifecycle-vue3
+![Vue Lifecycle](../../assets/vue3_lifecycle_fr.svg)
+:::
 
 Chaque étape du cycle de vie d'un composant appelle deux fonctions callback, l'une juste avant que le framework intervienne, et l'autre juste après. On peut via ces callbacks définir un comportement spécifique pour le composant à ces moments précis :
 
@@ -322,10 +330,6 @@ export default {
 **Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 
 5. Assignez la variable `films` à une liste vide `[]` initialement. A la soumission du formulaire de recherche, lancez une méthode  `searchFilms` qui mettra les 3 films d'exemple dans cette liste.
-6. **Bonus** : Dans la méthode `searchFilms`, au lieu de mettre tous les films d'un coup dans `this.films`, essayez de les assigner un à un de cette façon :
-```js
-this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }
-this.films[1] = { title: 'Blade Runner', ... }
-this.films[2] = ...
-```
+6. **Bonus** : Essayez de retirer la déclaration initiale en liste vide de `films` dans `data`.
+
 **Question** : *Pourquoi la vue ne se met-elle plus à jour alors que la liste semble être remplie correctement ?*

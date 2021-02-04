@@ -1,92 +1,44 @@
 <template>
-  <div id="login-form">
-    <form @submit.prevent="logIn" v-if="!loggedIn">
-      <div class="alert" v-if="error">
-        <span class="closebtn" @click="error = null">&times;</span>
-        {{ error }}
-      </div>
-      <h1>{{ title }}</h1>
-      <p>Fill this form to login.</p>
-      <hr>
-      <span></span>
+<div id="login-form">
+<form v-on:submit.prevent="onLogin">
+  <h1>Authentification</h1>
+  <p>Remplissez ce formulaire pour vous connecter.</p>
+  <hr>
 
-      <label for="email"><b>Email</b></label>
-      <input v-model="email" type="text" placeholder="Enter your email" id="email" name="email" required>
+  <label for="email"><b>Email</b></label>
+  <input type="text" placeholder="Entrez votre courriel" id="email" name="email" required v-model="email">
 
-      <label for="psw"><b>Password</b></label>
-      <input v-model="psw" type="password" placeholder="Enter your password" id="psw" name="psw" required>
+  <label for="psw"><b>Mot de passe</b></label>
+  <input type="password" placeholder="Entrez votre mot de passe" id="psw" name="psw" required v-model="password">
 
-      <p><button type="submit">Login</button></p>
-    </form>
-    <div v-else>
-      <button id="logout-btn" @click="logOut">Logout</button>
-      <search-film></search-film>
-    </div>
-  </div>
+  <p><button type="submit">Se connecter</button></p>
+  <p class="error" v-if="loginError">{{loginError}}</p>
+</form>
+</div>
 </template>
 
 <script>
-import SearchFilm from '@/components/SearchFilm.vue'
-import { mapState } from 'vuex'
-
 export default {
-  name: 'LoginForm',
-  components: {
-    SearchFilm
-  },
-  data() {
-    return {
-      title: 'Authentification',
-      email: '',
-      psw: '',
-      error: null
-    }
-  },
-  computed: {
-    ...mapState(['loggedIn'])
-  },
-  methods: {
-    logIn() {
-      if(this.email === 'test@test.com' && this.psw === 'test') {
-        this.error = null
-        return this.$store.dispatch('setLoggedIn', true)
-      }
-      this.psw = ''
-      this.error = 'Email ou mot de passe incorrect'
+    name: "LoginForm",
+    emits: ['login'],
+    data(){
+        return {
+            title: "Authentification",
+            email: "",
+            password: "",
+            loginError: null
+        }
     },
-    logOut() {
-      this.email = ''
-      this.psw = ''
-      this.$store.dispatch('setLoggedIn', false)
+    methods: {
+      onLogin(){
+        if(this.email === "test@test.com" && this.password === "test1234"){
+          this.$store.dispatch('login', { user: 'test' })
+          this.$emit('login')
+          this.loginError = null
+        } else {
+          this.loginError = `Invalid email or password 🤔`
+        }
+      }
     }
-  }
 }
 </script>
-
-<style scoped>
-/* The alert message box */
-.alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
-
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: black;
-}
-</style>
-
