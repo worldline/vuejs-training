@@ -1,59 +1,72 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
-import VueRouter from 'vue-router'
+import { shallowMount, flushPromises } from "@vue/test-utils"
+import { createStore } from "vuex"
+import { createRouter, createWebHistory } from "vue-router"
 
-import LoginForm from '@/components/LoginForm'
-import UserService from '@/services/UserService.js'
+import LoginForm from "@/views/LoginForm"
+import UserService from "@/services/UserService.js"
 
-describe('LoginForm Component', () => {
+describe("LoginForm Component", () => {
+	let store, router, wrapper, loginActionMock
 
-  let localVue, store, router, wrapper;
-  let setUserMock, setTokenMock;
+	beforeEach(() => {
+		// Initialize local Vue with Vuex and mock dispatch actions
+		loginActionMock = jest.fn(() => Promise.resolve())
+		store = createStore({
+			actions: {
+				login: loginActionMock,
+			},
+		})
 
-  beforeEach(() => {
-    // Initialize local Vue with Vuex and mock dispatch actions
-    localVue = createLocalVue()
-    localVue.use(Vuex)
-    setUserMock = jest.fn(() => Promise.resolve())
-    setTokenMock = jest.fn(() => Promise.resolve())
-    store = new Vuex.Store({
-      actions: {
-        setUser: setUserMock,
-        setToken: setTokenMock
-      }
-    })
+		// Initialize local Vue with VueRouter
+		router = createRouter({
+			history: createWebHistory(),
+			routes: [
+				{
+					path: "/",
+					component: { template: "Login" },
+				},
+				{
+					path: "/search",
+					component: { template: "Search" },
+				},
+			],
+		})
 
-    // Initialize local Vue with VueRouter
-    localVue.use(VueRouter)
-    router = new VueRouter()
+		// Mount the local vue
+		wrapper = shallowMount(LoginForm, {
+			global: { plugins: [store, router] },
+		})
+	})
 
-    // Mount the local vue
-    wrapper = shallowMount(LoginForm, { localVue, store, router })
-  });
+	it("should redirect the user to /search route when correctly logged in", async () => {
+		await router.isReady()
+		// Mock the login call to the backend
+		const loginMock = jest.fn(() =>
+			Promise.resolve({ user: {}, token: "t0k3N" })
+		)
+		UserService.login = loginMock
 
-  it('should redirect the user to /search route when correctly logged in', async () => {
+		await wrapper.get("form").trigger("submit.prevent")
+		await flushPromises()
+		expect(loginMock).toHaveBeenCalled()
+		expect(loginActionMock).toHaveBeenCalled()
+		expect(wrapper.vm.$route.path).toEqual("/search")
+	})
 
-    // Mock the login call to the backend
-    const loginMock = jest.fn(() => Promise.resolve({ user: {}, token: 't0k3N' }))
-    UserService.login = loginMock;
+	it("should print an error message when user failed to login", async () => {
+		await router.isReady()
+		// Mock the login call to the backend
+		const loginMock = jest.fn(() =>
+			Promise.reject("The login information was incorrect")
+		)
+		UserService.login = loginMock
 
-    await wrapper.find('form').trigger('submit.prevent')
-    expect(loginMock).toHaveBeenCalled()
-    expect(setUserMock).toHaveBeenCalled()
-    expect(setTokenMock).toHaveBeenCalled()
-    expect(wrapper.vm.$route.path).toEqual('/search')
-  })
-
-  it('should print an error message when user failed to login', async () => {
-
-    // Mock the login call to the backend
-    const loginMock = jest.fn(() => Promise.reject('The login information was incorrect'))
-    UserService.login = loginMock;
-
-    await wrapper.find('form').trigger('submit.prevent')
-    expect(loginMock).toHaveBeenCalled()
-    expect(setUserMock).not.toHaveBeenCalled()
-    expect(setTokenMock).not.toHaveBeenCalled()
-    expect(wrapper.find('.alert').text()).toContain('The login information was incorrect')
-  })
+		await wrapper.get("form").trigger("submit.prevent")
+		await flushPromises()
+		expect(loginMock).toHaveBeenCalled()
+		expect(loginActionMock).not.toHaveBeenCalled()
+		expect(wrapper.get(".error").text()).toContain(
+			"The login information was incorrect"
+		)
+	})
 })

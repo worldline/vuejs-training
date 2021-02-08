@@ -168,7 +168,7 @@ This library offers an API to test the Vue components, here are some of the most
 
 - `mount`: creates a `Wrapper` that contains the mounted and rendered Vue component;
 - `shallowMount`: like `mount`, it creates a `Wrapper` that contains the mounted and rendered Vue component, but with stubbed child components;
-- `createLocalVue`: returns a Vue class for you to add components, mixins and install plugins without polluting the global Vue class.
+- `createLocalVue`: *(only for Vue 2)* returns a Vue class for you to add components, mixins and install plugins without polluting the global Vue class.
 
 The class `Wrapper` representing your mounted component offers method such as:
 
@@ -187,17 +187,19 @@ The combination of Jest with Vue Test Utils makes it possible to test complex op
 
 The following example shows how to simulate store calls as well as user events such as clicks or input:
 
+<VueVersionSwitch slotKey="jest-vue-test-utils" />
+
+::: slot jest-vue-test-utils-vue2
 ```js
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import Actions from "../../../src/components/Actions";
+import Actions from "@/src/components/Actions";
 
 const localVue = createLocalVue();
-
 localVue.use(Vuex);
 
 describe("Actions.vue", () => {
-  let actions, store;
+  let actions, store, wrapper;
 
   beforeEach(() => {
     actions = {
@@ -205,10 +207,10 @@ describe("Actions.vue", () => {
       actionInput: jest.fn()
     };
     store = new Vuex.Store({ actions });
+    wrapper = mount(Actions, { store, localVue });
   });
 
   test('dispatches "actionInput" when input event value is "input"', () => {
-    const wrapper = shallowMount(Actions, { store, localVue });
     const input = wrapper.find("input");
     input.element.value = "input";
     input.trigger("input");
@@ -216,7 +218,6 @@ describe("Actions.vue", () => {
   });
 
   test('does not dispatch "actionInput" when event value is not "input"', () => {
-    const wrapper = shallowMount(Actions, { store, localVue });
     const input = wrapper.find("input");
     input.element.value = "not input";
     input.trigger("input");
@@ -224,12 +225,52 @@ describe("Actions.vue", () => {
   });
 
   test('calls store action "actionClick" when button is clicked', () => {
-    const wrapper = shallowMount(Actions, { store, localVue });
     wrapper.find("button").trigger("click");
     expect(actions.actionClick).toHaveBeenCalled();
   });
 });
 ```
+:::
+
+::: slot jest-vue-test-utils-vue3
+```js
+import { mount } from "@vue/test-utils";
+import { createStore } from "vuex";
+import Actions from "@/src/components/Actions";
+
+describe("Actions.vue", () => {
+  let actions, store, wrapper;
+
+  beforeEach(() => {
+    actions = {
+      actionClick: jest.fn(),
+      actionInput: jest.fn()
+    };
+    store = createStore({ actions });
+    wrapper = mount(Actions, { global: { plugins: [store] } });
+  });
+
+  test('dispatches "actionInput" when input event value is "input"', () => {
+    const input = wrapper.find("input");
+    input.element.value = "input";
+    input.trigger("input");
+    expect(actions.actionInput).toHaveBeenCalled();
+  });
+
+  test('does not dispatch "actionInput" when event value is not "input"', () => {
+    const input = wrapper.find("input");
+    input.element.value = "not input";
+    input.trigger("input");
+    expect(actions.actionInput).not.toHaveBeenCalled();
+  });
+
+  test('calls store action "actionClick" when button is clicked', () => {
+    wrapper.find("button").trigger("click");
+    expect(actions.actionClick).toHaveBeenCalled();
+  });
+});
+```
+:::
 
 ## Practical: Test the Film component
 
