@@ -4,6 +4,9 @@ Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins e
 
 En voici une sélection de quelques-uns :
 
+<VueVersionSwitch slotKey="ecosystem" />
+
+::: slot ecosystem-vue2
 - [vue-devtools](https://github.com/vuejs/vue-devtools)
   Une extension navigateur très utile pour déboguer des applications Vue. Disponible sur Chrome, Firefox ou en application standalone.
 
@@ -15,6 +18,21 @@ En voici une sélection de quelques-uns :
 
 - [vuepress](https://vuepress.vuejs.org/)
   Un générateur de site de documentation utilisant Vue (utilisé pour ce support de formation).
+:::
+
+::: slot ecosystem-vue3
+- [vue-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
+  Une extension navigateur très utile pour déboguer des applications Vue. Disponible sur Chrome, Firefox ou en application standalone.
+
+- [Vue Styleguide](https://v3.vuejs.org/style-guide/)
+  Un guide de style maintenu par l'équipe officielle pour lister les conventions et bonnes pratiques autour de projets Vue.
+
+- [vue-axe](https://github.com/vue-a11y/vue-axe-next)
+  Un outil d'audit pour l'accessibilité de vos applications Vue. Il indique en console développeur la liste des défauts d'accessibilité repérés dans le code.
+
+- [vuepress](https://github.com/vuepress/vuepress-next)
+  Un générateur de site de documentation utilisant Vue (utilisé pour ce support de formation).
+:::
 
 ## Frameworks UI
 
