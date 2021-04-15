@@ -3,13 +3,12 @@
 ## Outils à installer
 
 ::: tip
-
 Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.atosworldline.com/dev-box/), pour avoir une meilleure expérience de développement. Toutefois ce n'est pas obligatoire pour cette formation.
 :::
 
 ### Node.js
 
-Installez [Node.js](https://nodejs.org/) (version 8.x minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utiliser [nvm](https://github.com/creationix/nvm).
+Installez [Node.js](https://nodejs.org/) (dernière version stable recommandée, version 8.9 minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utiliser [nvm](https://github.com/creationix/nvm).
 
 ### Visual Studio Code et Vetur
 
@@ -22,6 +21,10 @@ VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Installez l'e
 ### Vue Devtools
 
 Téléchargez l'extension [vue-devtools](https://github.com/vuejs/vue-devtools) disponible sur Chrome, Firefox ou en application standalone. Cela vous aidera pour le débogage lors des TP.
+
+::: tip
+Pour le support de Vue 3, il vous faudra utiliser la version **beta** de vue-devtools
+:::
 
 ### Vue CLI
 
@@ -118,7 +121,7 @@ Choisissez la configuration suivante :
 ```bash
 @vue/cli 4.5.6
 ? Please pick a preset: Manually select features
-? Check the features needed for your project: Babel, Linter, Unit
+? Check the features needed for your project: Choose Vue Version, Babel, Linter, Unit
 ? Choose a version of Vue.js that you want to start the project with (Use arrow keys): 2.x
 ? Pick a linter / formatter config: ESLint with error prevention only
 ? Pick additional lint features: Lint on save
@@ -127,6 +130,7 @@ Choisissez la configuration suivante :
 ? Pick the package manager to use when installing dependencies: Use NPM
 ```
 
+- Vous pouvez utiliser au choix **Vue 3** ou **Vue 2** pour cette formation
 - **Babel** est un _transpilateur_, un outil qui va compiler et convertir votre code afin qu'il soit supporté au mieux par un maximum de navigateurs.
 - **ESLint** est un _linter_, un outil d'analyse qualité qui va parcourir votre code et vous signaler des erreurs potentielles.
 - **Jest** est un _framework_ de test axé sur la simplicité d'utilisation.
