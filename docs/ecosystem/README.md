@@ -4,6 +4,9 @@ Thanks to its popularity, Vue has been enriched by a vast ecosystem of plugins a
 
 Here is a selection:
 
+<VueVersionSwitch slotKey="ecosystem" />
+
+::: slot ecosystem-vue2
 - [vue-devtools](https://github.com/vuejs/vue-devtools)
   A browser extension very useful for debugging Vue applications. Available on Chrome, Firefox or standalone application.
 
@@ -15,6 +18,21 @@ Here is a selection:
 
 - [vuepress](https://vuepress.vuejs.org/)
   A documentation site builder using Vue (used for this website)
+:::
+
+::: slot ecosystem-vue3
+- [vue-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
+  A browser extension very useful for debugging Vue applications. Available on Chrome, Firefox or standalone application.
+
+- [Vue Styleguide](https://v3.vuejs.org/style-guide/)
+  A style guide maintained by the official team to list conventions and best practices around Vue projects.
+
+- [vue-axe](https://github.com/vue-a11y/vue-axe-next)
+  An audit tool for checking the accessibility of your Vue applications. It indicates in the developer console the list of accessibility issues identified in your application.
+
+- [vuepress](https://github.com/vuepress/vuepress-next)
+  A documentation site builder using Vue (used for this website)
+:::
 
 ## UI Frameworks
 

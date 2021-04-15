@@ -60,6 +60,8 @@ La partie script du composant doit exporter par défaut un objet avec les propri
 D'après vous, pourquoi la propriété `data` d'un composant doit être une fonction ?
 
 [Réponse](https://fr.vuejs.org/v2/guide/components.html#data-doit-etre-une-fonction)
+
+Depuis Vue 3, l'option `data` n'accepte plus un objet JavaScript comme valeur.
 :::
 
 ## Travailler en composants
@@ -71,29 +73,30 @@ Les composants Vue décrits précédemment constituent les briques avec lesquell
 Pour relier les composants entre eux, on déclare les composants enfants dans le template du composant parent, en utilisant leur nom comme balise. Un composant peut être réutilisé autant de fois que nécessaire, en l'incluant de la façon suivante :
 
 ```vue
+<!-- MonComposant.vue -->
 <template>
   <div>
-    <mon-composant></mon-composant>
+    <mon-composant-enfant></mon-composant-enfant>
   </div>
 </template>
 
 <script>
-import MonComposant from '~/components/MonComposant.vue'
+import MonComposantEnfant from './MonComposantEnfant.vue'
 
 export default {
-  name: 'ComposantParent',
+  name: 'MonComposant',
   components: {
-    MonComposant
+    MonComposantEnfant
   }
 }
 </script>
 ```
 
 ::: tip
-L'option `components` dans la partie script du composant. Les composants enfants utilisés dans le template doivent être déclarés ainsi, mais il est également possible de déclarer des composants globalement sur votre application Vue, afin de pouvoir les utiliser partout sans avoir à les déclarer manuellement.
+L'option `components` dans la partie script du composant. Les composants enfants utilisés dans le template sont déclarés ainsi pour rendre explicite les liens de dépendance et aider à éliminer le code mort. Mais il est également possible de déclarer des composants globalement sur votre application Vue, afin de pouvoir les utiliser partout sans avoir à les déclarer manuellement.
 :::
 
-Dans votre projet Vue, observez comment le composant `HelloWorld` a été intégré au composant racine `App`.
+Dans votre projet Vue, ouvrez le fichier `App.vue` et observez comment le composant `HelloWorld` a été intégré au composant racine `App`.
 
 ## Interpolation de texte dans les templates
 

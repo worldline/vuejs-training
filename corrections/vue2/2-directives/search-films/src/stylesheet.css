@@ -163,6 +163,10 @@ dd, input {
     top: 1em;
 }
 
+.film.card {
+  flex: 1 0 960px;
+}
+
 .film .poster {
     float: left;
     margin: 0 0.5em 0.5em 0;

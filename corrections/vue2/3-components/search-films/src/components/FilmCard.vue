@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'FilmCard',
+  name: 'Film',
   props: {
     title: {
       type: String,
