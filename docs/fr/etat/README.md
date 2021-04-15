@@ -63,7 +63,7 @@ Un pattern un peu plus avancé est de déclarer un objet magasin (*store*) qui e
 
 ```js
 /** services/store.js **/
-const state = { message: "bonjour" } // pas d'export pour l'état
+const state = Vue.observable({ message: "bonjour" }) // pas d'export pour l'état
 
 export const store = {
   get(prop){
@@ -121,12 +121,25 @@ Vuex fonctionne selon les principes suivants :
 
 1. Installer les dépendances `vuex` et `vuex-persistedstate` qu'on utilisera pour persister l'état du store.
 
+<VueVersionSwitch slot-key="install-vuex" />
+
+::: slot install-vuex-vue2
 ```bash
 npm install vuex vuex-persistedstate
 ```
+:::
+
+::: slot install-vuex-vue3
+```bash
+npm install vuex@next vuex-persistedstate
+```
+:::
 
 2. Créer un store Vuex en créant un fichier `src/store.js` avec le contenu suivant :
 
+<VueVersionSwitch slot-key="store-js" />
+
+::: slot store-js-vue2
 ```js{8}
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -157,6 +170,39 @@ export default new Vuex.Store({
   }
 })
 ```
+:::
+
+::: slot store-js-vue3
+```js{8}
+import { createStore } from "vuex";
+import createPersistedState from 'vuex-persistedstate'
+
+export default createStore({
+  strict: true,
+  plugins: [ createPersistedState() ],
+  state(){
+    return {
+      user: null,
+      loggedIn: false
+    }
+  },
+  mutations: {
+    setLoggedIn (state, loggedIn) {
+      state.loggedIn = loggedIn
+    },
+    setUser (state, user) {
+      state.user = user
+    }
+  },
+  actions: {
+    login ({ commit }, { user }) {
+      commit('setLoggedIn', true)
+      commit('setUser', user)
+    }
+  }
+})
+```
+:::
 
 ::: warning
 Le mode `strict` permet de lancer une erreur si le store Vuex est modifié en dehors des mutateurs. Attention, ce mode est coûteux en performance et doit être désactivé en production !
@@ -164,6 +210,9 @@ Le mode `strict` permet de lancer une erreur si le store Vuex est modifié en de
 
 3. Déclarez le store dans votre application en complétant le fichier `main.js` comme ceci :
 
+<VueVersionSwitch slot-key="app-store" />
+
+::: slot app-store-vue2
 ```js{1,5}
 import store from '@/store'
 
@@ -172,6 +221,17 @@ new Vue({
   store
 }).$mount('#app')
 ```
+:::
+
+::: slot app-store-vue3
+```js{1,4}
+import store from '@/store'
+
+createApp(App)
+  .use(store)
+  .mount('#app')
+```
+:::
 
 4. Dans le code de l'application, supprimez les passages de prop `loggedIn` de composant à composant et récupérez la donnée depuis le store à la place (`this.$store.state.loggedIn`)
 
@@ -181,7 +241,7 @@ La fonction utilitaire `mapState` fournie avec Vuex permet d'abréger le code en
 ```js
 import {mapState} from 'vuex'
 
-export default {    
+export default {
   computed: {
     // relie this.loggedIn à this.$store.state.loggedIn
     ...mapState([ 'loggedIn' ])
@@ -199,7 +259,7 @@ this.$store.dispatch('login', { user: 'John Smith' })
 ```
 :::
 
-6. Se connecter avec les identifiants cités ci-haut, vérifier que l'on bascule bien sur le formulaire de recherche de films, puis actualiser la page. 
+6. Se connecter avec les identifiants cités ci-haut, vérifier que l'on bascule bien sur le formulaire de recherche de films, puis actualiser la page.
 
 **Question** : pourquoi on ne retourne plus sur le formulaire de login après actualisation ?
 

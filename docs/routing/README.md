@@ -16,8 +16,15 @@ The routing of a SPA is therefore managed on the client side, and the Vue team p
 
 If you did not install it during initial project configuration with Vue-CLI, you can add vue-router now with the `vue add router` command.
 
+::: danger
+Warning , the content of `App.vue` and `main.js` will be overwritten with this command, save their contents before running the command!
+:::
+
 The `main.js` file will be modified to declare this new router in the application:
 
+<VueVersionSwitch slotKey="install-router" />
+
+::: slot install-router-vue2
 ```js{6}
 import router from "./router";
 
@@ -27,13 +34,28 @@ new Vue({
   router
 }).$mount("#app");
 ```
+:::
+
+::: slot install-router-vue3
+```js{4}
+import router from "./router";
+
+createApp(App)
+	.use(router)
+	.use(store)
+	.mount("#app")
+```
+:::
 
 ## Router Configuration
 
 The router is created by taking a list of routes as parameters. Each route associates a URL pattern with a certain component. When the page loads, or when the URL changes, the router will resolve which route is associated with this new URL.
 
+<VueVersionSwitch slotKey="router-config" />
+
+::: slot router-config-vue2
 ```js
-/** src/router.js **/
+/** src/router/index.js **/
 import Router from "vue-router";
 import Vue from "vue";
 
@@ -51,6 +73,26 @@ export default new Router({
   ]
 });
 ```
+:::
+
+::: slot router-config-vue3
+```js
+/** src/router/index.js **/
+import { createRouter, createWebHashHistory } from 'vue-router'
+import HelloWorld from "@/components/HelloWorld";
+
+export default createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: "/hello/:name",
+      name: "hello",
+      component: HelloWorld
+    }
+  ]
+})
+```
+:::
 
 Once the route resolution is complete, a component has been associated with the current URL. This component is then injected in place of the `<router-view />` element. This element is usually placed in the root component `App.vue`. The elements around `<router-view />` form the layout structuring your application: a header, a navigation bar, a footer etc.
 
@@ -88,11 +130,7 @@ this.$router.push(`/article/${nextId}`); // navigate to a new page by URL
 
 ## Practical Work: Implementing the router
 
-1. If not already done, install vue-router on your project with the `vue add router` command. Then open the `src/router.js` file to see how the routes are declared.
-
-::: danger
-Warning , the content of `App.vue` will be partially overwritten with this command, you should save its contents before running the command!
-:::
+1. If not already done, install vue-router as instructed ahead. Then open the `src/router.js` file to see how the routes are declared.
 
 2. Add a `/login` route linked to the`LoginForm` view and a `/search` route linked to `SearchFilm`.
 

@@ -13,7 +13,28 @@ Allows you to _bind_ an expression to the value of a property of an HTML element
 <!-- shortened syntax -->
 ```
 
-[Exercise: try to link the `src` and `width` attributes of the image](https://codepen.io/sylvainpv/pen/LBgqbq?editors=1010)
+**Exercise: try to link the `src` and `width` attributes of the image**
+
+```vue live
+<template>
+<h1>
+    I {{likesVue ? "love" : "hate"}}
+    <img src="" />
+</h1>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+      likesVue: true,
+      logo: 'https://vuejs.org/images/logo.png',
+      logoWidth: 50
+    }
+  }
+}
+</script>
+```
 
 ## Bind classes and styles
 
@@ -35,7 +56,49 @@ Several syntaxes are available to assign classes or CSS styles:
 <p :style="{ fontSize: size }"></p>
 ```
 
-[Exercise: assign a class and a color to each ghost](https://codepen.io/sylvainpv/pen/qyJgLe?editors=1010)
+**Exercise: assign a class and a color to each ghost**
+
+```vue live
+<template>
+<ol>
+  <li>
+    <span class="ghost">👻︎</span>
+    I'm joyful and red
+  </li>
+  <li>
+    <span class="ghost">👻︎</span>
+    I'm jelly and green
+  </li>
+  <li>
+    <span class="ghost">👻︎</span>
+    I'm wobbly and blue
+  </li>
+</ol>
+</template>
+
+<script>
+import "./ghosts.css";
+
+export default {
+  data(){
+    return {
+      ghost1: {
+        anim: "joyful",
+        style: "color: red"
+      },
+      ghost2: {
+        anim: { jelly: true },
+        style: { color: "green" }
+      },
+      ghost3: {
+        isWobbly: true,
+        isBlue: true
+      }
+    }
+  }
+}
+</script>
+```
 
 ## v-model: Forms and inputs
 
@@ -52,7 +115,52 @@ Allows you to bind the value of a form field to a component data item. It is a t
 
 <v-model-example />
 
-[Exercise: use v-model on input, select, radio and checkbox](https://codepen.io/sylvainpv/pen/rrqEMg?editors=1010)
+**Exercise: use v-model on input, select, radio and checkbox**
+
+```vue live
+<template>
+<div id="icecream-store">
+  <h1>Icecream store</h1>
+
+  <label>Quantity: <input type="number"></label>
+
+  <label>Size:
+    <select>
+      <option value="100">Small</option>
+      <option value="150">Medium</option>
+      <option value="200">Giant</option>
+    </select>
+  </label>
+
+  <label>Flavour:</label>
+  <label><input type="radio" name="flavour" value="#F3E5AB">Vanilla</label>
+  <label><input type="radio" name="flavour" value="#5B2F00" />Chocolate</label>
+  <label><input type="radio" name="flavour" value="#DE0934" />Strawberry</label>
+
+  <label><input type="checkbox"> Napkin</label>
+
+  <IceCreams :quantity="quantity" :flavour="flavour" :size="size" :napkin="napkin" />
+</div>
+</template>
+
+<style>label { display: block }</style>
+
+<script>
+import IceCreams from "./IceCreams.vue";
+
+export default {
+  components: { IceCreams },
+  data(){
+    return {
+      quantity: 1,
+      flavour: "#5B2F00",
+      size: 150,
+      napkin: true
+    }
+  }
+}
+</script>
+```
 
 ## v-if: Conditions
 
@@ -77,7 +185,27 @@ The `v-else-if` and`v-else` directives work in the same way as their JavaScript 
 </template>
 ```
 
-[Exercise: use v-if and v-else to alternate faces according to the condition](https://codepen.io/sylvainpv/pen/bjmXXV?editors=1010)
+**Exercise: use v-if and v-else to alternate faces according to the temperature**
+
+```vue live
+<template>
+<div>
+  <input type="range" min="0" max="40" v-model="temperature" />
+  {{ temperature }} °C
+  <span>🥵</span>
+  <span>🥶</span>
+  <span>😀</span>
+</div>
+</template>
+
+<script>
+export default {
+  data(){
+    return { temperature: 20 }
+  }
+}
+</script>
+```
 
 ## v-for: Loops
 
@@ -121,7 +249,41 @@ This is not mandatory but helps Vue to better understand the changes that occur 
 To repeat a group of elements, use `v-for` on a `<template>`tag
 :::
 
-[Exercise: use two v-for loops to display all the contents of the basket](https://codepen.io/sylvainpv/pen/RBqbBW?editors=1010)
+**Exercise: use two v-for loops to display all the contents of the basket**
+
+```vue live
+<template>
+<div id="basket">
+  <h1>In my basket:</h1>
+  <ul>
+    <li>
+      <span>🍌</span>
+      <span>🍌</span>
+    </li>
+  </ul>
+</div>
+</template>
+
+<style>
+li { list-style: none; font-size: 2rem; }
+</style>
+
+<script>
+export default {
+  name: "Basket",
+  data() {
+    return {
+       basket: [
+        { type: '🍌', quantity: 2 },
+        { type: '🍎', quantity: 4 },
+        { type: '🍒', quantity: 6 },
+        { type: '🍉', quantity: 1 },
+      ]
+    }
+  }
+}
+</script>
+```
 
 ## v-on: Events
 
@@ -141,7 +303,38 @@ clicked {{ counter }} times.
 You can use the `$event` variable as a reference to the captured event
 :::
 
-[Exercise: use events to add a monkey when clicking the button, and make them open their eyes on mouse hover](https://codepen.io/sylvainpv/pen/NBEKQw?editors=1010)
+**Exercise: use events to add a monkey when clicking the button, and make them open their eyes on mouse hover**
+
+```vue live
+<template>
+<div>
+  <span v-for="monkey in monkeys">
+    {{ monkey.hasEyesOpen ? '🙉' : '🙈' }}
+  </span>
+  <br/>
+  <button>Add monkey</button>
+</div>
+</template>
+
+<style>span { font-size: 2rem; }</style>
+
+<script>
+export default {
+  data(){
+    return {
+      monkeys: [
+        { hasEyesOpen: false }
+      ]
+    }
+  },
+  methods: {
+    addMonkey(){
+      this.monkeys.push({ hasEyesOpen: false })
+    }
+  }
+}
+</script>
+```
 
 ### Modifiers
 
@@ -166,7 +359,7 @@ Modifiers are suffixes used to slightly change the behavior of some directives: 
 1. In the authentication form, add two variables `email` and`password` in the `data` attribute of the component and use the `v-model` directive on the email and password fields to bind them.
 2. Add another `loggedIn` variable initially set to `false`, then use the `v-on` directive to set it to `true` when the form is submitted.
 3. Change the default behavior of the `submit` event of the authentication form to avoid reloading the page.
-4. Under the authentication form, add the following HTML:
+4. In `LoginForm.vue`, add the following HTML under the authentication form :
 
 ```html
 <ul class="films">

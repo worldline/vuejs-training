@@ -64,7 +64,7 @@ A slightly more advanced pattern is to declare a _store_ object that encapsulate
 
 ```js
 /** services/store.js **/
-const state = { message: "hello" }; // no export for state
+const state = Vue.observable({ message: "hello" }); // no export for state
 
 export const store = {
   get(prop) {
@@ -123,42 +123,88 @@ Vuex works with the following principles:
 
 1. Install `vuex` and `vuex-persistedstate` dependencies that will be used to persist store state.
 
+<VueVersionSwitch slot-key="install-vuex" />
+
+::: slot install-vuex-vue2
 ```bash
 npm install vuex vuex-persistedstate
 ```
+:::
+
+::: slot install-vuex-vue3
+```bash
+npm install vuex@next vuex-persistedstate
+```
+:::
 
 2. Create a Vuex store by creating a `src/store.js` file with following content:
 
-```js{8}
-import Vue from "vue";
-import Vuex from "vuex";
-import createPersistedState from "vuex-persistedstate";
+<VueVersionSwitch slot-key="store-js" />
 
-Vue.use(Vuex);
+::: slot store-js-vue2
+```js{8}
+import Vue from 'vue'
+import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   strict: true,
-  plugins: [createPersistedState()],
+  plugins: [ createPersistedState() ],
   state: {
     user: null,
     loggedIn: false
   },
   mutations: {
-    setLoggedIn(state, loggedIn) {
-      state.loggedIn = loggedIn;
+    setLoggedIn (state, loggedIn) {
+      state.loggedIn = loggedIn
     },
-    setUser(state, user) {
-      state.user = user;
+    setUser (state, user) {
+      state.user = user
     }
   },
   actions: {
-    login({ commit }, { user }) {
-      commit("setLoggedIn", true);
-      commit("setUser", user);
+    login ({ commit }, { user }) {
+      commit('setLoggedIn', true)
+      commit('setUser', user)
     }
   }
-});
+})
 ```
+:::
+
+::: slot store-js-vue3
+```js{8}
+import { createStore } from "vuex";
+import createPersistedState from 'vuex-persistedstate'
+
+export default createStore({
+  strict: true,
+  plugins: [ createPersistedState() ],
+  state(){
+    return {
+      user: null,
+      loggedIn: false
+    }
+  },
+  mutations: {
+    setLoggedIn (state, loggedIn) {
+      state.loggedIn = loggedIn
+    },
+    setUser (state, user) {
+      state.user = user
+    }
+  },
+  actions: {
+    login ({ commit }, { user }) {
+      commit('setLoggedIn', true)
+      commit('setUser', user)
+    }
+  }
+})
+```
+:::
 
 ::: warning
 The `strict` mode is used to throw an error if the Vuex store state is changed without using declared `mutations`. Warning, this mode is expensive in performance and must be deactivated in production!
@@ -166,14 +212,28 @@ The `strict` mode is used to throw an error if the Vuex store state is changed w
 
 3. Declare the store in your application by completing the `main.js` file like this:
 
+<VueVersionSwitch slot-key="app-store" />
+
+::: slot app-store-vue2
 ```js{1,5}
-import store from "@/store";
+import store from '@/store'
 
 new Vue({
   render: h => h(App),
   store
-}).$mount("#app");
+}).$mount('#app')
 ```
+:::
+
+::: slot app-store-vue3
+```js{1,4}
+import store from '@/store'
+
+createApp(App)
+  .use(store)
+  .mount('#app')
+```
+:::
 
 4. In the application code, delete the prop `loggedIn` passed from component to component and retrieve this property from the store instead (`this.$store.state.loggedIn`)
 

@@ -9,7 +9,7 @@ If it is allowed by your local security policy, it is recommended to work under 
 
 ### Node.js
 
-Install [Node.js](https://nodejs.org/) (preferably latest version, minimum version 8.x). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
+Install [Node.js](https://nodejs.org/) (preferably latest stable version, minimum version 8.9). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
 
 ### Visual Studio Code and Vetur
 
@@ -22,6 +22,10 @@ VS Code has many extensions to enrich the experience. Install the [Vetur](https:
 ### Vue Devtools
 
 Download the extension [vue-devtools](https://github.com/vuejs/vue-devtools) available on Chrome, Firefox or as a standalone application. This will help you debug your code during the practical work.
+
+::: tip
+For Vue 3 support, you will have to use **beta** version of vue-devtools
+:::
 
 ### Vue CLI
 
@@ -118,7 +122,7 @@ Choose the following configuration:
 ```bash
 @vue/cli 4.5.6
 ? Please pick a preset: Manually select features
-? Check the features needed for your project: Babel, Linter, Unit
+? Check the features needed for your project: Choose Vue Version, Babel, Linter, Unit
 ? Choose a version of Vue.js that you want to start the project with (Use arrow keys): 2.x
 ? Pick a linter / formatter config: ESLint with error prevention only
 ? Pick additional lint features: Lint on save
@@ -127,6 +131,7 @@ Choose the following configuration:
 ? Pick the package manager to use when installing dependencies: Use NPM
 ```
 
+- You can use either **Vue 3** or **Vue 2** for this training
 - **Babel** is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in order to support as many browser as possible.
 - **ESLint** is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
 - **Jest** is a JavaScript testing framework with a focus on simplicity.

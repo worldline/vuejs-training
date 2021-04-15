@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "vuepress": "^1.7.1",
-    "vuepress-plugin-global-toc": "^1.0.1"
+    "vuepress-plugin-global-toc": "^1.0.1",
+    "vuepress-plugin-live": "^1.6.2"
   },
   "devDependencies": {
     "shelljs": "^0.8.4"

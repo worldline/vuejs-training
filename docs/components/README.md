@@ -24,7 +24,7 @@ export default {
     },
     say(message) {
       // if a method is independent of the instance (no reference to 'this')
-      // it is relevant to outsource it in a separate module
+      // then it could be relevant to move it to a separate module
       alert(message + "!");
     }
   }
@@ -69,7 +69,16 @@ To distinguish the use cases of computed vs watcher, we will privilege most ofte
 
 Vue follows a pattern when working with components, from their creation to their destruction through data updates and DOM insertion. Here is the complete diagram :
 
-![Vue Lifecycle](../assets/lifecycle.png)
+<VueVersionSwitch slotKey="lifecycle" />
+
+::: slot lifecycle-vue2
+![Vue Lifecycle](../assets/vue2_lifecycle.png)
+:::
+
+::: slot lifecycle-vue3
+![Vue Lifecycle](../assets/vue3_lifecycle.svg)
+:::
+
 
 Each stage of the life cycle of a component calls two callback functions, one just before the framework does its internal work, and the other just after. These callbacks can be used to define a specific behavior for the component at these precise moments:
 
@@ -83,7 +92,7 @@ export default {
 };
 ```
 
-Typically, we use `created` as the equivalent of a constructor function, to initialize certain data or to make some HTTP requests. We use `mounted` when some initialization steps need to interact with the DOM. Finally, we use `destroyed` to clean up when the component is no longer used, for example delete global event listeners to avoid memory leaks. Other callbacks are reserved for more specific use cases.
+Typically, we use `created` as the equivalent of a constructor function, to initialize certain data or to make some HTTP requests. We use `mounted` when some initialization steps need to interact with the DOM. Finally, we use `destroyed` (or `unmounted` with Vue 3) to clean up when the component is no longer used, for example delete global event listeners to avoid memory leaks. Other callbacks are reserved for more specific use cases.
 
 ## Communication between components
 
@@ -148,11 +157,11 @@ Although a child component can technically access its parent component, it is a 
 
 Child components communicate with their parents by using **events**: they emit events that propagate from parent to parent, in the same way as DOM events like a mouse click. **A good component is agnostic of his environment**, it does not know his parents and does not know if the events it emets will ever be intercepted (or "listened to").
 
-To **emit** an event, use the `$emit` method available in all Vue components. It takes as parameter the name of the event, and optionally a value (_payload_) to transmit. If you need to pass multiple values, encapsulate them in an object.
+To **emit** an event, use the `$emit` method available in all Vue components. It takes as parameter the name of the event, and optionally a value (_payload_) to transmit. If you need to pass multiple values, encapsulate them in an object. The list of the events sent by a component should be described in the `emits` component option, not mandatory but useful for documentation purposes.
 
 To **listen** to an event emitted by a child component, we use the same `v-on` directive as for DOM events, or `@yourEvent` shorthand. The value passed with the event can be retrieved via the `$event` variable in the directive value.
 
-```vue{21}
+```vue{19,22}
 <template>
   <article>
     <h3>My article</h3>
@@ -171,6 +180,7 @@ export default {
       comment: ""
     };
   },
+  emits: ['comment'],
   methods: {
     sendComment() {
       this.$emit("comment", this.comment);
@@ -258,8 +268,8 @@ export default {
   updated() {},
   activated() {},
   deactivated() {},
-  beforeDestroy() {},
-  destroyed() {},
+  beforeDestroy() {}, // beforeUnmount with Vue 3
+  destroyed() {}, // unmounted with Vue 3
   errorCaptured() {}
 };
 ```
@@ -315,18 +325,13 @@ export default {
 </template>
 ```
 
-3. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the data and other associated options in the child components to reduce the size of `App` code.
-4. Display the `SearchFilm` component only if the user is logged in.
+3. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the corresponding data and options in this new component.
+4. Display the `SearchFilm` component only if the user is logged in. You will have to move the `loggedIn` variable and communicate between components.
 
 **Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
 
 5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample films in this list.
-6. **Bonus**: In the `searchFilms` method, instead of putting all the films at once in`this.films`, try to assign them one by one in this way:
-
-```js
-this.films[0] = { title: 'Titanic', released: '19 Dec 1997', ... }
-this.films[1] = { title: 'Blade Runner', ... }
-this.films[2] = ...
+6. **Bonus**: Try to remove the initial empty array declaration for `films` in `data`.
 ```
 
 **Question**: _Why does the view no longer update while the list appears to be filled correctly ?_

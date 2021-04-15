@@ -58,6 +58,10 @@ The script part of the component must export an object with the properties of th
 
 ::: tip
 Why do you think the `data` property of a component must be a function?
+
+[Answer](https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function)
+
+Since Vue 3, `data` component option no longer accepts a plain JavaScript object.
 :::
 
 ## Work with components
@@ -71,27 +75,27 @@ To link the components together, the child components are declared in the parent
 ```vue
 <template>
   <div>
-    <my-component></my-component>
+    <my-child-component></my-child-component>
   </div>
 </template>
 
 <script>
-import MyComponent from "~/components/MyComponent.vue";
+import MyChildComponent from "./MyChildComponent.vue";
 
 export default {
-  name: "ParentComponent",
+  name: "MyComponent",
   components: {
-    MyComponent
+    MyChildComponent
   }
 };
 </script>
 ```
 
 ::: tip
-The `components` attribute in the script part of the component. The child components used in the template must be declared as shown, but you can also declare components globally on your Vue application, so you can use them everywhere without having to declare them manually.
+The `components` attribute in the script part of the component. The child components used in the template are declared this way to make the dependency links explicit and help with dead code elimination. But you can also declare components globally on your Vue application, so you can use them everywhere without having to declare them manually.
 :::
 
-In your Vue project, see how the `HelloWorld` component has been integrated into the`App` root component.
+In your Vue project, open `App.vue` and see how the `HelloWorld` component has been integrated into the `App` root component.
 
 ## Text interpolation in templates
 

@@ -16,8 +16,15 @@ Le routage d'une SPA est donc géré côté client, et l'équipe de Vue fournit 
 
 Si vous ne l'avez pas installé pendant la configuration initiale du projet avec vue-cli, vous pouvez ajouter vue-router a posteriori avec la commande `vue add router`.
 
+::: danger
+Attention, le contenu de ``App.vue` et `main.js` vont être écrasés avec cette commande, pensez à sauvegarder le contenu du fichier avant de la lancer !
+:::
+
 Le fichier `main.js` sera modifié pour déclarer ce nouveau routeur dans l'application :
 
+<VueVersionSwitch slotKey="install-router" />
+
+::: slot install-router-vue2
 ```js{6}
 import router from "./router";
 
@@ -27,13 +34,28 @@ new Vue({
   router
 }).$mount("#app");
 ```
+:::
+
+::: slot install-router-vue3
+```js{4}
+import router from "./router";
+
+createApp(App)
+	.use(router)
+	.use(store)
+	.mount("#app")
+```
+:::
 
 ## Configuration du routeur
 
 Le routeur est créé en prenant en paramètres un ensemble de routes. Chaque route associe un pattern d'URL à un certain composant. Au chargement de la page, ou à chaque changement d'URL, le routeur va résoudre quelle route est associée à cette nouvelle URL.
 
+<VueVersionSwitch slotKey="router-config" />
+
+::: slot router-config-vue2
 ```js
-/** src/router.js **/
+/** src/router/index.js **/
 import Router from "vue-router";
 import Vue from "vue";
 
@@ -51,6 +73,26 @@ export default new Router({
   ]
 });
 ```
+:::
+
+::: slot router-config-vue3
+```js
+/** src/router/index.js **/
+import { createRouter, createWebHashHistory } from 'vue-router'
+import HelloWorld from "@/components/HelloWorld";
+
+export default createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: "/hello/:name",
+      name: "hello",
+      component: HelloWorld
+    }
+  ]
+})
+```
+:::
 
 Une fois la résolution de la route terminée, un composant a été associé à l'URL en cours. Ce composant est alors injecté à la place de l'élément `<router-view />`. Cet élément est généralement placé dans le composant racine `App.vue`. Les éléments autour de `<router-view />` forment le layout structurant votre application : un header, une barre de navigation, un footer etc.
 
@@ -88,11 +130,7 @@ this.$router.push(`/article/${nextId}`); // naviguer vers une nouvelle page par 
 
 ## TP: Implémentation du routeur
 
-1. Si ce n'est pas déjà fait, installez vue-router sur votre projet avec la commande `vue add router`. Ouvrez ensuite le fichier `src/router.js` pour voir comment sont déclarées les routes.
-
-::: danger
-Attention, le contenu de App.vue va être partiellement écrasé avec cette commande, pensez à sauvegarder le contenu du fichier avant de la lancer !
-:::
+1. Si ce n'est pas déjà fait, installez vue-router sur votre projet en suivant les instructions ci-dessus. Ouvrez ensuite le fichier `src/router.js` pour voir comment sont déclarées les routes.
 
 2. Ajouter une route `/login` reliée à la view `LoginForm` et une route `/search` reliée à `SearchFilm`.
 

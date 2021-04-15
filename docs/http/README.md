@@ -139,7 +139,7 @@ export default {
 
 ::: tip
 
-If you discovered that there was a film called _Undefined_, then you were wrong somewhere :)
+If you discovered that there was a film called _Undefined_, then you made a mistake somewhere :)
 
 ![Undefined, the movie](../assets/undefined.jpg)
 :::
