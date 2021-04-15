@@ -58,7 +58,7 @@ Let's try to compare Vue with the other two most popular JS frameworks, React an
 
 React, Vue and Angular position themselves in different categories, this can be observed from the first lines of their introduction. React is defined as a **library**, independent of the technical stack. Angular is defined as the one **framework** for all needs, desktop and mobile. While Vue is caught in the middle, defined as a **progressive framework**, versatile and **incrementally adoptable**. A perfect middle ground between a library and a fully equipped framework.
 
-### Langages, style et stack technique
+### Language, programming style and technical stack
 
 |               | React	      | Vue.js	         | Angular       |
 |---------------|-------------|------------------|---------------|
