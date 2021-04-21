@@ -130,7 +130,7 @@ this.$router.push(`/article/${nextId}`); // naviguer vers une nouvelle page par 
 
 ## TP: Implémentation du routeur
 
-1. Si ce n'est pas déjà fait, installez vue-router sur votre projet en suivant les instructions ci-dessus. Ouvrez ensuite le fichier `src/router.js` pour voir comment sont déclarées les routes.
+1. Si ce n'est pas déjà fait, installez vue-router sur votre projet en suivant les instructions ci-dessus. Ouvrez ensuite le fichier `src/router/index.js` pour voir comment sont déclarées les routes.
 
 2. Ajouter une route `/login` reliée à la view `LoginForm` et une route `/search` reliée à `SearchFilm`.
 
