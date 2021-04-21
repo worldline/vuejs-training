@@ -56,7 +56,7 @@ afterEach(async () => { await resetState() }, 500)
 // Un test unitaire - 'test' peut être utilisé à la place de 'it'
 // Les mots clés .skip, .only et .each sont utilisables
 test('should do something...', () => {
-  expect(add(1, 2).toBe(3)
+  expect(add(1, 2)).toBe(3)
 })
 
 // Tester rapidement plusieurs cas avec le mot clé .each

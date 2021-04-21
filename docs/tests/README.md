@@ -56,7 +56,7 @@ afterEach(async () => { await resetState() }, 500)
 // A unit test - 'test' keyword can be use instead of 'it'
 // Keywords .skip, .only et .each are available
 test('should do something...', () => {
-  expect(add(1, 2).toBe(3)
+  expect(add(1, 2)).toBe(3)
 })
 
 // Easily test multiple cases with the keyword .each
