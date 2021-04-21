@@ -130,7 +130,7 @@ this.$router.push(`/article/${nextId}`); // navigate to a new page by URL
 
 ## Practical Work: Implementing the router
 
-1. If not already done, install vue-router as instructed ahead. Then open the `src/router.js` file to see how the routes are declared.
+1. If not already done, install vue-router as instructed ahead. Then open the `src/router/index.js` file to see how the routes are declared.
 
 2. Add a `/login` route linked to the`LoginForm` view and a `/search` route linked to `SearchFilm`.
 
