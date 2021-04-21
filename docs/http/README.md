@@ -125,7 +125,7 @@ export default {
 };
 ```
 
-4. Note that in the event of an error, the error message is stored in an `error` variable. Declare this variable in the `data` of the component and use it in the template to display the error message in case of authentication failure.
+4. Note that in the event of an error, the error message is stored in an `error` variable. If not already done, declare this variable in the component's `data` and use it in the template to display the error message in case of authentication failure.
 
 5. Note also that the response of the back-end after login contains a token to authenticate the user, which is passed to the store in the parameters of the `login` action. Modify `store.js` to store this token, adding a`setToken` mutation called by the `login` action.
 

@@ -108,7 +108,7 @@ export default {
 }
 ```
 
-4. Notez qu'en cas d'erreur, on stocke le message d'erreur retourné dans une variable `error`. Déclarez cette variable dans les `data` du composant et utilisez-là dans le template pour afficher le message d'erreur en cas d'échec d'authentification.
+4. Notez qu'en cas d'erreur, on stocke le message d'erreur retourné dans une variable `error`. Si ce n'est pas déjà fait, déclarez cette variable dans les `data` du composant et utilisez-là dans le template pour afficher le message d'erreur en cas d'échec d'authentification.
 
 5. Notez également que la réponse du back-end au login contient un token permettant d'authentifier l'utilisateur, qui est transmis au store dans les paramètres de l'action `login`. Modifiez `store.js` pour stocker ce token dans le store, en ajoutant une mutation `setToken` appelée par l'action `login`.
 

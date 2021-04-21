@@ -12,7 +12,7 @@
   <input type="password" placeholder="Entrez votre mot de passe" id="psw" name="psw" required v-model="password">
 
   <p><button type="submit">Se connecter</button></p>
-  <p class="error" v-if="loginError">{{loginError}}</p>
+  <p class="error" v-if="error">{{error}}</p>
 </form>
 </div>
 </template>
@@ -26,7 +26,7 @@ export default {
             title: "Authentification",
             email: "",
             password: "",
-            loginError: null
+            error: null
         }
     },
     methods: {
@@ -34,9 +34,9 @@ export default {
         if(this.email === "test@test.com" && this.password === "test1234"){
           this.$store.dispatch('login', { user: 'test' })
           this.$emit('login')
-          this.loginError = null
+          this.error = null
         } else {
-          this.loginError = `Invalid email or password 🤔`
+          this.error = `Invalid email or password 🤔`
         }
       }
     }

@@ -263,6 +263,6 @@ this.$store.dispatch('login', { user: 'John Smith' })
 
 **Question** : pourquoi on ne retourne plus sur le formulaire de login après actualisation ?
 
-7. Si l'utilisateur a entré de mauvaises informations, afficher un message d'erreur. Pour cela, vous pouvez vous aider d'une `data` supplémentaire comme une String `loginError` par exemple.
+7. Si l'utilisateur a entré de mauvaises informations, afficher un message d'erreur sous le bouton de connexion. Pour cela, vous pouvez déclarer une String `error` dans les `data` du composant.
 
 8. **Bonus** : Coder une action `logout` et ajouter un bouton de déconnexion `<button id="logout-btn">` qui invoque cette action. Afficher le nom de l'utilisateur à côté de ce bouton.

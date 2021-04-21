@@ -268,6 +268,6 @@ this.$store.dispatch("login", { user: "John Smith" });
 
 **Question**: Why do not we return to the login form after refreshing the page ?
 
-7. If the user has entered wrong credentials in the login form, display an error message. To help you, you can declare additional `data` such as a `loginError` string for example.
+7. If the user has entered wrong credentials in the login form, display an error message below the login button. To help you, you can declare an additional `error` string in the component's `data`.
 
 8. **Bonus**: Code a `logout` action and add a logout button `<button id="logout-btn">` that invokes this action. Display the user's name next to this button.
