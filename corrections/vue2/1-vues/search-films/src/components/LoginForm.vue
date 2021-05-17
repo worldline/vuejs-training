@@ -21,7 +21,7 @@ export default {
   name: 'LoginForm',
   data() {
     return {
-      title: 'Authentification'
+      title: 'Authentication'
     }
   }
 }

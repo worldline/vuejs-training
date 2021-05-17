@@ -113,14 +113,6 @@ form, .card {
     background: white;
     box-shadow: 0 0 25px rgba(0,0,0,0.5);
     padding: 0.5em;
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-.card {
-  width: 100%;
-  margin-left: 1em;
-  margin-right: 1em;
 }
 
 button, input {
@@ -154,15 +146,15 @@ dd, input {
     text-align: left;
 }
 
-.form {
+#login-form {
     display: flex;
     justify-content: center;
 }
 
 #logout-btn {
     position: fixed;
-    right: 0.75em;
-    top: 0.5em;
+    right: 1em;
+    top: 1em;
 }
 
 .film.card {
@@ -181,29 +173,4 @@ dd, input {
 .rating {
     color: gold;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.5)
-}
-
-/* The alert message box */
-.alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
-
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: black;
 }

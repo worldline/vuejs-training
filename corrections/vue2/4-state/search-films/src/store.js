@@ -5,21 +5,28 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  strict: process.env.NODE_ENV !== 'production',
-  plugins: [
-    createPersistedState()
-  ],
-  state: {
-    loggedIn: false
-  },
-  mutations: {
-    setLoggedIn (state, loggedIn) {
-      state.loggedIn = loggedIn
+    strict: true,
+    plugins: [ createPersistedState() ],
+    state: {
+        user: null,
+        loggedIn: false
+    },
+    mutations: {
+        setLoggedIn (state, loggedIn) {
+            state.loggedIn = loggedIn
+        },
+        setUser (state, user) {
+            state.user = user
+        }
+    },
+    actions: {
+        login ({ commit }, { user }) {
+            commit('setLoggedIn', true)
+            commit('setUser', user)
+        },
+        logout({ commit }){
+            commit('setLoggedIn', false)
+            commit('setUser', null)
+        }
     }
-  },
-  actions: {
-    setLoggedIn ({commit}, loggedIn) {
-      commit('setLoggedIn', loggedIn)
-    }
-  }
 })
