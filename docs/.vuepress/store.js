@@ -2,8 +2,10 @@ import Vue from "vue"
 
 const state = Vue.observable({ vueVersion: "vue3" }) // pas d'export pour l'état
 
+const storage = typeof window === "object" && window.localStorage ? window.localStorage : null;
+
 for (let key in state) {
-	if (localStorage.getItem(key) !== null) {
+	if (storage && storage.getItem(key) !== null) {
 		state[key] = localStorage.getItem(key)
 	}
 }
@@ -14,7 +16,7 @@ const store = {
 	},
 	set(prop, value) {
 		state[prop] = value
-		localStorage.setItem(prop, value)
+		storage && storage.setItem(prop, value)
 	},
 }
 
