@@ -10,21 +10,21 @@ The routing of a SPA is therefore managed on the client side, and the Vue team p
 - Integration with Vue transitions system
 - Two modes:
   - by `hash` (mywebsite.com/**#**/page1)
-  - by `history` (handle browser history in JS) with auto-fallback for IE
+  - by `history` (browser history is handled in JS with auto-fallback for IE)
 
 ## Installation
 
-If you did not install it during initial project configuration with Vue-CLI, you can add vue-router now with the `vue add router` command.
+If you did not install it during initial project configuration with Vue-CLI, you can install it now with `npm`.
 
-::: danger
-Warning , the content of `App.vue` and `main.js` will be overwritten with this command, save their contents before running the command!
-:::
-
-The `main.js` file will be modified to declare this new router in the application:
+Create a `src/router` directory and a `router/index.js` file to hold router configuration. The `main.js` file will have to be modified to declare this new router in the application:
 
 <VueVersionSwitch slotKey="install-router" />
 
 ::: slot install-router-vue2
+```bash
+npm install vue-router@3
+```
+
 ```js{6}
 import router from "./router";
 
@@ -37,6 +37,10 @@ new Vue({
 :::
 
 ::: slot install-router-vue3
+```bash
+npm install vue-router@4
+```
+
 ```js{4}
 import router from "./router";
 
@@ -64,6 +68,7 @@ import HelloWorld from "@/components/HelloWorld";
 Vue.use(Router);
 
 export default new Router({
+  mode: 'hash',
   routes: [
     {
       path: "/hello/:name",
@@ -130,7 +135,7 @@ this.$router.push(`/article/${nextId}`); // navigate to a new page by URL
 
 ## Practical Work: Implementing the router
 
-1. If not already done, install vue-router as instructed ahead. Then open the `src/router/index.js` file to see how the routes are declared.
+1. If not already done, install vue-router as instructed ahead. Add the `<router-view>` element in `App.vue` then create the `src/router/index.js` file to start configuring the routes.
 
 2. Add a `/login` route linked to the`LoginForm` view and a `/search` route linked to `SearchFilm`.
 

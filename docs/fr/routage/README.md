@@ -10,21 +10,21 @@ Le routage d'une SPA est donc géré côté client, et l'équipe de Vue fournit 
 - Intégration avec le système de transitions de Vue
 - Deux modes de fonctionnement :
   - par `hash` (monsite.com/**#**/page1)
-  - ou par `history` (manipulation de l'historique en JS) avec auto-fallback pour IE
+  - ou par `history` (manipulation de l'historique en JS avec auto-fallback pour IE)
 
 ## Installation
 
-Si vous ne l'avez pas installé pendant la configuration initiale du projet avec vue-cli, vous pouvez ajouter vue-router a posteriori avec la commande `vue add router`.
+Si vous ne l'avez pas installé pendant la configuration initiale du projet avec vue-cli, vous pouvez installer `vue-router` maintenant avec `npm`.
 
-::: danger
-Attention, le contenu de ``App.vue` et `main.js` vont être écrasés avec cette commande, pensez à sauvegarder le contenu du fichier avant de la lancer !
-:::
-
-Le fichier `main.js` sera modifié pour déclarer ce nouveau routeur dans l'application :
+Créez un dossier `src/router` et un fichier `router/index.js` qui contiendra la configuration du routeur. Le fichier `main.js` devra être modifié pour déclarer ce nouveau routeur dans l'application:
 
 <VueVersionSwitch slotKey="install-router" />
 
 ::: slot install-router-vue2
+```bash
+npm install vue-router@3
+```
+
 ```js{6}
 import router from "./router";
 
@@ -37,6 +37,10 @@ new Vue({
 :::
 
 ::: slot install-router-vue3
+```bash
+npm install vue-router@4
+```
+
 ```js{4}
 import router from "./router";
 
@@ -64,6 +68,7 @@ import HelloWorld from "@/components/HelloWorld";
 Vue.use(Router);
 
 export default new Router({
+  mode: 'hash',
   routes: [
     {
       path: "/hello/:name",
@@ -130,7 +135,7 @@ this.$router.push(`/article/${nextId}`); // naviguer vers une nouvelle page par 
 
 ## TP: Implémentation du routeur
 
-1. Si ce n'est pas déjà fait, installez vue-router sur votre projet en suivant les instructions ci-dessus. Ouvrez ensuite le fichier `src/router/index.js` pour voir comment sont déclarées les routes.
+1. Si ce n'est pas déjà fait, installez vue-router sur votre projet en suivant les instructions ci-dessus. Ajoutez l'élément `<router-view>` dans `App.vue` puis créez le fichier `src/router/index.js` pour commencer à configurer les routes.
 
 2. Ajouter une route `/login` reliée à la view `LoginForm` et une route `/search` reliée à `SearchFilm`.
 
