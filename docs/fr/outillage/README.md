@@ -3,7 +3,7 @@
 ## Outils à installer
 
 ::: tip
-Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.atosworldline.com/dev-box/), pour avoir une meilleure expérience de développement. Toutefois ce n'est pas obligatoire pour cette formation.
+Si cela respecte votre politique de sécurité locale, il est recommandé de travailler sous une VM Linux, par exemple [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.myworldline.com/dev-box/), pour avoir une meilleure expérience de développement. Toutefois ce n'est pas obligatoire pour cette formation.
 :::
 
 ### Node.js
