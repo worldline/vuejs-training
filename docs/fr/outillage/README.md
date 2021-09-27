@@ -10,13 +10,16 @@ Si cela respecte votre politique de sécurité locale, il est recommandé de tra
 
 Installez [Node.js](https://nodejs.org/) (dernière version stable recommandée, version 8.9 minimum). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utiliser [nvm](https://github.com/creationix/nvm).
 
-### Visual Studio Code et Vetur
+### Visual Studio Code et Vetur/Volar
 
 Vous aurez besoin d'un bon éditeur de code pour JavaScript lors de cette formation.
 
 Nous vous conseillons [Visual Studio Code](https://code.visualstudio.com/), un éditeur gratuit assez léger qui est aujourd'hui très populaire dans la communauté JavaScript.
 
-VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Installez l'extension [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) qui aidera l'éditeur à mieux gérer la syntaxe des fichiers composants `*.vue`.
+VS Code dispose de nombreuses extensions pour enrichir l'éditeur. 
+
+Pour Vue 2, nous recommandons l'extension [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) qui aidera l'éditeur à mieux gérer la syntaxe des fichiers composants `*.vue`.
+Pour Vue 3, une nouvelle extension nommée [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) a été créée spécifiquement pour Vue 3 et montre de meilleures performances que Vetur.
 
 ### Vue Devtools
 
