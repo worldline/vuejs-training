@@ -70,10 +70,11 @@ This is how it can be rewritten using the Composition API:
 <script setup>
 import { ref, reactive, computed } from "vue"
 
-export const todos = reactive([])
-export const newTodo = ref("")
-export const hasNoLabel = computed(() => newTodo.value.trim() === "")
-export function addTodo(){
+const todos = reactive([])
+const newTodo = ref("")
+const hasNoLabel = computed(() => newTodo.value.trim() === "")
+
+function addTodo(){
   todos.push({ label: newTodo.value, done: false })
   newTodo.value = ""
 }
@@ -81,7 +82,7 @@ export function addTodo(){
 ```
 
 Besides the fact that the code is smaller, you can observe the following changes:
-- with the `setup` attribute on the `<script> `tag, data, computed, methods and other options can be declared anywhere in any order with the `export` keyword; no need to group them by type
+- with the `setup` attribute on the `<script> `tag, data, computed, methods and other options can be declared at script top level in any order ; no need to group them by type
 - the options are no longer attached to an object (`this.todos`) but handled as independent variables; this involves declaring them via specific functions provided by Vue
 - to be reactive, data now needs to be declared with `reactive` and `ref` methods
 - `ref` is used to encapsulate primitive values such as string `newTodo` in a `{ value }` object structure so that you can change their value without changing their reference (mutation rather than reassignment) ; otherwise Vue would lose track of this variable (see [Reactivity section](../reactivity/)).

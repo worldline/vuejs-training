@@ -71,10 +71,11 @@ Voilà comment il peut être réécrit en utilisant la Composition API:
 <script setup>
 import { ref, reactive, computed } from "vue"
 
-export const todos = reactive([])
-export const newTodo = ref("")
-export const hasNoLabel = computed(() => newTodo.value.trim() === "")
-export function addTodo(){
+const todos = reactive([])
+const newTodo = ref("")
+const hasNoLabel = computed(() => newTodo.value.trim() === "")
+
+function addTodo(){
   todos.push({ label: newTodo.value, done: false })
   newTodo.value = ""
 }
@@ -82,7 +83,7 @@ export function addTodo(){
 ```
 
 Outre le fait que le code est plus synthétique, vous pouvez observer les changements suivants:
-- avec l'attribut  `setup` de la balise `<script>`, les data, computed, méthodes et autres options peuvent être déclarées n'importe où dans n'importe quel ordre avec le mot-clé `export` ; plus besoin de les regrouper par type
+- avec l'attribut  `setup` de la balise `<script>`, les data, computed, méthodes et autres options peuvent être déclarées au niveau racine du script dans n'importe quel ordre ; plus besoin de les regrouper par type
 - les options ne sont plus rattachées à un objet (`this.todos`) mais manipulées comme des variables indépendantes ; cela implique de les déclarer via des fonctions spécifiques fournies par Vue
 - pour être réactives, les données doivent maintenant être déclarées avec les méthodes `reactive` et `ref`
 - `ref` est utilisé pour encapsuler les valeurs primitives telles que la String `newTodo` dans une structure d'objet `{ value }` afin que vous puissiez changer leur valeur sans changer leur référence (mutation et pas réassignation) ; autrement, Vue perdrait la trace de cette variable (voir la [section Réactivité](../reactivite/)).
