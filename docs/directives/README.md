@@ -439,4 +439,4 @@ films: [
 
 7. Using the `v-for` directive, repeat the `.film.card` element to display as many films as the `films` list.
 8. Complete the card with data from each film using the directives and interpolation.
-9. **Bonus:** Use the `metascore` property to display a number of stars next to each film title.
+9. **Bonus:** the `metascore` property is a string that can take the value `"N/A"`, or a number between `"0"` and `"100"`. Use this property to display 1 to 5 stars next to each film title, when relevant.

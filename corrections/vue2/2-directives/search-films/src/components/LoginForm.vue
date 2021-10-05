@@ -22,7 +22,7 @@
         />
         <p class="title">
           {{ film.title }}
-          <span class="rating">
+          <span class="rating" v-if="film.metascore !== 'N/A'">
             <template v-for="star in Math.ceil(film.metascore / 20)">★</template>
           </span>
         </p>

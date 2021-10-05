@@ -19,8 +19,8 @@
     <img class="poster" :src="film.poster" />
     <p class="title">
       {{ film.title }}
-      <span class="rating">
-        <template v-for="star in Math.ceil(film.metascore / 20)" :key="star">★</template>
+      <span class="rating" v-if="film.metascore !== 'N/A'">
+        <template v-for="star in Math.ceil(parseInt(film.metascore) / 20)">★</template>
       </span>
     </p>
     <dl>

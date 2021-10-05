@@ -408,4 +408,4 @@ films: [
 ```
 7. A l'aide de la directive `v-for`, répétez l'élément `.film.card` pour afficher autant de films que contient la liste `films`
 8. Complétez les données des cartes par celle de chaque film en utilisant les directives et l'interpolation
-9. **Bonus :** trouvez comment utiliser la propriété `metascore` pour afficher un certain nombre d'étoiles à côté de chaque titre de film.
+9. **Bonus :** la propriété `metascore` est une chaîne de caractères pouvant prendre la valeur `"N/A"`, ou un entier entre `"0"` et `"100"`. Servez-vous en pour afficher, quand c'est possible, de 1 à 5 étoiles à côté du titre de chaque film.
