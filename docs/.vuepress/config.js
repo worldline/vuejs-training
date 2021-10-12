@@ -3,14 +3,14 @@ module.exports = {
 	locales: {
 		"/": {
 			lang: "en-US", // this will be set as the lang attribute on <html>
-			title: "Vue.js in depth",
-			description: "Vue.js training",
+			title: "Introduction to Vue.js",
+			description: "Discover Vue.js framework through this 2-days training",
 		},
 
 		"/fr/": {
 			lang: "fr-FR",
-			title: "Vue.js en profondeur",
-			description: "Une formation d'introduction à Vue.js",
+			title: "Introduction à Vue.js",
+			description: "Découvrez le framework Vue.js dans cette formation de 2 jours",
 		},
 	},
 
