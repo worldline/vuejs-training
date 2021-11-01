@@ -20,6 +20,8 @@ Dans le dossier `src`, vous trouvez :
 
 Par la suite, vous pourrez être amenés à créer d'autres dossiers dans `src` selon vos besoins. On trouve par exemple couramment un dossier `services` qui contient des briques de logique métier avec des fonctions utilisées dans plusieurs composants. Ou encore un dossier `utils` pour venir stocker diverses fonctions utilitaires en JavaScript plutôt que de les répéter à plusieurs endroits.
 
+![Cheat sheet de la structure de fichiers de Vue CLI](../../assets/vue-cli-file-structure.jpg)
+
 ## Fichiers monocomposants *.vue
 
 - Une application dans Vue.js est divisée en plusieurs composants

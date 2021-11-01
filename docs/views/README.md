@@ -20,6 +20,8 @@ In the `src` folder, you have:
 
 Later, you may need to create additional folders in `src` as needed. For example, a `services` folder is commonly found which contains business logic bricks with functions used in several components. Or a `utils` folder to store various utility functions in JavaScript instead of repeating them in multiple places.
 
+![Cheat sheet of Vue CLI File Structure](../assets/vue-cli-file-structure.jpg)
+
 ## Single File Components \*.vue
 
 - A Vue.js application is divided into several components
