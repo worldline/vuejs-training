@@ -19,6 +19,6 @@
     "vuepress-plugin-live": "^1.6.2"
   },
   "devDependencies": {
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.5"
   }
 }
