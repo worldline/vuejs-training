@@ -101,3 +101,24 @@ Stack |	Not self-sufficient, to combine with complete web stack. Rich ecosystem.
 
 </div>
 </div>
+
+
+### Vue 3 or Vue 2 ?
+
+The 3.0 version of the core library of Vue has officially been released as of 18 September 2020, but migrating the entire ecosystem will take several years. Since the API is relatively stable between Vue 2 and Vue 3, we propose this training session for both Vue 3 and Vue 2. Click on this switch at anytime:
+
+<VueVersionSwitch slotKey="presentation" />
+
+::: slot presentation-vue2
+::: tip
+The training content will be shown for our good'old Vue 2 !
+:::
+
+::: slot presentation-vue3
+::: tip
+The training content will be shown for the brand new Vue 3 !
+:::
+
+We recommend you to pick:
+- Vue 2 if you intend to work on an existing Vue project
+- Vue 3 if you are going to start a fresh new project.

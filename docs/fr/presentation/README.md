@@ -97,3 +97,24 @@ Stack |	Ne se suffit pas à lui-même, à intégrer dans une stack web avec d’
 
 </div>
 </div>
+
+
+### Vue 3 ou Vue 2 ?
+
+La version 3.0 du coeur de Vue a été publiée officiellement le 18 Septembre 2020, mais cela prendra plusieurs années de migrer l'ensemble de l'écosystème de Vue 2. Puisque l'API est relativement stable entre Vue 2 et Vue 3, nous avons décidé de proposer cette formation pour à la fois Vue 2 et Vue 3. Vous pouvez basculer à tout moment en cliquant sur ce switch:
+
+<VueVersionSwitch slotKey="presentation" />
+
+::: slot presentation-vue2
+::: tip
+Le contenu de la formation sera présenté pour notre bon vieux Vue 2 !
+:::
+
+::: slot presentation-vue3
+::: tip
+Le contenu de la formation sera présenté pour le tout nouveau Vue 3 !
+:::
+
+Nous vous recommandons de choisir:
+- Vue 2 si vous comptez travailler sur un projet déjà existant
+- Vue 3 si vous démarrez un tout nouveau projet
