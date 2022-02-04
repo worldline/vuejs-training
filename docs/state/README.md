@@ -37,7 +37,7 @@ export default {
           this.state.loggedIn = true
       }
   }
-})
+}
 ```
 
 ::: tip
@@ -104,151 +104,115 @@ export default {
 </script>
 ```
 
-## Vuex
+## Pinia
 
 Once you have a store pattern, it is tempting to enrich it with many features and take advantage of the centralization of state mutations. This has been a field of research for many development teams, especially outside Vue ecosystem, for example the work on the _Flux_ architecture done by the React team.
 
-[Vuex](https://vuex.vuejs.org/) is the culmination of this centralized store pattern. It is official state management solution provided by the Vue team. Vuex will not necessarily find its place in all Vue projects, but it is a very efficient tool in large applications that handle a lot of data.
+The Vue community went through the same process and came to [Vuex](https://vuex.vuejs.org/), a proposal for an official state management solution for Vue. After Vue 3 release and the introduction of the [Composition API](/reusability), a new library called [Pinia](https://pinia.vuejs.org/) replaced VueX as the official recommendation. That's what we are going to use here.
 
-Vuex works with the following principles:
+Pinia is the culmination of this centralized store pattern. It is the official state management solution provided by the Vue team. Pinia will not necessarily find its place in all Vue projects, but it is a very efficient tool in large applications that handle a lot of data.
 
-- A **mutation** is a function that mutates the state of the store. It must be **synchronous**.
-- An **action** is a function that triggers one or more mutations. It can be **asynchronous**.
-- Components modify the application state by invoking actions
-- The mutated state updates reactively all the views that use it, regardless of their depth in the component tree
+Pinia works with the following concepts:
 
-![Vuex and components](../assets/vuex.png)
+- the **state**, which holds the *data* of your store
+- the **actions**, which are used to mutate the store, equivalent to *methods* in components
+- the **getters**, which are helpers to access to your store data, equivalent to *computed*
 
-## Practical work: Implement a Vuex store
+The mutated state updates reactively all the views that use it, regardless of their depth in the component tree.
 
-1. Install `vuex` and `vuex-persistedstate` dependencies that will be used to persist store state.
+## Practical work: Implement a Pinia store
 
-<VueVersionSwitch slot-key="install-vuex" />
+1. Install `pinia` and `pinia-plugin-persistedstate` dependencies that will be used to persist store state.
 
-::: slot install-vuex-vue2
+<VueVersionSwitch slot-key="install-pinia" />
+
+::: slot install-pinia-vue2
 ```bash
-npm install vuex vuex-persistedstate
+npm install pinia pinia-plugin-persistedstate @vue/composition-api
 ```
 :::
 
-::: slot install-vuex-vue3
+::: slot install-pinia-vue3
 ```bash
-npm install vuex@next vuex-persistedstate
+npm install pinia pinia-plugin-persistedstate
 ```
 :::
 
-2. Create a Vuex store by creating a `src/store.js` file with following content:
+2. Create a Pinia store for the session by creating a `src/stores/session.js` file with following content:
 
-<VueVersionSwitch slot-key="store-js" />
+```js
+import { defineStore } from "pinia";
 
-::: slot store-js-vue2
-```js{8}
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  strict: true,
-  plugins: [ createPersistedState() ],
-  state: {
-    user: null,
-    loggedIn: false
-  },
-  mutations: {
-    setLoggedIn (state, loggedIn) {
-      state.loggedIn = loggedIn
-    },
-    setUser (state, user) {
-      state.user = user
-    }
-  },
-  actions: {
-    login ({ commit }, { user }) {
-      commit('setLoggedIn', true)
-      commit('setUser', user)
-    }
-  }
-})
-```
-:::
-
-::: slot store-js-vue3
-```js{8}
-import { createStore } from "vuex";
-import createPersistedState from 'vuex-persistedstate'
-
-export default createStore({
-  strict: true,
-  plugins: [ createPersistedState() ],
-  state(){
+export const useSession = defineStore('session', {
+  persist: true,
+  state: () => {
     return {
       user: null,
       loggedIn: false
     }
   },
-  mutations: {
-    setLoggedIn (state, loggedIn) {
-      state.loggedIn = loggedIn
-    },
-    setUser (state, user) {
-      state.user = user
-    }
-  },
   actions: {
-    login ({ commit }, { user }) {
-      commit('setLoggedIn', true)
-      commit('setUser', user)
+    login({ user }) {
+      this.loggedIn = true
+      this.user = user
     }
   }
 })
 ```
-:::
-
-::: warning
-The `strict` mode is used to throw an error if the Vuex store state is changed without using declared `mutations`. Warning, this mode is expensive in performance and must be deactivated in production!
-:::
 
 3. Declare the store in your application by completing the `main.js` file like this:
 
 <VueVersionSwitch slot-key="app-store" />
 
 ::: slot app-store-vue2
-```js{1,5}
-import store from '@/store'
+```js{10}
+import { createPinia, PiniaVuePlugin } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+Vue.use(PiniaVuePlugin)
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 new Vue({
   render: h => h(App),
-  store
+  pinia
 }).$mount('#app')
 ```
 :::
 
 ::: slot app-store-vue3
-```js{1,4}
-import store from '@/store'
+```js{8}
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 createApp(App)
-  .use(store)
+  .use(pinia)
   .mount('#app')
 ```
 :::
 
-4. In the application code, delete the prop `loggedIn` passed from component to component and retrieve this property from the store instead (`this.$store.state.loggedIn`)
+4. In the application code, retrieve the `loggedIn` variable from the store with `useSession()`
 
 ::: tip
-The `mapState` utility provided with Vuex can be used to shorten the code by easily linking store data to a computed component property
+The `mapState` and `mapActions` are helpers provided with Pinia that can be used to shorten the code by easily linking store data and actions to computed and methods.
 
 ```js
-import { mapState } from "vuex";
+import { useSession } from "@/stores/session"
+import { mapState, mapActions } from "pinia";
 
 export default {
   computed: {
-    // bind this.loggedIn to this.$store.state.loggedIn
-    ...mapState(["loggedIn"])
+    // bind this.loggedIn to useSession().loggedIn
+    ...mapState(useSession, ["loggedIn"])
+  },
+  methods: {
+    // bind this.login to useSession().login  
+    ...mapActions(useSession, ["login"])
   }
-};
+}
 ```
 
 :::
@@ -256,17 +220,17 @@ export default {
 5. In `LoginForm.vue`, on form submit, check if the user has entered the email address `test@test.com` and the password `test1234`. If so, trigger the `login` action for the user `test`.
 
 :::tip
-Invoking an action from a component is done like this:
+Invoking an action from a component is done by calling it as a method of the store:
 
 ```js
-this.$store.dispatch("login", { user: "John Smith" });
+const session = useSession()
+session.login({ user: "John Smith" });
 ```
-
 :::
 
 6. Login with the identifiers mentioned above, check that the navigation to the search form is working properly, then refresh the page.
 
-**Question**: Why do not we return to the login form after refreshing the page ?
+**Question**: Why don't we return to the login form after refreshing the page ?
 
 7. If the user has entered wrong credentials in the login form, display an error message below the login button. To help you, you can declare an additional `error` string in the component's `data`.
 
