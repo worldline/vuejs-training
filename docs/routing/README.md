@@ -54,7 +54,7 @@ new Vue({
 npm install vue-router@4
 ```
 
-```js{4}
+```js{5}
 import router from "./router";
 
 createApp(App)
