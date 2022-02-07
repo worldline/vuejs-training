@@ -79,13 +79,16 @@ Choose the following configuration:
 ✔ Add JSX Support? No
 ✔ Add Vue Router for Single Page Application development? No
 ✔ Add Pinia for state management? No
-✔ Add Cypress for testing? No
+✔ Add Vitest for Unit Testing? ... Yes
+✔ Add Cypress for testing? Yes
+✔ Add ESLint for code quality? ... Yes
+✔ Add Prettier for code formatting? ... Yes
 
 Scaffolding project in ./search-films...
 Done.
 ```
 
-We recommend you use TypeScript for medium to large business applications, but in the context of this training session, we are going to stick with JavaScript. We pick **No** option for all the other tools because we are going to manually add them to our project in this training.
+We recommend you use TypeScript for medium to large business applications, but in the context of this training session, we are going to stick with JavaScript. We pick **No** option for the tools we are going to manually add to our project later.
 
 At the end of the installation, a folder has been created for your project. Navigate to the directory of your project and install the dependencies:
 

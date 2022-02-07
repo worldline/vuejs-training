@@ -78,13 +78,16 @@ Choisissez la configuration suivante :
 ✔ Add JSX Support? No
 ✔ Add Vue Router for Single Page Application development? No
 ✔ Add Pinia for state management? No
-✔ Add Cypress for testing? No
+✔ Add Vitest for Unit Testing? ... Yes
+✔ Add Cypress for testing? Yes
+✔ Add ESLint for code quality? ... Yes
+✔ Add Prettier for code formatting? ... Yes
 
 Scaffolding project in ./search-films...
 Done.
 ```
 
-Nous vous recommandons d'utiliser TypeScript pour vos projets client de taille moyenne à large, mais dans le contexte de cette formation, nous allons nous cantonner à JavaScript. Nous sélectionnons les options **Non** pour les autres outils car nous allons les ajouter manuellement au projet plus tard pendant la formation.
+Nous vous recommandons d'utiliser TypeScript pour vos projets client de taille moyenne à large, mais dans le contexte de cette formation, nous allons nous cantonner à JavaScript. Nous sélectionnons les options **Non** pour les outils que nous ajouterons manuellement au projet plus tard.
 
 A la fin de l'installation, un dossier a été créé pour votre projet. Naviguez vers le répertoire de votre projet et installez les dépendances:
 
