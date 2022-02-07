@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { useSession } from "@/stores/session"
+
 export default {
     name: "LoginForm",
     emits: ['login'],
@@ -32,7 +34,8 @@ export default {
     methods: {
       onLogin(){
         if(this.email === "test@test.com" && this.password === "test1234"){
-          this.$store.dispatch('login', { user: 'test' })
+          const session = useSession()
+          session.login({ user: { email: "test@test.com", firstname: "John", lastname: "Smith" } });
           this.$emit('login')
           this.error = null
         } else {

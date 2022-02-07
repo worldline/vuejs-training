@@ -25,12 +25,25 @@ Créez un dossier `src/router` et un fichier `router/index.js` qui contiendra la
 npm install vue-router@3
 ```
 
-```js{6}
+```js{14,19}
+import Vue from 'vue'
+import { createPinia, PiniaVuePlugin } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import RouterPlugin from "vue-router";
 import router from "./router";
+
+import App from './App.vue'
+
+Vue.use(PiniaVuePlugin)
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+
+Vue.use(RouterPlugin)
 
 new Vue({
   render: h => h(App),
-  store,
+  pinia,
   router
 }).$mount("#app");
 ```
@@ -41,12 +54,12 @@ new Vue({
 npm install vue-router@4
 ```
 
-```js{4}
+```js{5}
 import router from "./router";
 
 createApp(App)
+    .use(pinia)
 	.use(router)
-	.use(store)
 	.mount("#app")
 ```
 :::
@@ -61,13 +74,10 @@ Le routeur est créé en prenant en paramètres un ensemble de routes. Chaque ro
 ```js
 /** src/router/index.js **/
 import Router from "vue-router";
-import Vue from "vue";
 
 import HelloWorld from "@/components/HelloWorld";
 
-Vue.use(Router);
-
-export default new Router({
+const router = new Router({
   mode: 'hash',
   routes: [
     {
@@ -77,6 +87,8 @@ export default new Router({
     }
   ]
 });
+
+export default router;
 ```
 :::
 
@@ -86,7 +98,7 @@ export default new Router({
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HelloWorld from "@/components/HelloWorld";
 
-export default createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
@@ -95,7 +107,9 @@ export default createRouter({
       component: HelloWorld
     }
   ]
-})
+});
+
+export default router;
 ```
 :::
 
@@ -124,13 +138,20 @@ L'avantage de ce composant par rapport aux balises classiques `<a>` est que les 
 </router-link>
 ```
 
-Vue-router apporte également des méthodes à tous les composants pour naviguer programmatiquement entre les pages:
+Le routeur dispose de méthodes pour naviguer programmatiquement entre les pages:
 
 ```js
-this.$router.go(-1); // aller à page précédente
+router.go(-1); // aller à page précédente
 
-let nextId = this.$route.params.id + 1; // récupérer les paramètres d'URL
-this.$router.push(`/article/${nextId}`); // naviguer vers une nouvelle page par URL
+let nextId = router.currentRoute.params.id + 1; // récupérer les paramètres d'URL
+router.push(`/article/${nextId}`); // naviguer vers une nouvelle page par URL
+```
+
+Grâce au plugin routeur, vous pouvez facilement récupérer une référence au routeur depuis tous vos composants:
+```js
+// depuis les options d'un composant
+this.$router // pointe vers l'instance du routeur
+this.$route // pointe vers router.currentRoute
 ```
 
 ## TP: Implémentation du routeur
@@ -143,6 +164,8 @@ this.$router.push(`/article/${nextId}`); // naviguer vers une nouvelle page par 
 Par convention, on appelle les composants rattachés à des routes des _views_, et on les place généralement dans le dossier `src/views` plutôt que `src/components`.
 :::
 
-3. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre.
+3. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre avec `<router-view>`.
 
-4. **Bonus** : en utilisant les [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirigez l'utilisateur voulant accéder à la page de recherche de films vers `/login` si l'utilisateur n'est pas authentifié.
+4. Naviguez programmatiquement vers la route `/search` après l'action de login, et vers la route `/login` après l'action de logout. Vérifiez que les transitions entre les pages et les changements d'URL fonctionnent correctement.
+
+5. **Bonus** : en utilisant les [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirigez l'utilisateur voulant accéder à la page de recherche de films vers `/login` si l'utilisateur n'est pas authentifié.

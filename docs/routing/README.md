@@ -25,12 +25,25 @@ Create a `src/router` directory and a `router/index.js` file to hold router conf
 npm install vue-router@3
 ```
 
-```js{6}
+```js{14,19}
+import Vue from 'vue'
+import { createPinia, PiniaVuePlugin } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import RouterPlugin from "vue-router";
 import router from "./router";
+
+import App from './App.vue'
+
+Vue.use(PiniaVuePlugin)
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
+
+Vue.use(RouterPlugin)
 
 new Vue({
   render: h => h(App),
-  store,
+  pinia,
   router
 }).$mount("#app");
 ```
@@ -41,12 +54,12 @@ new Vue({
 npm install vue-router@4
 ```
 
-```js{4}
+```js{5}
 import router from "./router";
 
 createApp(App)
+    .use(pinia)
 	.use(router)
-	.use(store)
 	.mount("#app")
 ```
 :::
@@ -61,13 +74,10 @@ The router is created by taking a list of routes as parameters. Each route assoc
 ```js
 /** src/router/index.js **/
 import Router from "vue-router";
-import Vue from "vue";
 
 import HelloWorld from "@/components/HelloWorld";
 
-Vue.use(Router);
-
-export default new Router({
+const router = new Router({
   mode: 'hash',
   routes: [
     {
@@ -77,6 +87,8 @@ export default new Router({
     }
   ]
 });
+
+export default router;
 ```
 :::
 
@@ -86,7 +98,7 @@ export default new Router({
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HelloWorld from "@/components/HelloWorld";
 
-export default createRouter({
+const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
@@ -96,6 +108,8 @@ export default createRouter({
     }
   ]
 })
+
+export default router;
 ```
 :::
 
@@ -124,13 +138,20 @@ The advantage of this component over traditional `<a>` tags is that the links wi
 </router-link>
 ```
 
-Vue-router also brings methods to all components to programmatically navigate between pages:
+The router has methods to programmatically navigate between pages:
 
 ```js
-this.$router.go(-1); // go to previous page
+router.go(-1); // go to previous page
 
-let nextId = this.$route.params.id + 1; // get URL path param
-this.$router.push(`/article/${nextId}`); // navigate to a new page by URL
+let nextId = router.currentRoute.params.id + 1; // get URL path param
+router.push(`/article/${nextId}`); // navigate to a new page by URL
+```
+
+Thanks to the router plugin, you can easily get a reference to the router from all your components: 
+```js
+// in component options
+this.$router // points to router instance
+this.$route // points to router.currentRoute
 ```
 
 ## Practical Work: Implementing the router
@@ -143,6 +164,8 @@ this.$router.push(`/article/${nextId}`); // navigate to a new page by URL
 By convention, we call the components linked to routes _views_, and we usually place them in the folder `src/views` rather than`src/components`.
 :::
 
-3. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another.
+3. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another with `<router-view>`.
 
-4. **Bonus**: Using vue-router [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirect the user who wants to access the film search page to `/login` if he is not authenticated.
+4. Navigate programatically to `/search` route after the login action, and to `/login` route after logout. Check that the transitions between these pages and the URL changes are working correctly.
+
+5. **Bonus**: Using vue-router [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirect the user who wants to access the film search page to `/login` if he is not authenticated.

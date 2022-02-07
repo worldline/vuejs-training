@@ -51,7 +51,7 @@ module.exports = {
 					"/fr/routage/",
 					"/fr/http/",
 					"/fr/tests/",
-					"/fr/reusabilite/",
+					"/fr/reutilisabilite/",
 					"/fr/ecosysteme/",
 				],
 			},

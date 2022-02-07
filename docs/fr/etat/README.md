@@ -37,7 +37,7 @@ export default {
           this.state.loggedIn = true
       }
   }
-})
+}
 ```
 
 ::: tip
@@ -107,145 +107,110 @@ export default {
 
 Une fois que l'on dispose d'un store, on est tenté de l'enrichir de nombreuses fonctionnalités en profitant de la centralisation des mutations d'état. Cela a été un terrain de recherche pour de nombreuses équipes de développement, notamment en dehors de l'écosystème Vue avec par exemple les travaux sur l'architecture *Flux* par l'équipe de React.
 
-[Vuex](https://vuex.vuejs.org/) est l'aboutissement de ce pattern de store centralisé. C'est solution officielle de gestion d'état fournie par l'équipe de Vue. Vuex ne trouvera pas forcément sa place dans tous les projets Vue, mais c'est un très bon atout dans de grosses applications manipulant beaucoup de données.
+La communauté Vue est passé par les mêmes étapes pour arriver à [Vuex](https://vuex.vuejs.org/), une proposition pour une solution officielle de gestion d'état avec Vue. Après la sortie de Vue 3 et l'introduction de l'[API de Composition](/fr/reutilisabilite), une nouvelle bibliothèque appelée [Pinia](https://pinia.vuejs.org/) a remplacé VueX au titre de recommandation officielle. C'est ce que nous allons utiliser ici.
 
-Vuex fonctionne selon les principes suivants :
-- Une **mutation** est une fonction qui modifie l'état du store. Elle est obligatoirement **synchrone**.
-- Une **action** est une fonction qui déclenche une ou plusieurs mutations. Elle peut être **asynchrone**.
-- Les composants modifient l'état applicatif en invoquant des actions
-- L'état muté à la suite de mutations met à jour de façon réactive toutes les vues associées, peu importe leur niveau dans l'arborescence
+Pinia est l'aboutissement de ce pattern de store centralisé. C'est la solution officielle de gestion d'état fournie par l'équipe de Vue. Pinia ne trouvera pas forcément sa place dans tous les projets Vue, mais c'est un très bon atout dans de grosses applications manipulant beaucoup de données.
 
-![Vuex et les composants](../../assets/vuex.png)
+Pinia fonctionne avec les concepts suivants :
 
-## TP : Implémenter un store Vuex
+- l'**état**, qui contient les *data* du store à un instant T
+- les **actions**, utilisées pour muter l'état du store, équivalent aux *méthodes* des composants
+- les **getters**, des raccourcis pour accéder aux données du store, équivalent aux *computed*
 
-1. Installer les dépendances `vuex` et `vuex-persistedstate` qu'on utilisera pour persister l'état du store.
+Les changements d'état mettent à jour de façon réactive et automatiques toutes les vues utilisant cet état, peu importe leur niveau dans l'arborescence de composants.
 
-<VueVersionSwitch slot-key="install-vuex" />
+## TP : Implémenter un store Pinia
 
-::: slot install-vuex-vue2
+1. Installer les dépendances `pinia` and `pinia-plugin-persistedstate` qu'on utilisera pour persister l'état du store.
+
+<VueVersionSwitch slot-key="install-pinia" />
+
+::: slot install-pinia-vue2
 ```bash
-npm install vuex vuex-persistedstate
+npm install pinia pinia-plugin-persistedstate @vue/composition-api
 ```
 :::
 
-::: slot install-vuex-vue3
+::: slot install-pinia-vue3
 ```bash
-npm install vuex@next vuex-persistedstate
+npm install pinia pinia-plugin-persistedstate
 ```
 :::
 
-2. Créer un store Vuex en créant un fichier `src/store.js` avec le contenu suivant :
+2. Créer un store Pinia en créant un fichier `src/stores/session.js` avec le contenu suivant :
 
-<VueVersionSwitch slot-key="store-js" />
+```js
+import { defineStore } from "pinia";
 
-::: slot store-js-vue2
-```js{8}
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
-
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  strict: true,
-  plugins: [ createPersistedState() ],
-  state: {
-    user: null,
-    loggedIn: false
-  },
-  mutations: {
-    setLoggedIn (state, loggedIn) {
-      state.loggedIn = loggedIn
-    },
-    setUser (state, user) {
-      state.user = user
-    }
-  },
-  actions: {
-    login ({ commit }, { user }) {
-      commit('setLoggedIn', true)
-      commit('setUser', user)
-    }
-  }
-})
-```
-:::
-
-::: slot store-js-vue3
-```js{8}
-import { createStore } from "vuex";
-import createPersistedState from 'vuex-persistedstate'
-
-export default createStore({
-  strict: true,
-  plugins: [ createPersistedState() ],
-  state(){
+export const useSession = defineStore('session', {
+  persist: true,
+  state: () => {
     return {
       user: null,
       loggedIn: false
     }
   },
-  mutations: {
-    setLoggedIn (state, loggedIn) {
-      state.loggedIn = loggedIn
-    },
-    setUser (state, user) {
-      state.user = user
-    }
-  },
   actions: {
-    login ({ commit }, { user }) {
-      commit('setLoggedIn', true)
-      commit('setUser', user)
+    login({ user }) {
+      this.loggedIn = true
+      this.user = user
     }
   }
 })
 ```
-:::
-
-::: warning
-Le mode `strict` permet de lancer une erreur si le store Vuex est modifié en dehors des mutateurs. Attention, ce mode est coûteux en performance et doit être désactivé en production !
-:::
 
 3. Déclarez le store dans votre application en complétant le fichier `main.js` comme ceci :
 
 <VueVersionSwitch slot-key="app-store" />
 
 ::: slot app-store-vue2
-```js{1,5}
-import store from '@/store'
+```js{10}
+import { createPinia, PiniaVuePlugin } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+Vue.use(PiniaVuePlugin)
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 new Vue({
   render: h => h(App),
-  store
+  pinia
 }).$mount('#app')
 ```
 :::
 
 ::: slot app-store-vue3
-```js{1,4}
-import store from '@/store'
+```js{8}
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 createApp(App)
-  .use(store)
+  .use(pinia)
   .mount('#app')
 ```
 :::
 
-4. Dans le code de l'application, supprimez les passages de prop `loggedIn` de composant à composant et récupérez la donnée depuis le store à la place (`this.$store.state.loggedIn`)
+4. Dans le code de l'application, récupérez la donnée `loggedIn` depuis le store avec `useSession()`
 
 ::: tip
-La fonction utilitaire `mapState` fournie avec Vuex permet d'abréger le code en reliant facilement une donnée du store à une propriété calculée d'un composant
+Les fonctions utilitaires `mapState` et `mapActions` fournies avec Pinia permettent d'abréger le code en reliant facilement une donnée du store à une propriété calculée d'un composant, ou un getter à une méthode.
 
 ```js
-import {mapState} from 'vuex'
+import { useSession } from "@/stores/session"
+import { mapState, mapActions } from "pinia";
 
 export default {
-  computed: {
-    // relie this.loggedIn à this.$store.state.loggedIn
-    ...mapState([ 'loggedIn' ])
-  }
+    computed: {
+        // bind this.loggedIn to useSession().loggedIn
+        ...mapState(useSession, ["loggedIn"])
+    },
+    methods: {
+        // bind this.login to useSession().login  
+        ...mapActions(useSession, ["login"])
+    }
 }
 ```
 :::
@@ -253,9 +218,10 @@ export default {
 5. Dans LoginForm.vue, lors du submit, vérifier si l'utilisateur a entré l'adresse mail `test@test.com` et le mot de passe `test1234`. Si c'est le cas, déclencher l'action `login` pour le user `test`.
 
 :::tip
-Invoquer une action depuis un composant se fait comme ceci:
+Invoquer une action depuis un composant se fait en l'appelant comme une méthode du store:
 ```js
-this.$store.dispatch('login', { user: 'John Smith' })
+const session = useSession()
+session.login({ user: "John Smith" });
 ```
 :::
 
