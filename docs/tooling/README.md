@@ -4,89 +4,28 @@
 
 ::: tip
 
-If it is allowed by your local security policy, it is recommended to work under a Linux VM, for example [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.myworldline.com/dev-box/), to get a better development experience. This is not mandatory for this training though.
+If it is allowed by your local security policy, you can work under a Linux VM, for example [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.myworldline.com/dev-box/), to get a better development experience. This is not mandatory for this training though.
 :::
 
 ### Node.js
 
-Install [Node.js](https://nodejs.org/) (preferably latest stable version, minimum version 8.9). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
+Install [Node.js](https://nodejs.org/) (preferably latest stable version). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
 
-### Visual Studio Code and Vetur/Volar
+### Visual Studio Code and Volar
 
 During the training you will need a solid JavaScript code editor.
 
 We recommend [Visual Studio Code](https://code.visualstudio.com/), a fairly lightweight free editor that is now very popular in the JavaScript community.
 
-VS Code has many extensions to enrich the experience. 
-
-For Vue 2, we recommend [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) extension that will help the editor manage the syntax of the `* .vue` component files.
-For Vue 3, a new extension named [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) has been created specifically for Vue 3 and has better performance than Vetur.
+VS Code has many extensions to enrich the experience. A recommended extension for Vue projects is [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar), which provides syntax highlighting and autocompletion for Vue components files.
 
 ### Vue Devtools
 
-Download the extension [vue-devtools](https://github.com/vuejs/vue-devtools) available on Chrome, Firefox or as a standalone application. This will help you debug your code during the practical work.
-
-::: tip
-For Vue 3 support, you will have to use **beta** version of vue-devtools
-:::
-
-### Vue CLI
-
-Now, let's install the tools needed to develop Vue.js projects on your machine:
-
-We will need to install the command line utility called [Vue CLI](https://cli.vuejs.org/). This utility makes it much easier to create and configure Vue projects.
-
-From your Terminal, run the following command to install `@vue/cli` in global dependency:
-
-```bash
-npm install -g @vue/cli
-```
-
-You now have access to the `vue` command from a terminal. Try it to check the installation and to have more information about the available commands:
-
-```
-$ vue
-Usage: vue <command> [options]
-
-Options:
-  -V, --version                              output the version number
-  -h, --help                                 output usage information
-
-Commands:
-  create [options] <app-name>                create a new project powered by vue-cli-service
-  add [options] <plugin> [pluginOptions]     install a plugin and invoke its generator in an already created project
-  invoke [options] <plugin> [pluginOptions]  invoke the generator of a plugin in an already created project
-  inspect [options] [paths...]               inspect the webpack config in a project with vue-cli-service
-  serve [options] [entry]                    serve a .js or .vue file in development mode with zero config
-  build [options] [entry]                    build a .js or .vue file in production mode with zero config
-  ui [options]                               start and open the vue-cli ui
-  init [options] <template> <app-name>       generate a project from a remote template (legacy API, requires @vue/cli-init)
-  config [options] [value]                   inspect and modify the config
-  upgrade [semverLevel]                      upgrade vue cli service / plugins (default semverLevel: minor)
-  info                                       print debugging information about your environment
-
-  Run vue <command> --help for detailed usage of given command.
-```
-
-The `vue ui` command is very useful for beginners: it provides a browser-based **graphical user interface** for managing a Vue project. The UI can replace the command line for many tasks, such as:
-
-- create or import a Vue project
-- add plugins to your project
-- configure your project tools
-- launch the application
-- run unit tests
-- etc.
-
-<figure>
-
-![Vue UI demonstration](../assets/vue-cli-3-serve.gif)
-
-<figcaption>Vue UI: launch a project in development mode, with real time stats from the bundler (Webpack)</figcaption>
-</figure>
+Download the browser extension [vue-devtools](https://github.com/vuejs/vue-devtools) available on Chrome, Firefox or as a standalone application. This will help you debug your code during the practical work.
 
 ## Vue.js without build step (runtime only)
 
-It is possible to use Vue.js without all this tooling on the developer's workstation. Vue is basically a JavaScript library that can be imported and used directly on clients' browsers.
+It is possible to use Vue.js without a compilation step. Vue is basically a JavaScript library that can be imported and used directly on clients' browsers.
 
 ```html
 <!DOCTYPE html>
@@ -112,37 +51,47 @@ However, this usage quickly finds its limits, and the development tools that com
 
 ## Practical Work: Create your first project
 
+You can use either **Vue 3** or **Vue 2** for this training.
+
 Get into your workspace and create a project called `search-films` by running the following command:
 
+<VueVersionSwitch slotKey="npm-init" />
+
+::: slot npm-init-vue3
 ```bash
-vue create search-films
+npm init vue@latest
 ```
+:::
+
+::: slot npm-init-vue2
+```bash
+npm init vue@2
+```
+:::
 
 **search-films** being the name of the directory in which our project will be created.
 
 Choose the following configuration:
 
 ```bash
-@vue/cli 4.5.6
-? Please pick a preset: Manually select features
-? Check the features needed for your project: Choose Vue Version, Babel, Linter, Unit
-? Choose a version of Vue.js that you want to start the project with (Use arrow keys): 2.x
-? Pick a linter / formatter config: ESLint with error prevention only
-? Pick additional lint features: Lint on save
-? Pick a unit testing solution: Jest
-? Where do you prefer placing config for Babel, PostCSS, ESLint, etc.: In dedicated config files
-? Pick the package manager to use when installing dependencies: Use NPM
+✔ Project name: search-films
+✔ Add TypeScript? No
+✔ Add JSX Support? No
+✔ Add Vue Router for Single Page Application development? No
+✔ Add Pinia for state management? No
+✔ Add Cypress for testing? No
+
+Scaffolding project in ./search-films...
+Done.
 ```
 
-- You can use either **Vue 3** or **Vue 2** for this training
-- **Babel** is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in order to support as many browser as possible.
-- **ESLint** is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
-- **Jest** is a JavaScript testing framework with a focus on simplicity.
+We recommend you use TypeScript for medium to large business applications, but in the context of this training session, we are going to stick with JavaScript. We pick **No** option for all the other tools because we are going to manually add them to our project in this training.
 
-At the end of the installation, a folder has been created for your project. Navigate to the directory of your project:
+At the end of the installation, a folder has been created for your project. Navigate to the directory of your project and install the dependencies:
 
 ```bash
 cd search-films
+npm install
 ```
 
 ### Work in developer mode
@@ -150,7 +99,7 @@ cd search-films
 To work on the application and test it live, run the following command:
 
 ```bash
-npm run serve
+npm run dev
 ```
 
 Your application is accessible on [localhost:8080](http://localhost:8080/) (default port if available).
@@ -165,24 +114,26 @@ You can at any time package your project for production by running:
 npm run build
 ```
 
-This command will compile your project using **Webpack** in production mode. Webpack is a _bundler_, a tool that will transform your sources into a small number of _bundles_, optimized and compressed JS and CSS files, and put them in the `/dist` folder of your project. You can then deploy this folder on a file server such as Apache or nginx.
+This command will compile your project using **Vite** and **Rollup** in production mode. These tools are pre-configured to output highly optimized static assets for production: they will transform your sources into a small number of _bundles_, optimized and compressed JS and CSS files, and put them in the `/dist` folder of your project. You can then deploy this folder on a file server such as Apache or nginx.
 
 ::: tip
 
-Basic Vue CLI commands are listed in the README.md generated at the root of the project
+Basic commands and instructions are listed in the README.md generated at the root of the project
 
 :::
 
 ### Project configuration
 
-You can configure your Vue project in multiple ways, for example by changing the port used by the development server. At the root of the project, create a `vue.config.js` file, and put the following content in it:
+You can configure all this tooling in multiple ways,  by using dedicated configuration files. For example, to change the port used by the development server, create a `vite.config.js` file at the root of the project and put the following content in it:
 
 ```js
-module.exports = {
-  devServer: {
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  server: {
     port: 3000
   }
-};
+})
 ```
 
-Your project will now be accessible on port 3000 in developer mode. See the [configuration documentation](https://cli.vuejs.org/config/) for more information about the available options.
+Your project will now be accessible on port 3000 in developer mode. See [Vite Configuration Reference](https://vitejs.dev/config/) for more information about the available options.
