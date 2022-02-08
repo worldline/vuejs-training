@@ -120,7 +120,7 @@ Cette commande compilera votre projet en utilisant **Vite** et **Rollup** en mod
 
 ::: tip
 
-Des commandes et instructions de base sont listées dans le README.md généré à la racine du projet
+Après un build, vous pouvez rapidement tester votre application buildée avec la commande `npm run preview`. D'autres commandes et instructions de base sont listées dans le README.md généré à la racine du projet.
 
 :::
 

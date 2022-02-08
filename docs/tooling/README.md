@@ -121,7 +121,7 @@ This command will compile your project using **Vite** and **Rollup** in producti
 
 ::: tip
 
-Basic commands and instructions are listed in the README.md generated at the root of the project
+After a build, you can quickly test the resulting app with `npm run preview`. Other basic commands and instructions are listed in the README.md generated at the root of the project.
 
 :::
 
