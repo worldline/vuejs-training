@@ -15,7 +15,7 @@ In the `src` folder, you have:
 
 - `assets`: static resources (images, files) that will be imported by Webpack within your Vue components
 - `components`: your Vue components (distributed by folder by "module" of your application)
-- `App.View`: Your root Vue component, which contains the entire application
+- `App.vue`: Your root Vue component, which contains the entire application
 - `main.js`: the entry point of the entire application's JavaScript code
 
 Later, you may need to create additional folders in `src` as needed. For example, a `services` folder is commonly found which contains business logic bricks with functions used in several components. Or a `utils` folder to store various utility functions in JavaScript instead of repeating them in multiple places.
@@ -127,7 +127,9 @@ Interpolation only works on textual content of elements. You can not use it to c
 
 ## Practical Work: Your first component
 
-1. Add the CSS stylesheet that will serve as basis for all the practical work, downloadable here: [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css); put it in the `src` folder and include it in the project with `import './stylesheet.css'` in the script part of `App.vue`.
+The Vue project has been initiated with existing components and styles in `src/components` and `src/assets` folders. Feel free to have a look at them and remove these files if you want, you won't need them.
+
+1. Add the CSS stylesheet that will serve as basis for all the practical work, downloadable here: [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css); put it in the `src/assets` folder and include it in the project with `@import './assets/stylesheet.css'` in the `<style>` part of `App.vue`. You can remove the existing styles.
 
 2. Create a new component `LoginForm.vue` containing the following authentication form:
 
@@ -161,6 +163,6 @@ Interpolation only works on textual content of elements. You can not use it to c
 </div>
 ```
 
-3. Delete the existing contents of the `App.vue` component template, and display the `LoginForm.vue` component instead with `<login-form />`. You will also need to declare `LoginForm` in the `components` attribute of the `App` component.
+3. Delete the existing content of the `App.vue` component template, and display the `LoginForm` component instead with `<LoginForm />`. You will also need to declare `LoginForm` in the `components` option of the `App` component.
 
-4. Complete the `LoginForm.vue` file to declare the name of the component, and a`data` containing a `title` property. Then use the text interpolation in the template to pass the title of the form _"Authentication"_ using the variable `title`.
+4. Complete `LoginForm.vue` file to declare the name of the component, and a`data` containing a `title` property. Then use text interpolation in the template to pass the title of the form _"Authentication"_ using variable `title`.

@@ -162,4 +162,4 @@ Vue.use(NotificationPlugin)
 ```
 :::
 
-La plupart des bibliothèques tierces de Vue utilisent ce format de plugin pour sa praticité. C'est le cas de `vue-router` par exemple. Les plugins sont reconnus comme tels et placés dans leur propre catégorie sur l'interface Vue UI.
+La plupart des bibliothèques tierces de Vue utilisent ce format de plugin pour sa praticité. C'est le cas de `vue-router` par exemple, qui fournit globalement `<router-view>`, `$router` et `$route`.

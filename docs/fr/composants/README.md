@@ -325,7 +325,7 @@ export default {
 
 3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options correspondantes dans ce nouveau composant.
 
-4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé. Vous devrez pour cela déplacer la data `loggedIn` et faire communiquer les composants entre eux.
+4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé. Vous devrez pour cela déplacer la data `loggedIn` dans le composant `App` et faire communiquer de `LoginForm` à `App` l'action de login.
 
 **Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 

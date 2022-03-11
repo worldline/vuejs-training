@@ -63,7 +63,9 @@ Un pattern un peu plus avancé est de déclarer un objet magasin (*store*) qui e
 
 ```js
 /** services/store.js **/
-const state = Vue.observable({ message: "bonjour" }) // pas d'export pour l'état
+import { reactive } from 'vue'
+
+const state = reactive({ message: "bonjour" }); // pas d'export pour l'état
 
 export const store = {
   get(prop){
@@ -103,7 +105,7 @@ export default {
 </script>
 ```
 
-## Vuex
+## Pinia
 
 Une fois que l'on dispose d'un store, on est tenté de l'enrichir de nombreuses fonctionnalités en profitant de la centralisation des mutations d'état. Cela a été un terrain de recherche pour de nombreuses équipes de développement, notamment en dehors de l'écosystème Vue avec par exemple les travaux sur l'architecture *Flux* par l'équipe de React.
 
@@ -221,7 +223,7 @@ export default {
 Invoquer une action depuis un composant se fait en l'appelant comme une méthode du store:
 ```js
 const session = useSession()
-session.login({ user: "John Smith" });
+session.login({ user: { firstname: "John", lastname: "Smith" } });
 ```
 :::
 
@@ -231,4 +233,4 @@ session.login({ user: "John Smith" });
 
 7. Si l'utilisateur a entré de mauvaises informations, afficher un message d'erreur sous le bouton de connexion. Pour cela, vous pouvez déclarer une String `error` dans les `data` du composant.
 
-8. **Bonus** : Coder une action `logout` et ajouter un bouton de déconnexion `<button id="logout-btn">` qui invoque cette action. Afficher le nom de l'utilisateur à côté de ce bouton.
+8. **Bonus** : Coder une action `logout` et ajouter dans le composant `App` un bouton de déconnexion qui invoque cette action. Afficher le nom de l'utilisateur connecté à côté de ce bouton.

@@ -128,7 +128,9 @@ L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne
 
 ## TP : Premier composant
 
-1. Ajouter la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici : [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css) ; la placer dans le dossier src et l'inclure dans le projet avec `import "./stylesheet.css"` dans la partie script de `App.vue`.
+Le projet Vue a été initialisé avec des composants et des styles existants dans les dossiers `src/components` et `src/assets`. Vous pouvez y jeter un oeil et les supprimer si vous le souhaitez, vous n'en aurez pas besoin.
+
+1. Ajouter la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici : [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css) ; la placer dans le dossier `src/assets` et l'inclure dans le projet avec `@import './assets/stylesheet.css'` dans la partie `<style>` de `App.vue`. Vous pouvez supprimer les autres styles existants.
 
 2. Créer un nouveau composant `LoginForm.vue` contenant un formulaire d'authentification :
 
@@ -150,6 +152,6 @@ L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne
 </div>
 ```
 
-3. Supprimez le contenu existant du template du composant `App.vue`, et affichez le composant `LoginForm.vue` à la place avec `<login-form />`. Vous devrez également déclarer `LoginForm` dans l'option `components` du composant `App`.
+3. Supprimez le contenu existant du template du composant `App.vue`, et affichez le composant `LoginForm.vue` à la place avec `<LoginForm />`. Vous devrez également déclarer `LoginForm` dans l'option `components` du composant `App`.
 
 4. Complétez le fichier `LoginForm.vue` pour déclarer le nom du composant, ainsi qu'une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire *"Authentification"* en utilisant cette variable `title`.

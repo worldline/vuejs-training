@@ -10,6 +10,7 @@ html {
   font-family: Palatino, Georgia, Lucida Bright, Book Antiqua, serif;
   font-size: 16px;
   line-height: 1.5rem;
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6, th { font-weight: normal; }
@@ -151,10 +152,8 @@ dd, input {
     justify-content: center;
 }
 
-#logout-btn {
-    position: fixed;
-    right: 1em;
-    top: 1em;
+#session-info {
+  text-align: right;
 }
 
 .film.card {

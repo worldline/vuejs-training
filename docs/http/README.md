@@ -23,36 +23,30 @@ The back-end interface contract is available here: [api-docs](https://vue-js-bac
 1. Create a generic service (`services/api.js`) to call the backend, with this content:
 
 ```js
-import store from "@/store.js";
+import { useSession } from '../stores/session.js'
 
 export const BASE_URL = "https://vue-js-backend.herokuapp.com";
 
-export async function api(url, params = {}) {
-  params = Object.assign(
-    {
-      mode: "cors",
-      cache: "no-cache"
-    },
-    params
-  );
+export async function api (url, params = {}) {
+    const session = useSession()
 
-  params.headers = Object.assign(
-    {
-      Authorization: `Bearer ${store.state.token}`,
-      "Content-Type": "application/json"
-    },
-    params.headers
-  );
+    params = Object.assign({
+        mode: 'cors',
+        cache: 'no-cache',
+    }, params)
 
-  let response = await fetch(BASE_URL + url, params);
-  let json = (await response.json()) || {};
-  if (!response.ok) {
-    let errorMessage = json.error
-      ? json.error.error || json.error
-      : response.status;
-    throw new Error(errorMessage);
-  }
-  return json;
+    params.headers = Object.assign({
+        Authorization: `Bearer ${session.token}`,
+        'Content-Type': 'application/json'
+    }, params.headers)
+
+    let response = await fetch(BASE_URL + url, params)
+    let json = await response.json() || {}
+    if (!response.ok){
+        let errorMessage = json.error || response.status
+        throw new Error(errorMessage)
+    }
+    return json
 }
 ```
 
@@ -85,57 +79,53 @@ export default {
 3. In `LoginForm` component, add a second button to register next to the login button, then modify the `LoginForm` methods to call the functions located in `UserService`:
 
 ```js
-import UserService from "@/services/UserService.js";
+import UserService from '@/services/UserService.js'
 
 export default {
   methods: {
-    async register() {
+    async register () {
+      this.error = null;
       try {
         const response = await UserService.register({
           email: this.email,
           password: this.password,
-          firstname: "John",
-          lastname: "Smith"
-        });
-        this.$store.dispatch("login", {
-          user: response.user,
-          token: response.token
-        });
-        this.$router.push("/search");
+          firstname: 'John',
+          lastname: 'Smith'
+        })
+        const session = useSession();
+        session.login({ user: response.user, token: response.token });
+        this.$router.push('/search')
       } catch (error) {
-        this.error = error.toString();
+        this.error = error.toString()
       }
     },
-    async login() {
+
+    async login () {
+      this.error = null;
       try {
-        const response = await UserService.login({
-          email: this.email,
-          password: this.password
-        });
-        this.$store.dispatch("login", {
-          user: response.user,
-          token: response.token
-        });
-        this.$router.push("/search");
+        const response = await UserService.login({ email: this.email, password: this.password })
+        const session = useSession();
+        session.login({ user: response.user, token: response.token });
+        this.$router.push('/search')
       } catch (error) {
-        this.error = error.toString();
+        this.error = error.toString()
       }
     }
   }
-};
+}
 ```
 
 4. Note that in the event of an error, the error message is stored in an `error` variable. If not already done, declare this variable in the component's `data` and use it in the template to display the error message in case of authentication failure.
 
-5. Note also that the response of the back-end after login contains a token to authenticate the user, which is passed to the store in the parameters of the `login` action. Modify `store.js` to store this token, adding a`setToken` mutation called by the `login` action.
+5. Note also that the response of the back-end after login contains a token to authenticate the user, which is passed to the store in the parameters of the `login` action. Modify `store.js` to also store this `token`.
 
 6. The `api` service is already configured to add this token to the request authorization header. Check that the token is sent as a HTTP header via the developer tools of your browser.
 
-7. **Bonus**: Modify the store's logout action to remove the token and user info from the store upon logout, and redirect to the login form.
+7. **Bonus**: Modify the store's logout action to remove the token and user info from the store upon logout, and make sure the user is redirected to the login form.
 
 8. Create a `FilmService` service with a method to search for films, following the API documentation (`GET /movies/search`).
 
-9. Change the film search page to call the back-end and allow the user to enter the name of a film, and get all the details for this film.
+9. Complete the `SearchFilm` component with a `query` data bound to the search input, then call the `FilmService` so that the user can search for a film by name.
 
 ::: tip
 

@@ -164,8 +164,21 @@ this.$route // pointe vers router.currentRoute
 Par convention, on appelle les composants rattachés à des routes des _views_, et on les place généralement dans le dossier `src/views` plutôt que `src/components`.
 :::
 
-3. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre avec `<router-view>`.
+3. Ajoutez à la configuration des routes des redirections vers la route `/search` pour la route par défaut (`/`) et pour toutes les autres routes non reconnues (`/:pathMatch(.*)*`) :
 
-4. Naviguez programmatiquement vers la route `/search` après l'action de login, et vers la route `/login` après l'action de logout. Vérifiez que les transitions entre les pages et les changements d'URL fonctionnent correctement.
+```js
+{
+  path: "/",
+  redirect: "/search",
+},
+{ 
+  path: '/:pathMatch(.*)*', 
+  redirect: "/search"
+}
+```
 
-5. **Bonus** : en utilisant les [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirigez l'utilisateur voulant accéder à la page de recherche de films vers `/login` si l'utilisateur n'est pas authentifié.
+4. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre avec `<router-view>`.
+
+5. Naviguez programmatiquement vers la route `/search` après l'action de login, et vers la route `/login` après l'action de logout. Vérifiez que les transitions entre les pages et les changements d'URL fonctionnent correctement.
+
+6. **Bonus** : en utilisant les [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirigez l'utilisateur voulant accéder à la page de recherche de films vers `/login` si l'utilisateur n'est pas authentifié.
