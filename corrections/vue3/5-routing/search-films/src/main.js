@@ -1,10 +1,15 @@
 import { createApp } from 'vue'
-import store from "@/store"
 import App from './App.vue'
-import router from "./router"
+
+import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+import router from "./router";
+
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 createApp(App)
-	.use(router)
-	.use(store)
-	.mount("#app")
-
+    .use(pinia)
+    .use(router)
+    .mount('#app')

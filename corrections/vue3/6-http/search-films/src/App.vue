@@ -1,33 +1,34 @@
 <template>
-  <header v-if="loggedIn" id="logout-btn">
+  <div v-if="loggedIn" id="session-info">
     Connecté en tant que <b>{{user.firstname}} {{user.lastname}}</b>
     <button @click="logout">Déconnexion</button>
-  </header>
+  </div>
   <router-view />
 </template>
 
 <script>
-import "./stylesheet.css"
-import { mapState } from "vuex"
+import { mapState } from "pinia"
+import { useSession } from "./stores/session";
+
+import LoginForm from "./views/LoginForm.vue";
+import SearchFilm from "./views/SearchFilm.vue";
 
 export default {
-  name: 'App',
-  computed: mapState(['loggedIn', 'user']),
+  name: "App",
+  components: { LoginForm, SearchFilm },
+  computed: {
+    ...mapState(useSession, ["loggedIn", "user"])
+  },
   methods: {
-    logout(){
-      this.$store.dispatch('logout')
+    logout() {
+      const session = useSession()
+      session.logout()
+      this.$router.push('/login')
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/stylesheet.css';
 </style>

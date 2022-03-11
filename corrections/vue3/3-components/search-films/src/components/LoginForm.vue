@@ -1,36 +1,50 @@
 <template>
 <div id="login-form">
-<form v-on:submit.prevent="onLogin">
-  <h1>Authentification</h1>
-  <p>Remplissez ce formulaire pour vous connecter.</p>
-  <hr>
+  <form @submit.prevent="login">
+    <h1>{{ title }}</h1>
+    <p>Fill out this form to login.</p>
+    <hr />
 
-  <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Entrez votre courriel" id="email" name="email" required v-model="email">
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      v-model="email"
+      placeholder="Enter your email"
+      id="email"
+      name="email"
+      required
+    />
 
-  <label for="psw"><b>Mot de passe</b></label>
-  <input type="password" placeholder="Entrez votre mot de passe" id="psw" name="psw" required v-model="password">
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      v-model="password"
+      placeholder="Enter your password"
+      id="psw"
+      name="psw"
+      required
+    />
 
-  <p><button type="submit">Se connecter</button></p>
-</form>
+    <p><button type="submit">Login</button></p>
+  </form>
 </div>
 </template>
 
 <script>
 export default {
     name: "LoginForm",
-    emits: ['login'],
+    emits: ["login"],
     data(){
         return {
-            title: "Authentification",
+            title: "Authentication",
             email: "",
-            password: "",
+            password: ""
         }
     },
     methods: {
-      onLogin(){
-        this.$emit('login')
-      }
+        login(){
+            this.$emit('login')
+        }
     }
 }
 </script>

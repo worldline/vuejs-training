@@ -1,5 +1,6 @@
+import{ describe, it, expect, vi } from "vitest";
 import { shallowMount, flushPromises } from "@vue/test-utils"
-import { createStore } from "vuex"
+import { defineStore } from "pinia"
 import { createRouter, createWebHistory } from "vue-router"
 
 import LoginForm from "@/views/LoginForm"
@@ -10,8 +11,8 @@ describe("LoginForm Component", () => {
 
 	beforeEach(() => {
 		// Initialize local Vue with Vuex and mock dispatch actions
-		loginActionMock = jest.fn(() => Promise.resolve())
-		store = createStore({
+		loginActionMock = vi.fn(() => Promise.resolve())
+		store = defineStore('session', {
 			actions: {
 				login: loginActionMock,
 			},
@@ -41,7 +42,7 @@ describe("LoginForm Component", () => {
 	it("should redirect the user to /search route when correctly logged in", async () => {
 		await router.isReady()
 		// Mock the login call to the backend
-		const loginMock = jest.fn(() =>
+		const loginMock = vi.fn(() =>
 			Promise.resolve({ user: {}, token: "t0k3N" })
 		)
 		UserService.login = loginMock
@@ -56,7 +57,7 @@ describe("LoginForm Component", () => {
 	it("should print an error message when user failed to login", async () => {
 		await router.isReady()
 		// Mock the login call to the backend
-		const loginMock = jest.fn(() =>
+		const loginMock = vi.fn(() =>
 			Promise.reject("The login information was incorrect")
 		)
 		UserService.login = loginMock

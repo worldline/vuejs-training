@@ -1,34 +1,38 @@
-import { createRouter, createWebHashHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-import store from "@/store"
-import LoginForm from "@/views/LoginForm.vue"
-import SearchFilm from "@/views/SearchFilm.vue"
+import { useSession } from "../stores/session.js";
 
-const routes = [
-	{
-		path: "/search",
-		name: "Search",
-		component: SearchFilm,
-	},
-	{
-		path: "/login",
-		name: "Login",
-		component: LoginForm,
-	},
-	{
-		path: "/",
-		redirect: "/search",
-	},
-]
+import LoginForm from "../views/LoginForm.vue";
+import SearchFilm from "../views/SearchFilm.vue";
 
 const router = createRouter({
-	history: createWebHashHistory(),
-	routes,
-})
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: "/login",
+      name: "login",
+      component: LoginForm
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: SearchFilm
+    },
+    {
+      path: "/",
+      redirect: "/search",
+    },
+    { 
+      path: '/:pathMatch(.*)*', 
+      redirect: "/search"
+    }
+  ]
+});
 
 router.beforeEach((to, from, next) => {
-	if (to.name !== "Login" && !store.state.loggedIn) next({ name: "Login" })
+    const session = useSession()
+    if (to.name !== "login" && session.loggedIn === false) next('/login')
 	else next()
 })
 
-export default router
+export default router;

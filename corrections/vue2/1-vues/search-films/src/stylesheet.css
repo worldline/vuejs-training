@@ -151,10 +151,8 @@ dd, input {
     justify-content: center;
 }
 
-#logout-btn {
-    position: fixed;
-    right: 1em;
-    top: 1em;
+#session-info {
+  text-align: right;
 }
 
 .film.card {
