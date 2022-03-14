@@ -17,7 +17,7 @@ The development of Vue and its ecosystem is guided by an international team of a
 
 ![Core team](../assets/team.jpg)
 
-[https://vuejs.org/v2/guide/team.html](https://vuejs.org/v2/guide/team.html)
+[https://vuejs.org/about/team.html](https://vuejs.org/about/team.html)
 
 ## Business model and funding
 
@@ -27,7 +27,7 @@ However, this raises the issue of funding. Many contributors are volunteers, but
 
 ![Financing of Vue.js team](../assets/financement.jpg)
 
-[https://vuejs.org/support-vuejs/](https://vuejs.org/support-vuejs/)
+[https://vuejs.org/sponsor/](https://vuejs.org/sponsor/)
 
 ## Popularity
 

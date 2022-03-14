@@ -138,4 +138,4 @@ export default defineConfig({
 })
 ```
 
-Votre projet sera maintenant accessible sur le port 3000 en mode développeur. Consultez la [documentation de configuration](https://cli.vuejs.org/config/) pour en savoir plus sur les options disponibles.
+Votre projet sera maintenant accessible sur le port 3000 en mode développeur. Consultez la [documentation de configuration](https://vitejs.dev/config/) pour en savoir plus sur les options disponibles.

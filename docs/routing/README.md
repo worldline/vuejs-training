@@ -14,7 +14,7 @@ The routing of a SPA is therefore managed on the client side, and the Vue team p
 
 ## Installation
 
-If you did not install it during initial project configuration with Vue-CLI, you can install it now with `npm`.
+If you did not install it during initial project configuration, you can now install `vue-router` now with `npm`.
 
 Create a `src/router` directory and a `router/index.js` file to hold router configuration. The `main.js` file will have to be modified to declare this new router in the application:
 

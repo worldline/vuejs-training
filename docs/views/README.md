@@ -7,7 +7,7 @@ The newly created Vue project has the following folders and files:
 - `src`: the sources of your project
 - `public`: all the content that will be directly put at the root of the web server, without going through Webpack
 - `package.json`: the NPM package information of the project (version, dependencies, scripts etc.)
-- `vue.config.js`: a configuration file for Vue CLI for this project
+- `vue.config.js`: the configuration file for Vite on this project
 
 Other configuration files for the build tools can also be found here.
 
@@ -20,7 +20,7 @@ In the `src` folder, you have:
 
 Later, you may need to create additional folders in `src` as needed. For example, a `services` folder is commonly found which contains business logic bricks with functions used in several components. Or a `utils` folder to store various utility functions in JavaScript instead of repeating them in multiple places.
 
-![Cheat sheet of Vue CLI File Structure](../assets/vue-cli-file-structure.jpg)
+![Cheat sheet of a Vue project File Structure](../assets/vue-project-file-structure.jpg)
 
 ## Single File Components \*.vue
 

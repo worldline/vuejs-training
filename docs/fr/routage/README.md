@@ -14,7 +14,7 @@ Le routage d'une SPA est donc géré côté client, et l'équipe de Vue fournit 
 
 ## Installation
 
-Si vous ne l'avez pas installé pendant la configuration initiale du projet avec vue-cli, vous pouvez installer `vue-router` maintenant avec `npm`.
+Si vous ne l'avez pas installé pendant la configuration initiale du projet, vous pouvez maintenant installer `vue-router` avec `npm`.
 
 Créez un dossier `src/router` et un fichier `router/index.js` qui contiendra la configuration du routeur. Le fichier `main.js` devra être modifié pour déclarer ce nouveau routeur dans l'application:
 

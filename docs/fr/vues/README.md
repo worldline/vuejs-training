@@ -7,7 +7,7 @@ Le projet Vue fraîchement créé a les dossiers et fichiers suivants :
 - `src` : les sources de votre projet
 - `public` : tout le contenu qui sera directement mis à la racine du serveur web, sans être passé par Webpack
 - `package.json` : les informations de package NPM du projet (version, dépendances, scripts etc.)
-- `vue.config.js` : un fichier de configuration pour Vue CLI pour ce projet
+- `vite.config.js` : le fichier de configuration pour Vite sur ce projet
 
 D'autres fichiers de configuration pour les outils de build peuvent également se trouver ici.
 
@@ -20,7 +20,7 @@ Dans le dossier `src`, vous trouvez :
 
 Par la suite, vous pourrez être amenés à créer d'autres dossiers dans `src` selon vos besoins. On trouve par exemple couramment un dossier `services` qui contient des briques de logique métier avec des fonctions utilisées dans plusieurs composants. Ou encore un dossier `utils` pour venir stocker diverses fonctions utilitaires en JavaScript plutôt que de les répéter à plusieurs endroits.
 
-![Cheat sheet de la structure de fichiers de Vue CLI](../../assets/vue-cli-file-structure.jpg)
+![Cheat sheet de la structure de fichiers d'un projet Vue](../../assets/vue-project-file-structure.jpg)
 
 ## Fichiers monocomposants *.vue
 
