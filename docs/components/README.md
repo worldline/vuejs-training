@@ -330,6 +330,5 @@ export default {
 
 5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample films in this list.
 6. **Bonus**: Try to remove the initial empty array declaration for `films` in `data`.
-```
 
 **Question**: _Why does the view no longer update while the list appears to be filled correctly ?_
