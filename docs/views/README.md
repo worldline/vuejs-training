@@ -40,7 +40,6 @@ Later, you may need to create additional folders in `src` as needed. For example
 
 <script>
 export default {
-  name: "HelloWorld",
   data() {
     return {
       who: "World"
@@ -75,6 +74,7 @@ The Vue components described above are the building blocks in which you will des
 To link the components together, the child components are declared in the parent component template, using their name as a tag. A component can be reused as many times as necessary by including it as follows:
 
 ```vue
+<!-- MyComponent.vue -->
 <template>
   <div>
     <my-child-component></my-child-component>
@@ -85,7 +85,6 @@ To link the components together, the child components are declared in the parent
 import MyChildComponent from "./MyChildComponent.vue";
 
 export default {
-  name: "MyComponent",
   components: {
     MyChildComponent
   }
@@ -112,7 +111,6 @@ The simplest way to insert data dynamically into your components is through text
 
 <script>
 export default {
-  name: "OrderInfo",
   data() {
     return {
       orderReference: "ABCXYZ",
@@ -129,7 +127,7 @@ Interpolation only works on textual content of elements. You can not use it to c
 
 The Vue project has been initiated with existing components and styles in `src/components` and `src/assets` folders. Feel free to have a look at them and remove these files if you want, you won't need them.
 
-1. Add the CSS stylesheet that will serve as basis for all the practical work, downloadable here: [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css); put it in the `src/assets` folder and include it in the project with `@import './assets/stylesheet.css'` in the `<style>` part of `App.vue`. You can remove the existing styles.
+1. Replace the CSS stylesheet that will serve as basis for all the practical work, downloadable here: [base.css](https://worldline.github.io/vuejs-training/base.css); it must be put it in the `src/assets` folder. Note how it is included in the project with `@import './assets/base.css'` in the `<style>` part of `App.vue`. You can remove the other existing styles.
 
 2. Create a new component `LoginForm.vue` containing the following authentication form:
 
@@ -165,4 +163,4 @@ The Vue project has been initiated with existing components and styles in `src/c
 
 3. Delete the existing content of the `App.vue` component template, and display the `LoginForm` component instead with `<LoginForm />`. You will also need to declare `LoginForm` in the `components` option of the `App` component.
 
-4. Complete `LoginForm.vue` file to declare the name of the component, and a`data` containing a `title` property. Then use text interpolation in the template to pass the title of the form _"Authentication"_ using variable `title`.
+4. Complete `LoginForm.vue` file to declare the `data` option containing a `title` property. Then use text interpolation in the template to pass the title of the form _"Authentication"_ using variable `title`.

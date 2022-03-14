@@ -270,7 +270,6 @@ li { list-style: none; font-size: 2rem; }
 
 <script>
 export default {
-  name: "Basket",
   data() {
     return {
        basket: [

@@ -40,7 +40,6 @@ Par la suite, vous pourrez être amenés à créer d'autres dossiers dans `src` 
 
 <script>
 export default {
-  name: 'HelloWorld',
   data () {
     return {
       who: 'World'
@@ -86,7 +85,6 @@ Pour relier les composants entre eux, on déclare les composants enfants dans le
 import MonComposantEnfant from './MonComposantEnfant.vue'
 
 export default {
-  name: 'MonComposant',
   components: {
     MonComposantEnfant
   }
@@ -113,7 +111,6 @@ Le moyen le plus simple d'insérer des données dynamiquement dans vos composant
 
 <script>
   export default {
-    name: 'InfoCommande',
     data(){
       return {
         referenceCommande: 'ABCXYZ',
@@ -130,7 +127,7 @@ L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne
 
 Le projet Vue a été initialisé avec des composants et des styles existants dans les dossiers `src/components` et `src/assets`. Vous pouvez y jeter un oeil et les supprimer si vous le souhaitez, vous n'en aurez pas besoin.
 
-1. Ajouter la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici : [stylesheet.css](https://worldline.github.io/vuejs-training/stylesheet.css) ; la placer dans le dossier `src/assets` et l'inclure dans le projet avec `@import './assets/stylesheet.css'` dans la partie `<style>` de `App.vue`. Vous pouvez supprimer les autres styles existants.
+1. Remplacez la feuille de style CSS qui servira de base pour tout le TP, téléchargeable ici : [base.css](https://worldline.github.io/vuejs-training/base.css). Vous devez la placer dans le dossier `src/assets`. Notez comment elle est incluse dans le projet avec `@import './assets/base.css'` dans la partie `<style>` de `App.vue`. Vous pouvez supprimer les autres styles existants.
 
 2. Créer un nouveau composant `LoginForm.vue` contenant un formulaire d'authentification :
 
@@ -154,4 +151,4 @@ Le projet Vue a été initialisé avec des composants et des styles existants da
 
 3. Supprimez le contenu existant du template du composant `App.vue`, et affichez le composant `LoginForm.vue` à la place avec `<LoginForm />`. Vous devrez également déclarer `LoginForm` dans l'option `components` du composant `App`.
 
-4. Complétez le fichier `LoginForm.vue` pour déclarer le nom du composant, ainsi qu'une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire *"Authentification"* en utilisant cette variable `title`.
+4. Complétez le fichier `LoginForm.vue` pour déclarer une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire *"Authentification"* en utilisant cette variable `title`.

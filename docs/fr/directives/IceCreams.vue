@@ -32,7 +32,6 @@
 
 <script>
 export default {
-    name: "IceCreams",
     props: ['quantity', 'size', 'flavour', 'napkin']
 }
 </script>

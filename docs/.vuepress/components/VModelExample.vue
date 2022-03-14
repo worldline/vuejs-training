@@ -11,7 +11,6 @@
 
 <script>
 export default {
-    name: "v-model-example",
     data(){
         return { name: "" }
     }

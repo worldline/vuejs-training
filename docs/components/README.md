@@ -107,6 +107,7 @@ Like any other HTML element, Vue components can receive arguments, called **prop
 You must declare the list of accepted properties in the `props` option of the component. Received props can be used in templates or methods just like properties declared in `data`. The difference is that we will avoid reassigning or mutating props: since these values come from the parent component, we must rather communicate with this parent (_ascending communication_) for it to make the change itself. The changed value will then be automatically reported to the child components.
 
 ```vue{11}
+<!-- BlogPost.vue -->
 <template>
   <article>
     <h3>{{ title }}</h3>
@@ -116,7 +117,6 @@ You must declare the list of accepted properties in the `props` option of the co
 
 <script>
 export default {
-  name: "blog-post",
   props: ["title", "content"]
 };
 </script>
@@ -134,7 +134,6 @@ Optionally, you can specify the type of props or provide validation options. Vue
 ```vue
 <script>
 export default {
-  name: "my-account",
   props: {
     propA: Number, // null matches any type
     propB: [String, Number], // multiple valid types
@@ -161,7 +160,7 @@ To **emit** an event, use the `$emit` method available in all Vue components. It
 
 To **listen** to an event emitted by a child component, we use the same `v-on` directive as for DOM events, or `@yourEvent` shorthand. The value passed with the event can be retrieved via the `$event` variable in the directive value.
 
-```vue{19,22}
+```vue{18,21}
 <template>
   <article>
     <h3>My article</h3>
@@ -174,7 +173,6 @@ To **listen** to an event emitted by a child component, we use the same `v-on` d
 
 <script>
 export default {
-  name: "blog-post",
   data() {
     return {
       comment: ""
