@@ -2,11 +2,6 @@
 
 ## Tools to install
 
-::: tip
-
-If it is allowed by your local security policy, you can work under a Linux VM, for example [Dev-Box MTS](https://dev-box.gitlab-pages.kazan.myworldline.com/dev-box/), to get a better development experience. This is not mandatory for this training though.
-:::
-
 ### Node.js
 
 Install [Node.js](https://nodejs.org/) (preferably latest stable version). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
