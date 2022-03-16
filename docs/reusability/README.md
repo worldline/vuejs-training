@@ -161,5 +161,5 @@ Vue.use(NotificationPlugin)
 ```
 :::
 
-Most third-party Vue libraries use this plugin format for its convenience. This is the case of `vue-router` for example. Plugins are recognized as such and placed in their own category on the Vue UI interface.
+Most third-party Vue libraries use this plugin format for its convenience. This is the case of `vue-router` for example, which provides globally `<router-view>`, `$router` and `$route`.
 

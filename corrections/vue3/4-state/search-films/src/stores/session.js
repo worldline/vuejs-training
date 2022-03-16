@@ -13,7 +13,7 @@ export const useSession = defineStore('session', {
       this.loggedIn = true
       this.user = user
     },
-    logout() {
+    logout(){
       this.loggedIn = false
       this.user = null
     }

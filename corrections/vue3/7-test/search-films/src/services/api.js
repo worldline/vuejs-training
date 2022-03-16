@@ -1,31 +1,25 @@
-import store from "@/store.js"
+import { useSession } from '../stores/session.js'
 
-export const BASE_URL = "https://vue-js-backend.herokuapp.com"
+export const BASE_URL = 'https://vue-js-backend.herokuapp.com'
 
-export async function api(url, params = {}) {
-	params = Object.assign(
-		{
-			mode: "cors",
-			cache: "no-cache",
-		},
-		params
-	)
+export async function api (url, params = {}) {
+    const session = useSession()
 
-	params.headers = Object.assign(
-		{
-			Authorization: `Bearer ${store.state.token}`,
-			"Content-Type": "application/json",
-		},
-		params.headers
-	)
+    params = Object.assign({
+        mode: 'cors',
+        cache: 'no-cache',
+    }, params)
 
-	let response = await fetch(BASE_URL + url, params)
-	let json = (await response.json()) || {}
-	if (!response.ok) {
-		let errorMessage = json.error
-			? json.error.error || json.error
-			: response.status
-		throw new Error(errorMessage)
-	}
-	return json
+    params.headers = Object.assign({
+        Authorization: `Bearer ${session.token}`,
+        'Content-Type': 'application/json'
+    }, params.headers)
+
+    let response = await fetch(BASE_URL + url, params)
+    let json = await response.json() || {}
+    if (!response.ok){
+        let errorMessage = json.error || response.status
+        throw new Error(errorMessage)
+    }
+    return json
 }

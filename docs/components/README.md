@@ -107,6 +107,7 @@ Like any other HTML element, Vue components can receive arguments, called **prop
 You must declare the list of accepted properties in the `props` option of the component. Received props can be used in templates or methods just like properties declared in `data`. The difference is that we will avoid reassigning or mutating props: since these values come from the parent component, we must rather communicate with this parent (_ascending communication_) for it to make the change itself. The changed value will then be automatically reported to the child components.
 
 ```vue{11}
+<!-- BlogPost.vue -->
 <template>
   <article>
     <h3>{{ title }}</h3>
@@ -116,7 +117,6 @@ You must declare the list of accepted properties in the `props` option of the co
 
 <script>
 export default {
-  name: "blog-post",
   props: ["title", "content"]
 };
 </script>
@@ -134,7 +134,6 @@ Optionally, you can specify the type of props or provide validation options. Vue
 ```vue
 <script>
 export default {
-  name: "my-account",
   props: {
     propA: Number, // null matches any type
     propB: [String, Number], // multiple valid types
@@ -161,7 +160,7 @@ To **emit** an event, use the `$emit` method available in all Vue components. It
 
 To **listen** to an event emitted by a child component, we use the same `v-on` directive as for DOM events, or `@yourEvent` shorthand. The value passed with the event can be retrieved via the `$event` variable in the directive value.
 
-```vue{19,22}
+```vue{18,21}
 <template>
   <article>
     <h3>My article</h3>
@@ -174,7 +173,6 @@ To **listen** to an event emitted by a child component, we use the same `v-on` d
 
 <script>
 export default {
-  name: "blog-post",
   data() {
     return {
       comment: ""
@@ -326,12 +324,11 @@ export default {
 ```
 
 3. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the corresponding data and options in this new component.
-4. Display the `SearchFilm` component only if the user is logged in. You will have to move the `loggedIn` variable and communicate between components.
+4. Display the `SearchFilm` component only if the user is logged in. You will have to move `loggedIn` data  to `App` component and make `LoginForm` communicate the login action to the `App` component.
 
 **Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
 
 5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample films in this list.
 6. **Bonus**: Try to remove the initial empty array declaration for `films` in `data`.
-```
 
 **Question**: _Why does the view no longer update while the list appears to be filled correctly ?_

@@ -14,7 +14,7 @@ Le routage d'une SPA est donc géré côté client, et l'équipe de Vue fournit 
 
 ## Installation
 
-Si vous ne l'avez pas installé pendant la configuration initiale du projet avec vue-cli, vous pouvez installer `vue-router` maintenant avec `npm`.
+Si vous ne l'avez pas installé pendant la configuration initiale du projet, vous pouvez maintenant installer `vue-router` avec `npm`.
 
 Créez un dossier `src/router` et un fichier `router/index.js` qui contiendra la configuration du routeur. Le fichier `main.js` devra être modifié pour déclarer ce nouveau routeur dans l'application:
 
@@ -25,19 +25,9 @@ Créez un dossier `src/router` et un fichier `router/index.js` qui contiendra la
 npm install vue-router@3
 ```
 
-```js{14,19}
-import Vue from 'vue'
-import { createPinia, PiniaVuePlugin } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+```js{4,9}
 import RouterPlugin from "vue-router";
 import router from "./router";
-
-import App from './App.vue'
-
-Vue.use(PiniaVuePlugin)
-
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
 
 Vue.use(RouterPlugin)
 
@@ -164,8 +154,38 @@ this.$route // pointe vers router.currentRoute
 Par convention, on appelle les composants rattachés à des routes des _views_, et on les place généralement dans le dossier `src/views` plutôt que `src/components`.
 :::
 
-3. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre avec `<router-view>`.
+3. Ajoutez à la configuration des routes des redirections vers la route `/search` pour la route par défaut (`/`) et pour toutes les autres routes non reconnues (`*` pour Vue 2, `/:pathMatch(.*)*` pour Vue 3) :
 
-4. Naviguez programmatiquement vers la route `/search` après l'action de login, et vers la route `/login` après l'action de logout. Vérifiez que les transitions entre les pages et les changements d'URL fonctionnent correctement.
+<VueVersionSwitch slotKey="router-catch-all-route" />
 
-5. **Bonus** : en utilisant les [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirigez l'utilisateur voulant accéder à la page de recherche de films vers `/login` si l'utilisateur n'est pas authentifié.
+::: slot router-catch-all-route-vue3
+```js
+{
+  path: "/",
+  redirect: "/search",
+},
+{ 
+  path: '/:pathMatch(.*)*', 
+  redirect: "/search"
+}
+```
+:::
+
+::: slot router-catch-all-route-vue2
+```js
+{
+  path: "/",
+  redirect: "/search",
+},
+{ 
+  path: '*', 
+  redirect: "/search"
+}
+```
+:::
+
+4. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre avec `<router-view>`.
+
+5. Naviguez programmatiquement vers la route `/search` après l'action de login, et vers la route `/login` après l'action de logout. Vérifiez que les transitions entre les pages et les changements d'URL fonctionnent correctement.
+
+6. **Bonus** : en utilisant les [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirigez l'utilisateur voulant accéder à la page de recherche de films vers `/login` si l'utilisateur n'est pas authentifié.

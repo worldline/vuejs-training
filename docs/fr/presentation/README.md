@@ -15,7 +15,7 @@ Vue dispose aujourd'hui d'une équipe internationale d'une trentaine de personne
 
 ![L'équipe centrale](../../assets/team.jpg)
 
-[https://vuejs.org/v2/guide/team.html](https://vuejs.org/v2/guide/team.html)
+[https://vuejs.org/about/team.html](https://vuejs.org/about/team.html)
 
 ## Business model et financement
 
@@ -25,7 +25,7 @@ Toutefois, cela soulève la question du financement. Beaucoup de contributeurs s
 
 ![Différentes sources de financement pour l'équipe de Vue](../../assets/financement.jpg)
 
-[https://vuejs.org/support-vuejs/](https://vuejs.org/support-vuejs/)
+[https://vuejs.org/sponsor/](https://vuejs.org/sponsor/)
 
 ## Popularité
 Vue.js a battu des records en termes de hausse de popularité depuis 2015. Il s'agit aujourd'hui du 2ème projet en nombre de stars sur Github. Malgré l'absence de financement, de nombreux meetups et conférences se sont auto-organisés dans différents pays. Il s'agit de l'un des succès les plus retentissants dans le monde open-source depuis ces cinq dernières années.

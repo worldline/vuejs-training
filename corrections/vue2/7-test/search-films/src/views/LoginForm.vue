@@ -1,78 +1,83 @@
 <template>
-  <div id="login-form">
-    <form @submit.prevent="login">
-      <h1>{{ title }}</h1>
-      <p>Fill this form to login.</p>
-      <hr>
+<div id="login-form">
+  <form @submit.prevent="login">
+    <h1>{{ title }}</h1>
+    <p>Fill out this form to login.</p>
+    <hr />
 
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter your email" id="email" name="email" required v-model="email">
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      v-model="email"
+      placeholder="Enter your email"
+      id="email"
+      name="email"
+      required
+    />
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter your password" id="psw" name="psw" required v-model="password">
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      v-model="password"
+      placeholder="Enter your password"
+      id="psw"
+      name="psw"
+      required
+    />
 
-      <p>
-        <button @click.stop="register">Register</button>
-        <button type="submit">Login</button>
-      </p>
-      <p class="error" v-if="error">{{ error }}</p>
-    </form>
-  </div>
+    <p>
+      <button type="submit">Login</button>
+      <button @click.prevent="register">Create a new account</button>
+    </p>
+    <p class="error" v-if="error">{{ error }}</p>
+  </form>
+</div>
 </template>
 
 <script>
-import UserService from "@/services/UserService";
+import { useSession } from "../stores/session";
+import UserService from "../services/UserService";
 
 export default {
   name: "LoginForm",
   emits: ["login"],
-  data() {
+  data(){
     return {
       title: "Authentication",
       email: "",
       password: "",
-      error: null
+      error: ""
     }
   },
   methods: {
-    async register() {
+    async register () {
+      this.error = null;
       try {
         const response = await UserService.register({
           email: this.email,
           password: this.password,
-          firstname: "John",
-          lastname: "Smith"
-        });
-        this.$store.dispatch("login", {
-          user: response.user,
-          token: response.token
-        });
-        this.$router.push("/search");
+          firstname: 'John',
+          lastname: 'Smith'
+        })
+        const session = useSession();
+        session.login({ user: response.user, token: response.token });
+        this.$router.push('/search')
       } catch (error) {
-        this.error = error.toString();
+        this.error = error.toString()
       }
     },
-    async login() {
+
+    async login () {
+      this.error = null;
       try {
-        const response = await UserService.login({
-          email: this.email,
-          password: this.password
-        });
-        this.$store.dispatch("login", {
-          user: response.user,
-          token: response.token
-        });
-        this.$router.push("/search");
+        const response = await UserService.login({ email: this.email, password: this.password })
+        const session = useSession();
+        session.login({ user: response.user, token: response.token });
+        this.$router.push('/search')
       } catch (error) {
-        this.error = error.toString();
+        this.error = error.toString()
       }
     }
   }
 }
 </script>
-
-<style scoped>
-.error {
-  color: red;
-}
-</style>

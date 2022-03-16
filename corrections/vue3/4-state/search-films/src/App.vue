@@ -1,27 +1,24 @@
 <template>
   <LoginForm v-if="!loggedIn" />
   <template v-else>
-    <header v-if="loggedIn" id="logout-btn">
+    <div v-if="loggedIn" id="session-info">
       Connecté en tant que <b>{{user.firstname}} {{user.lastname}}</b>
       <button @click="logout">Déconnexion</button>
-    </header>
+    </div>
     <SearchFilm />
   </template>
 </template>
 
 <script>
-import "./stylesheet.css"
-import { mapActions, mapState } from "pinia"
-import LoginForm from '@/components/LoginForm.vue'
-import SearchFilm from '@/components/SearchFilm.vue'
-import { useSession } from '@/stores/session'
+import { mapState, mapActions } from "pinia"
+import { useSession } from "./stores/session";
+
+import LoginForm from "./components/LoginForm.vue";
+import SearchFilm from "./components/SearchFilm.vue";
 
 export default {
-  name: 'App',
-  components: {
-    LoginForm,
-    SearchFilm
-  },
+  name: "App",
+  components: { LoginForm, SearchFilm },
   computed: {
     ...mapState(useSession, ["loggedIn", "user"])
   },
@@ -32,4 +29,5 @@ export default {
 </script>
 
 <style>
+@import './assets/base.css';
 </style>

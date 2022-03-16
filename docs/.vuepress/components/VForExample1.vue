@@ -8,7 +8,6 @@
 
 <script>
 export default {
-    name: "v-for-example-1",
     data(){
         return {
             items: ["apple","kiwi","mango"]

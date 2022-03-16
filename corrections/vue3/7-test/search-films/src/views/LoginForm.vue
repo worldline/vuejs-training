@@ -1,72 +1,83 @@
 <template>
 <div id="login-form">
-<form v-on:submit.prevent="login">
-  <h1>Authentification</h1>
-  <p>Remplissez ce formulaire pour vous connecter.</p>
-  <hr>
+  <form @submit.prevent="login">
+    <h1>{{ title }}</h1>
+    <p>Fill out this form to login.</p>
+    <hr />
 
-  <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Entrez votre courriel" id="email" name="email" required v-model="email">
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      v-model="email"
+      placeholder="Enter your email"
+      id="email"
+      name="email"
+      required
+    />
 
-  <label for="psw"><b>Mot de passe</b></label>
-  <input type="password" placeholder="Entrez votre mot de passe" id="psw" name="psw" required v-model="password">
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      v-model="password"
+      placeholder="Enter your password"
+      id="psw"
+      name="psw"
+      required
+    />
 
-  <p>
-    <button @click.stop="register">S'inscrire</button>
-    <button type="submit">Se connecter</button>
-  </p>
-  <p class="error" v-if="error">{{error}}</p>
-</form>
+    <p>
+      <button type="submit">Login</button>
+      <button @click.prevent="register">Create an account</button>
+    </p>
+    <p class="error" v-if="error">{{ error }}</p>
+  </form>
 </div>
 </template>
 
 <script>
-import UserService from "@/services/UserService"
+import UserService from "../services/UserService";
+import { useSession } from "../stores/session";
 
 export default {
-  name: "LoginForm",
-  emits: ['login'],
-  data(){
-      return {
-          title: "Authentification",
-          email: "",
-          password: "",
-          error: null
-      }
-  },
-  methods: {
-    async register() {
-      try {
-        const response = await UserService.register({
-          email: this.email,
-          password: this.password,
-          firstname: "John",
-          lastname: "Smith"
-        });
-        this.$store.dispatch("login", {
-          user: response.user,
-          token: response.token
-        });
-        this.$router.push("/search");
-      } catch (error) {
-        this.error = error.toString();
-      }
+    name: "LoginForm",
+    emits: ["login"],
+    data(){
+        return {
+            title: "Authentication",
+            email: "",
+            password: "",
+            error: ""
+        }
     },
-    async login() {
-      try {
-        const response = await UserService.login({
-          email: this.email,
-          password: this.password
-        });
-        this.$store.dispatch("login", {
-          user: response.user,
-          token: response.token
-        });
-        this.$router.push("/search");
-      } catch (error) {
-        this.error = error.toString();
+    methods: {
+      async register () {
+        this.error = null;
+        try {
+          const response = await UserService.register({
+            email: this.email,
+            password: this.password,
+            firstname: 'John',
+            lastname: 'Smith'
+          })
+          const session = useSession();
+          session.login({ user: response.user, token: response.token });
+          this.$router.push('/search')
+        } catch (error) {
+          this.error = error.toString()
+        }
+      },
+
+      async login () {
+        this.error = null;
+        try {
+          const response = await UserService.login({ email: this.email, password: this.password })
+          const session = useSession();
+          session.login({ user: response.user, token: response.token });
+          this.$router.push('/search')
+        } catch (error) {
+          this.error = error.toString()
+        }
       }
     }
-  }
 }
 </script>

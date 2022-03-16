@@ -64,7 +64,9 @@ A slightly more advanced pattern is to declare a _store_ object that encapsulate
 
 ```js
 /** services/store.js **/
-const state = Vue.observable({ message: "hello" }); // no export for state
+import { reactive } from 'vue'
+
+const state = reactive({ message: "hello" }); // no export for state
 
 export const store = {
   get(prop) {
@@ -168,8 +170,11 @@ export const useSession = defineStore('session', {
 ```js{10}
 import { createPinia, PiniaVuePlugin } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import VueCompositionAPI from '@vue/composition-api'
 
+Vue.use(VueCompositionAPI) // for Pinia and Vue 2 compat
 Vue.use(PiniaVuePlugin)
+
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
@@ -224,7 +229,7 @@ Invoking an action from a component is done by calling it as a method of the sto
 
 ```js
 const session = useSession()
-session.login({ user: "John Smith" });
+session.login({ user: { firstname: "John", lastname: "Smith" } });
 ```
 :::
 
@@ -234,4 +239,4 @@ session.login({ user: "John Smith" });
 
 7. If the user has entered wrong credentials in the login form, display an error message below the login button. To help you, you can declare an additional `error` string in the component's `data`.
 
-8. **Bonus**: Code a `logout` action and add a logout button `<button id="logout-btn">` that invokes this action. Display the user's name next to this button.
+8. **Bonus**: Code a `logout` action and add a logout button in `App` component that invokes this action. Display the name of the logged in user next to this button.

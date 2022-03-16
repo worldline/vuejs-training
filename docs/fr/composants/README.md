@@ -105,6 +105,7 @@ Comme tout autre élément HTML, les composants Vue peuvent recevoir des argumen
 Vous devez déclarer dans l'option `props` du composant la liste des propriétés acceptées. Les props reçues peuvent être utilisées dans les templates ou les méthodes de la même manière que les `data`. La différence est que l'on évitera de réassigner ou muter des props : puisque ces valeurs proviennent du composant parent, il faut plutôt communiquer avec ce parent (*communication ascendante*) pour qu'il effectue lui-même le changement. La valeur changée sera alors automatiquement reportée sur les composants enfant.
 
 ```vue{11}
+<!-- BlogPost.vue -->
 <template>
   <article>
     <h3>{{ title }}</h3>
@@ -114,7 +115,6 @@ Vous devez déclarer dans l'option `props` du composant la liste des propriété
 
 <script>
 export default {
-  name: 'blog-post',
   props: ['title','content']
 }
 </script>
@@ -132,7 +132,6 @@ Facultativement, vous pouvez indiquer le type des props ou fournir des options d
 ```vue
 <script>
 export default {
-  name: 'my-account',
   props: {
     propA: Number, // null matches any type
     propB: [String, Number], // multiple valid types
@@ -159,7 +158,7 @@ Pour **émettre** un événement, on utilise la méthode `$emit` disponible dans
 
 Pour **écouter** un événement émis par un composant enfant, on utilise la même directive `v-on` que pour les événements du DOM. La valeur transmise avec l'événement peut être récupérée via `$event`.
 
-```vue{19,22}
+```vue{18,21}
 <template>
   <article>
     <h3>My article</h3>
@@ -172,7 +171,6 @@ Pour **écouter** un événement émis par un composant enfant, on utilise la m�
 
 <script>
 export default {
-  name: 'blog-post',
   data () {
     return {
       comment: ''
@@ -325,7 +323,7 @@ export default {
 
 3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options correspondantes dans ce nouveau composant.
 
-4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé. Vous devrez pour cela déplacer la data `loggedIn` et faire communiquer les composants entre eux.
+4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé. Vous devrez pour cela déplacer la data `loggedIn` dans le composant `App` et faire communiquer de `LoginForm` à `App` l'action de login.
 
 **Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
 

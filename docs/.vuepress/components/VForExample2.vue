@@ -14,7 +14,6 @@
 
 <script>
 export default {
-    name: "v-for-example-2",
     data(){
         return {
             todos: [

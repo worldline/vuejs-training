@@ -14,7 +14,7 @@ The routing of a SPA is therefore managed on the client side, and the Vue team p
 
 ## Installation
 
-If you did not install it during initial project configuration with Vue-CLI, you can install it now with `npm`.
+If you did not install it during initial project configuration, you can now install `vue-router` now with `npm`.
 
 Create a `src/router` directory and a `router/index.js` file to hold router configuration. The `main.js` file will have to be modified to declare this new router in the application:
 
@@ -25,19 +25,9 @@ Create a `src/router` directory and a `router/index.js` file to hold router conf
 npm install vue-router@3
 ```
 
-```js{14,19}
-import Vue from 'vue'
-import { createPinia, PiniaVuePlugin } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+```js{4,9}
 import RouterPlugin from "vue-router";
 import router from "./router";
-
-import App from './App.vue'
-
-Vue.use(PiniaVuePlugin)
-
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
 
 Vue.use(RouterPlugin)
 
@@ -164,8 +154,38 @@ this.$route // points to router.currentRoute
 By convention, we call the components linked to routes _views_, and we usually place them in the folder `src/views` rather than`src/components`.
 :::
 
-3. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another with `<router-view>`.
+3. Add to route configuration some redirections `/search` route for default route (`/`) and all other unrecognized routes (`*` for Vue 2, `/:pathMatch(.*)*` for Vue 3) :
 
-4. Navigate programatically to `/search` route after the login action, and to `/login` route after logout. Check that the transitions between these pages and the URL changes are working correctly.
+<VueVersionSwitch slotKey="router-catch-all-route" />
 
-5. **Bonus**: Using vue-router [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirect the user who wants to access the film search page to `/login` if he is not authenticated.
+::: slot router-catch-all-route-vue3
+```js
+{
+  path: "/",
+  redirect: "/search",
+},
+{ 
+  path: '/:pathMatch(.*)*', 
+  redirect: "/search"
+}
+```
+:::
+
+::: slot router-catch-all-route-vue2
+```js
+{
+  path: "/",
+  redirect: "/search",
+},
+{ 
+  path: '*', 
+  redirect: "/search"
+}
+```
+:::
+
+4. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another with `<router-view>`.
+
+5. Navigate programatically to `/search` route after the login action, and to `/login` route after logout. Check that the transitions between these pages and the URL changes are working correctly.
+
+6. **Bonus**: Using vue-router [Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html) de vue-router, redirect the user who wants to access the film search page to `/login` if he is not authenticated.

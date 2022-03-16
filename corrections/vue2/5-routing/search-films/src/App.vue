@@ -1,37 +1,34 @@
 <template>
   <div id="app">
-    <header v-if="loggedIn" id="logout-btn">
-      Logged as <b>{{user}}</b>
-      <button @click="logout">Logout</button>
-    </header>
+    <template v-if="loggedIn">
+      <div id="session-info">
+        Connecté en tant que <b>{{user.firstname}} {{user.lastname}}</b>
+        <button @click="logout">Déconnexion</button>
+      </div>
+    </template>
     <router-view />
   </div>
 </template>
 
 <script>
-import "./stylesheet.css"
-import {mapState} from "vuex";
+import { mapState } from 'pinia';
+import { useSession } from './stores/session';
 
 export default {
-  name: 'App',
-  computed:{
-    ...mapState(["loggedIn", "user"])
+  computed: {
+    // bind this.loggedIn to useSession().loggedIn
+    ...mapState(useSession, ["loggedIn", "user"])
   },
   methods: {
-    logout(){
-      this.$store.dispatch("logout")
+    logout() {
+      const session = useSession()
+      session.logout()
+      this.$router.push('/login')
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/base.css';
 </style>
