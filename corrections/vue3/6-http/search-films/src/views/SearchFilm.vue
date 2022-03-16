@@ -25,10 +25,8 @@ export default {
         }
     },
     methods: {
-        searchFilms(){
-            FilmService.search(this.query).then(results => {
-                this.films = results
-            })
+        async searchFilms(){
+            this.films = await FilmService.search(this.query)
         }
     }
 }

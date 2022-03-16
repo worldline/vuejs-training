@@ -10,12 +10,8 @@
 import { mapState } from "pinia"
 import { useSession } from "./stores/session";
 
-import LoginForm from "./views/LoginForm.vue";
-import SearchFilm from "./views/SearchFilm.vue";
-
 export default {
   name: "App",
-  components: { LoginForm, SearchFilm },
   computed: {
     ...mapState(useSession, ["loggedIn", "user"])
   },
@@ -30,5 +26,5 @@ export default {
 </script>
 
 <style>
-@import './assets/stylesheet.css';
+@import './assets/base.css';
 </style>

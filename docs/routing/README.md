@@ -25,19 +25,9 @@ Create a `src/router` directory and a `router/index.js` file to hold router conf
 npm install vue-router@3
 ```
 
-```js{14,19}
-import Vue from 'vue'
-import { createPinia, PiniaVuePlugin } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+```js{4,9}
 import RouterPlugin from "vue-router";
 import router from "./router";
-
-import App from './App.vue'
-
-Vue.use(PiniaVuePlugin)
-
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
 
 Vue.use(RouterPlugin)
 
@@ -164,8 +154,11 @@ this.$route // points to router.currentRoute
 By convention, we call the components linked to routes _views_, and we usually place them in the folder `src/views` rather than`src/components`.
 :::
 
-3. Add to route configuration some redirections `/search` route for default route (`/`) and all other unrecognized routes (`/:pathMatch(.*)*`) :
+3. Add to route configuration some redirections `/search` route for default route (`/`) and all other unrecognized routes (`*` for Vue 2, `/:pathMatch(.*)*` for Vue 3) :
 
+<VueVersionSwitch slotKey="router-catch-all-route" />
+
+::: slot router-catch-all-route-vue3
 ```js
 {
   path: "/",
@@ -176,6 +169,20 @@ By convention, we call the components linked to routes _views_, and we usually p
   redirect: "/search"
 }
 ```
+:::
+
+::: slot router-catch-all-route-vue2
+```js
+{
+  path: "/",
+  redirect: "/search",
+},
+{ 
+  path: '*', 
+  redirect: "/search"
+}
+```
+:::
 
 4. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another with `<router-view>`.
 

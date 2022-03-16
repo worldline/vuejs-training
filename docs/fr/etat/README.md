@@ -169,8 +169,11 @@ export const useSession = defineStore('session', {
 ```js{10}
 import { createPinia, PiniaVuePlugin } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import VueCompositionAPI from '@vue/composition-api'
 
+Vue.use(VueCompositionAPI) // for Pinia and Vue 2 compat
 Vue.use(PiniaVuePlugin)
+
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 

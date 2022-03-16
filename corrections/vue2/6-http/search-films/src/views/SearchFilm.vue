@@ -6,28 +6,27 @@
     </form>
 
     <ul class="films">
-      <Film v-for="film in films" :key="film.title+film.director" :film="film" />
+      <Film v-for="film in films" :film="film" :key="film.title + film.released" />
     </ul>
   </div>
 </template>
 
 <script>
-import Film from "@/components/Film";
-import FilmService from "@/services/FilmService";
+import Film from "../components/Film.vue"
+import FilmService from "../services/FilmService"
 
 export default {
-  name: "SearchFilm",
-  components: { Film },
-  data(){
-    return {
-      films: [],
-      query: ""
+    components: { Film },
+    data(){
+        return {
+            films: [],
+            query: ""
+        }
+    },
+    methods: {
+        async searchFilms(){
+            this.films = await FilmService.search(this.query)
+        }
     }
-  },
-  methods: {
-    async searchFilms(){
-      this.films = await FilmService.search(this.query)
-    }
-  }
 }
 </script>

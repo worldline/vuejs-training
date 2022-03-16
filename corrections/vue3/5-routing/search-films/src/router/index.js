@@ -30,8 +30,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const session = useSession()
-    if (to.name !== "login" && session.loggedIn === false) next('/login')
+  const session = useSession()
+  if (to.name !== "login" && session.loggedIn === false) next('/login')
 	else next()
 })
 

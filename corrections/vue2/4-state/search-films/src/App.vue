@@ -1,45 +1,35 @@
 <template>
-<div id="app">
-  <LoginForm v-if="!loggedIn" />
-  <template v-else>
-    <header v-if="loggedIn" id="logout-btn">
-      Connecté en tant que <b>{{user.firstname}} {{user.lastname}}</b>
-      <button @click="logout">Déconnexion</button>
-    </header>
+  <div id="app">
+    <LoginForm v-if="loggedIn === false" />
+    <template v-else>
+      <div id="session-info">
+        Connecté en tant que <b>{{user.firstname}} {{user.lastname}}</b>
+        <button @click="logout">Déconnexion</button>
+      </div>
     <SearchFilm />
   </template>
-</div>
+  </div>
 </template>
 
 <script>
-import "./stylesheet.css"
-import { mapActions, mapState } from "pinia"
-import LoginForm from '@/components/LoginForm.vue'
-import SearchFilm from '@/components/SearchFilm.vue'
-import { useSession } from '@/stores/session'
+import { mapActions, mapState } from 'pinia';
+import { useSession } from './stores/session';
+import LoginForm from './components/LoginForm.vue';
+import SearchFilm from './components/SearchFilm.vue';
 
 export default {
-  name: 'App',
-  components: {
-    LoginForm,
-    SearchFilm
-  },
+  components: { LoginForm, SearchFilm },
   computed: {
+    // bind this.loggedIn to useSession().loggedIn
     ...mapState(useSession, ["loggedIn", "user"])
   },
   methods: {
+    // bind this.logout to useSession().logout
     ...mapActions(useSession, ["logout"])
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/base.css';
 </style>

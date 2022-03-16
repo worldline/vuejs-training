@@ -25,19 +25,9 @@ Créez un dossier `src/router` et un fichier `router/index.js` qui contiendra la
 npm install vue-router@3
 ```
 
-```js{14,19}
-import Vue from 'vue'
-import { createPinia, PiniaVuePlugin } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+```js{4,9}
 import RouterPlugin from "vue-router";
 import router from "./router";
-
-import App from './App.vue'
-
-Vue.use(PiniaVuePlugin)
-
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
 
 Vue.use(RouterPlugin)
 
@@ -164,8 +154,11 @@ this.$route // pointe vers router.currentRoute
 Par convention, on appelle les composants rattachés à des routes des _views_, et on les place généralement dans le dossier `src/views` plutôt que `src/components`.
 :::
 
-3. Ajoutez à la configuration des routes des redirections vers la route `/search` pour la route par défaut (`/`) et pour toutes les autres routes non reconnues (`/:pathMatch(.*)*`) :
+3. Ajoutez à la configuration des routes des redirections vers la route `/search` pour la route par défaut (`/`) et pour toutes les autres routes non reconnues (`*` pour Vue 2, `/:pathMatch(.*)*` pour Vue 3) :
 
+<VueVersionSwitch slotKey="router-catch-all-route" />
+
+::: slot router-catch-all-route-vue3
 ```js
 {
   path: "/",
@@ -176,6 +169,20 @@ Par convention, on appelle les composants rattachés à des routes des _views_, 
   redirect: "/search"
 }
 ```
+:::
+
+::: slot router-catch-all-route-vue2
+```js
+{
+  path: "/",
+  redirect: "/search",
+},
+{ 
+  path: '*', 
+  redirect: "/search"
+}
+```
+:::
 
 4. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre avec `<router-view>`.
 

@@ -1,29 +1,42 @@
-# search-films
+# search-films-vue2-npm-init
 
-## Project setup
-```
+This template should help get you started developing with Vue 2 in Vite.
+
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur).
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
+### Compile and Minify for Production
+
+```sh
 npm run build
 ```
 
-### Run your unit tests
-```
-npm run test:unit
+### Run Unit Tests with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/introduction)
+
+```sh
+npm run test:unit # or `npm run test:unit:ci` for headless testing
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```sh
+npm run build
+npm run test:e2e # or `npm run test:e2e:ci` for headless testing
+```

@@ -1,36 +1,24 @@
 <template>
   <div id="app">
-    <LoginForm v-if="!loggedIn" @login="loggedIn=true" />
+    <LoginForm v-if="loggedIn === false" @login="loggedIn = true" />
     <SearchFilm v-else />
   </div>
 </template>
 
 <script>
-import "./stylesheet.css"
-import LoginForm from './components/LoginForm.vue'
-import SearchFilm from "@/components/SearchFilm.vue";
+import LoginForm from './components/LoginForm.vue';
+import SearchFilm from './components/SearchFilm.vue';
 
 export default {
-  name: 'App',
-  components: {
-    SearchFilm,
-    LoginForm
-  },
   data(){
     return {
       loggedIn: false
     }
-  }
+  },
+  components: { LoginForm, SearchFilm }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/base.css';
 </style>
