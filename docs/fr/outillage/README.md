@@ -97,7 +97,7 @@ npm install
 Pour travailler sur l'application et la tester en direct, lancez la commande suivante :
 
 ```bash
-npm run serve
+npm run dev
 ```
 
 Votre application sera alors accessible sur [localhost:8080](http://localhost:8080/) (port par défaut si disponible).
