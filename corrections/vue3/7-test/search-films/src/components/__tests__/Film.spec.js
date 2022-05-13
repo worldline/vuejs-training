@@ -1,6 +1,6 @@
 import{ describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils"
-import Film from "@/components/Film"
+import Film from "@/components/Film.vue"
 
 describe("Film Component", () => {
 	it("should correctly display one film", () => {

@@ -1,9 +1,9 @@
-import{ describe, it, expect, vi } from "vitest";
+import{ describe, it, expect, vi, beforeEach } from "vitest";
 import { shallowMount, flushPromises } from "@vue/test-utils"
 import { defineStore } from "pinia"
 import { createRouter, createWebHistory } from "vue-router"
 
-import LoginForm from "@/views/LoginForm"
+import LoginForm from "@/views/LoginForm.vue"
 import UserService from "@/services/UserService.js"
 
 describe("LoginForm Component", () => {
