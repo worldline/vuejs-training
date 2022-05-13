@@ -12,7 +12,16 @@ Vous aurez besoin d'un bon éditeur de code pour JavaScript lors de cette format
 
 Nous vous conseillons [Visual Studio Code](https://code.visualstudio.com/), un éditeur gratuit assez léger qui est aujourd'hui très populaire dans la communauté JavaScript.
 
-VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Une extension recommandée pour les projets Vue est [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)  qui fournit de la coloration syntaxique et de l'autocomplétion pour les fichiers de composants Vue.
+VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Pour le développement avec Vue.js, nous vous recommandons ces extensions qui fournissent de la coloration syntaxique et de l'autocomplétion pour les fichiers de composants Vue:
+
+<VueVersionSwitch slot-key="vscode-extension" />
+::: slot vscode-extension-vue2
+Pour Vue 2, utilisez cette extension: [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+:::
+
+::: slot vscode-extension-vue3
+Pour Vue 3, utilisez cette extension: [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+:::
 
 ### Vue Devtools
 

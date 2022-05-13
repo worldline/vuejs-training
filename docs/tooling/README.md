@@ -6,13 +6,22 @@
 
 Install [Node.js](https://nodejs.org/) (preferably latest stable version). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
 
-### Visual Studio Code and Volar
+### Visual Studio Code and Vetur/Volar
 
 During the training you will need a solid JavaScript code editor.
 
 We recommend [Visual Studio Code](https://code.visualstudio.com/), a fairly lightweight free editor that is now very popular in the JavaScript community.
 
-VS Code has many extensions to enrich the experience. A recommended extension for Vue projects is [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar), which provides syntax highlighting and autocompletion for Vue components files.
+VS Code has many extensions to enrich the experience. For Vue projects, we recommende these extensions which provides syntax highlighting and autocompletion for Vue components files:
+
+<VueVersionSwitch slot-key="vscode-extension" />
+::: slot vscode-extension-vue2
+For Vue 2, use this extension: [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+:::
+
+::: slot vscode-extension-vue3
+For Vue 3, use this extension: [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+:::
 
 ### Vue Devtools
 
