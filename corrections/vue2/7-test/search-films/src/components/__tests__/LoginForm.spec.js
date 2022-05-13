@@ -1,26 +1,26 @@
-import{ describe, it, expect, vi } from "vitest";
-import { shallowMount, flushPromises } from "@vue/test-utils"
-import { defineStore } from "pinia"
-import { createRouter, createWebHistory } from "vue-router"
+import{ describe, it, expect, vi, beforeEach } from "vitest"
+import { shallowMount, createLocalVue } from "@vue/test-utils"
+import { createTestingPinia } from "@pinia/testing"
+import Router from "vue-router"
+import flushPromises from "flush-promises"
 
-import LoginForm from "@/views/LoginForm"
+import LoginForm from "@/views/LoginForm.vue"
 import UserService from "@/services/UserService.js"
+import { useSession } from "@/stores/session.js"
 
 describe("LoginForm Component", () => {
-	let store, router, wrapper, loginActionMock
+	let localVue, pinia, router, wrapper
 
 	beforeEach(() => {
-		// Initialize local Vue with Vuex and mock dispatch actions
-		loginActionMock = vi.fn(() => Promise.resolve())
-		store = defineStore('session', {
-			actions: {
-				login: loginActionMock,
-			},
-		})
+		// Initialize local Vue		
+		localVue = createLocalVue()
+		localVue.use(Router)
+
+		pinia = createTestingPinia()
 
 		// Initialize local Vue with VueRouter
-		router = createRouter({
-			history: createWebHistory(),
+		router = new Router({
+			mode: 'hash',
 			routes: [
 				{
 					path: "/",
@@ -35,12 +35,14 @@ describe("LoginForm Component", () => {
 
 		// Mount the local vue
 		wrapper = shallowMount(LoginForm, {
-			global: { plugins: [store, router] },
+			localVue,
+			router,
+			pinia
 		})
 	})
 
 	it("should redirect the user to /search route when correctly logged in", async () => {
-		await router.isReady()
+		//await router.isReady()
 		// Mock the login call to the backend
 		const loginMock = vi.fn(() =>
 			Promise.resolve({ user: {}, token: "t0k3N" })
@@ -50,12 +52,12 @@ describe("LoginForm Component", () => {
 		await wrapper.get("form").trigger("submit.prevent")
 		await flushPromises()
 		expect(loginMock).toHaveBeenCalled()
-		expect(loginActionMock).toHaveBeenCalled()
+		expect(useSession().login).toHaveBeenCalledTimes(1)
 		expect(wrapper.vm.$route.path).toEqual("/search")
 	})
 
 	it("should print an error message when user failed to login", async () => {
-		await router.isReady()
+		//await router.isReady()
 		// Mock the login call to the backend
 		const loginMock = vi.fn(() =>
 			Promise.reject("The login information was incorrect")
@@ -65,7 +67,6 @@ describe("LoginForm Component", () => {
 		await wrapper.get("form").trigger("submit.prevent")
 		await flushPromises()
 		expect(loginMock).toHaveBeenCalled()
-		expect(loginActionMock).not.toHaveBeenCalled()
 		expect(wrapper.get(".error").text()).toContain(
 			"The login information was incorrect"
 		)

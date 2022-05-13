@@ -1,6 +1,6 @@
 import{ describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils"
-import Film from "@/components/Film"
+import Film from "@/components/Film.vue"
 
 describe("Film Component", () => {
 	it("should correctly display one film", () => {
@@ -16,7 +16,7 @@ describe("Film Component", () => {
 		const metascore = "75"
 
 		const wrapper = shallowMount(Film, {
-			props: {
+			propsData: {
 				film: {
 					title,
 					released,
@@ -33,9 +33,9 @@ describe("Film Component", () => {
 		expect(wrapper.get(".rating").text()).toEqual("★★★★")
 
 		const table = wrapper.findAll("dd")
-		expect(table[0].text()).toEqual(released)
-		expect(table[1].text()).toEqual(director)
-		expect(table[2].text()).toEqual(actors)
+		expect(table.at(0).text()).toEqual(released)
+		expect(table.at(1).text()).toEqual(director)
+		expect(table.at(2).text()).toEqual(actors)
 
 		expect(wrapper.find(".plot").text()).toEqual(plot)
 	})

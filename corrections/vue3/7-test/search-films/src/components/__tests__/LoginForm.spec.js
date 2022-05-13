@@ -1,23 +1,19 @@
 import{ describe, it, expect, vi, beforeEach } from "vitest";
 import { shallowMount, flushPromises } from "@vue/test-utils"
-import { defineStore } from "pinia"
+import { createTestingPinia } from "@pinia/testing"
 import { createRouter, createWebHistory } from "vue-router"
 
 import LoginForm from "@/views/LoginForm.vue"
 import UserService from "@/services/UserService.js"
+import { useSession } from "@/stores/session.js"
 
 describe("LoginForm Component", () => {
-	let store, router, wrapper, loginActionMock
+	let pinia, router, wrapper
 
 	beforeEach(() => {
-		// Initialize local Vue with Vuex and mock dispatch actions
-		loginActionMock = vi.fn(() => Promise.resolve())
-		store = defineStore('session', {
-			actions: {
-				login: loginActionMock,
-			},
-		})
-
+		// Initialize local Vue		
+		pinia = createTestingPinia()
+	
 		// Initialize local Vue with VueRouter
 		router = createRouter({
 			history: createWebHistory(),
@@ -35,7 +31,7 @@ describe("LoginForm Component", () => {
 
 		// Mount the local vue
 		wrapper = shallowMount(LoginForm, {
-			global: { plugins: [store, router] },
+			global: { plugins: [pinia, router] },
 		})
 	})
 
@@ -50,7 +46,7 @@ describe("LoginForm Component", () => {
 		await wrapper.get("form").trigger("submit.prevent")
 		await flushPromises()
 		expect(loginMock).toHaveBeenCalled()
-		expect(loginActionMock).toHaveBeenCalled()
+		expect(useSession().login).toHaveBeenCalledTimes(1)
 		expect(wrapper.vm.$route.path).toEqual("/search")
 	})
 
@@ -65,7 +61,6 @@ describe("LoginForm Component", () => {
 		await wrapper.get("form").trigger("submit.prevent")
 		await flushPromises()
 		expect(loginMock).toHaveBeenCalled()
-		expect(loginActionMock).not.toHaveBeenCalled()
 		expect(wrapper.get(".error").text()).toContain(
 			"The login information was incorrect"
 		)
