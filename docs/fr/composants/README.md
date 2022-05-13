@@ -1,6 +1,6 @@
 # Composants
 
-Jusqu'ici, vous avez vu les options `name` et `data` pour un composant. Nous allons aborder dans cette section toutes les autres.
+Jusqu'ici, vous avez vu les options `components` et `data` pour un composant. Nous allons aborder dans cette section toutes les autres.
 
 ## Méthodes
 Les méthodes du composant sont déclarées dans la propriété `methods`. Elles peuvent alors être appelées depuis une expression dans le template ou depuis une autre méthode du composant avec `this.maMethode()`.

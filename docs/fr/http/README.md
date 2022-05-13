@@ -117,7 +117,7 @@ export default {
 
 4. Notez qu'en cas d'erreur, on stocke le message d'erreur retourné dans une variable `error`. Si ce n'est pas déjà fait, déclarez cette variable dans les `data` du composant et utilisez-là dans le template pour afficher le message d'erreur en cas d'échec d'authentification.
 
-5. Notez également que la réponse du back-end au login contient un token permettant d'authentifier l'utilisateur, qui est transmis au store dans les paramètres de l'action `login`. Modifiez `store.js` pour stocker ce `token` dans le store.
+5. Notez également que la réponse du back-end au login contient un token permettant d'authentifier l'utilisateur, qui est transmis au store dans les paramètres de l'action `login`. Modifiez `stores/session.js` pour stocker ce `token` dans le store.
 
 6. Le service `api` est déjà configuré pour ajouter ce token en header `Authorization` des requêtes. Vérifiez que le token est bien envoyé en header HTTP via les outils développeur de votre navigateur.
 

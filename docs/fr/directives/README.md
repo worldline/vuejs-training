@@ -6,7 +6,7 @@ Les directives sont les éléments de syntaxe propres à Vue utilisables dans le
 
 Permet de lier (*bind*) à une variable la valeur d'une propriété d'un élément HTML ou d'un composant. Comme c'est la directive la plus couramment utilisée, on utilise généralement toujours la syntaxe raccourcie `:propriété="valeur"`.
 
-```vue
+```html
 <a v-bind:href="url">Lien</a>
 
 <a :href="url">Lien</a>  <!-- syntaxe raccourcie -->
@@ -39,7 +39,7 @@ export default {
 
 Plusieurs syntaxes sont proposées pour assigner des classes ou des styles CSS :
 
-```vue
+```html
 <p :class="classAsString"></p>        <!-- "foo bar" -->
 <p :class="classAsObject"></p>        <!-- { foo: true, bar: isBar } -->
 <p :class="['foo', myOtherBarClass]"></p>
@@ -99,7 +99,7 @@ export default {
 
 Permet de lier la valeur d'un champ de formulaire à une donnée du composant. C'est une liaison à double-sens, c'est-à-dire que la variable se met à jour quand le contenu du champ change (typiquement par l'utilisateur) et réciproquement.
 
-```vue{3}
+```html{3}
 <label>
   What is your name ?
   <input v-model="name">
@@ -162,7 +162,7 @@ Permet d'insérer ou non un élément selon une condition. Si vous souhaitez que
 
 Les directives `v-else-if` et `v-else` fonctionnent de la même façon que leur équivalent JavaScript et dépendent de la condition `v-if` de l'élément qui les précède directement.
 
-```vue{1,4,7,11}
+```html{1,4,7,11}
 <div v-if="type === 'A'">
   A
 </div>
@@ -179,7 +179,7 @@ Les directives `v-else-if` et `v-else` fonctionnent de la même façon que leur 
 </template>
 ```
 
-**Exercice : utilisez v-if et v-else pour alterner les visages selon la température**
+**Exercice : utilisez v-if, v-else et v-else-if pour alterner les visages selon la température**
 
 ```vue live
 <template>
@@ -207,7 +207,7 @@ Permet de générer des listes d'éléments en répétant un template par itéra
 
 La directive déclare des variables locales représentant chaque élément itéré et leur index, qui peuvent être utilisées dans le template à l'intérieur de l'élément.
 
-```vue
+```html
 <span v-for="n in 10">{{ n }} ; </span>
 
 <!-- items: ["apple","kiwi","mango"] -->
@@ -222,8 +222,9 @@ En complément de la directive `v-for`, liez une propriété `key` à une valeur
 Ce n'est pas obligatoire mais aide Vue à mieux comprendre les changements qui surviennent sur une liste (ajouts, suppressions, tris...) et optimiser les transitions entre deux états de la liste.
 :::
 
-```vue{5}
-<!-- todos: [ { label: 'Learn Vue', done: false },
+```html{5}
+<!-- todos: [ { label: 'See list transitions', done: false },
+              { label: 'Learn Vue', done: false },
               { label: 'Use v-for', done: true }, ... ] -->
 <ul>
 <!-- la liste est ordonnée en mettant les tâches terminées à la fin -->
@@ -282,7 +283,7 @@ export default {
 
 Permet de définir une action à effectuer lorsqu'un évènement survient. Il peut s'agir d'un événement du DOM (`click`, `mouseover`, `focus`...) ou d'un événement personnalisé émis par un composant enfant.
 
-```vue{1,5}
+```html{1,5}
 <button v-on:click="counter += 1"> Click here! </button>
 This button has been clicked {{ counter }} times.
 
@@ -333,7 +334,7 @@ export default {
 
 Les modificateurs sont des suffixes permettant de modifier légèrement le comportement de certaines directives ; par exemple, stopper la propagation d'un événement capturé avec `v-on`. Pour en savoir plus, se référer à la [documentation officielle](https://fr.vuejs.org/v2/guide/events.html#Event-Modifiers).
 
-```vue
+```html
 <!-- la propagation de l'événement click sera stoppée -->
 <a @click.stop="onThis">...</a>
 

@@ -1,6 +1,6 @@
 # Components
 
-So far, you've seen the `name` and`data` options for a component. We will discuss in this section all the others.
+So far, you've seen the `components` and `data` options for a component. We will discuss in this section all the others.
 
 ## Methods
 

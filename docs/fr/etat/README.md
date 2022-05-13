@@ -18,7 +18,7 @@ Nous avons vu dans la section précédente comment communiquaient les composants
 La solution la plus simple au problème de gestion d'état est de stocker les données au sein d'un ou plusieurs objets déclarés dans leur propre module. Tous les composants voulant manipuler ces données peuvent alors importer l'objet et modifier son contenu en travaillant sur la même référence.
 
 ```js
-/** services/state.js **/
+/** stores/state.js **/
 export const state = {
     user: null,
     loggedIn: false
@@ -27,7 +27,7 @@ export const state = {
 
 ```js
 /** LoginForm.vue **/
-import state from "services/state.js"
+import state from "stores/state.js"
 
 export default {
   data: { state },
@@ -62,7 +62,7 @@ Cette solution peut faire l'affaire dans de nombreux cas, mais montre rapidement
 Un pattern un peu plus avancé est de déclarer un objet magasin (*store*) qui encapsule l'objet d'état et sert d'interface de contrôle. L'objet d'état n'est pas directement accessible de l'extérieur par référence, mais le store fournit des méthodes pour interagir avec : typiquement un getter/setter. On pourra ensuite ajouter dans ces méthodes des instructions de débogage, monitoring, mesure de performance etc.
 
 ```js
-/** services/store.js **/
+/** stores/store.js **/
 import { reactive } from 'vue'
 
 const state = reactive({ message: "bonjour" }); // pas d'export pour l'état
@@ -82,7 +82,7 @@ export const store = {
 ```vue
 <!-- MyComponent.vue -->
 <script>
-import store from "@/services/store.js"
+import store from "@/stores/store.js"
 
 export default {
   data(){

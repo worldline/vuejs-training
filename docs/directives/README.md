@@ -6,7 +6,7 @@ The directives are the Vue-specific syntax elements that can be used in componen
 
 Allows you to _bind_ an expression to the value of a property of an HTML element or component. Since this is the most commonly used directive, we usually use the shortened syntax `:property="value"`.
 
-```vue
+```html
 <a v-bind:href="url">Link</a>
 
 <a :href="url">Link</a>
@@ -40,7 +40,7 @@ export default {
 
 Several syntaxes are available to assign classes or CSS styles:
 
-```vue
+```html
 <p :class="classAsString"></p>
 <!-- "foo bar" -->
 <p :class="classAsObject"></p>
@@ -104,7 +104,7 @@ export default {
 
 Allows you to bind the value of a form field to a component data item. It is a two-way binding: the variable is updated when the contents of the field change (typically by the user) and vice versa.
 
-```vue{3}
+```html{3}
 <label>
   What is your name ?
   <input v-model="name">
@@ -168,7 +168,7 @@ Allows you to insert or not an element according to a condition. If you want the
 
 The `v-else-if` and`v-else` directives work in the same way as their JavaScript equivalent and depend on the `v-if` condition of the element directly preceding them.
 
-```vue{1,4,7,11}
+```html{1,4,7,11}
 <div v-if="type === 'A'">
   A
 </div>
@@ -185,7 +185,7 @@ The `v-else-if` and`v-else` directives work in the same way as their JavaScript 
 </template>
 ```
 
-**Exercise: use v-if and v-else to alternate faces according to the temperature**
+**Exercise: use v-if, v-else and v-else-if to alternate faces according to the temperature**
 
 ```vue live
 <template>
@@ -213,7 +213,7 @@ Generates lists of elements by repeating a template by iteration on an iterable 
 
 The directive declares local variables representing each iterated element and their index, which can be used in the template within the element.
 
-```vue
+```html
 <span v-for="n in 10">{{ n }} ; </span>
 
 <!-- items: ["apple","kiwi","mango"] -->
@@ -228,8 +228,9 @@ In addition to the `v-for` directive, you should bind a `key` property to a valu
 This is not mandatory but helps Vue to better understand the changes that occur on a list (additions, deletions, sorts, etc.) and optimize the transitions between two states of the list.
 :::
 
-```vue{5}
-<!-- todos: [ { label: 'Learn Vue', done: false },
+```html{5}
+<!-- todos: [ { label: 'See list transitions', done: false },
+              { label: 'Learn Vue', done: false },
               { label: 'Use v-for', done: true }, ... ] -->
 <ul>
 <!-- the list is ordered by putting completed tasks at the end -->
@@ -288,7 +289,7 @@ export default {
 
 Define an action to take when an event occurs. It can be a DOM event (`click`, `mouseover`, `focus`, etc.) or a custom event emitted by a child component.
 
-```vue{1,5}
+```html{1,5}
 <button v-on:click="counter += 1"> Click here! </button> This button has been
 clicked {{ counter }} times.
 
@@ -339,7 +340,7 @@ export default {
 
 Modifiers are suffixes used to slightly change the behavior of some directives: for example stop the propagation of a captured event with `v-on`. For more information, please refer to [official documentation](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
 
-```vue
+```html
 <!-- the propagation of the click event will be stopped -->
 <a @click.stop="onThis">...</a>
 

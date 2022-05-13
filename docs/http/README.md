@@ -117,7 +117,7 @@ export default {
 
 4. Note that in the event of an error, the error message is stored in an `error` variable. If not already done, declare this variable in the component's `data` and use it in the template to display the error message in case of authentication failure.
 
-5. Note also that the response of the back-end after login contains a token to authenticate the user, which is passed to the store in the parameters of the `login` action. Modify `store.js` to also store this `token`.
+5. Note also that the response of the back-end after login contains a token to authenticate the user, which is passed to the store in the parameters of the `login` action. Modify `stores/session.js` to also store this `token`.
 
 6. The `api` service is already configured to add this token to the request authorization header. Check that the token is sent as a HTTP header via the developer tools of your browser.
 

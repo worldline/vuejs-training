@@ -18,7 +18,7 @@ We saw in the previous section how parent and child components communicate. Howe
 The simplest solution to the state management problem is to store the data within one or more objects declared in their own module. All components that want to manipulate this data can then import the object and modify its content while working on the same reference.
 
 ```js
-/** services/state.js **/
+/** stores/state.js **/
 export const state = {
   user: null,
   loggedIn: false
@@ -27,7 +27,7 @@ export const state = {
 
 ```js
 /** LoginForm.vue **/
-import state from "services/state.js"
+import state from "stores/state.js"
 
 export default {
   data: { state },
@@ -63,7 +63,7 @@ This solution can do the job in many cases, but quickly shows its limitations wh
 A slightly more advanced pattern is to declare a _store_ object that encapsulates the state object and serves as a control interface. The state object is not directly reachable from the outside by reference, but the store provides methods to interact with: typically a getter / setter. We can then add in these methods other features for debugging, monitoring, performance measurement etc.
 
 ```js
-/** services/store.js **/
+/** stores/store.js **/
 import { reactive } from 'vue'
 
 const state = reactive({ message: "hello" }); // no export for state
@@ -83,7 +83,7 @@ export const store = {
 ```vue
 <!-- MyComponent.vue -->
 <script>
-import store from "@/services/store.js";
+import store from "@/stores/store.js";
 
 export default {
   data() {
