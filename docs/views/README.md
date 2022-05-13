@@ -55,7 +55,7 @@ span {
 </style>
 ```
 
-The script part of the component must export an object with the properties of the component by default. Here we find the property `name`, useful for identifying the component during debugging; and the data property that sets the initial data of the component. The other properties will be discussed in the Components section.
+The script part of the component must export an object with the properties of the component by default. Here we find the property `data` that sets the initial data of the component. The other properties will be discussed in the Components section.
 
 ::: tip
 Why do you think the `data` property of a component must be a function?

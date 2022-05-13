@@ -55,7 +55,7 @@ span {
 </style>
 ```
 
-La partie script du composant doit exporter par défaut un objet avec les propriétés du composant. On retrouve ici la propriété `name`, utile pour identifier le composant pendant le débogage ; et la propriété data qui fixe les données initiales du composant. Les autres propriétés seront abordées dans la section Composants.
+La partie script du composant doit exporter par défaut un objet avec les propriétés du composant. On retrouve ici la propriété `data` qui spécifie les données initiales du composant. Les autres propriétés seront abordées dans la section Composants.
 
 ::: tip
 D'après vous, pourquoi la propriété `data` d'un composant doit être une fonction ?

@@ -100,7 +100,7 @@ To work on the application and test it live, run the following command:
 npm run dev
 ```
 
-Your application is accessible on [localhost:8080](http://localhost:8080/) (default port if available).
+Your application is accessible on [localhost:3000](http://localhost:3000/) (default port if available).
 
 In **Visual Studio Code**, open the project folder and browse through the different files to visualize of the project tree.
 
@@ -129,9 +129,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   server: {
-    port: 3000
+    port: 8080
   }
 })
 ```
 
-Your project will now be accessible on port 3000 in developer mode. See [Vite Configuration Reference](https://vitejs.dev/config/) for more information about the available options.
+Your project will now be accessible on port 8080 in developer mode. See [Vite Configuration Reference](https://vitejs.dev/config/) for more information about the available options.
