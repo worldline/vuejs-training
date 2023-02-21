@@ -14,10 +14,17 @@ Par convention, on code la logique applicative dans des fichiers JS appelés *se
 
 ## TP : Échanger avec un back-end
 
-Nous allons nous servir d'une API fournie par un serveur (le *back-end*) pour authentifier les utilisateurs et rechercher des films. Ce back-end a déjà été développé et déployé sur Heroku.
+Nous allons nous servir d'une API fournie par un serveur (le *back-end*) pour authentifier les utilisateurs et rechercher des films. Ce back-end a déjà été développé, vous pouvez clôner [le repo](https://github.com/worldline/vuejs-training-backend) et lancer l'API localement avec:
+
+```bash
+git clone https://github.com/worldline/vuejs-training-backend
+cd ./vuejs-training-backend/
+npm install
+npm run serve
+```
 
 ::: tip
-Le contrat d'interface du back-end est disponible ici : [api-docs](https://vue-js-backend.herokuapp.com/api-docs)
+Une fois le serveur démarré, le contrat d'interface du back-end est disponible ici : [api-docs](http://localhost:3030/api-docs/)
 :::
 
 1. Créer un service générique `services/api.js` permettant d'appeler le backend, avec ce contenu :
@@ -25,7 +32,7 @@ Le contrat d'interface du back-end est disponible ici : [api-docs](https://vue-j
 ```js
 import { useSession } from '../stores/session.js'
 
-export const BASE_URL = 'https://vue-js-backend.herokuapp.com'
+export const BASE_URL = 'http://localhost:3030/'
 
 export async function api (url, params = {}) {
     const session = useSession()

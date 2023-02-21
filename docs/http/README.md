@@ -14,10 +14,17 @@ By convention, we code the application logic in JS files called _services_, dist
 
 ## Practical Work: Communicate with a back-end
 
-We will use a server-provided API (the _back-end_) to authenticate users and search for films. This back-end has already been developed and deployed on Heroku.
+We will use a server-provided API (the _back-end_) to authenticate users and search for films. This back-end has already been developed, you can clone [this repo](https://github.com/worldline/vuejs-training-backend) and run the API locally with:
+
+```bash
+git clone https://github.com/worldline/vuejs-training-backend 
+cd ./vuejs-training-backend/
+npm install
+npm run serve
+```
 
 ::: tip
-The back-end interface contract is available here: [api-docs](https://vue-js-backend.herokuapp.com/api-docs)
+Once the server has started, The back-end interface contract is available here: [api-docs](http://localhost:3030/api-docs/)
 :::
 
 1. Create a generic service (`services/api.js`) to call the backend, with this content:
@@ -25,7 +32,7 @@ The back-end interface contract is available here: [api-docs](https://vue-js-bac
 ```js
 import { useSession } from '../stores/session.js'
 
-export const BASE_URL = "https://vue-js-backend.herokuapp.com";
+export const BASE_URL = 'http://localhost:3030/'
 
 export async function api (url, params = {}) {
     const session = useSession()

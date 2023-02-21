@@ -1,6 +1,6 @@
 import { useSession } from '../stores/session.js'
 
-export const BASE_URL = 'https://vue-js-backend.herokuapp.com'
+export const BASE_URL = 'http://localhost:3030/'
 
 export async function api (url, params = {}) {
     const session = useSession()
