@@ -20,7 +20,7 @@ We will use a server-provided API (the _back-end_) to authenticate users and sea
 git clone https://github.com/worldline/vuejs-training-backend 
 cd ./vuejs-training-backend/
 npm install
-npm run serve
+npm run start
 ```
 
 ::: tip

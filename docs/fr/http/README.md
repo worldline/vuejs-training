@@ -20,7 +20,7 @@ Nous allons nous servir d'une API fournie par un serveur (le *back-end*) pour au
 git clone https://github.com/worldline/vuejs-training-backend
 cd ./vuejs-training-backend/
 npm install
-npm run serve
+npm start
 ```
 
 ::: tip
