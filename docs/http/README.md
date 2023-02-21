@@ -32,7 +32,7 @@ Once the server has started, The back-end interface contract is available here: 
 ```js
 import { useSession } from '../stores/session.js'
 
-export const BASE_URL = 'http://localhost:3030/'
+export const BASE_URL = 'http://localhost:3030'
 
 export async function api (url, params = {}) {
     const session = useSession()
