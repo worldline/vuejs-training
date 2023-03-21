@@ -48,7 +48,7 @@ npm install vue-router@4
 import router from "./router";
 
 createApp(App)
-    .use(pinia)
+  .use(pinia)
 	.use(router)
 	.mount("#app")
 ```
@@ -65,10 +65,10 @@ The router is created by taking a list of routes as parameters. Each route assoc
 /** src/router/index.js **/
 import Router from "vue-router";
 
-import HelloWorld from "@/components/HelloWorld";
+import HelloWorld from "@/components/HelloWorld.vue";
 
 const router = new Router({
-  mode: 'hash',
+  mode: 'history',
   routes: [
     {
       path: "/hello/:name",
@@ -85,11 +85,11 @@ export default router;
 ::: slot router-config-vue3
 ```js
 /** src/router/index.js **/
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HelloWorld from "@/components/HelloWorld";
+import { createRouter, createWebHistory } from 'vue-router'
+import HelloWorld from "@/components/HelloWorld.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       path: "/hello/:name",
