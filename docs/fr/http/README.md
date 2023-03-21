@@ -132,7 +132,7 @@ export default {
 
 8. Créez un service `FilmService` avec une méthode pour rechercher les films, en suivant la documentation de l'API (`GET /movies/search`).
 
-9. Complétez le composant `SearchFilm` avec une data `query` liée au formulaire de recherche, puis appelez `FilmService` afin de permmettre à l'utilisateur de chercher un film par son nom.
+9. Complétez le composant `SearchFilm` avec une data `query` liée au formulaire de recherche, puis appelez `FilmService` afin de permettre à l'utilisateur de chercher un film par son nom.
 
 ::: tip
 
