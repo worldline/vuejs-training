@@ -257,6 +257,7 @@ export default {
   computed: {}, // computed properties
   watch: {}, // observed properties
   methods: {}, // component own methods
+  emits: [], // events emitted by this component
   // component lifecycle hooks
   beforeCreate() {},
   created() {},

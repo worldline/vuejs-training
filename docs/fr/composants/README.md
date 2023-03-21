@@ -255,6 +255,7 @@ export default {
   computed: {}, // propriétés calculées
   watch: {}, // propriétés observées
   methods: {}, // méthodes
+  emits: [], // événements émis par ce composant
   // hooks de cycle de vie du composant
   beforeCreate() {},
   created() {},
