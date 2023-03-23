@@ -12,4 +12,10 @@ describe('Authentication behavior', () => {
     cy.get("button[type='submit']").click()
     cy.get("#session-info").contains("Connecté en tant que John Smith")
   })
+
+  it('should allow to search films when authenticated', () => {
+    cy.get("#search").type("batman{enter}")
+    cy.wait(2000)
+    cy.get(".film.card .title").contains("Batman v Superman")
+  })
 })
