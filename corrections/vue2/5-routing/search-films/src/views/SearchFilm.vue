@@ -2,8 +2,10 @@
   <div id="search-film">
     <form @submit.prevent="searchFilms">
       <label for="search">Search :</label>
-      <input id="search" type="text" />
+      <input id="search" type="text" ref="search" v-model="query" />
     </form>
+
+    <p>{{ numberResults }} results</p>
 
     <ul class="films">
       <Film v-for="film in films" :film="film" :key="film.title + film.released" />
@@ -18,7 +20,21 @@ export default {
     components: { Film },
     data(){
         return {
-            films: []
+            films: [],
+            query: ""
+        }
+    },
+    computed: {
+        numberResults(){
+            return this.films.length
+        }
+    },
+    mounted(){
+        this.$refs.search.focus()
+    },
+    watch: {
+        query(){
+            this.films = []
         }
     },
     methods: {

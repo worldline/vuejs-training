@@ -64,6 +64,33 @@ var vm = new Vue({
 
 Pour distinguer les cas d'usage computed vs watcher, on privilégiera le plus souvent les propriétés calculées lorsque c'est possible. Un watcher est plus approprié quand ce qui vous intéresse lors d'une mutation n'est pas tant la nouvelle valeur, mais **le moment où elle survient** ; pour effectuer des requêtes serveur ou des actions externes à Vue par exemple.
 
+## TP: Recherche de films
+
+1. Créer un nouveau composant `SearchFilm.vue` contenant un formulaire de recherche ainsi que la liste de films en résultats dessous :
+
+```vue
+<template>
+  <div id="search-film">
+    <form>
+      <label for="search">Rechercher :</label>
+      <input id="search" type="text">
+    </form>
+
+    <ul class="films">
+      <!-- la liste de films à déplacer de LoginForm à ici -->
+    </ul>
+  </div>
+</template>
+```
+
+2. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options correspondantes dans ce nouveau composant.
+
+3. Assignez la variable `films` à une liste vide `[]` initialement. A la soumission du formulaire de recherche, lancez une méthode `searchFilms` qui mettra les 3 films d'exemple dans cette liste.
+
+4. Déclarez une variable computed `numberResults` correspondant au nombre de résultats de recherche, et affichez ce nombre de résultats dans un paragraphe au-dessus de la liste de films.
+
+5. Déclarez une data `query` associée au contenu du champ de recherche, et faites-en sorte que la liste des résultats soit réinitialisée chaque fois que le champ de recherche est modifié, au moyen d'un watcher.
+
 ## Cycle de vie d'un composant
 
 Vue travaille avec les composants suivant un schéma bien précis, de leur création jusqu'à leur destruction en passant par les mises à jour de données et leur insertion dans le DOM. Voici le schéma complet :
@@ -242,14 +269,27 @@ vm.$refs.label // reference à l'élément paragraphe
 vm.$refs.enfant // reference à l'instance de ComposantEnfant
 ```
 
-## API complète d'un composant Vue
+## TP: Bien décomposer son application
+
+1. Refactorez le code existant en créant un composant `Film.vue` servant à afficher les détails d'un film. Ajoutez des `props` pour passer les données de chaque film de `<SearchFilm>` vers chaque composant `<Film>`.
+
+2. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé. Vous devrez pour cela déplacer la data `loggedIn` dans le composant `App` et faire communiquer de `LoginForm` à `App` l'action de login.
+
+**Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
+
+3. Lorsque l'utilisateur arrive sur le formulaire de recherche, mettre le focus sur le champ de recherche en déclarant une `ref` et en utilisant la méthode [`focus()`](https://developer.mozilla.org/fr/docs/Web/API/HTMLElement/focus)
+
+4. **Bonus** : Essayez de retirer la déclaration initiale en liste vide de `films` dans les `data` de `SearchFilm`.
+
+**Question** : *Pourquoi la vue ne se met-elle plus à jour alors que la liste semble être remplie correctement ?*
+
+
+## API des composants Vue
 
 ```js
 export default {
   name: 'MonComposant', // pour aider lors du débogage
   components: {}, // composants enfant déclarés
-  mixins: [], // partager des fonctionnalités communes entre composants
-  extends: {}, // créer des composants sur la base d'autres composants
   props: {}, // propriétés du composant
   data() {}, // variables d'état du composant
   computed: {}, // propriétés calculées
@@ -301,34 +341,3 @@ export default {
 - `vm.$destroy` : supprime l'instance de composant
 - `vm.$forceUpdate` : force la mise à jour complète du composant (à éviter)
 - `vm.$nextTick` : reporte l'exécution d'une fonction au prochain tick (boucle d'événements)
-
-## TP: Décomposer son application
-
-1. Refactorez le code existant en créant un composant `Film.vue` servant à afficher les détails d'un film. Ajoutez des `props` pour passer les données de chaque film au composant.
-2. Créer un autre composant `SearchFilm.vue` contenant un formulaire de recherche ainsi que la liste de `Film` en résultats dessous :
-
-```vue
-<template>
-  <div id="search-film">
-    <form>
-      <label for="search">Rechercher :</label>
-      <input id="search" type="text">
-    </form>
-
-    <ul class="films">
-      <!-- la liste de <Film> -->
-    </ul>
-  </div>
-</template>
-```
-
-3. Insérez ce composant `SearchFilm` aux côtés de `LoginForm` dans `App.vue` et déplacez les data et autres options correspondantes dans ce nouveau composant.
-
-4. Afficher le composant `SearchFilm` seulement si l'utilisateur est loggé. Vous devrez pour cela déplacer la data `loggedIn` dans le composant `App` et faire communiquer de `LoginForm` à `App` l'action de login.
-
-**Question** : *quelles difficultés avez-vous rencontré pour utiliser la variable `loggedIn` dans plusieurs composants à la fois ?*
-
-5. Assignez la variable `films` à une liste vide `[]` initialement. A la soumission du formulaire de recherche, lancez une méthode  `searchFilms` qui mettra les 3 films d'exemple dans cette liste.
-6. **Bonus** : Essayez de retirer la déclaration initiale en liste vide de `films` dans `data`.
-
-**Question** : *Pourquoi la vue ne se met-elle plus à jour alors que la liste semble être remplie correctement ?*

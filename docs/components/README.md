@@ -65,6 +65,33 @@ var vm = new Vue({
 
 To distinguish the use cases of computed vs watcher, we will privilege most often the computed properties whenever possible. A watcher is more appropriate when what interests you in a mutation is not so much the new value, but **the moment it occurs**; to perform server requests or external actions for example.
 
+## Practical Exercise: Search movies
+
+1. Create a new component `SearchFilm.vue` containing a search form and a list of movies results below:
+
+```vue
+<template>
+  <div id="search-film">
+    <form>
+      <label for="search">Search :</label>
+      <input id="search" type="text">
+    </form>
+
+    <ul class="films">
+      <!-- list of movies to move from LoginForm to here -->
+    </ul>
+  </div>
+</template>
+```
+
+2. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the corresponding data and options in this new component.
+
+3. Assign the data `films` to an empty list `[]` initiallyt. When submitting the search form, call a `searchFilms` method which will put the 3 example movies in that list.
+
+4. Declare a computed variable `numberResults` corresponding to the number of search results, and display that number in a paragraph above the lisf of movies.
+
+5. Declare a new data `query` bound to the search input content, and use a watcher to reset the results list whenever this search input is modified.
+
 ## Component Lifecycle
 
 Vue follows a pattern when working with components, from their creation to their destruction through data updates and DOM insertion. Here is the complete diagram :
@@ -244,14 +271,27 @@ vm.$refs.label; // reference to paragraph element
 vm.$refs.child; // reference to MyChildComponent instance
 ```
 
+## Practical exercise: Decompose our application
+
+1. Refactor the existing code by creating a `Film.vue` component used to display the details of a film. Add `props` to pass the data from each film to the component.
+
+2. Display the `SearchFilm` component only if the user is logged in. You will have to move `loggedIn` data  to `App` component and make `LoginForm` communicate the login action to the `App` component.
+
+**Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
+
+3. When users reaches the search form, put the focus on the search input by declaring a `ref` and using the method [`focus()`](https://developer.mozilla.org/en/docs/Web/API/HTMLElement/focus)
+
+4. **Bonus**: Try to remove the initial empty array declaration for `films` in `data`.
+
+**Question**: _Why does the view no longer update while the list appears to be filled correctly ?_
+
+
 ## Complete API of Vue Components
 
 ```js
 export default {
   name: "MyComponent", // useful for debugging purposes
   components: {}, // declared child components
-  mixins: [], // share common features between components
-  extends: {}, // create components based on other ones
   props: {}, // properties passed from parent
   data() {}, // component internal state variables
   computed: {}, // computed properties
@@ -303,33 +343,3 @@ export default {
 - `vm.$destroy`: destroys the component instance
 - `vm.$forceUpdate`: force complete update of the component (_not recommended_)
 - `vm.$nextTick`: report a function call to next tick in the event loop
-
-## Practical exercise: Decompose our application
-
-1. Refactor the existing code by creating a `Film.vue` component used to display the details of a film. Add `props` to pass the data from each film to the component.
-2. Create another `SearchFilm.vue` component containing a search form and the `Film` list below:
-
-```vue
-<template>
-  <div id="search-film">
-    <form>
-      <label for="search">Search :</label>
-      <input id="search" type="text" />
-    </form>
-
-    <ul class="films">
-      <!-- list of <Film> -->
-    </ul>
-  </div>
-</template>
-```
-
-3. Insert this `SearchFilm` component alongside `LoginForm` in `App.vue` and move the corresponding data and options in this new component.
-4. Display the `SearchFilm` component only if the user is logged in. You will have to move `loggedIn` data  to `App` component and make `LoginForm` communicate the login action to the `App` component.
-
-**Question**: In your opinion, what difficulties could you encounter when using the `loggedIn` variable in more than one component at a time ?
-
-5. Assign the `films` variable to an empty `[]` array initially. When submitting the search form, run a `searchFilms` method that will put the 3 sample films in this list.
-6. **Bonus**: Try to remove the initial empty array declaration for `films` in `data`.
-
-**Question**: _Why does the view no longer update while the list appears to be filled correctly ?_
