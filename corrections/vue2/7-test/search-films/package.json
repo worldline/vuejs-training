@@ -27,7 +27,7 @@
     "jsdom": "^19.0.0",
     "start-server-and-test": "^1.14.0",
     "unplugin-vue2-script-setup": "^0.9.3",
-    "vite": "^2.9.13",
+    "vite": "^2.9.16",
     "vite-plugin-vue2": "^1.9.3",
     "vitest": "^0.12.5",
     "vue-template-babel-compiler": "1.1.3",
