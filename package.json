@@ -13,12 +13,17 @@
     "build": "vuepress build docs",
     "deploy": "node ./docs/deploy.js"
   },
+  "engines" : { 
+    "npm" : ">=8.0.0 <9.0.0",
+    "node" : ">=16.0.0 <17.0.0"
+  },
   "dependencies": {
-    "vuepress": "^1.7.1",
+    "vuepress": "1.7.1",
     "vuepress-plugin-global-toc": "^1.1.0",
-    "vuepress-plugin-live": "^1.6.2"
+    "vuepress-plugin-live": "1.6.2"
   },
   "devDependencies": {
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.8.5",
+    "vue-inbrowser-compiler-demi": "^4.71.1"
   }
 }
