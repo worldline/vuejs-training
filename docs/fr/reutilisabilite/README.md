@@ -5,10 +5,6 @@ Nous allons passer en revue les différents outils fournis par Vue lorsque nos a
 
 ## API de Composition
 
-::: tip
-L'API de composition est une nouveauté de Vue 3.0, mais peut être utilisée sur les projets Vue 2 grâce au plug-in [@vue/composition-api](https://github.com/vuejs/composition-api).
-:::
-
 Avec le temps, certains composants d'une application peuvent devenir très lourds, avec de plus en plus de data, méthodes, computed, watchers et autres options. Il convient dans la mesure du possible de les découper en plus petits composants, mais cela ne suffit pas parfois pour s'y retrouver.
 
 Dans cette situation, des variables destinées à être utilisées conjointement se retrouvent très éloignées et dispersées dans le code de gros composants complexes. Idéalement, on souhaiterait regrouper ensemble les options par même logique métier, et non par type (méthode, data etc.). 

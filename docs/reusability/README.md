@@ -4,10 +4,6 @@ We are going to review the different tools provided by Vue when it comes to scal
 
 ## Composition API
 
-::: tip
-Composition API is a new feature of Vue 3.0, but can be used on Vue 2 projects with [@vue/composition-api](https://github.com/vuejs/composition-api) plugin.
-:::
-
 Over time, some of your components may become very huge, with lots of diffrrent data, methods, computed and other options. They should be split into smaller components whenever possible, but sometimes this is not enough. 
 
 In this situation, some options intended to be used together may be found very far apart from each other and spread throughout the code of large, complex components. Ideally, we would want to group together these options because they are part of the same business logic, and not split them by type (method, data etc.). 

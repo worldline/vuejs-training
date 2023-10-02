@@ -34,7 +34,6 @@ This library offers an API to test the Vue components, here are some of the most
 
 - `mount`: creates a `Wrapper` that contains the mounted and rendered Vue component;
 - `shallowMount`: like `mount`, it creates a `Wrapper` that contains the mounted and rendered Vue component, but with stubbed child components;
-- `createLocalVue`: *(only for Vue 2)* returns a Vue class for you to add components, mixins and install plugins without polluting the global Vue class.
 
 The class `Wrapper` representing your mounted component offers method such as:
 

@@ -48,8 +48,6 @@ However, this usage quickly finds its limits, and the development tools that com
 
 ## Practical Work: Create your first project
 
-You can use either **Vue 3** or **Vue 2** for this training.
-
 Get into your workspace and create a project called `search-films` by running the following command:
 
 ```bash
