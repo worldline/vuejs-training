@@ -2,14 +2,13 @@
 
 ## What is Vue.js?
 
-Vue *(pronounced /vjuː/, like view)* is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.
+Vue _(pronounced /vjuː/, like view)_ is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.
 
 ## History
 
 Vue.js was created originally by a single person, Evan You, a former Google engineer who used to work on Angular.js and later on the Meteor framework. After experimenting with a reactivity system that he thought was better than the one used in Angular.js, he decided to publish his first results in July 2013. Five years later, Vue.js is the third project on Github in number of stars and Evan holds one conference after the other around the world.
 
 ![Evan You at VueConf](../assets/evanyou.jpg)
-
 
 ## Development team
 
@@ -55,20 +54,19 @@ Let's try to compare Vue with the other two most popular JS frameworks, React an
 
 ![Product positioning of React, Vue and Angular](../assets/autodescription.jpg)
 
-
 React, Vue and Angular position themselves in different categories, this can be observed from the first lines of their introduction. React is defined as a **library**, independent of the technical stack. Angular is defined as the one **framework** for all needs, desktop and mobile. While Vue is caught in the middle, defined as a **progressive framework**, versatile and **incrementally adoptable**. A perfect middle ground between a library and a fully equipped framework.
 
 ### Language, programming style and technical stack
 
-|               | React	      | Vue.js	         | Angular       |
-|---------------|-------------|------------------|---------------|
-Language         |	JSX*    | Optional support of JSX and TypeScript	| TypeScript* |
-Paradigm       | Encourage functional programming | Encourage  declarative programming	| Mix between classes oriented declarative programming and functional programming (RxJs) |
-State management	| Immutable centralized state (Flux) | Optional centralized	state (Vuex) or internal mutable state	| Internal mutable state , no official centralized state |
-Reactivity | Manual (`setState` + VDOM diffing) | Automatic (observers/Proxies) | Automatic (Zones/dirty-checking) |
-Stack |	Not self-sufficient, to combine with complete web stack. Rich ecosystem. | Some official tools maintained by the core team. Third-party solutions are promoted if appropriate.	| Full-stack framework sef-sufficient with built-in security features. Complete but less open. |
+|                  | React                                                                    | Vue.js                                                                                              | Angular                                                                                      |
+| ---------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Language         | JSX\*                                                                    | Optional support of JSX and TypeScript                                                              | TypeScript\*                                                                                 |
+| Paradigm         | Encourage functional programming                                         | Encourage declarative programming                                                                   | Mix between classes oriented declarative programming and functional programming (RxJs)       |
+| State management | Immutable centralized state (Flux)                                       | Optional centralized state (Vuex) or internal mutable state                                         | Internal mutable state , no official centralized state                                       |
+| Reactivity       | Manual (`setState` + VDOM diffing)                                       | Automatic (observers/Proxies)                                                                       | Automatic (Zones/dirty-checking)                                                             |
+| Stack            | Not self-sufficient, to combine with complete web stack. Rich ecosystem. | Some official tools maintained by the core team. Third-party solutions are promoted if appropriate. | Full-stack framework sef-sufficient with built-in security features. Complete but less open. |
 
-*\* optional but highly recommended*
+_\* optional but highly recommended_
 
 ### Comparison in metaphor
 
@@ -102,23 +100,6 @@ Stack |	Not self-sufficient, to combine with complete web stack. Rich ecosystem.
 </div>
 </div>
 
-
 ### Vue 3 or Vue 2 ?
 
-The 3.0 version of the core library of Vue has officially been released as of 18 September 2020, but migrating the entire ecosystem will take several years. Since the API is relatively stable between Vue 2 and Vue 3, we propose this training session for both Vue 3 and Vue 2. Click on this switch at anytime:
-
-<VueVersionSwitch slotKey="presentation" />
-
-::: slot presentation-vue2
-::: tip
-The training content will be shown for our good'old Vue 2 !
-:::
-
-::: slot presentation-vue3
-::: tip
-The training content will be shown for the brand new Vue 3 !
-:::
-
-We recommend you to pick:
-- Vue 2 if you intend to work on an existing Vue project
-- Vue 3 if you are going to start a fresh new project.
+The 3.0 version of the core library of Vue has officially been released as of 18 September 2020, and Vue 2 will be officially no longer supported on December 31th 2023. So we propose this training session for Vue 3 exclusively.

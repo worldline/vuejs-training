@@ -97,22 +97,6 @@ L'API de Composition est aujourd'hui la meilleure façon de composer de la logiq
 
 Vue permet de déclarer ses propres [directives personnalisées](https://fr.vuejs.org/v2/guide/custom-directive.html) - les éléments de syntaxe qui sont utilisés dans les templates de composant. Cette fonction est souvent utilisée par des bibliothèques tierces. Les directives personnalisées permettent de réutiliser de la logique applicative sur plusieurs éléments sans passer par un composant dédié. Veillez toutefois à ne pas en abuser car il est difficile de les tracer et elles peuvent rentrer en conflit avec des évolutions futures de Vue.
 
-<VueVersionSwitch slot-key="custom-directive" />
-
-::: slot custom-directive-vue2
-```js
-// Enregistre une directive personnalisée globale appelée 'v-focus'
-Vue.directive("focus", {
-  // quand l'élément correspondant est inséré dans le DOM...
-  inserted: function(el) {
-    // Mettre le focus sur l'element
-    el.focus();
-  }
-});
-```
-:::
-
-::: slot custom-directive-vue3
 ```js
 // Enregistre pour votre application une directive personnalisée appelée 'v-focus'
 app.directive("focus", {
@@ -123,8 +107,6 @@ app.directive("focus", {
   }
 });
 ```
-:::
-
 
 ## Plugins
 
@@ -134,22 +116,6 @@ Vue propose un système de [plugins](https://fr.vuejs.org/v2/guide/plugins.html)
 - ajouter des méthodes ou propriétés globalement à tous les composants
 - ajouter des directives/filtres/transitions
 
-<VueVersionSwitch slot-key="custom-plugin" />
-
-::: slot custom-plugin-vue2
-```js
-const NotificationPlugin = {
-  install(){
-    Vue.component('Notification', NotificationComponent);
-    Vue.directive('notify', NotificationDirective);
-  }
-}
-
-Vue.use(NotificationPlugin)
-```
-:::
-
-::: slot custom-plugin-vue3
 ```js
 const NotificationPlugin = {
   install(app){
@@ -160,6 +126,5 @@ const NotificationPlugin = {
 
 Vue.use(NotificationPlugin)
 ```
-:::
 
 La plupart des bibliothèques tierces de Vue utilisent ce format de plugin pour sa praticité. C'est le cas de `vue-router` par exemple, qui fournit globalement `<router-view>`, `$router` et `$route`.

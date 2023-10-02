@@ -126,19 +126,9 @@ The mutated state updates reactively all the views that use it, regardless of th
 
 1. Install `pinia` and `pinia-plugin-persistedstate` dependencies that will be used to persist store state.
 
-<VueVersionSwitch slot-key="install-pinia" />
-
-::: slot install-pinia-vue2
-```bash
-npm install pinia pinia-plugin-persistedstate @vue/composition-api
-```
-:::
-
-::: slot install-pinia-vue3
 ```bash
 npm install pinia pinia-plugin-persistedstate
 ```
-:::
 
 2. Create a Pinia store for the session by creating a `src/stores/session.js` file with following content:
 
@@ -164,28 +154,6 @@ export const useSession = defineStore('session', {
 
 3. Declare the store in your application by completing the `main.js` file like this:
 
-<VueVersionSwitch slot-key="app-store" />
-
-::: slot app-store-vue2
-```js{10}
-import { createPinia, PiniaVuePlugin } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import VueCompositionAPI from '@vue/composition-api'
-
-Vue.use(VueCompositionAPI) // for Pinia and Vue 2 compat
-Vue.use(PiniaVuePlugin)
-
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
-
-new Vue({
-  render: h => h(App),
-  pinia
-}).$mount('#app')
-```
-:::
-
-::: slot app-store-vue3
 ```js{8}
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
@@ -197,7 +165,6 @@ createApp(App)
   .use(pinia)
   .mount('#app')
 ```
-:::
 
 4. In the application code, retrieve the `loggedIn` variable from the store with `useSession()`
 

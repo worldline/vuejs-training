@@ -125,19 +125,9 @@ Les changements d'état mettent à jour de façon réactive et automatiques tout
 
 1. Installer les dépendances `pinia` and `pinia-plugin-persistedstate` qu'on utilisera pour persister l'état du store.
 
-<VueVersionSwitch slot-key="install-pinia" />
-
-::: slot install-pinia-vue2
-```bash
-npm install pinia pinia-plugin-persistedstate @vue/composition-api
-```
-:::
-
-::: slot install-pinia-vue3
 ```bash
 npm install pinia pinia-plugin-persistedstate
 ```
-:::
 
 2. Créer un store Pinia en créant un fichier `src/stores/session.js` avec le contenu suivant :
 
@@ -163,28 +153,6 @@ export const useSession = defineStore('session', {
 
 3. Déclarez le store dans votre application en complétant le fichier `main.js` comme ceci :
 
-<VueVersionSwitch slot-key="app-store" />
-
-::: slot app-store-vue2
-```js{10}
-import { createPinia, PiniaVuePlugin } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import VueCompositionAPI from '@vue/composition-api'
-
-Vue.use(VueCompositionAPI) // for Pinia and Vue 2 compat
-Vue.use(PiniaVuePlugin)
-
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
-
-new Vue({
-  render: h => h(App),
-  pinia
-}).$mount('#app')
-```
-:::
-
-::: slot app-store-vue3
 ```js{8}
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
@@ -196,7 +164,6 @@ createApp(App)
   .use(pinia)
   .mount('#app')
 ```
-:::
 
 4. Dans le code de l'application, récupérez la donnée `loggedIn` depuis le store avec `useSession()`
 

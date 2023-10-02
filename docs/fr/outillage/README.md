@@ -12,16 +12,9 @@ Vous aurez besoin d'un bon éditeur de code pour JavaScript lors de cette format
 
 Nous vous conseillons [Visual Studio Code](https://code.visualstudio.com/), un éditeur gratuit assez léger qui est aujourd'hui très populaire dans la communauté JavaScript.
 
-VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Pour le développement avec Vue.js, nous vous recommandons ces extensions qui fournissent de la coloration syntaxique et de l'autocomplétion pour les fichiers de composants Vue:
+VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Pour le développement avec Vue.js, nous vous recommandons cette extension qui fournit de la coloration syntaxique et de l'autocomplétion pour les fichiers de composants Vue:
 
-<VueVersionSwitch slot-key="vscode-extension" />
-::: slot vscode-extension-vue2
-Pour Vue 2, utilisez cette extension: [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
-:::
-
-::: slot vscode-extension-vue3
-Pour Vue 3, utilisez cette extension: [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-:::
+[Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
 ### Vue Devtools
 
@@ -55,23 +48,13 @@ Toutefois, ce mode d'utilisation trouve rapidement ses limites, et l'outillage d
 
 ## TP : Création de votre premier projet
 
-Vous pouvez utiliser au choix **Vue 2** ou **Vue 3** pour cette formation.
+Nous utiliserons **Vue 3** pour cette formation.
 
 Placez-vous dans votre répertoire de travail et créez un projet appelé `search-films` en lançant la commande :
 
-<VueVersionSwitch slotKey="npm-init" />
-
-::: slot npm-init-vue3
 ```bash
 npm init vue@latest
 ```
-:::
-
-::: slot npm-init-vue2
-```bash
-npm init vue@2
-```
-:::
 
 **search-films** étant le nom du répertoire dans lequel nous allons initier notre projet.
 
@@ -86,7 +69,6 @@ Choisissez la configuration suivante :
 ✔ Add Vitest for Unit Testing? ... Yes
 ✔ Add Cypress for testing? Yes
 ✔ Add ESLint for code quality? ... Yes
-✔ Add Prettier for code formatting? ... Yes
 
 Scaffolding project in ./search-films...
 Done.

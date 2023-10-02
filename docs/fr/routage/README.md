@@ -18,30 +18,8 @@ Si vous ne l'avez pas installé pendant la configuration initiale du projet, vou
 
 Créez un dossier `src/router` et un fichier `router/index.js` qui contiendra la configuration du routeur. Le fichier `main.js` devra être modifié pour déclarer ce nouveau routeur dans l'application:
 
-<VueVersionSwitch slotKey="install-router" />
-
-::: slot install-router-vue2
 ```bash
-npm install vue-router@3
-```
-
-```js{4,9}
-import RouterPlugin from "vue-router";
-import router from "./router";
-
-Vue.use(RouterPlugin)
-
-new Vue({
-  render: h => h(App),
-  pinia,
-  router
-}).$mount("#app");
-```
-:::
-
-::: slot install-router-vue3
-```bash
-npm install vue-router@4
+npm install vue-router
 ```
 
 ```js{5}
@@ -52,40 +30,14 @@ createApp(App)
 	.use(router)
 	.mount("#app")
 ```
-:::
 
 ## Configuration du routeur
 
 Le routeur est créé en prenant en paramètres un ensemble de routes. Chaque route associe un pattern d'URL à un certain composant. Au chargement de la page, ou à chaque changement d'URL, le routeur va résoudre quelle route est associée à cette nouvelle URL.
 
-<VueVersionSwitch slotKey="router-config" />
-
-::: slot router-config-vue2
 ```js
 /** src/router/index.js **/
-import Router from "vue-router";
-
-import HelloWorld from "@/components/HelloWorld";
-
-const router = new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: "/hello/:name",
-      name: "hello",
-      component: HelloWorld
-    }
-  ]
-});
-
-export default router;
-```
-:::
-
-::: slot router-config-vue3
-```js
-/** src/router/index.js **/
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 import HelloWorld from "@/components/HelloWorld.vue";
 
 const router = createRouter({
@@ -94,14 +46,13 @@ const router = createRouter({
     {
       path: "/hello/:name",
       name: "hello",
-      component: HelloWorld
-    }
-  ]
+      component: HelloWorld,
+    },
+  ],
 });
 
 export default router;
 ```
-:::
 
 Une fois la résolution de la route terminée, un composant a été associé à l'URL en cours. Ce composant est alors injecté à la place de l'élément `<router-view />`. Cet élément est généralement placé dans le composant racine `App.vue`. Les éléments autour de `<router-view />` forment le layout structurant votre application : un header, une barre de navigation, un footer etc.
 
@@ -138,10 +89,11 @@ router.push(`/article/${nextId}`); // naviguer vers une nouvelle page par URL
 ```
 
 Grâce au plugin routeur, vous pouvez facilement récupérer une référence au routeur depuis tous vos composants:
+
 ```js
 // depuis les options d'un composant
-this.$router // pointe vers l'instance du routeur
-this.$route // pointe vers router.currentRoute
+this.$router; // pointe vers l'instance du routeur
+this.$route; // pointe vers router.currentRoute
 ```
 
 ## TP: Implémentation du routeur
@@ -154,35 +106,18 @@ this.$route // pointe vers router.currentRoute
 Par convention, on appelle les composants rattachés à des routes des _views_, et on les place généralement dans le dossier `src/views` plutôt que `src/components`.
 :::
 
-3. Ajoutez à la configuration des routes des redirections vers la route `/search` pour la route par défaut (`/`) et pour toutes les autres routes non reconnues (`*` pour Vue 2, `/:pathMatch(.*)*` pour Vue 3) :
+3. Ajoutez à la configuration des routes des redirections vers la route `/search` pour la route par défaut (`/`) et pour toutes les autres routes non reconnues (`/:pathMatch(.*)*`) :
 
-<VueVersionSwitch slotKey="router-catch-all-route" />
-
-::: slot router-catch-all-route-vue3
 ```js
 {
   path: "/",
   redirect: "/search",
 },
-{ 
-  path: '/:pathMatch(.*)*', 
-  redirect: "/search"
-}
-```
-:::
-
-::: slot router-catch-all-route-vue2
-```js
 {
-  path: "/",
-  redirect: "/search",
-},
-{ 
-  path: '*', 
+  path: '/:pathMatch(.*)*',
   redirect: "/search"
 }
 ```
-:::
 
 4. A l'aide de la documentation de [vue-router](https://router.vuejs.org/api/), remplacez la bascule entre `LoginForm` et `SearchFilm` à base de `v-if` par une navigation d'une route à une autre avec `<router-view>`.
 

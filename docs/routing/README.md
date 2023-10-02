@@ -18,30 +18,8 @@ If you did not install it during initial project configuration, you can now inst
 
 Create a `src/router` directory and a `router/index.js` file to hold router configuration. The `main.js` file will have to be modified to declare this new router in the application:
 
-<VueVersionSwitch slotKey="install-router" />
-
-::: slot install-router-vue2
 ```bash
-npm install vue-router@3
-```
-
-```js{4,9}
-import RouterPlugin from "vue-router";
-import router from "./router";
-
-Vue.use(RouterPlugin)
-
-new Vue({
-  render: h => h(App),
-  pinia,
-  router
-}).$mount("#app");
-```
-:::
-
-::: slot install-router-vue3
-```bash
-npm install vue-router@4
+npm install vue-router
 ```
 
 ```js{5}
@@ -52,37 +30,11 @@ createApp(App)
 	.use(router)
 	.mount("#app")
 ```
-:::
 
 ## Router Configuration
 
 The router is created by taking a list of routes as parameters. Each route associates a URL pattern with a certain component. When the page loads, or when the URL changes, the router will resolve which route is associated with this new URL.
 
-<VueVersionSwitch slotKey="router-config" />
-
-::: slot router-config-vue2
-```js
-/** src/router/index.js **/
-import Router from "vue-router";
-
-import HelloWorld from "@/components/HelloWorld.vue";
-
-const router = new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: "/hello/:name",
-      name: "hello",
-      component: HelloWorld
-    }
-  ]
-});
-
-export default router;
-```
-:::
-
-::: slot router-config-vue3
 ```js
 /** src/router/index.js **/
 import { createRouter, createWebHistory } from 'vue-router'
@@ -101,7 +53,6 @@ const router = createRouter({
 
 export default router;
 ```
-:::
 
 Once the route resolution is complete, a component has been associated with the current URL. This component is then injected in place of the `<router-view />` element. This element is usually placed in the root component `App.vue`. The elements around `<router-view />` form the layout structuring your application: a header, a navigation bar, a footer etc.
 
@@ -154,11 +105,8 @@ this.$route // points to router.currentRoute
 By convention, we call the components linked to routes _views_, and we usually place them in the folder `src/views` rather than`src/components`.
 :::
 
-3. Add to route configuration some redirections `/search` route for default route (`/`) and all other unrecognized routes (`*` for Vue 2, `/:pathMatch(.*)*` for Vue 3) :
+3. Add to route configuration some redirections `/search` route for default route (`/`) and all other unrecognized routes (`/:pathMatch(.*)*`) :
 
-<VueVersionSwitch slotKey="router-catch-all-route" />
-
-::: slot router-catch-all-route-vue3
 ```js
 {
   path: "/",
@@ -169,20 +117,6 @@ By convention, we call the components linked to routes _views_, and we usually p
   redirect: "/search"
 }
 ```
-:::
-
-::: slot router-catch-all-route-vue2
-```js
-{
-  path: "/",
-  redirect: "/search",
-},
-{ 
-  path: '*', 
-  redirect: "/search"
-}
-```
-:::
 
 4. Using [vue-router](https://router.vuejs.org/api/) documentation, replace the switch between `LoginForm` and`SearchFilm` currently based on a `v-if` by a navigation from one route to another with `<router-view>`.
 

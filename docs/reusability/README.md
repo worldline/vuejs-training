@@ -96,23 +96,6 @@ Composition API is now the best way to compose logic on Vue components, and has 
 
 Vue allows you to declare your own [custom directives](https://vuejs.org/v2/guide/custom-directive.html) - the Vue-specific syntax that is used in component templates. This feature is often used by third-party libraries. Custom directives allow you to reuse business logic on multiple elements without using a dedicated component. However, be careful not to abuse them because it is difficult to keep track of all custom directives in a project, and they may conflict with future developments in Vue.
 
-
-<VueVersionSwitch slot-key="custom-directive" />
-
-::: slot custom-directive-vue2
-```js
-// Register a global custom directive called 'v-focus'
-Vue.directive("focus", {
-  // When the bound element is inserted into the DOM...
-  inserted: function(el) {
-    // Focus the element
-    el.focus();
-  }
-});
-```
-:::
-
-::: slot custom-directive-vue3
 ```js
 // Register a custom directive called 'v-focus' on your app
 app.directive("focus", {
@@ -123,7 +106,6 @@ app.directive("focus", {
   }
 });
 ```
-:::
 
 ## Plugins
 
@@ -133,22 +115,6 @@ Finally, Vue offers a [plugin system](https://vuejs.org/v2/guide/plugins.html) t
 - add methods or properties globally to all components
 - add custom directives / filters / transitions
 
-<VueVersionSwitch slot-key="custom-plugin" />
-
-::: slot custom-plugin-vue2
-```js
-const NotificationPlugin = {
-  install(){
-    Vue.component('Notification', NotificationComponent);
-    Vue.directive('notify', NotificationDirective);
-  }
-}
-
-Vue.use(NotificationPlugin)
-```
-:::
-
-::: slot custom-plugin-vue3
 ```js
 const NotificationPlugin = {
   install(app){
@@ -159,7 +125,6 @@ const NotificationPlugin = {
 
 Vue.use(NotificationPlugin)
 ```
-:::
 
 Most third-party Vue libraries use this plugin format for its convenience. This is the case of `vue-router` for example, which provides globally `<router-view>`, `$router` and `$route`.
 

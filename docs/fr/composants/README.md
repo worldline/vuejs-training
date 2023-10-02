@@ -95,15 +95,7 @@ Pour distinguer les cas d'usage computed vs watcher, on privilégiera le plus so
 
 Vue travaille avec les composants suivant un schéma bien précis, de leur création jusqu'à leur destruction en passant par les mises à jour de données et leur insertion dans le DOM. Voici le schéma complet :
 
-<VueVersionSwitch slotKey="lifecycle" />
-
-::: slot lifecycle-vue2
-![Vue Lifecycle](../../assets/vue2_lifecycle_fr.png)
-:::
-
-::: slot lifecycle-vue3
 ![Vue Lifecycle](../../assets/vue3_lifecycle_fr.svg)
-:::
 
 Chaque étape du cycle de vie d'un composant appelle deux fonctions callback, l'une juste avant que le framework intervienne, et l'autre juste après. On peut via ces callbacks définir un comportement spécifique pour le composant à ces moments précis :
 

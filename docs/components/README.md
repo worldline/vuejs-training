@@ -96,16 +96,7 @@ To distinguish the use cases of computed vs watcher, we will privilege most ofte
 
 Vue follows a pattern when working with components, from their creation to their destruction through data updates and DOM insertion. Here is the complete diagram :
 
-<VueVersionSwitch slotKey="lifecycle" />
-
-::: slot lifecycle-vue2
-![Vue Lifecycle](../assets/vue2_lifecycle.png)
-:::
-
-::: slot lifecycle-vue3
 ![Vue Lifecycle](../assets/vue3_lifecycle.svg)
-:::
-
 
 Each stage of the life cycle of a component calls two callback functions, one just before the framework does its internal work, and the other just after. These callbacks can be used to define a specific behavior for the component at these precise moments:
 
