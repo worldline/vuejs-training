@@ -23,8 +23,8 @@
     "@vue/runtime-dom": "^3.2.31",
     "cypress": "^9.1.0",
     "start-server-and-test": "^1.14.0",
-    "unplugin-vue2-script-setup": "^0.9.3",
-    "vite": "^2.9.13",
+    "unplugin-vue2-script-setup": "^0.11.4",
+    "vite": "^2.9.16",
     "vite-plugin-vue2": "^1.9.3",
     "vue-template-babel-compiler": "1.1.3",
     "vue-template-compiler": "^2.6.14"
