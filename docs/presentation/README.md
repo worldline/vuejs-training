@@ -47,6 +47,7 @@ Let's try to compare Vue with the other two most popular JS frameworks, React an
 - Very popular, used by top companies
 - Mature, stable, funded long-term support
 - Component oriented codebase
+- Mostly declarative and not imperative paradigm
 - Suitable for modern technological stacks (ES6+ / TypeScript)
 - Large ecosystem of components and tools
 
@@ -60,13 +61,10 @@ React, Vue and Angular position themselves in different categories, this can be 
 
 |                  | React                                                                    | Vue.js                                                                                              | Angular                                                                                      |
 | ---------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Language         | JSX\*                                                                    | Optional support of JSX and TypeScript                                                              | TypeScript\*                                                                                 |
-| Paradigm         | Encourage functional programming                                         | Encourage declarative programming                                                                   | Mix between classes oriented declarative programming and functional programming (RxJs)       |
+| Language         | JSX, optional support of TypeScript                                      | Optional support of JSX and TypeScript                                                              | TypeScript                                                                                   |
 | State management | Immutable centralized state (Flux)                                       | Optional centralized state (Vuex) or internal mutable state                                         | Internal mutable state , no official centralized state                                       |
 | Reactivity       | Manual (`setState` + VDOM diffing)                                       | Automatic (observers/Proxies)                                                                       | Automatic (Zones/dirty-checking)                                                             |
 | Stack            | Not self-sufficient, to combine with complete web stack. Rich ecosystem. | Some official tools maintained by the core team. Third-party solutions are promoted if appropriate. | Full-stack framework sef-sufficient with built-in security features. Complete but less open. |
-
-_\* optional but highly recommended_
 
 ### Comparison in metaphor
 

@@ -42,9 +42,9 @@ Later, you may need to create additional folders in `src` as needed. For example
 export default {
   data() {
     return {
-      who: "World"
+      who: "World",
     };
-  }
+  },
 };
 </script>
 
@@ -60,9 +60,7 @@ The script part of the component must export an object with the properties of th
 ::: tip
 Why do you think the `data` property of a component must be a function?
 
-[Answer](https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function)
-
-Since Vue 3, `data` component option no longer accepts a plain JavaScript object.
+[Answer](https://v2.vuejs.org/v2/style-guide/#Component-data-essential)
 :::
 
 ## Work with components
@@ -86,8 +84,8 @@ import MyChildComponent from "./MyChildComponent.vue";
 
 export default {
   components: {
-    MyChildComponent
-  }
+    MyChildComponent,
+  },
 };
 </script>
 ```
@@ -114,9 +112,9 @@ export default {
   data() {
     return {
       orderReference: "ABCXYZ",
-      price: 17.3
+      price: 17.3,
     };
-  }
+  },
 };
 </script>
 ```

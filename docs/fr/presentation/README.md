@@ -47,6 +47,7 @@ Tâchons de comparer Vue avec les deux autres frameworks JS les plus populaires,
 - Très populaires, utilisé par de grosses entreprises
 - Matures, stables, support à long terme financé
 - Codebase orientée composants
+- Paradigme principalement déclaratif et non impératif
 - Adapté aux stacks modernes (ES6+ / TypeScript)
 - Large écosystème de composants et d’outillage
 
@@ -60,13 +61,10 @@ React, Vue et Angular se positionnent dans des catégories différentes et cela 
 
 |                          | React                                                                                                         | Vue.js                                                                                                                                        | Angular                                                                                                        |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Langage                  | JSX\*                                                                                                         | JSX et TypeScript en option                                                                                                                   | TypeScript\*                                                                                                   |
-| Paradigme                | Favorise la prog fonctionnelle                                                                                | Favorise la prog déclarative                                                                                                                  | Mélange prog déclarative orientée classes et prog fonctionnelle (RxJS)                                         |
+| Langage                  | JSX, _(TypeScript)_                                                                                           | _(TypeScript, JSX)_                                                                                                                           | TypeScript                                                                                                     |
 | Gestion d'état           | State centralisé non mutable (Flux)                                                                           | State centralisé en option (Vuex), sinon interne et mutable                                                                                   | State interne et mutable, pas de state centralisé officiel                                                     |
 | Gestion de la réactivité | Manuelle (`setState` + VDOM diffing)                                                                          | Automatique (observers/Proxies)                                                                                                               | Automatique (Zones/dirty-checking)                                                                             |
 | Stack                    | Ne se suffit pas à lui-même, à intégrer dans une stack web avec d’autres outils en externe. Écosystème riche. | Quelques outils officiels maintenus par la team Vue, d’autres à chercher en externe. Promeut des solutions tierces si elles sont appropriées. | Framework full stack et auto-suffisant, avec options de sécurité incluses nativement. Complet mais plus fermé. |
-
-_\* non obligatoire mais fortement recommandé_
 
 _State = objet de données représentant l’état de l’application ; interne = propre à chaque composant_
 

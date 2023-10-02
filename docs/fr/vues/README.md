@@ -22,30 +22,30 @@ Par la suite, vous pourrez être amenés à créer d'autres dossiers dans `src` 
 
 ![Cheat sheet de la structure de fichiers d'un projet Vue](../../assets/vue-project-file-structure.jpg)
 
-## Fichiers monocomposants *.vue
+## Fichiers monocomposants \*.vue
 
 - Une application dans Vue.js est divisée en plusieurs composants
 - Un composant correspond à un fichier `.vue`
 - Un fichier `.vue` se compose de trois éléments optionnels :
-    - la balise `<template>` contient le code HTML du composant
-    - la balise `<script>` (optionnelle) contient le code JavaScript du composant
-    - la balise `<style>` (optionnelle) contient le style CSS du composant
+  - la balise `<template>` contient le code HTML du composant
+  - la balise `<script>` (optionnelle) contient le code JavaScript du composant
+  - la balise `<style>` (optionnelle) contient le style CSS du composant
 
 ```vue
 <template>
   <div>
-    <span>Hello {{who}}</span>
+    <span>Hello {{ who }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      who: 'World'
-    }
-  }
-}
+      who: "World",
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -60,9 +60,7 @@ La partie script du composant doit exporter par défaut un objet avec les propri
 ::: tip
 D'après vous, pourquoi la propriété `data` d'un composant doit être une fonction ?
 
-[Réponse](https://fr.vuejs.org/v2/guide/components.html#data-doit-etre-une-fonction)
-
-Depuis Vue 3, l'option `data` n'accepte plus un objet JavaScript comme valeur.
+[Réponse](https://v2.fr.vuejs.org/v2/style-guide#Donnees-du-composant-essentiel)
 :::
 
 ## Travailler en composants
@@ -82,13 +80,13 @@ Pour relier les composants entre eux, on déclare les composants enfants dans le
 </template>
 
 <script>
-import MonComposantEnfant from './MonComposantEnfant.vue'
+import MonComposantEnfant from "./MonComposantEnfant.vue";
 
 export default {
   components: {
-    MonComposantEnfant
-  }
-}
+    MonComposantEnfant,
+  },
+};
 </script>
 ```
 
@@ -106,22 +104,24 @@ Le moyen le plus simple d'insérer des données dynamiquement dans vos composant
 
 ```vue
 <template>
-  <p>Commande ref. {{ referenceCommande }} - Total : {{ prix.toFixed(2)+'€' }}</p>
+  <p>
+    Commande ref. {{ referenceCommande }} - Total : {{ prix.toFixed(2) + "€" }}
+  </p>
 </template>
 
 <script>
-  export default {
-    data(){
-      return {
-        referenceCommande: 'ABCXYZ',
-        prix: 17.3
-      }
-    }
-  }
+export default {
+  data() {
+    return {
+      referenceCommande: "ABCXYZ",
+      prix: 17.3,
+    };
+  },
+};
 </script>
 ```
 
-L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne pouvez pas l'utiliser pour changer la valeur d'attributs HTML ou pour insérer du code HTML par exemple. Pour cela, vous devrez recourir aux *directives*, que l'on verra dans la section suivante.
+L'interpolation ne fonctionne que sur le contenu textuel des éléments. Vous ne pouvez pas l'utiliser pour changer la valeur d'attributs HTML ou pour insérer du code HTML par exemple. Pour cela, vous devrez recourir aux _directives_, que l'on verra dans la section suivante.
 
 ## TP : Premier composant
 
@@ -133,22 +133,34 @@ Le projet Vue a été initialisé avec des composants et des styles existants da
 
 ```html
 <div id="login-form">
-<form>
-  <h1>Authentification</h1>
-  <p>Remplissez ce formulaire pour vous connecter.</p>
-  <hr>
+  <form>
+    <h1>Authentification</h1>
+    <p>Remplissez ce formulaire pour vous connecter.</p>
+    <hr />
 
-  <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Entrez votre courriel" id="email" name="email" required>
+    <label for="email"><b>Email</b></label>
+    <input
+      type="text"
+      placeholder="Entrez votre courriel"
+      id="email"
+      name="email"
+      required
+    />
 
-  <label for="psw"><b>Mot de passe</b></label>
-  <input type="password" placeholder="Entrez votre mot de passe" id="psw" name="psw" required>
+    <label for="psw"><b>Mot de passe</b></label>
+    <input
+      type="password"
+      placeholder="Entrez votre mot de passe"
+      id="psw"
+      name="psw"
+      required
+    />
 
-  <p><button type="submit">Se connecter</button></p>
-</form>
+    <p><button type="submit">Se connecter</button></p>
+  </form>
 </div>
 ```
 
 3. Supprimez le contenu existant du template du composant `App.vue`, et affichez le composant `LoginForm.vue` à la place avec `<LoginForm />`. Vous devrez également déclarer `LoginForm` dans l'option `components` du composant `App`.
 
-4. Complétez le fichier `LoginForm.vue` pour déclarer une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire *"Authentification"* en utilisant cette variable `title`.
+4. Complétez le fichier `LoginForm.vue` pour déclarer une option `data` contenant une propriété `title`. Utiliser ensuite l'interpolation de texte dans le template pour passer le titre du formulaire _"Authentification"_ en utilisant cette variable `title`.
