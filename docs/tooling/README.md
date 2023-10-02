@@ -4,6 +4,8 @@
 
 ### Node.js
 
+Node is the current go-to platform when it comes to front-end development tooling and ecosystem.
+
 Install [Node.js](https://nodejs.org/) (preferably latest stable version). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
 
 ### Visual Studio Code and Vetur/Volar

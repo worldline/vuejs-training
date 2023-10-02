@@ -4,6 +4,8 @@
 
 ### Node.js
 
+Node est la plate-forme actuelle de référence quand il s'agit d'outillage de développement front-end et d'écosystème JavaScript.
+
 Installez [Node.js](https://nodejs.org/) (dernière version stable recommandée). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utiliser [nvm](https://github.com/creationix/nvm).
 
 ### Visual Studio Code et Vetur/Volar
@@ -116,13 +118,13 @@ Après un build, vous pouvez rapidement tester votre application buildée avec l
 Vous pouvez configurer tout cet outillage de multiples façons, via des fichiers de configuration dédiés. Par exemple, pour changer le port utilisé par le serveur de développement, créez un fichier `vite.config.js` à la racine du projet puis placez-y le contenu suivant :
 
 ```js
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite";
 
 export default defineConfig({
   server: {
-    port: 8080
-  }
-})
+    port: 8080,
+  },
+});
 ```
 
 Votre projet sera maintenant accessible sur le port 8080 en mode développeur. Consultez la [documentation de configuration](https://vitejs.dev/config/) pour en savoir plus sur les options disponibles.
