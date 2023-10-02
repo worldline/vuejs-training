@@ -30,7 +30,7 @@ However, this raises the issue of funding. Many contributors are volunteers, but
 
 ## Popularity
 
-Vue.js has broken records in terms of popularity since 2015. It is now the second project in number of stars on Github. Despite the lack of funding, many meetups and conferences have been self-organized in different countries. This is one of the most resounding successes in the open-source world in the last five years.
+Vue.js has broken records in terms of popularity. It is now one of the top projects in number of stars on Github. Despite the lack of funding, many meetups and conferences have been self-organized in different countries. This is one of the most resounding successes of 2015-2016 in the open-source world.
 
 The secret of his success? A focus on simplicity, a very low learning curve, an excellent documentation and a listening community.
 

@@ -30,7 +30,7 @@ Toutefois, cela soulève la question du financement. Beaucoup de contributeurs s
 
 ## Popularité
 
-Vue.js a battu des records en termes de hausse de popularité depuis 2015. Il s'agit aujourd'hui du 2ème projet en nombre de stars sur Github. Malgré l'absence de financement, de nombreux meetups et conférences se sont auto-organisés dans différents pays. Il s'agit de l'un des succès les plus retentissants dans le monde open-source depuis ces cinq dernières années.
+Vue.js a battu des records en termes de gain de popularité. Il s'agit aujourd'hui d'un des projets avec le plus de stars sur Github. Malgré l'absence de financement, de nombreux meetups et conférences se sont auto-organisés dans différents pays. Il s'agit de l'un des succès les plus retentissants des années 2015-2016 dans le monde open-source.
 
 Le secret de son succès ? Rien de révolutionnaire : un focus sur la simplicité, une courbe d'apprentissage très faible, une excellente documentation et une communauté à l'écoute.
 
