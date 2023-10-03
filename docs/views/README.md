@@ -5,7 +5,7 @@
 The newly created Vue project has the following folders and files:
 
 - `src`: the sources of your project
-- `public`: all the content that will be directly put at the root of the web server, without going through Webpack
+- `public`: all the static content that will be directly copied at the root of the web server
 - `package.json`: the NPM package information of the project (version, dependencies, scripts etc.)
 - `vue.config.js`: the configuration file for Vite on this project
 
@@ -13,7 +13,7 @@ Other configuration files for the build tools can also be found here.
 
 In the `src` folder, you have:
 
-- `assets`: static resources (images, files) that will be imported by Webpack within your Vue components
+- `assets`: static resources (images, files) used within your Vue components
 - `components`: your Vue components (distributed by folder by "module" of your application)
 - `App.vue`: Your root Vue component, which contains the entire application
 - `main.js`: the entry point of the entire application's JavaScript code

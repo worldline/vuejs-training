@@ -5,7 +5,7 @@
 Le projet Vue fraîchement créé a les dossiers et fichiers suivants :
 
 - `src` : les sources de votre projet
-- `public` : tout le contenu qui sera directement mis à la racine du serveur web, sans être passé par Webpack
+- `public` : tout le contenu qui sera directement copié tel quel à la racine du serveur web
 - `package.json` : les informations de package NPM du projet (version, dépendances, scripts etc.)
 - `vite.config.js` : le fichier de configuration pour Vite sur ce projet
 
@@ -13,7 +13,7 @@ D'autres fichiers de configuration pour les outils de build peuvent également s
 
 Dans le dossier `src`, vous trouvez :
 
-- `assets` : des ressources statiques (images, fichiers) qui seront importées par Webpack au sein de vos composants Vue
+- `assets` : les ressources statiques (images, fichiers) utilisées au sein de vos composants Vue
 - `components` : vos composants Vue (répartis par dossier par "module" de votre application)
 - `App.vue` : votre composant Vue racine, qui contient toute l'application
 - `main.js` : le point d'entrée du code JavaScript de toute l'application
