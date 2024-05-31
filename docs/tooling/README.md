@@ -67,8 +67,10 @@ Choose the following configuration:
 ✔ Add Vue Router for Single Page Application development? No
 ✔ Add Pinia for state management? No
 ✔ Add Vitest for Unit Testing? ... Yes
-✔ Add Cypress for testing? Yes
+✔ Add an end to end testing solution ? Cypress
 ✔ Add ESLint for code quality? ... Yes
+✔ Add Prettier for code formatting? ... Yes
+✔ Add Vue Devtools 7 extension for debugging ? ... Yes
 
 Scaffolding project in ./search-films...
 Done.

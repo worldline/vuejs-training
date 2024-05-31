@@ -63,14 +63,16 @@ npm init vue@latest
 Choisissez la configuration suivante :
 
 ```bash
-✔ Project name: search-films
-✔ Add TypeScript? No
-✔ Add JSX Support? No
-✔ Add Vue Router for Single Page Application development? No
-✔ Add Pinia for state management? No
-✔ Add Vitest for Unit Testing? ... Yes
-✔ Add Cypress for testing? Yes
-✔ Add ESLint for code quality? ... Yes
+✔ Nom du projet: search-films
+√ Ajouter TypeScript ? ... Non
+√ Ajouter le support de JSX ? ... Non
+√ Ajouter Vue Router pour le développement d'applications _single page_ ? ... Non
+√ Ajouter Pinia pour la gestion de l'état ? ... Non
+√ Ajouter Vitest pour les tests unitaires ? ...  Oui
+√ Ajouter une solution de test de bout en bout (e2e) ? » Cypress
+√ Ajouter ESLint pour la qualité du code ? ... Oui
+√ Ajouter Prettier pour le formatage du code ? ...  Oui
+√ Ajouter l'extension Vue DevTools 7 pour le débogage ? (expérimental) ... Oui
 
 Scaffolding project in ./search-films...
 Done.
