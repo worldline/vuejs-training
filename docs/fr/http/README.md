@@ -23,6 +23,8 @@ npm install
 npm start
 ```
 
+Une clé d'API OMDB vous sera demandée pour pouvoir effectuer des recherches de films. Vous pouvez en obtenir une [ici](https://www.omdbapi.com/apikey.aspx).
+
 ::: tip
 Une fois le serveur démarré, le contrat d'interface du back-end est disponible ici : [api-docs](http://localhost:3030/api-docs/)
 :::
