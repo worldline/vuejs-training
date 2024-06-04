@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import { useSession } from "../stores/session.js";
 
@@ -6,7 +6,7 @@ import LoginForm from "../views/LoginForm.vue";
 import SearchFilm from "../views/SearchFilm.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       path: "/login",
