@@ -17,11 +17,13 @@ By convention, we code the application logic in JS files called _services_, dist
 We will use a server-provided API (the _back-end_) to authenticate users and search for films. This back-end has already been developed, you can clone [this repo](https://github.com/worldline/vuejs-training-backend) and run the API locally with:
 
 ```bash
-git clone https://github.com/worldline/vuejs-training-backend 
+git clone https://github.com/worldline/vuejs-training-backend
 cd ./vuejs-training-backend/
 npm install
 npm run start
 ```
+
+An OMDB API key will be required to search for films. You can get one [here](https://www.omdbapi.com/apikey.aspx).
 
 ::: tip
 Once the server has started, The back-end interface contract is available here: [api-docs](http://localhost:3030/api-docs/)
@@ -30,30 +32,36 @@ Once the server has started, The back-end interface contract is available here: 
 1. Create a generic service (`services/api.js`) to call the backend, with this content:
 
 ```js
-import { useSession } from '../stores/session.js'
+import { useSession } from "../stores/session.js";
 
-export const BASE_URL = 'http://localhost:3030'
+export const BASE_URL = "http://localhost:3030";
 
-export async function api (url, params = {}) {
-    const session = useSession()
+export async function api(url, params = {}) {
+  const session = useSession();
 
-    params = Object.assign({
-        mode: 'cors',
-        cache: 'no-cache',
-    }, params)
+  params = Object.assign(
+    {
+      mode: "cors",
+      cache: "no-cache",
+    },
+    params
+  );
 
-    params.headers = Object.assign({
-        Authorization: `Bearer ${session.token}`,
-        'Content-Type': 'application/json'
-    }, params.headers)
+  params.headers = Object.assign(
+    {
+      Authorization: `Bearer ${session.token}`,
+      "Content-Type": "application/json",
+    },
+    params.headers
+  );
 
-    let response = await fetch(BASE_URL + url, params)
-    let json = await response.json() || {}
-    if (!response.ok){
-        let errorMessage = json.error || response.status
-        throw new Error(errorMessage)
-    }
-    return json
+  let response = await fetch(BASE_URL + url, params);
+  let json = (await response.json()) || {};
+  if (!response.ok) {
+    let errorMessage = json.error || response.status;
+    throw new Error(errorMessage);
+  }
+  return json;
 }
 ```
 
@@ -68,58 +76,61 @@ export default {
   register(credentials) {
     return api("/user/register", {
       method: "POST",
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     });
   },
   login(credentials) {
     return api("/user/login", {
       method: "POST",
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     });
   },
   user() {
     return api("/user");
-  }
+  },
 };
 ```
 
 3. In `LoginForm` component, add a second button to register next to the login button, then modify the `LoginForm` methods to call the functions located in `UserService`:
 
 ```js
-import UserService from '@/services/UserService.js'
+import UserService from "@/services/UserService.js";
 
 export default {
   methods: {
-    async register () {
+    async register() {
       this.error = null;
       try {
         const response = await UserService.register({
           email: this.email,
           password: this.password,
-          firstname: 'John',
-          lastname: 'Smith'
-        })
+          firstname: "John",
+          lastname: "Smith",
+        });
         const session = useSession();
         session.login({ user: response.user, token: response.token });
-        this.$router.push('/search')
+        this.$router.push("/search");
       } catch (error) {
-        this.error = error.toString()
+        this.error = error.toString();
       }
     },
 
-    async login () {
+    async login() {
       this.error = null;
       try {
-        const response = await UserService.login({ email: this.email, password: this.password })
+        const response = await UserService.login({
+          email: this.email,
+          password: this.password,
+        });
         const session = useSession();
         session.login({ user: response.user, token: response.token });
-        this.$router.push('/search')
+        this.$router.push("/search");
       } catch (error) {
-        this.error = error.toString()
+        this.error = error.toString();
       }
-    }
-  }
-}
+    },
+  },
+};
 ```
 
 4. Note that in the event of an error, the error message is stored in an `error` variable. If not already done, declare this variable in the component's `data` and use it in the template to display the error message in case of authentication failure.
