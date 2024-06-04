@@ -78,9 +78,6 @@ export default {
       method: 'POST',
       body: JSON.stringify(credentials)
     })
-  },
-  user () {
-    return api('/user')
   }
 }
 ```
