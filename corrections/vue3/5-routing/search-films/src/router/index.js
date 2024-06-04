@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import { useSession } from "../stores/session.js";
 
@@ -6,7 +6,7 @@ import LoginForm from "../views/LoginForm.vue";
 import SearchFilm from "../views/SearchFilm.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: [
     {
       path: "/login",
@@ -22,8 +22,8 @@ const router = createRouter({
       path: "/",
       redirect: "/search",
     },
-    { 
-      path: '/:pathMatch(.*)*', 
+    {
+      path: '/:pathMatch(.*)*',
       redirect: "/search"
     }
   ]
@@ -32,7 +32,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const session = useSession()
   if (to.name !== "login" && session.loggedIn === false) next('/login')
-	else next()
+  else next()
 })
 
 export default router;
