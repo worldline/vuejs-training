@@ -7,6 +7,7 @@ describe('Authentication behavior', () => {
   })
 
   it('should login correctly', () => {
+    cy.visit('/')
     cy.get("#email").type("cypress@test.com")
     cy.get("#psw").type("test1234")
     cy.get("button[type='submit']").click()
@@ -14,6 +15,12 @@ describe('Authentication behavior', () => {
   })
 
   it('should allow to search films when authenticated', () => {
+    cy.visit('/search')
+    cy.get("#email").type("cypress@test.com")
+    cy.get("#psw").type("test1234")
+    cy.get("button[type='submit']").click()
+    cy.get("#session-info").contains("Connecté en tant que John Smith")
+
     cy.get("#search").type("batman{enter}")
     cy.wait(2000)
     cy.get(".film.card .title").contains("Batman v Superman")
