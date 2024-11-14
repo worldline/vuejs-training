@@ -6,9 +6,9 @@ Support de formation disponible ici: [https://worldline.github.io/vuejs-training
 
 ``` bash
 # install
-yarn install # OR npm install
+npm install
 
-# start writing
+# start development server
 npm run dev
 
 # build to static files
