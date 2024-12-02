@@ -4,9 +4,6 @@ Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins e
 
 En voici une sélection de quelques-uns :
 
-- [vue-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
-  Une extension navigateur très utile pour déboguer des applications Vue. Disponible sur Chrome, Firefox ou en application standalone.
-
 - [Vue Styleguide](https://v3.vuejs.org/style-guide/)
   Un guide de style maintenu par l'équipe officielle pour lister les conventions et bonnes pratiques autour de projets Vue.
 

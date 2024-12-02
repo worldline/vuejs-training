@@ -8,7 +8,7 @@ Node is the current go-to platform when it comes to front-end development toolin
 
 Install [Node.js](https://nodejs.org/) (preferably latest stable version). You can use [nvm](https://github.com/creationix/nvm) if you need to manage different versions of Node.js on your local machine.
 
-### Visual Studio Code and Vetur/Volar
+### Visual Studio Code and official Vue extension (Volar)
 
 During the training you will need a solid JavaScript code editor.
 
@@ -16,11 +16,7 @@ We recommend [Visual Studio Code](https://code.visualstudio.com/), a fairly ligh
 
 VS Code has many extensions to enrich the experience. For Vue projects, we recommende this extension which provides syntax highlighting and autocompletion for Vue components files:
 
-[Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-
-### Vue Devtools
-
-Download the browser extension [vue-devtools](https://github.com/vuejs/vue-devtools) available on Chrome, Firefox or as a standalone application. This will help you debug your code during the practical work.
+[Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ## Vue.js without build step (runtime only)
 

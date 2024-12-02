@@ -8,7 +8,7 @@ Node est la plate-forme actuelle de référence quand il s'agit d'outillage de d
 
 Installez [Node.js](https://nodejs.org/) (dernière version stable recommandée). Si vous devez gérer plusieurs versions différentes de Node.js sur la même machine, vous pouvez utiliser [nvm](https://github.com/creationix/nvm).
 
-### Visual Studio Code et Vetur/Volar
+### Visual Studio Code et extension Vue (Volar)
 
 Vous aurez besoin d'un bon éditeur de code pour JavaScript lors de cette formation.
 
@@ -16,11 +16,7 @@ Nous vous conseillons [Visual Studio Code](https://code.visualstudio.com/), un �
 
 VS Code dispose de nombreuses extensions pour enrichir l'éditeur. Pour le développement avec Vue.js, nous vous recommandons cette extension qui fournit de la coloration syntaxique et de l'autocomplétion pour les fichiers de composants Vue:
 
-[Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-
-### Vue Devtools
-
-Téléchargez l'extension [vue-devtools](https://github.com/vuejs/vue-devtools) disponible sur Chrome, Firefox ou en application standalone. Cela vous aidera pour le débogage lors des TP.
+[Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 ## Utilisation de Vue.js sans étape de build (runtime only)
 

@@ -4,9 +4,6 @@ Thanks to its popularity, Vue has been enriched by a vast ecosystem of plugins a
 
 Here is a selection:
 
-- [vue-devtools](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg)
-  A browser extension very useful for debugging Vue applications. Available on Chrome, Firefox or standalone application.
-
 - [Vue Styleguide](https://v3.vuejs.org/style-guide/)
   A style guide maintained by the official team to list conventions and best practices around Vue projects.
 
