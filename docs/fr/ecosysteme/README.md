@@ -4,8 +4,8 @@ Grâce à sa popularité, Vue s'est enrichi d'un vaste écosystème de plugins e
 
 En voici une sélection de quelques-uns :
 
-- [Vue Styleguide](https://v3.vuejs.org/style-guide/)
-  Un guide de style maintenu par l'équipe officielle pour lister les conventions et bonnes pratiques autour de projets Vue.
+- [vue-use](https://vueuse.org/)
+  Un ensemble de fonctions utilitaires composables et réutilisables pour vos composants Vue.js.
 
 - [vue-axe](https://github.com/vue-a11y/vue-axe-next)
   Un outil d'audit pour l'accessibilité de vos applications Vue. Il indique en console développeur la liste des défauts d'accessibilité repérés dans le code.
@@ -17,11 +17,7 @@ En voici une sélection de quelques-uns :
 
 Il existe de nombreux frameworks UI avec un grand nombre de composants prédéfinis et déjà stylisés, censés répondre à tous vos besoins en termes d'interface.
 
-- [Vuetify](https://github.com/vuetifyjs/vuetify)
-- [Quasar](https://github.com/quasarframework/quasar)
-- [Vue-material](https://github.com/vuematerial/vue-material)
-- [buefy](https://github.com/rafaelpimpa/buefy)
-- [vue-sax](https://lusaxweb.github.io/vuesax/)
+Voici un site qui vous aide à en choisir un : [UI Lib Picker](https://ui-libs.vercel.app/)
 
 ::: warning
 Note : ne remplace pas le travail d'un designer, ergonome ou développeur CSS.

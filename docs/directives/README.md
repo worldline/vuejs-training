@@ -338,7 +338,7 @@ export default {
 
 ### Modifiers
 
-Modifiers are suffixes used to slightly change the behavior of some directives: for example stop the propagation of a captured event with `v-on`. For more information, please refer to [official documentation](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
+Modifiers are suffixes used to slightly change the behavior of some directives: for example stop the propagation of a captured event with `v-on`. For more information, please refer to [official documentation](https://vuejs.org/guide/essentials/event-handling#event-modifiers).
 
 ```html
 <!-- the propagation of the click event will be stopped -->

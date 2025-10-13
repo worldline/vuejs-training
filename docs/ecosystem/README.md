@@ -4,8 +4,8 @@ Thanks to its popularity, Vue has been enriched by a vast ecosystem of plugins a
 
 Here is a selection:
 
-- [Vue Styleguide](https://v3.vuejs.org/style-guide/)
-  A style guide maintained by the official team to list conventions and best practices around Vue projects.
+- [vue-use](https://vueuse.org/)
+  A set of reusable and composable utility functions for your Vue.js components.
 
 - [vue-axe](https://github.com/vue-a11y/vue-axe-next)
   An audit tool for checking the accessibility of your Vue applications. It indicates in the developer console the list of accessibility issues identified in your application.
@@ -17,11 +17,7 @@ Here is a selection:
 
 There are many UI frameworks out there with a large number of predefined and already styled components, supposed to meet all your interface needs.
 
-- [Vuetify](https://github.com/vuetifyjs/vuetify)
-- [Quasar](https://github.com/quasarframework/quasar)
-- [Vue-material](https://github.com/vuematerial/vue-material)
-- [buefy](https://github.com/rafaelpimpa/buefy)
-- [vue-sax](https://lusaxweb.github.io/vuesax/)
+Here's a website that help you pick one: [UI Lib Picker](https://ui-libs.vercel.app/)
 
 ::: warning
 A UI Framework does not replace the work of a designer, ergonomist or CSS developer.
